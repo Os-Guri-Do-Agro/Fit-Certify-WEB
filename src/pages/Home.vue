@@ -165,28 +165,46 @@
         <section class="w-full p-[10px] pt-[32px] flex items-center justify-center">
             <div class="w-[1363px] border-1 flex">
 
-                <div class="">
+                <div class="w-full flex flex-col items-center justify-center gap-[32px]">
 
-                    <div class="">
-                        <h2>
+                    <div class="flex flex-col justify-center items-center text-center">
+                        <h2 class="">
                             Produtos e serviços para sua rotina esportiva
                         </h2>
-                        <p>
+                        <p class="">
                             Com diferenciais exclusivos para assinantes FITCERTIFY365
                         </p>
                     </div>
 
-                    <div class="">
-                        <img src="" alt="">
-                        <img src="" alt="">
+                    <div class="w-full flex justify-center items-center gap-[16px] flex-col lg:flex-row border-1">
+                        <div class="">
+                            <img class="flex w-full max-w-[716.5px] h-[213px] object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
+                        </div>
+                        <div class="">
+                            <img class="flex w-full max-w-[716.5px] h-[213px] object-cover" src="../assets/home-imgs/home-gatorade-banner.jpg" alt=""></img>
+                        </div>
                     </div>
 
-                    <div class="">
-                        <img src="" alt="">
-                        <img src="" alt="">
-                        <img src="" alt="">
-                        <img src="" alt="">
-                        <img src="" alt="">
+                    <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap">
+                        <div class="">
+                            <img src="../assets/home-imgs/home-nike-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img src="../assets/home-imgs/home-decat-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img src="../assets/home-imgs/home-bt-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img src="../assets/home-imgs/home-gatorade-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img src="../assets/home-imgs/home-amil-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img src="" alt="">
+                        </div>                        
+
                     </div>
 
                     <div class="">
