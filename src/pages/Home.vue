@@ -142,12 +142,11 @@
                 <div class="flex flex-col-reverse md:flex-row-reverse">
                     <div class="flex flex-1 flex-col justify-center gap-[18px]">
                         <h2 class="text-[1.5em] lg:text-[3em] font-[600] text-lime-500 italic leading-[35px] lg:leading-[55px] max-w-[325px] lg:max-w-[603px] md:ml-10">
-                            Sua saúde validada. <br>
-                            Seu esporte garantido.
+                            Conteúdos e Artigos
                         </h2>
 
                         <p class="text-[0.8em] lg:text-[1.25em] font-[400] leading-[26px] lg:leading-[36px] max-w-[325px] lg:max-w-[603px] md:ml-10">
-                            Vai competir? Consulte o seu médico, receba seu certificado e valide ele na FitCertify365. Nós organizar e aplicamos seu certificado nas principais provas do Brasil e do mundo.
+                            Dicas médicas, atualizações sobre check-ups, cuidados para provas e novidades da medicina esportiva.
                         </p>
 
                         <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 flex items-center justify-center md:ml-10" href="#">
@@ -163,6 +162,43 @@
         </section>
 
 
+        <section class="w-full p-[10px] pt-[32px] flex items-center justify-center">
+            <div class="w-[1363px] border-1 flex">
+
+                <div class="">
+
+                    <div class="">
+                        <h2>
+                            Produtos e serviços para sua rotina esportiva
+                        </h2>
+                        <p>
+                            Com diferenciais exclusivos para assinantes FITCERTIFY365
+                        </p>
+                    </div>
+
+                    <div class="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                    </div>
+
+                    <div class="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                    </div>
+
+                    <div class="">
+                        <a href="">
+                            Veja nossos parceiros
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
 </template>
 
 <script setup>
