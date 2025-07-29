@@ -27,7 +27,7 @@
 
 
         <section class="w-full flex justify-center min-h-[350px] bg-cyan-400 p-[10px]">
-            <div class="flex items-center justify-center w-[1363px] gap-[32px] flex-col md:flex-row border-1">
+            <div class="flex items-center justify-center w-[1363px] gap-[32px] flex-col md:flex-row">
                 <div class="flex flex-col items-center justify-center w-full max-w-[256px] lg:max-w-full h-[209px] text-center gap-[11px]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock4-icon lucide-clock-4"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
 
@@ -72,7 +72,7 @@
 
 
         <section class="flex justify-center items-center p-[10px] pt-[0]">
-            <div class="w-[1363px] border-1 flex flex-col">
+            <div class="w-[1363px] flex flex-col">
 
                 <div class="flex flex-col-reverse md:flex-row ">
                     <div class=" flex flex-1 flex-col justify-center gap-[18px]">
@@ -162,12 +162,12 @@
         </section>
 
 
-        <section class="w-full p-[10px] pt-[32px] flex items-center justify-center mt-[62px]">
+        <section class="w-full pt-[32px] flex items-center justify-center mt-[62px] bg-sky-50">
             <div class="w-[1363px] flex">
 
                 <div class="w-full flex flex-col items-center justify-center gap-[32px]">
 
-                    <div class="flex flex-col justify-center items-center text-center gap-[16px]">
+                    <div class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px]">
                         <h2 class="text-[1.875em] lg:text-[3em] italic font-[600] leading-[45px] lg:leading-[72px] text-cyan-400">
                             Produtos e serviços para sua rotina esportiva
                         </h2>
@@ -230,4 +230,5 @@
 
 <script setup>
 import TheHeader from '../components/TheHeader.vue';
+import Footer from '../components/Footer.vue';
 </script>
