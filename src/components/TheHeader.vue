@@ -22,7 +22,7 @@
           </div>
 
           
-          <ul class="hidden lg:flex gap-[32px] items-center justify-center flex-wrap">
+          <ul class="hidden lg:flex gap-[26px] items-center justify-center flex-wrap">
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Certificados</router-link></li> 
