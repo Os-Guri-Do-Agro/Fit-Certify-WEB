@@ -31,9 +31,9 @@
     </section>
 
 
-    <section class="w-full min-h-[240px] flex justify-center items-center flex-col">
-        <div class="w-full md:min-h-[847px] lg:min-h-[501px] flex justify-center items-center bg-sky-50 flex-col gap-[52px]">
-            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] p-[10px] text-center">
+    <section class="w-full min-h-[513px] md:min-h-[210px] flex justify-center items-center flex-col">
+        <div class="w-full md:min-h-[847px] lg:min-h-[501px] flex justify-center items-center bg-sky-50 flex-col md:gap-[52px]">
+            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
                 Mais do que certificados. Uma plataforma completa de saúde esportiva.
             </h2>
             <div class="w-full max-w-[1363px] hidden md:flex items-center justify-center gap-[84px] flex-wrap lg:flex-nowrap">
@@ -99,15 +99,17 @@
 
             </div>
 
-            
+            <div class="w-full md:hidden p-[10px] pb-0 pt-0">
+                <Carousel />
+            </div>
 
             <!-- AQUI VAI O CAROUSEL -->
         </div>
     </section>
 
 
-    <section class="w-full min-h-[240px] flex justify-between items-center flex-col border-1">
-        <div class="w-full max-w-[1363px] flex items-center justify-center gap-[32px] md:gap-[62px] flex-col-reverse md:flex-row lg:flex-row-reverse bg-lime-100">
+    <section class="w-full min-h-[240px] flex justify-between items-center flex-col">
+        <div class="w-full max-w-[1363px] flex items-center justify-center gap-[32px] md:gap-[62px] flex-col md:flex-row lg:flex-row-reverse bg-lime-100">
             <div class="flex flex-col w-full max-w-[603.2px] p-[10px] gap-[18px] md:gap-[32px]">
                 <h3 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[40px] md:leading-[55px]">
                     Humanização, inovação <br> e responsabilidade
@@ -121,8 +123,83 @@
             </div>
         </div>
     </section>
+
+
+    <section class="w-full h-full flex flex-col items-center justify-center lg:pt-[52px]">
+        <div class="w-full hidden md:flex items-center justify-center md:pb-[32px] lg:pb-[18px]">
+            <img class="w-full lg:max-w-[1363px] md:h-[267.3px] lg:h-[315px] object-cover object-[25%_30%]" src="../assets/quems-imgs/quems-banner-02.jpg" alt="">
+        </div>
+
+        <div class="w-full max-w-[1363px] hidden md:flex items-top justify-center">
+            <div class="max-w-[408px] h-[276px] p-[10px] flex flex-col  text-start">
+                <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
+                    Missão
+                </h3>
+                <p class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                    Tornar a saúde esportiva mais acessível, integrada e conectada à realidade dos atletas modernos.
+                </p>
+            </div>
+
+            <div class="max-w-[408px] h-[276px] p-[10px] flex flex-col text-start">
+                <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
+                    Visão
+                </h3>
+                <p class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                    Ser referência nacional em certificações digitais e monitoramento de saúde esportiva até 2027.
+                </p>
+            </div>
+
+            <div class="max-w-[408px] min-h-[276px] p-[10px] flex flex-col text-start">
+                <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
+                    Valores
+                </h3>
+                
+                <span>
+                    <li class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                        Integridade física do atleta
+                    </li>
+                    <li class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                        Ética
+                    </li>
+                    <li class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                        Inovação com propósito
+                    </li>
+                    <li class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                        Segurança digital
+                    </li>
+                    <li class="lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
+                        Responsabilidade clínica
+                    </li>
+                </span>
+            </div>
+
+
+        </div>
+
+            <div class="w-full items-center justify-center md:hidden p-[10px] pb-0 pt-0">
+                <CarouselSecond />
+            </div>
+        
+    </section>
+
+        <section class="w-full min-h-[240px] flex justify-between items-center flex-col mt-[52px]">
+        <div class="w-full lg:max-w-[1363px] flex items-center justify-center gap-[32px] md:gap-[62px] flex-col-reverse lg:flex-row-reverse bg-cyan-100 pb-[32px] lg:p-0">
+            <div class="flex flex-col w-full max-w-[603.2px] p-[10px] gap-[18px] md:gap-[32px]">
+                <h3 class="text-[1.75em] md:text-[2em] lg:text-[3em] text-lime-500 font-[600] italic leading-[35px] md:leading-[50px] lg:leading-[55px]">
+                    Uma solução para atletas, treinadores e organizadores
+                </h3>
+                <p class="text-[1em] lg:text-[1.375em] leading-[35px] lg:leading-[50px] font-[400]">
+                    Se você participa de provas, treina com frequência ou organiza eventos, a FitCertify365 foi feita para facilitar sua rotina.Emita, monitore e avance com saúde em dia , do primeiro treino à medalha.
+                </p>
+            </div>
+            <div class="flex">
+                <img class="w-full max-w-[841px] min-h-[350px] md:min-h-[444px] lg:h-[510px] object-cover object-center object-left" src="../assets/quems-imgs/quems-img-03.jpg" alt="">
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup>  
-    
+    import Carousel from '../components/QuemS-Carousel/Carousel-first.vue'
+    import CarouselSecond from '../components/QuemS-Carousel/Carousel-second.vue';
 </script>
