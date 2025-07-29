@@ -44,20 +44,17 @@
               v-if="menuOpen"
               class="absolute top-[60px] right-0 w-[250px] bg-white shadow-xl rounded-md p-6 flex flex-col gap-4 lg:hidden z-50 "
             >
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Home</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Quem Somos</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Certificados</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Eventos</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Marcadores</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Artigos</a>
-              <a href="#" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300">Marketplace</a>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/">Home</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>Quem Somos</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Certificados</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Eventos</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Marcadores</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Artigos</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Marketplace</router-link></li>
+
               <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <a href="#" class="w-full text-center border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 py-2 rounded-md font-[500]">
-                  Login
-                </a>
-                <a href="#" class="w-full text-center bg-cyan-400 text-white py-2 hover:bg-cyan-500 duration-300 rounded-md font-[500]">
-                  Cadastro
-                </a>
+                <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/sobre">Login</router-link>
+                <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/sobre">Cadastro</router-link>
               </div>
             </div>
           </transition>
