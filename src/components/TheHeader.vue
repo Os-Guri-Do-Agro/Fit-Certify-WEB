@@ -25,7 +25,7 @@
           <ul class="hidden lg:flex gap-[26px] items-center justify-center flex-wrap">
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Certificados</router-link></li> 
+            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Eventos</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Marcadores</router-link></li> 
             <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Artigos</router-link></li> 
@@ -46,7 +46,7 @@
             >
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/">Home</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>Quem Somos</router-link></li>
-              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Certificados</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>Certificados</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Eventos</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Marcadores</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Artigos</router-link></li>
