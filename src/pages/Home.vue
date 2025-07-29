@@ -18,7 +18,7 @@
 
                     <a class="w-[197px] lg:w-[294.9px] h-[34px] lg:h-[50.57px]
                     text-[0.8em] lg:text-[1.1em] 
-                     bg-lime-500 rounded-[30px] flex items-center justify-center text-white tracking-[1.5%] text-center" href="#">
+                     bg-lime-500 rounded-[30px] flex items-center justify-center text-white tracking-[1.5%] text-center hover:bg-lime-600 duration-300" href="#">
                         Inicie seu processo agora
                     </a>
                 </div>
@@ -85,7 +85,7 @@
                             Vai competir? Consulte o seu médico, receba seu certificado e valide ele na FitCertify365. Nós organizar e aplicamos seu certificado nas principais provas do Brasil e do mundo.
                         </p>
 
-                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 flex items-center justify-center mb-[32px] md:mb-0" href="#">
+                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0" href="#">
                             Saiba Mais
                         </a>
                     </div>
@@ -107,7 +107,7 @@
                             Após sua consulta com um médico, faça o upload do seu certificado na nossa plataforma e gere o modelo de certificado ideal para a prova que escolher — válido, personalizado e aceito nas principais corridas do Brasil e do mundo.
                         </p>
 
-                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 flex items-center justify-center md:ml-10 mb-[32px] md:mb-0" href="#">
+                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center md:ml-10 mb-[32px] md:mb-0" href="#">
                             Saiba Mais
                         </a>
                     </div>
@@ -128,7 +128,7 @@
                             Acesse indicadores, histórico de exames e alertas inteligentes sobre sua saúde esportiva. Tudo integrado em um só painel.
                         </p>
 
-                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 flex items-center justify-center mb-[32px] md:mb-0" href="#">
+                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0" href="#">
                             Saiba Mais
                         </a>
                     </div>
@@ -149,7 +149,7 @@
                             Dicas médicas, atualizações sobre check-ups, cuidados para provas e novidades da medicina esportiva.
                         </p>
 
-                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 flex items-center justify-center md:ml-10 mb-[32px] md:mb-0" href="#">
+                        <a class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center md:ml-10 mb-[32px] md:mb-0" href="#">
                             Saiba Mais
                         </a>
                     </div>
@@ -215,7 +215,7 @@
                     </div>
 
                     <div class="flex w-full items-center justify-center mb-[62px]">
-                        <a class="w-[214px] h-[31px] md:w-[214px] md:h-[28px] lg:w-[230px] lg:h-[42px] text-[0.875em] md:text-[0.95em] text-cyan-400 font-[500] border-1 border-cyan-400 rounded-[30px] flex items-center justify-center" href="#">
+                        <a class="w-[214px] h-[31px] md:w-[214px] md:h-[28px] lg:w-[230px] lg:h-[42px] text-[0.875em] md:text-[0.95em] text-cyan-400 font-[500] border-1 hover:bg-cyan-400 hover:text-white duration-300 border-cyan-400 rounded-[30px] flex items-center justify-center" href="#">
                             Veja nossos parceiros
                         </a>
                     </div>
