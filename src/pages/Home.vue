@@ -1,5 +1,4 @@
 <template>
-    <TheHeader />
     <section class="bg-[url('/src/assets/home-imgs/banner-home.jpg')] w-full h-auto lg:h-[78.56vh] bg-cover bg-right flex justify-center items-center p-[10px]">
         
            <div class="w-[1363px] flex">
@@ -227,8 +226,3 @@
 
         <Footer />
 </template>
-
-<script setup>
-import TheHeader from '../components/TheHeader.vue';
-import Footer from '../components/Footer.vue';
-</script>
