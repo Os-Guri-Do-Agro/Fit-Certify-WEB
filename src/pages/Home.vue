@@ -109,7 +109,7 @@
 
       <!-- Repita o padrão para os outros links "Saiba Mais" -->
       <div class="flex flex-col-reverse md:flex-row-reverse">
-        <div class=" flex flex-1 flex-col justify-center gap-[18px]">
+        <div class=" flex flex-1 flex-col justify-center gap-[18px] lg:gap-0">
           <h2
             class="text-[1.5em] lg:text-[3em] font-[600] text-lime-500 italic leading-[35px] lg:leading-[55px] max-w-[325px] lg:max-w-[603px] md:ml-10 mt-[32px] md:mt-0"
           >
@@ -207,33 +207,68 @@
     </div>
   </section>
 
-  <section
-    class="w-full pt-[32px] flex items-center justify-center mt-[62px] bg-sky-50"
-  >
-    <div class="w-[1363px] flex">
-      <div
-        class="w-full flex flex-col items-center justify-center gap-[32px]"
-      >
-        <div
-          class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px]"
-        >
-          <h2
-            class="text-[1.875em] lg:text-[3em] italic font-[600] leading-[45px] lg:leading-[72px] text-cyan-400"
-          >
-            Produtos e serviços para sua rotina esportiva
-          </h2>
-          <p class="text-[1em] lg:text-[1.5em] leading-[24px] lg:leading-[36px]">
-            Para facilitar a sua vida, oferecemos produtos e serviços que
-            ajudam a manter sua saúde em dia.
-          </p>
-        </div>
+        <section class="w-full pt-[32px] flex items-center justify-center mt-[62px] bg-sky-50">
+            <div class="w-[1363px] flex">
 
+                <div class="w-full flex flex-col items-center justify-center gap-[32px]">
+
+                    <div class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px]">
+                        <h2 class="text-[1.875em] lg:text-[3em] italic font-[600] leading-[45px] lg:leading-[72px] text-cyan-400">
+                            Produtos e serviços para sua rotina esportiva
+                        </h2>
+                        <p class="text-[1.125em] lg:text-[1.25em]">
+                            Com diferenciais exclusivos para assinantes FITCERTIFY365
+                        </p>
+                    </div>
+
+                    <div class="w-full flex justify-center items-center gap-0 md:gap-[16px] flex-col-reverse md:flex-col lg:flex-row">
+                        <div class="w-full max-w-[716.5px] flex items-center justify-center">
+                            <img class="block w-full max-w-[381.95px] md:max-w-[717px] h-[114px] md:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
+                        </div>
+                        <div class="w-full max-w-[716.5px] flex items-center justify-center">
+                            <img class="block w-full max-w-[381.95px] md:max-w-[717px] h-[114px] md:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-gatorade-banner.jpg" alt=""></img>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
+                        <div class="">
+                            <img class="w-full 
+                            max-w-[126px] md:max-w-[222.8px] 
+                            h-[66px] md:h-[116.6px]" src="../assets/home-imgs/home-nike-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img class="w-full 
+                            max-w-[311.2px] md:max-w-[411.4px] 
+                            h-[62px] md:h-[81.9px]" src="../assets/home-imgs/home-decat-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img class="w-full 
+                            max-w-[156.5px] md:max-w-[186.1px] 
+                            h-[58px] md:h-[69px]" src="../assets/home-imgs/home-bt-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img class="w-full 
+                            max-w-[156.4px] md:max-w-[186.1px] 
+                            h-[88px] md:h-[69px]" src="../assets/home-imgs/home-gatorade-logo.jpg" alt="">
+                        </div>
+                        <div class="">
+                            <img class="w-full 
+                            max-w-[168.4px] md:max-w-[184px] 
+                            h-[60px] md:h-[65.5px]" src="../assets/home-imgs/home-amil-logo.jpg" alt="">
+                        </div>
+                       
+                    </div>
+
+                    <div class="flex w-full items-center justify-center mb-[62px]">
         <router-link
           class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center"
           to="/produtos-e-servicos"
           >Saiba Mais</router-link
         >
-      </div>
-    </div>
-  </section>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
 </template>
