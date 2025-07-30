@@ -317,7 +317,7 @@
 </template>
 
 <script setup>  
-    import Carousel from '../components/Certif-Carousel/Carousel-first.vue'
-    import CarouselSecond from '../components/Certif-Carousel/Carousel-second.vue';
-    import Faq from '../components/Certif-Carousel/faq.vue';
+    import Carousel from '../components/Certif-components/Certif-Carousel-First.vue'
+    import CarouselSecond from '../components/Certif-components/Certif-Carousel-Second.vue';
+    import Faq from '../components/Certif-components/faq.vue';
 </script>

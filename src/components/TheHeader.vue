@@ -1,11 +1,11 @@
 <template>
   <div class="w-full min-h-[130px] p-[10px] flex items-center justify-center bg-white relative">
-    <div class="w-[1363px] h-auto flex items-center justify-between lg:justify-center flex-wrap lg:gap-[44px] gap-[10px]">
+    <div class="container h-auto flex items-center justify-between lg:justify-center xl:justify-between flex-wrap">
       
       <div>
-        <a href="#">
+        <router-link to="/">
           <img class="w-[176px] md:w-[247px] lg:w-[283px]" src="/public/fit-logo.jpg" alt="logo" />
-        </a>
+        </router-link>
       </div>
 
 
@@ -22,14 +22,14 @@
           </div>
 
           
-          <ul class="hidden lg:flex gap-[26px] items-center justify-center flex-wrap">
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Eventos</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Marcadores</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Artigos</router-link></li> 
-            <li><router-link class="text-[0.9rem] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Marketplace</router-link></li> 
+          <ul class="hidden lg:flex gap-[18px] items-center justify-center flex-wrap">
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Eventos</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Marcadores</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Artigos</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Marketplace</router-link></li> 
           </ul>
 
           

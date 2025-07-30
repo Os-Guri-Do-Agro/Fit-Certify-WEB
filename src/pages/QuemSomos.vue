@@ -200,6 +200,6 @@
 </template>
 
 <script setup>  
-    import Carousel from '../components/QuemS-Carousel/Carousel-first.vue'
-    import CarouselSecond from '../components/QuemS-Carousel/Carousel-second.vue';
+    import Carousel from '../components/QuemS-components/QuemS-Carousel-First.vue'
+    import CarouselSecond from '../components/QuemS-components/QuemS-Carousel-second.vue';
 </script>
