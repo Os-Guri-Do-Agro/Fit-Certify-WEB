@@ -1,15 +1,15 @@
 <template>
-  <div class="w-full min-h-[130px] p-10 flex items-center justify-center bg-white relative">
-    <div class="container h-auto flex items-center justify-between lg:justify-center xl:justify-between flex-wrap">
+  <div class="w-full min-h-[97px]  md:min-h-[130px] p-5 md:p-10 flex items-center justify-center bg-white relative">
+    <div class="container h-auto flex items-center justify-between lg:justify-center lg:flex-wrap xl:flex-nowrap xl:justify-between ">
       
-      <div>
+      <div class="lg:w-1/4">
         <router-link to="/">
           <img class="w-[176px] md:w-[247px] lg:w-[283px]" src="/public/fit-logo.jpg" alt="logo" />
         </router-link>
       </div>
 
 
-      <div>
+      <div class="lg:w-1/1">
         <nav class="flex gap-[32px] lg:gap-[44px] items-center justify-center relative">
           
           <div
@@ -23,7 +23,7 @@
 
           
           <ul class="hidden lg:flex gap-[18px] items-center justify-center flex-wrap">
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/">Home</router-link></li>
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to="/sobre">Eventos</router-link></li> 

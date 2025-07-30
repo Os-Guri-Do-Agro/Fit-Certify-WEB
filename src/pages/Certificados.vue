@@ -1,6 +1,6 @@
 <template>
-    <section class="bg-[url('/src/assets/certifi-imgs/certif-banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-center bg-cover flex justify-center items-center p-[10px]">
-        <div class="w-full max-w-[1363px] flex items-center justify-center">
+    <section class="bg-[url('/src/assets/certifi-imgs/certif-banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center p-[10px]">
+        <div class="w-full container flex items-center justify-center">
             <div class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
                     Certificados
@@ -11,23 +11,46 @@
 
 
 
-    <section class="w-full min-h-[240px] flex justify-center items-center flex-col">
-        <div class="w-full h-[155px] lg:h-[240px] flex justify-center items-center bg-sky-50">
-            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px] p-[10px] text-center">
-                Certificados digitais para sua segurança e performance
-            </h2>
+    <section class="w-full flex">
+        <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
+            <div class="container w-full">
+            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
+                Certificados digitais para sua 
+                segurança e performance
+            </h2>                
+            </div>
         </div>
+    </section>
 
-        <div class="w-full max-w-[1363px] flex items-center justify-center gap-[32px] md:gap-[62px] flex-col-reverse md:flex-row">
-            <div class="flex w-full max-w-[603.2px] p-[10px]">
-                <p class="text-[1em] lg:text-[1.375em] leading-[35px] lg:leading-[50px] font-[400]">
-                    Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico.Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.
-                </p>
-            </div>
-            <div class="flex">
-                <img class="w-full max-w-[841px] min-h-[350px] md:min-h-[444px] lg:h-[510px] object-cover" src="../assets/certifi-imgs/image01.jpg" alt="">
-            </div>
+
+        <section class="w-full">
+    <div class="">
+    <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[510px] lg:h-[480px]">
+      <div class="md:w-1/2">
+          <img class="w-full md:h-full object-cover object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
+      </div>
+
+      <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] lg:p-10">
+        <p class="text-[1em] lg:text-[1.5em] leading-[30px] lg:leading-[40px] xl:leading-[50px] hidden lg:flex
+        w-full lg:max-w-[603.2px] xl:max-w-[658px]">
+          Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.
+        </p>
+
+        <div class="lg:hidden flex flex-col mt-[16px] pt-5 pb-5 md:mt-0">
+            <p class="text-[1em]  leading-[30px]
+        w-full max-w-[325px]  md:max-w-[355px] md:p-10 md:pb-0 p-5">
+            Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico.
+            </p>
+
+            <p class="text-[1em]  leading-[30px] md:leading-[25px]
+        w-full max-w-[325px] md:max-w-[355px] md:p-10 pt-0 p-5">
+            Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.              
+            </p>
+
         </div>
+      </div>
+    </div>        
+    </div>
     </section>
 
 
@@ -36,9 +59,9 @@
             <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-white font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
                 Tipos de Certificado
             </h2>
-            <div class="w-full max-w-[1363px] hidden md:flex items-center justify-center gap-[26px] flex-wrap lg:flex-nowrap">
+            <div class="w-full container hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5">
 
-                <div class="w-[340px] h-[248.9px] flex justify-center flex-col gap-[32px] bg-white rounded-[12px] shadow-lg p-[20px]">
+                <div class="w-[340px] h-[248.9px] flex justify-center flex-col gap-[32px] bg-white rounded-[12px] shadow-lg p-[20px] border-1">
                     <div class="">
                         <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
                             Corrida de Rua
@@ -319,5 +342,5 @@
 <script setup>  
     import Carousel from '../components/Certif-components/Certif-Carousel-First.vue'
     import CarouselSecond from '../components/Certif-components/Certif-Carousel-Second.vue';
-    import Faq from '../components/Certif-components/faq.vue';
+    import Faq from '../components/Certif-components/FAQ.vue';
 </script>

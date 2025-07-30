@@ -14,7 +14,7 @@
     <section class="w-full flex">
         <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
             <div class="container">
-            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px] p-[10px] text-center">
+            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px] text-center">
                 Tecnologia a favor da saúde esportiva
             </h2>                
             </div>
