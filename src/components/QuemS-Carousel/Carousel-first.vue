@@ -80,7 +80,7 @@
       <!-- Navigation Dots -->
       <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2">
         <button
-          v-for="(dot, index) in totalSlides"
+          v-for=" index in totalSlides"
           :key="index"
           @click="goToSlide(index)"
           :class="[
