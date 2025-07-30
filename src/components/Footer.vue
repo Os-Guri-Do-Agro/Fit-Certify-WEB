@@ -2,7 +2,7 @@
 
     <footer class="w-full flex items-center justify-center flex-col mt-[52px]">
 
-            <div class="hidden lg:flex w-full max-w-[1363px] justify-end gap-[10px]">
+            <div class="hidden lg:flex w-full container p-10 justify-end gap-[10px]">
                 <div class="">
                     <a href="#">
                         <img class="w-full max-w-[133.9px] h-[44.6px]" src="/app-store-01.png" alt=""></img>
@@ -15,7 +15,7 @@
                 </div>                
             </div>
 
-        <section class="w-full max-w-[1363px] flex items-end justify-center p-[10px] mb-[32px] md:mb-[52px]">
+        <section class="w-full container flex items-end justify-center p-10 mb-[32px] md:mb-[52px]">
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-start md:items-center justify-center">
                 <a class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" href="#">Quem somos</a>
                 <a class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" href="#">Certificados</a>

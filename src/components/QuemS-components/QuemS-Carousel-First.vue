@@ -1,14 +1,14 @@
 <template>
-  <div class="w-full">
+  <div class="w-full p-7 pt-0">
     <!-- Carousel Container -->
     <div
       class="relative bg-sky-50 overflow-hidden w-full h-full"
-      style="height: 400px;"
+      style="height: 350px;"
     >
       <!-- Carousel Wrapper -->
       <div
         ref="carousel"
-        class="carousel-container flex transition-transform duration-500 ease-in-out h-full w-full"
+        class="carousel-container flex transition-transform duration-500 ease-in-out h-full w-full pb-25"
         :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
       >
         <!-- Slide 1 -->
@@ -109,7 +109,7 @@ const nextSlide = () => {
 }
 
 // Auto-play
-setInterval(nextSlide, 9000)
+setInterval(nextSlide, 6000)
 
 // Touch support
 let startX = 0

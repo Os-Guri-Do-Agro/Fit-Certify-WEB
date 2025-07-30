@@ -1,18 +1,18 @@
 <template>
   <div class="max-w-md mx-auto">
     <!-- Carousel Container -->
-    <div class="relative overflow-hidden" style="height: 400px;">
+    <div class="relative overflow-hidden" style="height: 350px;">
       <!-- Carousel Wrapper -->
       <div 
         ref="carousel"
-        class="flex transition-transform duration-500 ease-in-out h-full"
+        class="flex transition-transform duration-500 ease-in-out h-full pb-20"
         :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
         @touchstart="handleTouchStart"
         @touchend="handleTouchEnd"
       >
         <!-- Slide 1 - Missão -->
         <div class="w-full flex-shrink-0 p-8 text-left flex flex-col justify-center">
-          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-8">Missão</h2>
+          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-5 italic">Missão</h2>
           <p class="leading-relaxed">
             Tornar a saúde esportiva mais acessível, integrada e conectada à realidade dos atletas modernos.
           </p>
@@ -20,7 +20,7 @@
 
         <!-- Slide 2 - Visão -->
         <div class="w-full flex-shrink-0 p-8 text-left flex flex-col justify-center">
-          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-8">Visão</h2>
+          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-5 italic">Visão</h2>
           <p class="leading-relaxed">
             Ser referência nacional em certificações digitais e monitoramento de saúde esportiva até 2027.
           </p>
@@ -28,7 +28,7 @@
 
         <!-- Slide 3 - Valores -->
         <div class="w-full flex-shrink-0 p-8 text-left flex flex-col justify-center">
-          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-8">Valores</h2>
+          <h2 class="text-[1.875em] font-bold text-cyan-400 mb-5 italic ">Valores</h2>
 <span>
                     <li class="text-[1em] font-[400] leading-[35px] lg:leading-[40px]">
                         Integridade física do atleta
@@ -50,7 +50,7 @@
       </div>
 
       <!-- Navigation Dots -->
-      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2">
+      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2 pb-10">
         <button 
           v-for=" index in totalSlides" 
           :key="index"
@@ -114,7 +114,7 @@ const handleSwipe = (): void => {
 }
 
 const startAutoPlay = (): void => {
-  autoPlayInterval = setInterval(nextSlide, 9000)
+  autoPlayInterval = setInterval(nextSlide, 6000)
 }
 
 const stopAutoPlay = (): void => {
