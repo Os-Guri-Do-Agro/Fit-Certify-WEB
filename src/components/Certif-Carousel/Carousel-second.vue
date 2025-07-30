@@ -102,7 +102,7 @@
       <!-- Navigation Dots -->
       <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2">
         <button 
-          v-for="(slide, index) in totalSlides" 
+          v-for=" index in totalSlides" 
           :key="index"
           class="w-3 h-3 rounded-full transition-colors duration-300"
           :class="currentSlide === index ? 'bg-white' : 'bg-cyan-600'"
