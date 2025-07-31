@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-4xl mx-auto p-6 bg-blue-50 rounded-lg">
+  <div class="max-w-4xl mx-auto p-6 bg-cyan-50 rounded-lg">
     <div class="space-y-4">
       <!-- FAQ Item 1 -->
       <div class="faq-item">
