@@ -68,7 +68,7 @@
   <section class="w-full flex flex-col">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10">
@@ -96,7 +96,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-02.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-02.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-4 md:ml-0">
@@ -125,7 +125,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-03.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-03.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-9 md:ml-0">
@@ -153,7 +153,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-04.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-04.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] p-10">

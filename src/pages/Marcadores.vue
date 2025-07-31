@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-[url('/src/assets/certifi-imgs/certif-banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center ">
+    <section class="bg-[url('/src/assets/marcad-imgs/banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center ">
         <div class="w-full container flex items-center justify-center">
             <div class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
@@ -108,28 +108,27 @@
     </section>
 
 
-    <section class="w-full">
-        <div class="">
-                <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
+  <section class="w-full flex flex-col">
+    <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
       </div>
 
-      <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10">
+      <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[10px] md:gap-[24px] p-5 md:p-10">
         <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-        w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]">
-          Sua saúde validada. <br> Seu esporte garantido.
+        w-full max-w-[325px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]">
+          Integração com dispositivos
         </h2>
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em]
-        w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
-          Vai competir? Consulte o seu médico, receba seu certificado e valide ele na FitCertify365. Nós organizar e aplicamos seu certificado nas principais provas do Brasil e do mundo.
+        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[25px] md:leading-[30px]
+        w-full md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
+          Tudo conectado. Tudo no seu painel. Sincronize com smartwatches, gadgets de saúde ou laboratórios parceiros. Os dados são processados de forma segura e usados para gerar insights úteis para seu dia a dia.
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
-            class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
+            class="text-[0.93em] font-[500] w-[290px] lg:w-[297px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to='/quemsomos'
-            >Saiba Mais</router-link
+            >Lista de dispositivos compatíveis</router-link
           >
         </div>
 
@@ -140,27 +139,19 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-02.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/marcad-imgs/image-02.jpg" alt=""> 
       </div>
 
-      <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-4 md:ml-0">
+      <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[10px] md:gap-[24px] p-5 md:p-10">
         <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-lime-500
-        w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px] ">
-          Vai correr? <br>
-          Confira eventos parceiros
+        w-full max-w-[325px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px] ">
+          Alertas inteligentes
         </h2>
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em]
-        w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
-          Após sua consulta com um médico, faça o upload do seu certificado na plataforma e gere o modelo de certificado ideal para sua prova — válido e personalizado nas principais corridas do Brasil e do mundo.
+        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[25px] md:leading-[30px]
+        w-full md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
+          Cuide antes que vire problema. <br> <br>
+            O sistema envia alertas se detectar alterações relevantes nos seus dados — como IMC em mudança, frequência cardíaca acima do normal ou exames fora da faixa ideal.
         </p>
-
-        <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
-          <router-link
-            class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/saiba-mais"
-            >Saiba Mais</router-link
-          >
-        </div>
 
       </div>
     </div>
@@ -169,29 +160,45 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-03.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/marcad-imgs/image-03.jpg" alt=""> 
       </div>
 
-      <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-9 md:ml-0">
+      <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[10px] md:gap-[24px] p-5 md:p-10">
         <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-        w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]">
-          Acompanhe seus <br> indicadores em tempo real.
+        w-full max-w-[325px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]">
+          Seu treino conta. 
+            E a gente registra.
         </h2>
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em]
-        w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
-          Acesse indicadores, histórico de exames e alertas inteligentes sobre sua saúde esportiva. Tudo integrado em um só painel.
+        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[25px] md:leading-[30px]
+        w-full md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
+          Ao integrar seus dados de apps como Apple Saúde, Google Fit, Strava, Garmin e outros, você transforma corrida, bike, musculação e funcional em indicadores reais de evolução. A FitCertify365 usa esses dados para atualizar seus marcadores de saúde e oferecer alertas mais precisos, tudo em um só lugar.
         </p>
-
-        <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
-          <router-link
-            class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/saiba-mais"
-            >Saiba Mais</router-link
-          >
-        </div>
 
       </div>
     </div>
-        </div>
-    </section>
+
+  </section>
+
+
+
+  <section class="w-full bg-sky-50 flex min-h-[206px] md:min-h-[256px] lg:min-h-[323px] justify-center items-center">
+    <div class="container flex flex-col justify-center items-center gap-[28px]  md:p-10">
+        <h2 class="text-[1.375em] md:text-[1.875em] lg:text-[3em] text-center font-[600] italic text-cyan-400">
+            Seu corpo fala. <br>
+            A FitCertify365 ajuda a escutar.
+        </h2>
+
+        <router-link
+            class="text-[0.93em] font-[500] w-[192px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0 lg:hidden"
+            to='/quemsomos'
+            >Veja nossos parceiros</router-link
+        >
+
+                <router-link
+            class="text-[0.93em] font-[500] w-[192px] lg:w-[230px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 items-center justify-center mb-[32px] md:mb-0 hidden lg:flex"
+            to='/quemsomos'
+            >Saiba Mais</router-link
+        >
+    </div>
+  </section>
 </template>

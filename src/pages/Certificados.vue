@@ -27,7 +27,7 @@
     <div class="">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[510px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full h-[350px] object-left md:h-full object-cover md:object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
+          <img class="w-full min-h-[350px] object-left md:h-full object-cover md:object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
       </div>
 
       <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] p-5 lg:p-10">
@@ -242,7 +242,7 @@
         <section class="w-full min-h-[240px] flex justify-between items-center flex-col mt-[52px] bg-lime-100">
     <div class="flex w-full flex-col-reverse items-center md:items-stretch md:flex-row h-auto md:h-[453px] lg:h-[451px] overflow-hidden">
       <div class="w-full md:w-1/2">
-          <img class="w-full h-[350px] md:h-[453px] object-cover object-bottom" src="../assets/certifi-imgs/image02.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-[453px] object-cover object-bottom" src="../assets/certifi-imgs/image02.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 h-[409px] md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 p-5">
