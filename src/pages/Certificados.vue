@@ -27,7 +27,7 @@
     <div class="">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[510px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
+          <img class="w-full h-[350px] object-left md:h-full object-cover md:object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] lg:p-10">
@@ -59,9 +59,9 @@
             <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-white font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
                 Tipos de Certificado
             </h2>
-            <div class="w-full container hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5">
+            <div class="w-full container border-1 hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5">
 
-                <div class="w-[340px] h-[248.9px] flex justify-center flex-col gap-[32px] bg-white rounded-[12px] shadow-lg p-[20px] border-1">
+                <div class="w-[340px] h-[248.9px] flex justify-center flex-col gap-[32px] bg-white rounded-[12px] shadow-lg p-[20px]">
                     <div class="">
                         <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
                             Corrida de Rua
@@ -136,7 +136,7 @@
 
             </div>
 
-                <div class="text-center pb-[32px]">
+                <div class="text-center pb-[32px] p-5">
                     <span class="text-zinc-800">
                         O certificado é válido pelo período definido pelo médico (até 12 meses). Durante br esse tempo, você pode usá-lo para quantas provas quiser.
                     </span>
@@ -146,7 +146,7 @@
     </section>
 
     <section class="w-full flex flex-col md:hidden bg-cyan-400">
-        <div class="w-full max-w-[1363px] flex items-center justify-center flex-wrap lg:flex-nowrap">
+        <div class="w-full container flex items-center justify-center flex-wrap lg:flex-nowrap">
             <div class="">
                 <h2 class="text-[1.375em] text-white font-[600] italic leading-[40px] md:text-center mt-[52px]">
                     Tipos de Certificado
@@ -172,14 +172,14 @@
             <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
                 Como funciona?
             </h2>
-            <div class="w-full max-w-[1363px] hidden md:flex items-center justify-center gap-[52px] lg:gap-[84px] lg:flex-nowrap">
+            <div class="w-full container hidden md:flex items-center justify-center gap-[52px] lg:gap-[84px] lg:flex-nowrap p-5 border-1">
 
-                <div class="w-[237px] h-[295px] flex items-center flex-col gap-[32px] lg:gap-[52px]">
+                <div class="w-[237px] h-[295px] flex items-center flex-col gap-[32px] lg:gap-[52px] ">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
                     </div>
                     
-                    <div class="flex items-top justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">1.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Cadastre-se na nossa plataforma
@@ -192,7 +192,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
                     </div>
                     
-                     <div class="flex items-top justify-top gap-[10px]">
+                     <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">2.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Agende sua consulta e realize a avaliação presencial exigida para emissão do certificado.
@@ -205,7 +205,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
                     
-                    <div class="flex items-top justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">3.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Após a consulta, o certificado pode ser emitido por um médico parceiro ou enviado por você, se for de um médico particular.
@@ -218,7 +218,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"/></svg>
                     </div>
                     
-                    <div class="flex items-top justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">4.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Enquanto seu certificado estiver válido, você pode usá-lo em diferentes provas do mesmo perfil, com poucos cliques. 
@@ -239,30 +239,37 @@
         
     </section>
 
-        <section class="w-full min-h-[240px] flex justify-between items-center flex-col mt-[52px]">
-        <div class="w-full lg:max-w-[1363px] md:min-h-[451px] flex items-center md:justify-center gap-[32px] md:gap-[62px] flex-col md:flex-col-reverse lg:flex-row-reverse bg-lime-100 md: lg:p-0">
-            <div class="flex flex-col w-full max-w-[603.2px] p-[10px] gap-[18px] md:gap-[32px]">
-                <h3 class="text-[1.65em] lg:text-[2.5em] text-cyan-400 font-[600] italic leading-[35px] md:leading-[38px] lg:leading-[50px] mt-[32px] md:mt-0">
-                    Uma solução para atletas, treinadores e organizadores
-                </h3>
-                <p class="text-[1em] lg:text-[1.25em] leading-[32px] md:leading-[36px] font-[400]">
-                    Se você participa de provas, treina com frequência ou organiza eventos, a FitCertify365 foi feita para facilitar sua rotina.Emita, monitore e avance com saúde em dia , do primeiro treino à medalha.
-                </p>
+        <section class="w-full min-h-[240px] flex justify-between items-center flex-col mt-[52px] bg-lime-100">
+    <div class="flex w-full flex-col-reverse items-center md:items-stretch md:flex-row h-auto md:h-[453px] lg:h-[451px] overflow-hidden">
+      <div class="w-full md:w-1/2">
+          <img class="w-full h-[350px] md:h-[453px] object-cover object-bottom" src="../assets/certifi-imgs/image02.jpg" alt=""> 
+      </div>
 
-                        <router-link
-                             class="text-[0.9em] hidden md:flex font-[500] w-[359px] h-[41px] lg:h-[53px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:text-white hover:bg-cyan-400 duration-300 items-center justify-center"
-                            to='/'
-                        >Iniciar</router-link>  
-            </div>
-            <div class="flex w-full items-center justify-center">
-                <img class="w-full max-w-[841px] min-h-[350px] md:min-h-[453px] lg:h-[453px] object-cover object-center" src="../assets/certifi-imgs/image02.jpg" alt="">
-            </div>
+      <div class="md:w-1/2 h-[409px] md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 p-5">
+        <h2 class="text-[1.625em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
+        w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] leading-[35px] lg:leading-[55px]">
+          Garanta sua aptidão com segurança e agilidade. 
+        </h2>
+        <p class="text-[1em] xl:text-[1.25em] leading-[32px]
+        w-full max-w-[322px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
+          Utilizamos criptografia, assinatura digital e integração com dados clínicos reais. Além disso, criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.
+        </p>
+
+        <div class="hidden md:flex w-full lg:max-w-[658px] md:ml-[24px]">
+          <router-link
+            class="text-[0.93em] w-full font-[500] max-w-[359px] h-[41px] lg:h-[53px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
+            to='/quemsomos'
+            >Iniciar emissão de certificado</router-link
+          >
         </div>
+
+      </div>
+    </div>
     </section>
 
 
     <section class="w-full flex justify-center items-center bg-cyan-50">
-        <div class="w-full max-w-[1363px] flex flex-col mt-[32px] md:mt-[52px] lg:mt-[82px] lg:gap-[32px]">
+        <div class="w-full container flex flex-col mt-[32px] md:mt-[52px] lg:mt-[82px] lg:gap-[32px] p-5">
             <div class="w-full flex items-center justify-center">
                 <h2 class="text-[1.375em] md:text-[2em] text-lime-500 font-[600] italic">
                     Perguntas Frequentes
