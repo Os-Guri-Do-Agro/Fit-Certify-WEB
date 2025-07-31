@@ -104,6 +104,10 @@
 
             <!-- COLOCAR UM CAROUSEL AQUI -->
 
+            <div class="flex md:hidden w-full items-center justify-center">
+                <Carousel />
+            </div>
+
         </div>
     </section>
 
@@ -111,7 +115,7 @@
   <section class="w-full flex flex-col">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
+          <img class="w-full min-h-[350px] md:h-full object-cover object-bottom" src="../assets/marcad-imgs/image-01.jpg" alt=""> 
       </div>
 
       <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[10px] md:gap-[24px] p-5 md:p-10">
@@ -202,3 +206,8 @@
     </div>
   </section>
 </template>
+
+
+<script setup>
+    import Carousel from '../components/Marcad-components/Marcad-Carousel.vue'
+</script>
