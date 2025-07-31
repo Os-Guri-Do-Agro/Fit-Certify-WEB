@@ -125,7 +125,7 @@
 
             </div>
 
-            <div class="w-full md:hidden p-[10px] pb-0 pt-0">
+            <div class="w-full flex md:hidden p-[10px] pb-0 pt-0 items-center justify-center">
                 <Carousel />
             </div>
 
@@ -155,7 +155,7 @@
       </div>
 
 
-      <div class="md:hidden w-full">
+      <div class="md:hidden w-full flex min-h-[310px]">
         <CarouselSecond />
       </div>
     </div>        
