@@ -28,7 +28,7 @@
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>Eventos</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marcadores'>Marcadores</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to=''>Artigos</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>Artigos</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to=''>Marketplace</router-link></li> 
           </ul>
 
