@@ -13,8 +13,8 @@
 
     <section class="w-full flex">
         <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
-            <div class="container">
-            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px] text-center">
+            <div class="container w-full p-5 md:p-10">
+            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
                 Tecnologia a favor da saúde esportiva
             </h2>                
             </div>
@@ -26,7 +26,7 @@
     <div class="">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom xl:object-center" src="../assets/quems-imgs/quems-img-01.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom xl:object-center" src="../assets/quems-imgs/quems-img-01.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px]">
@@ -139,7 +139,7 @@
     <section class="w-full">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse lg:flex-row h-auto md:h-[446px] lg:h-[480px] md:bg-lime-100">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom" src="../assets/quems-imgs/quems-img-02.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/quems-imgs/quems-img-02.jpg" alt=""> 
       </div>
 
       <div class="hidden md:flex md:w-1/2 md:h-auto flex-col lg:items-center justify-center gap-[22px] lg:gap-[54px] md:p-10">
@@ -221,7 +221,7 @@
         <section class="w-full">
     <div class="flex conteiner flex-col items-center md:items-stretch lg:flex-row h-auto md:h-auto lg:h-[480px] bg-sky-100">
       <div class="lg:w-1/2">
-          <img class="w-full h-full object-cover object-left" src="../assets/quems-imgs/quems-img-03.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-left xl:object-center" src="../assets/quems-imgs/quems-img-03.jpg" alt=""> 
       </div>
 
       <div class=" md:w-[571px] flex md:h-auto flex-col lg:items-center justify-center gap-[22px] md:gap-[20px] p-10">

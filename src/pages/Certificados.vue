@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-[url('/src/assets/certifi-imgs/certif-banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center p-[10px]">
+    <section class="bg-[url('/src/assets/certifi-imgs/certif-banner.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center ">
         <div class="w-full container flex items-center justify-center">
             <div class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
@@ -13,7 +13,7 @@
 
     <section class="w-full flex">
         <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
-            <div class="container w-full">
+            <div class="container w-full p-5 md:p-10">
             <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
                 Certificados digitais para sua 
                 segurança e performance
@@ -30,7 +30,7 @@
           <img class="w-full h-[350px] object-left md:h-full object-cover md:object-bottom xl:object-center" src="../assets/certifi-imgs/image01.jpg" alt=""> 
       </div>
 
-      <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] lg:p-10">
+      <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] p-5 lg:p-10">
         <p class="text-[1em] lg:text-[1.5em] leading-[30px] lg:leading-[40px] xl:leading-[50px] hidden lg:flex
         w-full lg:max-w-[603.2px] xl:max-w-[658px]">
           Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.
@@ -38,12 +38,12 @@
 
         <div class="lg:hidden flex flex-col mt-[16px] pt-5 pb-5 md:mt-0">
             <p class="text-[1em]  leading-[30px]
-        w-full max-w-[325px]  md:max-w-[355px] md:p-10 md:pb-0 p-5">
+        w-full max-w-[325px]  md:max-w-[355px] md:p-10 md:pb-0">
             Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico.
             </p>
 
             <p class="text-[1em]  leading-[30px] md:leading-[25px]
-        w-full max-w-[325px] md:max-w-[355px] md:p-10 pt-0 p-5">
+        w-full max-w-[325px] md:max-w-[355px] md:p-10 pt-0">
             Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.              
             </p>
 
@@ -56,10 +56,10 @@
 
     <section class="w-full min-h-[513px] md:min-h-[210px] hidden md:flex justify-center items-center flex-col">
         <div class="w-full md:min-h-[847px] lg:min-h-[501px] flex justify-center items-center bg-cyan-400 flex-col md:gap-[52px]">
-            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-white font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
+            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-white font-[600] italic leading-[40px] md:leading-[55px]  md:text-center mt-[52px]">
                 Tipos de Certificado
             </h2>
-            <div class="w-full container border-1 hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5">
+            <div class="w-full container hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5">
 
                 <div class="w-[340px] h-[248.9px] flex justify-center flex-col gap-[32px] bg-white rounded-[12px] shadow-lg p-[20px]">
                     <div class="">
@@ -153,11 +153,11 @@
                 </h2>
             </div>
 
-            <div class="w-full items-center justify-center md:hidden p-[10px] pb-0 pt-0">
+            <div class="w-full items-center justify-center md:hidden  pb-0 pt-0">
                 <CarouselSecond />                
             </div>
 
-            <div class="text-center pb-[52px]">
+            <div class="text-center pb-[52px] p-5">
                 <span class="text-zinc-800">
                     O certificado é válido pelo período definido pelo médico (até 12 meses). Durante br esse tempo, você pode usá-lo para quantas provas quiser.
                 </span>
@@ -166,20 +166,20 @@
     </section>
     
 
-    <section class="w-full h-full flex flex-col items-center justify-center p-[10px] lg:pt-[52px]">
+    <section class="w-full h-full flex flex-col items-center justify-center  lg:pt-[52px]">
 
         <div class="w-full md:min-h-[607px] lg:min-h-[651px] hidden md:flex items-center flex-col md:gap-[52px]">
-            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] p-[10px] md:text-center mt-[52px]">
+            <h2 class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] md:text-center mt-[52px]">
                 Como funciona?
             </h2>
-            <div class="w-full container hidden md:flex items-center justify-center gap-[52px] lg:gap-[84px] lg:flex-nowrap p-5 border-1">
+            <div class="w-full container hidden md:flex items-center justify-center gap-[52px] lg:gap-[84px] lg:flex-nowrap p-5 md:p-10">
 
                 <div class="w-[237px] h-[295px] flex items-center flex-col gap-[32px] lg:gap-[52px] ">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
                     </div>
                     
-                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top ">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">1.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Cadastre-se na nossa plataforma
@@ -192,7 +192,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
                     </div>
                     
-                     <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
+                     <div class="flex items-top flex-col lg:flex-row justify-top">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">2.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Agende sua consulta e realize a avaliação presencial exigida para emissão do certificado.
@@ -205,7 +205,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
                     
-                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">3.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Após a consulta, o certificado pode ser emitido por um médico parceiro ou enviado por você, se for de um médico particular.
@@ -218,7 +218,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"/></svg>
                     </div>
                     
-                    <div class="flex items-top flex-col lg:flex-row justify-top gap-[10px]">
+                    <div class="flex items-top flex-col lg:flex-row justify-top">
                         <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]">4.</span>
                         <p class="text-[1em] lg:text-[1.25em]">
                             Enquanto seu certificado estiver válido, você pode usá-lo em diferentes provas do mesmo perfil, com poucos cliques. 
@@ -230,7 +230,7 @@
 
         </div>
 
-            <div class="flex flex-col md:hidden w-full items-center justify-center p-[10px] pb-0 pt-0">
+            <div class="flex flex-col md:hidden w-full items-center justify-center pb-0 pt-0">
                 <h2 class="text-[1.375em] text-lime-500 font-[600] italic leading-[40px] text-center mt-[52px]">
                     Como funciona?
                 </h2>
@@ -269,14 +269,14 @@
 
 
     <section class="w-full flex justify-center items-center bg-cyan-50">
-        <div class="w-full container flex flex-col mt-[32px] md:mt-[52px] lg:mt-[82px] lg:gap-[32px] p-5">
-            <div class="w-full flex items-center justify-center">
+        <div class="w-full container flex flex-col mt-[32px] md:mt-[52px] lg:mt-[82px] lg:gap-[32px] p-5 md:p-10">
+            <div class="w-full flex items-center md:justify-center pb-4 ">
                 <h2 class="text-[1.375em] md:text-[2em] text-lime-500 font-[600] italic">
                     Perguntas Frequentes
                 </h2>
             </div>
 
-            <div class="hidden lg:flex w-full md:flex-col gap-[32px] p-[10px]">
+            <div class="hidden lg:flex w-full md:flex-col gap-[32px] ">
                 <div class="flex md:gap-[42px] lg:gap-[84px] justify-between">
                     <h6 class="flex w-[500px] gap-[5px] font-[600] text-slate-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ff4c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg> O certificado serve para todas as provas?

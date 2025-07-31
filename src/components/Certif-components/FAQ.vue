@@ -1,11 +1,11 @@
 <template>
-  <div class="max-w-4xl mx-auto p-6 bg-cyan-50 rounded-lg">
+  <div class="max-w-4xl mx-auto bg-cyan-50 rounded-lg">
     <div class="space-y-4">
       <!-- FAQ Item 1 -->
       <div class="faq-item">
         <button 
           @click="toggleFaq(0)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4  rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -29,7 +29,7 @@
       <div class="faq-item">
         <button 
           @click="toggleFaq(1)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -53,7 +53,7 @@
       <div class="faq-item">
         <button 
           @click="toggleFaq(2)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4  rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -77,7 +77,7 @@
       <div class="faq-item">
         <button 
           @click="toggleFaq(3)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4  rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -101,7 +101,7 @@
       <div class="faq-item">
         <button 
           @click="toggleFaq(4)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4  rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -125,7 +125,7 @@
       <div class="faq-item">
         <button 
           @click="toggleFaq(5)"
-          class="w-full text-left flex items-start space-x-3 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          class="w-full text-left flex items-start space-x-3 pb-4  rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           <div class="flex-shrink-0 mt-1">
             <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">

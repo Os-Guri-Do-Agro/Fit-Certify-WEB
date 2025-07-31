@@ -68,7 +68,7 @@
   <section class="w-full flex flex-col">
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-01.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10">
@@ -96,7 +96,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-02.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-02.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-4 md:ml-0">
@@ -125,7 +125,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-03.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-03.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] md:p-10 ml-9 md:ml-0">
@@ -153,7 +153,7 @@
 
     <div class="flex conteiner flex-col items-center md:items-stretch md:flex-row h-auto md:h-[383px] lg:h-[480px]">
       <div class="md:w-1/2">
-          <img class="w-full md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-04.jpg" alt=""> 
+          <img class="w-full h-[350px] md:h-full object-cover object-bottom" src="../assets/home-imgs/home-img-04.jpg" alt=""> 
       </div>
 
       <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px] p-10">
@@ -194,7 +194,7 @@
 
                     <div class="w-full flex justify-center items-center flex-col-reverse gap-0 md:gap-[16px] md:flex-col lg:flex-row ">
                         <div class="w-full  flex items-center justify-center">
-                            <img class="block  w-full  md:max-w-[917px] h-auto md:h-full lg:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
+                            <img class="block  w-full   md:max-w-[917px] h-auto md:h-full lg:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
                         </div>
                         <div class="w-full flex items-center justify-center">
                             <img class="block  w-full md:max-w-[917px] h-auto lg:h-[213px] md:h-full object-fill md:object-cover" src="../assets/home-imgs/home-gatorade-banner.jpg" alt=""></img>
