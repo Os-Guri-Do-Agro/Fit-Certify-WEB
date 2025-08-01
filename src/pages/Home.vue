@@ -14,7 +14,7 @@
 
         <router-link
           class="w-[197px] lg:w-[294.9px] h-[34px] lg:h-[50.57px] text-[0.8em] lg:text-[1.1em] bg-lime-500 rounded-[30px] flex items-center justify-center text-white tracking-[1.5%] text-center hover:bg-lime-600 duration-300"
-          to="/inicie-processo"
+          to="/"
           >Inicie seu processo agora</router-link
         >
       </div>
@@ -113,7 +113,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/saiba-mais"
+            to="/"
             >Saiba Mais</router-link
           >
         </div>
@@ -141,7 +141,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/saiba-mais"
+            to="/"
             >Saiba Mais</router-link
           >
         </div>
@@ -169,7 +169,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/saiba-mais"
+            to="/"
             >Saiba Mais</router-link
           >
         </div>
@@ -233,7 +233,7 @@
                     <div class="flex w-full items-center justify-center mt-[32px] mb-[43px] md:mb-0">
         <router-link
           class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center"
-          to="/produtos-e-servicos"
+          to="/marketplace"
           >Veja nossos parceiros</router-link
         >
                     </div>

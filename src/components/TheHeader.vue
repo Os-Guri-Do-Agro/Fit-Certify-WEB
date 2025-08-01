@@ -34,8 +34,8 @@
 
           
           <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[32px] md:flex-col lg:flex-row">
-            <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/sobre">Login</router-link>
-            <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/sobre">Cadastro</router-link>
+            <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/">Login</router-link>
+            <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/">Cadastro</router-link>
           </div>
 
           <!-- Menu Mobile/Tablet Dropdown -->
@@ -44,7 +44,7 @@
               v-if="menuOpen"
               class="absolute top-[60px] right-0 w-[250px] bg-white shadow-xl rounded-md p-6 flex flex-col gap-4 lg:hidden z-50 "
             >
-              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/">Home</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/'>Home</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>Quem Somos</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>Certificados</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>Eventos</router-link></li>
@@ -53,8 +53,8 @@
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>Marketplace</router-link></li>
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/sobre">Login</router-link>
-                <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/sobre">Cadastro</router-link>
+                <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/">Login</router-link>
+                <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/">Cadastro</router-link>
               </div>
             </div>
           </transition>

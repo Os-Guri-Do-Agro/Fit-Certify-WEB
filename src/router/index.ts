@@ -1,6 +1,7 @@
 // src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+import { nextTick } from 'vue'
 import Home from '../pages/Home.vue'
 import QuemSomos from '../pages/QuemSomos.vue'
 import Certificados from '../pages/Certificados.vue'
@@ -23,7 +24,17 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  
+  scrollBehavior() {
+    nextTick(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    })
+    return false 
+  }
 })
 
 export default router
