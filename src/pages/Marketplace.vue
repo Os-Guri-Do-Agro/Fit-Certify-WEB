@@ -1,0 +1,35 @@
+<template>
+        <section class="bg-[url('/src/assets/market-imgs/banner-01.jpg')] w-full h-[128.4px] md:h-[263px] lg:h-[397px] bg-left lg:bg-center bg-cover flex justify-center items-center ">
+        <div class="w-full container flex items-center justify-center">
+            <div class="w-full max-w-[261px] h-[53px] md:max-w-[659px] md:h-[82px] lg:max-w-[728px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
+                <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
+                    Marketplace
+                </h1>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="w-full flex">
+        <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
+            <div class="container w-full p-5 md:p-10">
+            <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
+                Vantagens para quem tem saúde em dia
+            </h2>                
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="flex flex-col items-center justify-center bg-cyan-50 pb-10">
+        <div class="w-full flex flex-col justify-center items-center p-5 md:p-10 lg:h-[223px] bg-white">
+            <p class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto">
+                Atletas que emitem certificados ou utilizam o painel de marcadores têm acesso a condições especiais em produtos e serviços selecionados no nosso marketplace. A FitCertify365 conecta saúde, performance e marcas parceiras para que você treine, cuide e evolua com mais vantagens.
+            </p>
+        </div>
+
+
+  </section>    
+</template>

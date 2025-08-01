@@ -29,7 +29,7 @@
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>Eventos</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marcadores'>Marcadores</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>Artigos</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to=''>Marketplace</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>Marketplace</router-link></li> 
           </ul>
 
           
@@ -49,8 +49,8 @@
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>Certificados</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>Eventos</router-link></li>
               <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marcadores'>Marcadores</router-link></li>
-              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Artigos</router-link></li>
-              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to="/sobre">Marketplace</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/artigos'>Artigos</router-link></li>
+              <li class="list-none"><router-link class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>Marketplace</router-link></li>
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
                 <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/sobre">Login</router-link>
