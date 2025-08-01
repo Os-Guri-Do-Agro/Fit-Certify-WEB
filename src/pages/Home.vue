@@ -1,7 +1,7 @@
 <template>
   <section class="bg-[url('/src/assets/home-imgs/banner-home.jpg')] w-full h-auto md:h-[419px] lg:h-[760px] bg-cover bg-no-repeat bg-right flex justify-center items-center p-10">
     <div class="container flex">
-      <div class="flex flex-col text-start max-w-[792px] gap-[18px] lg:gap-[48px]">
+      <div class="flex flex-col text-start max-w-[792px] gap-[18px] lg:gap-[28px]">
         <h1 class="text-[1.5em] md:text-[1.875em] lg:text-[4.875em] font-[600] italic text-cyan-400 leading-[30px] md:leading-[35px] lg:leading-[90px]">
           Saúde em dia<br />para o esporte.
         </h1>
