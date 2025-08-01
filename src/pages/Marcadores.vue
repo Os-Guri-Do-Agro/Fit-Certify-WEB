@@ -186,7 +186,7 @@
 
 
   <section class="w-full bg-sky-50 flex min-h-[206px] md:min-h-[256px] lg:min-h-[323px] justify-center items-center">
-    <div class="container flex flex-col justify-center items-center gap-[28px]  md:p-10">
+    <div class="container flex flex-col justify-center items-center gap-[28px] md:p-10">
         <h2 class="text-[1.375em] md:text-[1.875em] lg:text-[3em] text-center font-[600] italic text-cyan-400">
             Seu corpo fala. <br>
             A FitCertify365 ajuda a escutar.

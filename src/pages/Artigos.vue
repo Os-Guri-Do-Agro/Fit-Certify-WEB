@@ -29,7 +29,18 @@
                 Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.
             </p>
         </div>
-
-
   </section>    
+
+
+
+  <section class="flex w-full">
+        <div class="w-full">
+            <Pages />
+        </div>
+  </section>
 </template>
+
+
+<script setup>
+    import Pages from '../components/Artigos-components/Artigos-pages.vue'
+</script>
