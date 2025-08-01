@@ -218,7 +218,7 @@
     </section>
 
 
-        <section class="w-full">
+    <section class="w-full">
     <div class="flex conteiner flex-col items-center md:items-stretch lg:flex-row h-auto md:h-auto lg:h-[480px] bg-sky-100">
       <div class="lg:w-1/2">
           <img class="w-full min-h-[350px] md:h-full object-cover object-left xl:object-center" src="../assets/quems-imgs/quems-img-03.jpg" alt=""> 
