@@ -9,7 +9,7 @@
       </div>
 
 
-      <div class="lg:w-1/1">
+      <div class="lg:w-1/1 flex justify-end">
         <nav class="flex gap-[32px] lg:gap-[44px] items-center justify-center relative">
           
           <div

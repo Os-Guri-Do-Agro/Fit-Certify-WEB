@@ -33,11 +33,52 @@
 
 
 
-  <section class="flex w-full">
-        <div class="w-full">
+  <section class="flex w-full h-full justify-center p-5 md:p-10">
+    
+    <div class="container flex w-full h-auto justify-between">
+        <div class="flex mr-5 flex-col">
             <Pages />
+
+    <div class="w-full flex justify-center gap-3 h-40 items-center">
+        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>
+        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer" ></div>
+        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>
+        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>        
+    </div>
         </div>
+        <div class="w-full max-w-[120px] md:max-w-[180px]  lg:max-w-[218.23px]">
+            
+            <div class="text-center flex flex-col gap-10">
+                <h3 class="text-cyan-400 mt-2 text-[0.9em] md:text-[1em] lg:text-[1.125em] font-[600]">
+                    Categorias
+                </h3>
+                
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                    Medicina esportiva
+                </RouterLink>
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                    Nutrição e bem-estar
+                </RouterLink>
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                    Preparação para provas
+                </RouterLink>
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                    Prevenção de lesões
+                </RouterLink>
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                    Documentação e <br> <br> certificados
+                </RouterLink>
+            </div>
+
+            <div class="w-full bg-slate-300 h-[511.24px] mt-10"></div>
+            <div class="w-full bg-slate-300 h-[230.14px] mt-10"></div>
+
+        </div>
+        
+    </div>
+
   </section>
+
 </template>
 
 
