@@ -10,12 +10,12 @@ import { RouterLink } from 'vue-router';
             <div class="hidden lg:flex w-full container p-5 md:p-10 justify-end gap-[10px]">
                 <div class="">
                     <a href="#">
-                        <img class="w-full max-w-[133.9px] h-[44.6px]" src="/app-store-01.png" alt=""></img>
+                        <img class="w-full max-w-[133.9px] h-[44.6px]" src="../assets/footer-imgs/app-store-01.jpg" alt=""></img>
                     </a>
                 </div>
                 <div class="">
                     <a href="#">
-                        <img class="w-full max-w-[133.9px] h-[44.6px]"  src="/app-store-02.png" alt="">
+                        <img class="w-full max-w-[133.9px] h-[44.6px]"  src="../assets/footer-imgs/app-store-01.jpg" alt="">
                     </a>
                 </div>                
             </div>
@@ -26,7 +26,7 @@ import { RouterLink } from 'vue-router';
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>Certificados</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Contato</RouterLink>
                 <RouterLink class="lg:hidden mt-[10px]" to="#">
-                    <img class="w-full max-w-[108px] h-[38px]" src="/app-store-01.png" alt="image">
+                    <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
                 </RouterLink>                
             </div>
 
@@ -39,7 +39,7 @@ import { RouterLink } from 'vue-router';
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>FAQ</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Parceiros</RouterLink>
                 <RouterLink class="lg:hidden mt-[10px]" to="#">
-                    <img class="w-full max-w-[108px] h-[38px]" src="/app-store-02.png" alt="image">
+                    <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
                 </RouterLink>
             </div>
         </section>
