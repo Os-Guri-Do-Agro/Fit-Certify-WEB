@@ -29,7 +29,51 @@
                 Atletas que emitem certificados ou utilizam o painel de marcadores têm acesso a condições especiais em produtos e serviços selecionados no nosso marketplace. A FitCertify365 conecta saúde, performance e marcas parceiras para que você treine, cuide e evolua com mais vantagens.
             </p>
         </div>
-
-
   </section>    
+
+
+
+        <section class="bg-sky-50 w-full flex justify-center p-5 md:p-10">
+        <div class="container flex flex-col items-center">
+            <div class="flex flex-col text-center gap-5 w-full items-center">
+                <span class="text-[1.5em] text-cyan-400 font-[700]">
+                    Filtrar por
+                </span>
+
+                <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
+                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Categoria" id="categoria" name="categoria">
+                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Faixa de Preço" id="preco" name="preco">
+                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Condição especial" id="condicao" name="condicao">
+                </div>
+
+
+                <div class="w-full mt-5">
+                    <Produtos />
+                </div>
+            </div>
+        </div>
+       </section>
+
+
+
+
+
+       <section class="w-full flex justify-center bg-sky-50 p-5 md:p-10">
+            <div class="container flex flex-col gap-5 md:mb-20">
+                <div class="w-full h-[246px] bg-gray-300"></div>
+                <div class="w-full h-[246px] bg-gray-300 hidden md:flex"></div>
+
+                  <div class="w-full flex justify-center h-20 items-center gap-3 md:hidden">
+    <div class="w-3 h-3 bg-cyan-400 rounded-2xl cursor-pointer"></div>
+    <div class="w-3 h-3 bg-cyan-200 rounded-2xl cursor-pointer"></div>
+    <div class="w-3 h-3 bg-cyan-200 rounded-2xl cursor-pointer"></div>
+  </div>
+            </div>
+
+       </section>
 </template>
+
+
+<script setup>
+    import Produtos from '../components/marketplace-components/produtos-api.vue'
+</script>
