@@ -129,7 +129,6 @@
                 <Carousel />
             </div>
 
-            <!-- AQUI VAI O CAROUSEL -->
         </div>
     </section>
 
@@ -164,7 +163,73 @@
 
 
 
-<section class="w-full h-full flex flex-col items-center justify-center lg:pt-[52px]">
+    <section class="w-full flex  justify-center p-5 md:p-10 bg-sky-50">
+        <div class="container flex flex-col">
+
+            <div class="w-full  flex flex-col items-center text-center">
+                <h2 class="text-[1.5em] md:text-[2em] lg:text-[2em] xl:text-[2.3em] font-[700] italic text-lime-500
+        w-full max-w-[461px] lg:max-w-[658px] mt-[27px] leading-[35px] lg:leading-[55px]">
+                    Nossa equipe
+                </h2>
+                <p class="w-full max-w-[522px] leading-[39px] mt-3 mb-5">
+                    Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua.
+                </p>
+            </div>
+
+            <div class="flex items-center lg:justify-between flex-col md:flex-row gap-3 mt-5">
+                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
+                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-01.jpg" alt="">
+                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
+                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
+                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
+                    </p>
+                </div>
+
+                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
+                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-02.jpg" alt="">
+                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
+                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
+                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
+                    </p>
+                </div>
+
+                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
+                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-03.jpg" alt="">
+                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
+                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
+                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
+                    </p>
+                </div>
+
+
+                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
+                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-04.jpg" alt="">
+                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
+                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
+                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="w-full gap-3 justify-center flex mb-10 mt-10">
+                <div class="w-3 h-3 rounded-2xl bg-lime-500 cursor-pointer"></div>
+                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
+                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
+                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+<section class="w-full h-full flex flex-col items-center justify-center lg:pt-[82px]">
         <div class="w-full hidden md:flex items-center justify-center md:pb-[32px] lg:pb-[18px]">
             <img class="w-full lg:max-w-[1560px] md:h-[267.3px] lg:h-[315px] object-cover object-[25%_30%]" src="../assets/quems-imgs/quems-banner-02.jpg" alt="">
         </div>
