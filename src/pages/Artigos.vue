@@ -53,19 +53,19 @@
                     Categorias
                 </h3>
                 
-                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400" to="/">
                     Medicina esportiva
                 </RouterLink>
-                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400" to="/">
                     Nutrição e bem-estar
                 </RouterLink>
-                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400" to="/">
                     Preparação para provas
                 </RouterLink>
-                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400" to="/">
                     Prevenção de lesões
                 </RouterLink>
-                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em]" to="/">
+                <RouterLink class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400" to="/">
                     Documentação e <br> <br> certificados
                 </RouterLink>
             </div>
