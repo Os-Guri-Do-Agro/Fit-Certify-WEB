@@ -42,9 +42,9 @@
                 </span>
 
                 <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Tipo de prova" id="prova" name="prova">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Localidade" id="local" name="local">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Mês" id="mes" name="mes">
+                    <SelectProva />
+                    <Localidade />
+                    <Mes /> 
                 </div>
 
                 <div class="w-full flex justify-between gap-5">
@@ -122,4 +122,7 @@
 
 <script setup>
     import Eventos from '../components/Eventos-components/eventos-api.vue'
+    import SelectProva from '../components/Eventos-components/eventos-prova-select.vue'
+    import Localidade from '../components/Eventos-components/eventos-local-select.vue'
+    import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 </script>
