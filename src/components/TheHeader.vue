@@ -53,8 +53,8 @@
               <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>Marketplace</router-link></li>
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <router-link @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/">Login</router-link>
-                <router-link @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/">Cadastro</router-link>
+                <router-link @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/login">Login</router-link>
+                <router-link @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/cadastro">Cadastro</router-link>
               </div>
             </div>
           </transition>
