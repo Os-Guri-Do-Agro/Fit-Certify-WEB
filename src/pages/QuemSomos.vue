@@ -9,7 +9,7 @@
         </div>
     </section>
 
-
+    
 
     <section class="w-full flex">
         <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
@@ -176,44 +176,44 @@
                 </p>
             </div>
 
-            <div class="flex items-center lg:justify-between flex-col md:flex-row gap-3 mt-5">
-                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
-                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-01.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
-                    </p>
-                </div>
+            <div class="flex flex-wrap items-start justify-center gap-6 mt-5">
+  <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
+    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-01.jpg" alt="">
+    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Emilio Machado</h3>
+    <span class="text-[1em] lg:text-[1.3em]">Founder & CEO</span>
+    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+      Empreendedor com mais de 30 anos de experiência e apaixonado por inovação em saúde
+    </p>
+  </div>
 
-                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
-                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-02.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
-                    </p>
-                </div>
+  <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
+    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-02.jpg" alt="">
+    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
+    <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
+    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+      Responsável pelas parcerias comerciais e expansão estratégica do FitCertify365
+    </p>
+  </div>
 
-                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
-                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-03.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
-                    </p>
-                </div>
+  <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
+    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-03.jpg" alt="">
+    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
+    <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
+    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+      Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do FitCertify365
+    </p>
+  </div>
 
+  <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
+    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-04.jpg" alt="">
+    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
+    <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
+    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
+      Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do FitCertify365
+    </p>
+  </div>
+</div>
 
-                <div class="text-center w-full max-w-[400px] md:max-w-[310px]">
-                    <img class="w-full object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-04.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Nome Sobrenome</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Título entra aqui</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Lorem ipsum dolor amet sinequat lorem ipsum dolor amet sineuqat mfhsuwk jy hystyua
-                    </p>
-                </div>
-            </div>
 
 
             <div class="w-full gap-3 justify-center flex mb-10 mt-10">

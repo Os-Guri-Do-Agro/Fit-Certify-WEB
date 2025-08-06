@@ -91,7 +91,7 @@
 
 
       <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
-        class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer"
+        class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
         Enviar certificado
       </RouterLink>
