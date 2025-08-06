@@ -52,7 +52,9 @@
         <!-- Botão -->
         <RouterLink
           class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7"
-          to="/"
+          v-if="item.id"
+          :key="item.id"  
+          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
         >
           Saiba Mais
         </RouterLink>
@@ -127,7 +129,9 @@
         <!-- Botão -->
         <RouterLink
           class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7 relative bottom-10"
-          to="/"
+          v-if="item.id"
+          :key="item.id"  
+          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
         >
           Saiba Mais
         </RouterLink>
@@ -197,7 +201,9 @@
         <!-- Botão -->
         <RouterLink
           class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7 relative bottom-5"
-          to="/"
+          v-if="item.id"
+          :key="item.id"  
+          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
         >
           Saiba Mais
         </RouterLink>
@@ -224,7 +230,7 @@ import ProdutosServices from '../../services/marketplace/marketplace-services'
 const Produtos = ref<any[]>([])
 
 onMounted(async () => {
-  const response = await ProdutosServices.getAllArtigos()
+  const response = await ProdutosServices.getAllProdutos()
   Produtos.value = response.data
 })
 

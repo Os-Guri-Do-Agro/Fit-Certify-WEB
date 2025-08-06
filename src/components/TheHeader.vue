@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full min-h-[97px]  md:min-h-[130px] p-5 md:p-10 flex items-center justify-center bg-white relative">
-    <div class="container h-auto flex items-center justify-between lg:justify-center lg:flex-wrap xl:flex-nowrap xl:justify-between ">
+  <div class="w-full min-h-[97px] md:min-h-[130px] flex items-center justify-center bg-white relative">
+    <div class="container h-auto flex items-center justify-between lg:flex-wrap xl:flex-nowrap xl:justify-between px-5 lg:px-10">
       
       <div class="lg:w-1/4">
         <router-link to="/">

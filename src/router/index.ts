@@ -12,6 +12,7 @@ import Marketplace from '../pages/Marketplace.vue'
 import Contato from '../pages/Contato.vue'
 import ArtigoDetalhes from '../pages/ArtigoDetalhes.vue'  
 import EventoDetalhes from '../pages/EventosDetalhes.vue'
+import MarketplaceDetalhes from '../pages/MarketplaceDetalhes.vue'  
 
 
 const routes: RouteRecordRaw[] = [
@@ -24,7 +25,8 @@ const routes: RouteRecordRaw[] = [
   { path: '/marketplace', name: 'Marketplace', component: Marketplace},
   { path: '/contato', name: 'Contato', component: Contato},
   {path: '/artigo/:id', name: 'ArtigoDetalhe', component: ArtigoDetalhes,},
-  {path: '/evento/:id', name: 'EventoDetalhe', component: EventoDetalhes,}
+  {path: '/evento/:id', name: 'EventoDetalhe', component: EventoDetalhes,},
+  {path: '/marketplace/:id', name: 'MarketplaceDetalhe', component: MarketplaceDetalhes,},
 ]
 
 const router = createRouter({

@@ -15,10 +15,17 @@ private async handleRequest<T>(
     }
   } 
 
-  getAllArtigos(): Promise<any>{
+  getAllProdutos(): Promise<any>{
     return this.handleRequest(
         apiClient.get("/produto"),
         "ERROR"
+    )
+  }
+
+  getProdutoById(id: string): Promise<any>{
+    return this.handleRequest(
+      apiClient.get(`/produto/${id}`),
+      `ERROR ao buscar produto${id}`
     )
   }
 }
