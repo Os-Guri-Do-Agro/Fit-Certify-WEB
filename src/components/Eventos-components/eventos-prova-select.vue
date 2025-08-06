@@ -26,8 +26,8 @@
           @after-leave="query = ''"
         >
           <ComboboxOptions
-            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
-          >
+            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm z-50"
+>
             <div
               v-if="filteredPeople.length === 0 && query !== ''"
               class="relative cursor-default select-none px-4 py-2 text-gray-700 "
@@ -45,7 +45,7 @@
               <li
                 class="relative cursor-default select-none py-2 pl-10 pr-4 "
                 :class="{
-                  'bg-teal-600 text-white': active,
+                  'bg-lime-500 text-white': active,
                   'text-gray-900': !active,
                 }"
               >

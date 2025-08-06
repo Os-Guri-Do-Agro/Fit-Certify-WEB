@@ -14,7 +14,7 @@
             class="absolute inset-y-0 right-0 flex items-center pr-2"
           >
             <ChevronUpDownIcon
-              class="h-5 w-5 text-lime-500 "
+              class="h-5 w-5 text-cyan-400 "
               aria-hidden="true"
             />
           </ComboboxButton>
@@ -26,7 +26,7 @@
           @after-leave="query = ''"
         >
           <ComboboxOptions
-            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm z-50"
+            class="mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm absolute z-50"
           >
             <div
               v-if="filteredPeople.length === 0 && query !== ''"
@@ -45,7 +45,7 @@
               <li
                 class="relative cursor-default select-none py-2 pl-10 pr-4 "
                 :class="{
-                  'bg-lime-500 text-white': active,
+                  'bg-cyan-400 text-white': active,
                   'text-gray-900': !active,
                 }"
               >
@@ -84,10 +84,10 @@ import {
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 
 const people = [
-  { id: 1, name: 'Localidade' },
-  { id: 2, name: 'Porto Alegre - RS' },
-  { id: 3, name: 'Florianópolis - SC' },
-  { id: 4, name: 'Petrópolis - RJ' }
+  { id: 1, name: 'Faixa de Preço' },
+  { id: 2, name: 'R$ 89.00' },
+  { id: 3, name: 'R$ 129.00' },
+  { id: 4, name: 'R$ 149.00' }
 ]
 
 let selected = ref(people[0])

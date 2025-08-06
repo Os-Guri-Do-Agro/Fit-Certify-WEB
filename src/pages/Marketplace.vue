@@ -41,9 +41,9 @@
                 </span>
 
                 <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Categoria" id="categoria" name="categoria">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Faixa de Preço" id="preco" name="preco">
-                    <input class="p-5 w-full md:max-w-[200px] h-[39px] border-1 border-gray-300 bg-white rounded-[8px] text-[0.8em] placeholder-black" type="text" placeholder="Condição especial" id="condicao" name="condicao">
+                    <Categoria />
+                    <Preço />
+                    <Condicao />    
                 </div>
 
 
@@ -76,4 +76,7 @@
 
 <script setup>
     import Produtos from '../components/marketplace-components/produtos-api.vue'
+    import Categoria from '../components/marketplace-components/market-categoria-select.vue'
+    import Preço from '../components/marketplace-components/market-preco-select.vue'
+    import Condicao from '../components/marketplace-components/market-condicao-select.vue'
 </script>
