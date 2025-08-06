@@ -34,8 +34,8 @@
 
           
           <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[32px] md:flex-col lg:flex-row">
-            <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/">Login</router-link>
-            <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/">Cadastro</router-link>
+            <router-link class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" to="/login">Login</router-link>
+            <router-link class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" to="/cadastro">Cadastro</router-link>
           </div>
 
           <!-- Menu Mobile/Tablet Dropdown -->
