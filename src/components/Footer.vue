@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router';
 
     <footer class="w-full flex items-center justify-center flex-col mt-[52px]">
 
-            <div class="hidden lg:flex w-full container p-5 md:p-10 justify-end gap-[10px]">
+            <!-- <div class="hidden lg:flex w-full container p-5 md:p-10 justify-end gap-[10px]">
                 <div class="">
                     <a href="#">
                         <img class="w-full max-w-[133.9px] h-[44.6px]" src="../assets/footer-imgs/app-store-01.jpg" alt=""></img>
@@ -18,16 +18,16 @@ import { RouterLink } from 'vue-router';
                         <img class="w-full max-w-[133.9px] h-[44.6px]"  src="../assets/footer-imgs/app-store-01.jpg" alt="">
                     </a>
                 </div>                
-            </div>
+            </div> -->
 
         <section class="w-full container flex items-end justify-center p-5 md:p-10 mb-[32px] md:mb-[52px]">
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-start md:items-center justify-center">
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/quemsomos'>Quem somos</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>Certificados</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Contato</RouterLink>
-                <RouterLink class="lg:hidden mt-[10px]" to="#">
+                <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
                     <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
-                </RouterLink>                
+                </RouterLink>                 -->
             </div>
 
             <div class="flex flex-1 w-[99px] h-[140px] lg:h-[128px] items-center justify-center">
@@ -38,9 +38,9 @@ import { RouterLink } from 'vue-router';
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>SAC</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>FAQ</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Parceiros</RouterLink>
-                <RouterLink class="lg:hidden mt-[10px]" to="#">
+                <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
                     <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
-                </RouterLink>
+                </RouterLink> -->
             </div>
         </section>
 

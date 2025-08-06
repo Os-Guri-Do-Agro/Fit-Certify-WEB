@@ -113,7 +113,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/"
+            to="/eventos"
             >Saiba Mais</router-link
           >
         </div>
@@ -141,7 +141,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/"
+            to="/marcadores"
             >Saiba Mais</router-link
           >
         </div>
@@ -169,7 +169,7 @@
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to="/"
+            to="/artigos"
             >Saiba Mais</router-link
           >
         </div>
@@ -192,16 +192,16 @@
                         </p>
                     </div>
 
-                    <div class="w-full flex justify-center items-center flex-col-reverse gap-0 md:gap-[16px] md:flex-col lg:flex-row ">
+                    <!-- <div class="w-full flex justify-center items-center flex-col-reverse gap-0 md:gap-[16px] md:flex-col lg:flex-row ">
                         <div class="w-full  flex items-center justify-center">
                             <img class="block  w-full   md:max-w-[917px] h-auto md:h-full lg:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
                         </div>
                         <div class="w-full flex items-center justify-center">
                             <img class="block  w-full md:max-w-[917px] h-auto lg:h-[213px] md:h-full object-fill md:object-cover" src="../assets/home-imgs/home-gatorade-banner.jpg" alt=""></img>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
+                    <!-- <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
                         <div class="">
                             <img class="w-full 
                             max-w-[126px] md:max-w-[222.8px] 
@@ -228,7 +228,7 @@
                             h-[60px] md:h-[65.5px]" src="../assets/home-imgs/home-amil-logo.jpg" alt="">
                         </div>
                        
-                    </div>
+                    </div> -->
 
                     <div class="flex w-full items-center justify-center mt-[32px] mb-[43px] md:mb-0">
         <router-link

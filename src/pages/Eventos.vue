@@ -107,7 +107,7 @@
         </p>
 
         <div class="w-full flex ">
-        <RouterLink class="flex w-[284px] lg:w-[282px] h-[40px] lg:h-[40px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-[0.8em] text-white font-[500] bg-cyan-400 hover:bg-cyan-500  duration-300" to="/">
+        <RouterLink class="flex w-[284px] lg:w-[282px] h-[40px] lg:h-[40px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-[0.8em] text-white font-[500] bg-cyan-400 hover:bg-cyan-500  duration-300" to="/contato">
             Tornar minha prova parceira
         </RouterLink>
         </div>
