@@ -1,6 +1,7 @@
 import apiClient from "../api";
 import {handleError} from '../../common/error.utils'
 
+
 class ArtigoService{
 private async handleRequest<T>(
     request: Promise<{ data: T }>,
@@ -21,6 +22,15 @@ private async handleRequest<T>(
         "ERROR"
     )
   }
+
+
+    getByArtigoId(id:string): Promise<any>{
+    return this.handleRequest(
+        apiClient.get(`/artigo/${id}`),
+        "ERROR"
+    )
+  }
+  
 }
 
 export default new ArtigoService()
