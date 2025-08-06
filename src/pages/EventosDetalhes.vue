@@ -29,7 +29,7 @@
     <section class="w-full flex justify-center">
   <div class="container p-5 md:p-10">
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full gap-y-8 md:gap-y-10 lg:gap-y-0 lg:divide-x divide-sky-100 gap-x-5"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full gap-y-8 md:gap-y-10 lg:gap-y-0 lg:divide-x-2 divide-sky-100 gap-x-5"
     >
       
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-10">
