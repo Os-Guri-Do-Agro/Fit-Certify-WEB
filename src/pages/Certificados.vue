@@ -74,7 +74,7 @@
                     <div class="">
                         <router-link
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/'
+                            to='/cadastro'
                         >Iniciar</router-link>                        
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     <div class="">
                         <router-link
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/'
+                            to='/cadastro'
                         >Iniciar</router-link>                        
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                     <div class="">
                         <router-link
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/'
+                            to='/cadastro'
                         >Iniciar</router-link>                        
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                     <div class="">
                         <router-link
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/'
+                            to='/cadastro'
                         >Iniciar</router-link>                        
                     </div>
                 </div>
@@ -258,7 +258,7 @@
         <div class="hidden md:flex w-full lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] w-full font-[500] max-w-[359px] h-[41px] lg:h-[53px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
-            to='/quemsomos'
+            to='/cadastro'
             >Iniciar emissão de certificado</router-link
           >
         </div>

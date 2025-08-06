@@ -14,7 +14,7 @@
 
         <router-link
           class="w-[197px] lg:w-[294.9px] h-[34px] lg:h-[50.57px] text-[0.8em] lg:text-[1.1em] bg-lime-500 rounded-[30px] flex items-center justify-center text-white tracking-[1.5%] text-center hover:bg-lime-600 duration-300"
-          to="/"
+          to="/cadastro"
           >Inicie seu processo agora</router-link
         >
       </div>
