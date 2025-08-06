@@ -224,8 +224,10 @@ import ProdutosServices from '../../services/marketplace/marketplace-services'
 const Produtos = ref<any[]>([])
 
 onMounted(async () => {
-  Produtos.value = await ProdutosServices.getAllArtigos()
+  const response = await ProdutosServices.getAllArtigos()
+  Produtos.value = response.data
 })
+
 </script>
 
 

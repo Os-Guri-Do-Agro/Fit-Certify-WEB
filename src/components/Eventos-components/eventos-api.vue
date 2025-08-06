@@ -37,11 +37,11 @@
       </div>
 
 
-      <button
-        class="w-full max-w-[178.4px] h-[30px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer"
+      <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
+        class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
         Enviar certificado
-      </button>
+      </RouterLink>
     </div>
   </div>
 
@@ -90,11 +90,11 @@
       </div>
 
 
-      <button
+      <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer"
       >
         Enviar certificado
-      </button>
+      </RouterLink>
     </div>
   </div>
 
@@ -198,11 +198,12 @@
 import { onMounted, ref } from 'vue'
 import EventosService from '../../services/Eventos/eventos-services'
 import Carousel from './eventos-carousel.vue'
+import { RouterLink } from 'vue-router'
 
 const Eventos = ref<{ data: any[] }>({ data: [] })
 
 onMounted(async () => {
-  Eventos.value = await EventosService.getAllArtigos()
+  Eventos.value = await EventosService.getAllEventos()
 })
 
 function formatDate(dateStr: string) {
@@ -215,7 +216,7 @@ function formatDate(dateStr: string) {
 function formatDistancias(distancias: any[]) {
   if (!distancias || !distancias.length) return ''
   return distancias
-    .sort((a, b) => a.distancia - b.distancia) 
+    .sort((a, b) => a.distancia - b.distancia)
     .map(d => `${d.distancia}K`)
     .join(' | ')
 }

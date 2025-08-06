@@ -132,6 +132,4 @@ import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vu
     
 })
 
-
-
 </script>

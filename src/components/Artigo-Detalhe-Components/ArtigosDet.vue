@@ -32,6 +32,4 @@ const Artigos = ref<{ data: any[] }>({ data: [] })
 onMounted(async () => {
   Artigos.value = await ArtigoService.getAllArtigos()
 })
-
-
 </script>

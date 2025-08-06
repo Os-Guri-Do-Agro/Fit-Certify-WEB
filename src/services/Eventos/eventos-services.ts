@@ -1,7 +1,7 @@
 import apiClient from "../api";
 import {handleError} from '../../common/error.utils'
 
-class ArtigoService{
+class EventosService{
 private async handleRequest<T>(
     request: Promise<{ data: T }>,
     errorMessage: string
@@ -15,12 +15,19 @@ private async handleRequest<T>(
     }
   } 
 
-  getAllArtigos(): Promise<any>{
+  getAllEventos(): Promise<any>{
     return this.handleRequest(
         apiClient.get("/evento"),
         "ERROR"
     )
   }
+
+    getByEventoId(id:string): Promise<any>{
+    return this.handleRequest(
+        apiClient.get(`/evento/${id}`),
+        "ERROR"
+    )
+  }
 }
 
-export default new ArtigoService()
+export default new EventosService()
