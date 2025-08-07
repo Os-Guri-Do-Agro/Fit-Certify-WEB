@@ -117,7 +117,7 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import ArtigoService from '../services/Artigos/artigos-service'
 import { RouterLink } from 'vue-router'
 import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vue'
@@ -126,15 +126,21 @@ const route = useRoute();
 const router = useRouter();
 const artigo = ref(null)
 
-const refreshPage = async (id) => {
-  await router.push({ name: 'ArtigoDetalhe', params: { id } })
-  router.go(0)
-  window.location.reload()
+const loadArtigo = async (id) => {
+  const response = await ArtigoService.getByArtigoId(id)
+  artigo.value = response.data
 }
 
-onMounted(async () => {
-  const response = await ArtigoService.getByArtigoId(route.params.id)
-  artigo.value = response.data
+const refreshPage = async (id) => {
+  await router.push({ name: 'ArtigoDetalhe', params: { id } })
+}
+
+watch(() => route.params.id, (newId) => {
+  if (newId) loadArtigo(newId)
+}, { immediate: true })
+
+onMounted(() => {
+  loadArtigo(route.params.id)
 })
 
 </script>
