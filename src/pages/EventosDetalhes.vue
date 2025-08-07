@@ -105,7 +105,7 @@
             <h2 class="text-[1.75em] md:text-[2.25em] text-center lg:text-[3em] italic font-[600] text-lime-500 mb-5">Próximos eventos</h2>
 
             <div class="flex w-full">
-                <Eventos />
+                <Eventos @refresh-page="refreshPage"/>
             </div>
         </div>
     </section>
@@ -114,22 +114,39 @@
 
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import EventosService from '../services/Eventos/eventos-services'
-import { RouterLink } from 'vue-router'
-import EventoDetalhes from '../components/Eventos-components/eventos-api.vue'
-import Eventos from '../components/Evento-Detalhes-components/EventoDetalhes.vue'
+import Eventos from '../components/Evento-Detalhes-components/EventoDet.vue'
 
-    const route = useRoute();
 
-    const evento = ref(null)
+const route = useRoute()
+const router = useRouter()
 
-    onMounted(async () => {
-    const response = await EventosService.getByEventoId(route.params.id)
-    evento.value = response.data
-    console.log(evento.value)
-    
-})
 
+const evento = ref(null)
+
+
+const carregarEvento = async (id) => {
+  try {
+    const resposta = await EventosService.getByEventoId(id)
+    evento.value = resposta.data
+  } catch (erro) {
+    console.error('Erro ao carregar o evento:', erro)
+  }
+}
+
+
+const atualizarPagina = async (id) => {
+  await router.push({ name: 'EventoDetalhes', params: { id } })
+}
+
+
+watch(
+  () => route.params.id,
+  (novoId) => {
+    if (novoId) carregarEvento(novoId)
+  },
+  { immediate: true }
+)
 </script>

@@ -89,11 +89,12 @@
       </div>
 
 
-      <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
+      <button  @click="emit('refresh-page', item.id)"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
-        Enviar certificado
-      </RouterLink>
+        Enviar certificadooo
+    </button>
+
     </div>
 
     <div class="flex w-full gap-3 justify-center mt-10">
@@ -114,6 +115,9 @@ import EventosService from '../../services/Eventos/eventos-services'
 import { RouterLink } from 'vue-router'
 
 const Eventos = ref<{ data: any[] }>({ data: [] })
+const emit = defineEmits<{
+  'refresh-page': [id: string]
+}>()
 
 onMounted(async () => {
   Eventos.value = await EventosService.getAllEventos()
