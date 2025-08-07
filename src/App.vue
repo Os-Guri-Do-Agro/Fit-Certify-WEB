@@ -12,6 +12,7 @@ const showLayout = computed(() => {
 </script>
 
 <template>
+  <!-- deploy 1 -->
   <div>
     <TheHeader v-if="showLayout" />
     <router-view />
