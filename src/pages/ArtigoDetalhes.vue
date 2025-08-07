@@ -110,26 +110,30 @@
 
     <section class="w-full flex items-center justify-center mt-10">
         <div class="container p-5 lg:p-10 flex items-center justify-center">
-            <ArtigoDetalhe />
+            <ArtigoDetalhe @refresh-page="refreshPage" />
         </div>
     </section>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import ArtigoService from '../services/Artigos/artigos-service'
 import { RouterLink } from 'vue-router'
 import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vue'
 
-    const route = useRoute();
+const route = useRoute();
+const router = useRouter();
+const artigo = ref(null)
 
-    const artigo = ref(null)
+const refreshPage = async (id) => {
+  await router.push({ name: 'ArtigoDetalhe', params: { id } })
+  router.go(0)
+}
 
-    onMounted(async () => {
-    const response = await ArtigoService.getByArtigoId(route.params.id)
-    artigo.value = response.data
-    
+onMounted(async () => {
+  const response = await ArtigoService.getByArtigoId(route.params.id)
+  artigo.value = response.data
 })
 
 </script>
