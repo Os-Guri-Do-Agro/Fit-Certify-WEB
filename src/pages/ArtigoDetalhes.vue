@@ -1,28 +1,37 @@
 <template>
-<section class="w-full flex flex-col bg-sky-100 ">
-    <div class="flex flex-col items-center md:items-stretch md:flex-row-reverse h-auto md:h-[383px] lg:h-[637px]">
-      <div class="w-full overflow-hidden lg:overflow-visible h-[350px] md:h-full md:w-1/2">
-          <img class="w-full min-h-[350px] md:min-h-full md:h-full object-cover object-bottom" :src="artigo?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt=""> 
-      </div>
+<section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row">
+  <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start min-h-[300px] md:min-h-[400px] lg:min-h-[637px]">
+    <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
+        w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]">
+      {{ artigo?.titulo }}
+    </h2>
 
-      <div class="w-full md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px]  p-5 lg:p-10">
-        <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-        w-full max-w-[361px] lg:max-w-[658px] 2xl:ml-12 mt-[27px] leading-[35px] lg:leading-[62px]">
-          {{ artigo?.titulo }}
-        </h2>
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
-        w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] 2xl:ml-12 lg:pr-[24px]">
-          {{ artigo?.subTitulo }}
-        </p>
+    <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
+        w-full max-w-[658px] text-center md:text-start">
+      {{ artigo?.subTitulo }}
+    </p>
 
-      </div>
-    </div>
-    </section>
+  </div>
+
+  <div class="absolute inset-y-0 right-0 w-1/2 hidden md:block">
+    <img
+      class="w-full h-full object-cover object-bottom"
+      :src="artigo?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
+    />
+  </div>
+
+  <div class="w-full md:hidden">
+    <img
+      class="w-full object-cover object-bottom min-h-[200px]"
+      :src="artigo?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
+    
+  </div>
+</section>
 
 
 
-    <section class="w-full flex flex-col items-center justify-center gap-5 p-5 lg:p-10">
-      <div class="container">
+    <section class="w-full flex flex-col items-center justify-center gap-5">
+      <div class="container p-5 lg:p-10">
         <div class="flex flex-col gap-20 ">
           <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
             {{ artigo?.introducao }}
@@ -56,8 +65,8 @@
 
 
 
-    <section class="w-full flex flex-col items-center justify-center gap-5 p-5 lg:p-10">
-      <div class="container">
+    <section class="w-full flex flex-col items-center justify-center gap-5 ">
+      <div class="container p-5 lg:p-10">
         <div class="flex flex-col gap-20 ">
             <img class="w-full h-[350px] md:h-[595px] object-cover object-bottom" :src="artigo?.imagensArtigo.find((i) => i.isBanner == true)?.imagemUrl" alt="">
           <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
@@ -69,8 +78,8 @@
 
 
 
-    <section class="w-full flex flex-col items-center gap-5 p-5 lg:p-10">
-        <div class="container">
+    <section class="w-full flex flex-col items-center gap-5 ">
+        <div class="container p-5 lg:p-10">
             <div class="w-full h-[3px] bg-cyan-400 mb-7"></div>
             <div class="flex justify-between gap-7 flex-wrap">
                 <div class="flex items-center justify-center  gap-7">
