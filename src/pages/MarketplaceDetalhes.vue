@@ -193,27 +193,40 @@
 
     <section class="w-full flex justify-center">
         <div class=" container flex flex-col gap-5 p-5 md:p-10">
-            <MarketDetalhes />
+            <MarketDetalhes @refresh-page="refreshPage"/>
         </div>
     </section>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import ProdutosServices from '../services/marketplace/marketplace-services'
-import { useRoute } from 'vue-router'
 import MarketDetalhes from '../components/Marketp-Detalhes-components/MarketDetalhes.vue'
 
 const route = useRoute()
+const router = useRouter()
+
 const produto = ref(null)
 const empresa = ref(null)
-const avaliacao = ref([])
 
-onMounted(async () => {
-  const response = await ProdutosServices.getProdutoById(route.params.id)
-  produto.value = response.data
-  empresa.value = response.data?.empresa
-  avaliacao.value = response.data?.avaliacaoProduto || []
-})
+const loadProduto = async (id) => {
+  try {
+    const response = await ProdutosServices.getProdutoById(id)
+    produto.value = response.data
+    empresa.value = response.data?.empresa
+  } catch (error) {
+    console.error('Erro ao carregar produto:', error)
+  }
+}
+
+const refreshPage = async (id) => {
+  await router.push({ name: 'MarketDetalhes', params: { id } })
+}
+
+watch(
+  () => route.params.id, (newId) => {
+  if (newId) loadProduto(newId)
+}, { immediate: true })
 
 </script>

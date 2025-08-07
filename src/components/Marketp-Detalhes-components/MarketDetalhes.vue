@@ -1,11 +1,11 @@
 <template>
   <div
     class="lg:grid md:grid-cols-3 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7"
-    v-if="Produtos && Produtos.length"
+    v-if="Produtos && Produtos.data && Produtos.data.length"
   >
     <div
       class="w-full lg:h-[500px] xl:h-[600px] lg:max-w-full bg-white shadow-lg rounded-[12px]"
-      v-for="item in Produtos.slice(0, 3)"
+      v-for="item in Produtos.data.slice(0, 3)"
       :key="item.id"
     >
 
@@ -50,14 +50,11 @@
         </p>
 
         <!-- Botão -->
-        <RouterLink
-          class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7"
-          v-if="item.id"
-          :key="item.id"  
-          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
-        >
+        <button 
+          class="w-full max-w-[127.32px] lg:max-w-[137.48px] cursor-pointer h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7"
+          @click="emit('refresh-page', item.id)">
           Saiba Mais
-        </RouterLink>
+      </button>
       </div>
     </div>
   </div>
@@ -75,14 +72,15 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { RouterLink } from 'vue-router'
 import ProdutosServices from '../../services/marketplace/marketplace-services'
 
-const Produtos = ref<any[]>([])
+const Produtos = ref<{ data: any[] }>({ data: [] })
+const emit = defineEmits<{
+  'refresh-page': [id: string]
+}>()
 
 onMounted(async () => {
-  const response = await ProdutosServices.getAllProdutos()
-  Produtos.value = response.data
+  Produtos.value = await ProdutosServices.getAllProdutos()
 })
 
 </script>

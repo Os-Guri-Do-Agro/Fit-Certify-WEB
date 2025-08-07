@@ -30,7 +30,7 @@ const routes: RouteRecordRaw[] = [
   {path: '/cadastro', name: 'Cadastro', component: Cadastro},
   {path: '/artigo/:id', name: 'ArtigoDetalhe', component: ArtigoDetalhes,},
   {path: '/evento/:id', name: 'EventoDetalhe', component: EventoDetalhes,},
-  {path: '/marketplace/:id', name: 'MarketplaceDetalhe', component: MarketplaceDetalhes,},
+  {path: '/marketplace/:id', name: 'MarketDetalhes', component: MarketplaceDetalhes,},
 ]
 
 const router = createRouter({
