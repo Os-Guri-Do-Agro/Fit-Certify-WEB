@@ -5,7 +5,9 @@
       <div class="max-w-xs w-full">
 
         <div class="mb-8">
+          <RouterLink to="/" class="flex items-center">
           <img class="w-[163px]" src="../assets/login-imgs/logo-fit.png" alt="">
+          </RouterLink>
         </div>
 
         <p class="text-white mb-6">Bem-vindo! Faça seu login para acessar sua conta.</p>
@@ -39,6 +41,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const email = ref('');
 const password = ref('');

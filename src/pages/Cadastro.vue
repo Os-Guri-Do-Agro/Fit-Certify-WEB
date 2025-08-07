@@ -2,7 +2,9 @@
   <div class="w-full h-screen flex flex-col lg:flex-row">
     <div class="lg:w-1/3 lg: bg-sky-400 flex flex-col md:flex-row lg:flex-col justify-center items-center gap-15 p-8">
         <div class="w-full max-w-[364px] items-center flex md:justify-center lg:justify-start">
-          <img class="w-[163px] h-[180px] object-cover" src="../assets/login-imgs/logo-fit.png" alt="">
+          <RouterLink to="/" class="flex items-center">            
+          <img class="w-[163px] h-[180px] " src="../assets/login-imgs/logo-fit.png" alt="">
+          </RouterLink>
         </div>
 
         <div class=" w-full max-w-[364px] flex flex-col gap-5">
@@ -123,6 +125,7 @@
 </template>
 
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router';
 
 
 
