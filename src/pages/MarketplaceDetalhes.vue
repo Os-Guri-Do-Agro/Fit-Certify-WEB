@@ -168,7 +168,7 @@
 
                 <div class="">
                     <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   a               
                     </p>
                 </div>
 
@@ -210,11 +210,13 @@ const router = useRouter()
 const produto = ref(null)
 const empresa = ref(null)
 
+
 const loadProduto = async (id) => {
   try {
     const response = await ProdutosServices.getProdutoById(id)
     produto.value = response.data
     empresa.value = response.data?.empresa
+
   } catch (error) {
     console.error('Erro ao carregar produto:', error)
   }

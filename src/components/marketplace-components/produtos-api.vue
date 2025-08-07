@@ -47,7 +47,7 @@
       <!-- Botão -->
       <RouterLink
         v-if="item.id"
-        :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
+        :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
         class="mt-auto w-full max-w-[140px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300"
       >
         Saiba Mais
@@ -127,7 +127,7 @@
           class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7 relative bottom-10"
           v-if="item.id"
           :key="item.id"  
-          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
+          :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
         >
           Saiba Mais
         </RouterLink>
@@ -199,7 +199,7 @@
           class="w-full max-w-[127.32px] lg:max-w-[137.48px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7 relative bottom-5"
           v-if="item.id"
           :key="item.id"  
-          :to="{ name: 'MarketplaceDetalhe', params: { id: item.id } }"
+          :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
         >
           Saiba Mais
         </RouterLink>
