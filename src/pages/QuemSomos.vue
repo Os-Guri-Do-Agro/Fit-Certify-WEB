@@ -197,10 +197,10 @@
 
   <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]" src="../assets/quems-imgs/perfil-03.jpg" alt="">
-    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
-    <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
+    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Adriana Gabardo</h3>
+    <span class="text-[1em] lg:text-[1.3em]">Chief Financial Officer (CFO)</span>
     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-      Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do FitCertify365
+      Com sólida experiência nas áreas da saúde e financeira, lidera a gestão econômica do FitCertify365 com foco em sustentabilidade e crescimento
     </p>
   </div>
 
