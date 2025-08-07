@@ -129,6 +129,7 @@ const artigo = ref(null)
 const refreshPage = async (id) => {
   await router.push({ name: 'ArtigoDetalhe', params: { id } })
   router.go(0)
+  window.location.reload()
 }
 
 onMounted(async () => {
