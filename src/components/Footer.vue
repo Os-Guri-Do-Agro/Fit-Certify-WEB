@@ -31,7 +31,9 @@ import { RouterLink } from 'vue-router';
             </div>
 
             <div class="flex flex-1 w-[99px] h-[140px] lg:h-[128px] items-center justify-center">
+                <RouterLink to='/'>
                 <img class="w-full max-w-[83px] h-[107px]" src="/Logo-pequena.png" alt="">
+                </RouterLink>
             </div>
 
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-end md:items-center justify-center">
