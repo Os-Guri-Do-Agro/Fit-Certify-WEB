@@ -38,8 +38,8 @@ import { RouterLink } from 'vue-router';
 
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-end md:items-center justify-center">
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>SAC</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>FAQ</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Parceiros</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados#faq'>FAQ</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>Parceiros</RouterLink>
                 <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
                     <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
                 </RouterLink> -->

@@ -268,7 +268,7 @@
     </section>
 
 
-    <section class="w-full flex justify-center items-center bg-cyan-50">
+    <section id="faq" class="w-full flex justify-center items-center bg-cyan-50">
         <div class="w-full container flex flex-col mt-[32px] md:mt-[52px] lg:mt-[82px] lg:gap-[32px] p-5 md:p-10">
             <div class="w-full flex items-center md:justify-center pb-4 ">
                 <h2 class="text-[1.375em] md:text-[2em] text-lime-500 font-[600] italic">
@@ -283,7 +283,8 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                       Sim. O certificado de aptidão física emitido pelo FitCertify365 é válido para qualquer competição que exija comprovação de saúde, conforme as diretrizes das autoridades esportivas e médicas. Recomendamos apenas verificar se a organização do evento aceita certificados digitais.
+
                     </p>
                 </div>
 
@@ -293,7 +294,8 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                        Depende. Alguns usuários já possuem exames recentes e não precisam repetir. Outros podem ser orientados a realizar exames complementares, de acordo com a análise do profissional de saúde responsável. O FitCertify365 conecta você a médicos que seguirão critérios clínicos para garantir sua segurança.
+
                     </p>
                 </div>
 
@@ -303,7 +305,8 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                       Todos os certificados são assinados por médicos registrados no Conselho Regional de Medicina (CRM), com experiência em saúde esportiva e aptidão física. A plataforma garante a verificação e o registro digital da assinatura para sua validade.
+
                     </p>
                 </div>
 
@@ -313,7 +316,8 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                       O certificado conta com autenticação digital, número de identificação único e validação online através do QR Code. Qualquer organizador ou terceiro autorizado pode verificar a autenticidade em segundos, acessando o link indicado no documento.
+
                     </p>
                 </div>
 
@@ -323,7 +327,7 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                      O processo é rápido. O médico realiza os exames com você no consultório e, se estiver tudo certo, o certificado é emitido na hora, de forma digital e com autenticação válida em todo o território nacional
                     </p>
                 </div>
 
@@ -333,7 +337,7 @@
                     </h6>
 
                     <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                       Sim. O certificado pode ser utilizado em diversas provas, desde que esteja dentro do período de validade definido pelo médico (geralmente entre 3 e 12 meses). Basta apresentá-lo aos organizadores quando solicitado.
                     </p>
                 </div>
             </div>
@@ -347,7 +351,24 @@
 </template>
 
 <script setup>  
+    import { onMounted, nextTick } from 'vue'
+    import { useRoute } from 'vue-router'
     import Carousel from '../components/Certif-components/Certif-Carousel-First.vue'
     import CarouselSecond from '../components/Certif-components/Certif-Carousel-Second.vue';
     import Faq from '../components/Certif-components/FAQ.vue';
+
+    const route = useRoute()
+
+    onMounted(() => {
+      if (route.hash === '#faq') {
+        nextTick(() => {
+          setTimeout(() => {
+            const element = document.getElementById('faq')
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' })
+            }
+          }, 100)
+        })
+      }
+    })
 </script>
