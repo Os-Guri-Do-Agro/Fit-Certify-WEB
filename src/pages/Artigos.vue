@@ -34,9 +34,18 @@
 
 
   <section class="flex w-full h-full justify-center p-5 md:p-10">
+
     
     <div class="container flex w-full h-auto justify-between">
-        <div class="flex mr-5 flex-col">
+
+        <div class="flex flex-col lg:mr-5 gap-10 w-full">
+            <div class="flex lg:hidden flex-col items-center gap-5">
+                <h3 class="text-cyan-400 mt-2 md:text-[1em] lg:text-[1.125em] font-[600]">
+                    Categorias
+                </h3>
+                <Categorias />
+            </div>
+
             <Pages />
 
     <div class="w-full flex justify-center gap-3 h-40 items-center">
@@ -46,7 +55,7 @@
         <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>        
     </div>
         </div>
-        <div class="w-full max-w-[120px] md:max-w-[180px]  lg:max-w-[218.23px]">
+        <div class="w-full max-w-[120px] md:max-w-[180px]  lg:max-w-[218.23px] hidden lg:flex flex-col">
             
             <div class="text-center flex flex-col gap-10">
                 <h3 class="text-cyan-400 mt-2 text-[0.9em] md:text-[1em] lg:text-[1.125em] font-[600]">
@@ -74,9 +83,16 @@
             <div class="w-full bg-slate-300 h-[230.14px] mt-10"></div>
 
         </div>
-        
+  
     </div>
+  </section>
 
+
+  <section class="flex lg:hidden">
+        <div class="flex container flex-col gap-5 p-5 md:p-10">
+            <div class="w-full bg-slate-300 h-[300.24px] mt-10"></div>
+            <div class="w-full bg-slate-300 h-[230.14px] mt-10"></div>
+        </div>
   </section>
 
 </template>
@@ -84,4 +100,5 @@
 
 <script setup>
     import Pages from '../components/Artigos-components/Artigos-pages.vue'
+    import Categorias from '../components/Artigos-components/Artigos-categorias.vue'
 </script>

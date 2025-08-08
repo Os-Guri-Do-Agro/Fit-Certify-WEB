@@ -1,8 +1,8 @@
 <template>
-  <div class="grid md:grid-cols-2 md:grid-rows-3 place-items-center w-full gap-10 md:gap-3 lg:gap-7" v-if="Artigos.data && Artigos.data.length">
+  <div class="grid md:grid-cols-2 md:grid-rows-3 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center md:justify-baseline" v-if="Artigos.data && Artigos.data.length">
     <div class="w-full md:max-w-[558px] lg:max-w-full" v-for="item in Artigos.data.slice(0, 6)" :key="item.id">
         <div class="flex">
-            <img class="w-full max-w-[558px] h-[433px] object-cover" :src="item.imagensArtigo.find((i: any) => i.isBanner == false)?.imagemUrl" alt="">        
+            <img class="w-full max-w-[558px] h-[350px] md:h-[433px] object-cover" :src="item.imagensArtigo.find((i: any) => i.isBanner == false)?.imagemUrl" alt="">        
         </div>
 
       <div class="flex flex-col gap-3 h-full mt-5 lg:mt-7">
