@@ -17,19 +17,20 @@
         {{ produto?.subTitulo }}
       </p>
 
-      <span class="hidden text-center md:text-start" v-if="produto?.condicaoEspecial">
-        Sem condição especial
-      </span>
+      
       <span class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
-          w-full max-w-[658px] font-[700] opacity-65 text-center md:text-start" v-else>
-        Desconto de 20%
+          w-full max-w-[658px] font-[700] opacity-65 text-center md:text-start" v-if="produto?.condicaoEspecial">
+        Desconto de {{ produto?.desconto }} %
+      </span>
+      <span class="hidden text-center md:text-start" v-else>
+        Sem condição especial
       </span>
 
       <div class="flex flex-col md:flex-row w-full xl:max-w-[500px] 2xl:max-w-[658px] items-stretch md:items-end flex-wrap gap-3 md:gap-5 justify-between">
         <button class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
           Gerar cupom
         </button>
-        <span class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
+        <span v-if="produto.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
           Exclusivo para certificados
         </span>
       </div>
