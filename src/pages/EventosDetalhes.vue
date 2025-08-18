@@ -35,7 +35,7 @@
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-10">
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">Data</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
-          {{ evento?.data?.slice(0, 10)?.replaceAll('-', '/') }}
+          {{ evento?.data?.slice(0, 10)?.split('-')?.reverse()?.join('/') }}
         </span>
       </div>
 

@@ -70,7 +70,7 @@
         <div class="flex flex-col gap-20 ">
             <img class="w-full h-[350px] md:h-[595px] object-cover object-bottom" :src="artigo?.imagensArtigo.find((i) => i.isBanner == true)?.imagemUrl" alt="">
           <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
-            {{ artigo?.introducao }}
+            {{ artigo?.conclusao }} 
           </p>
         </div>
       </div>
