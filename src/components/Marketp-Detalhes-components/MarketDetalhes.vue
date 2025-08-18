@@ -26,7 +26,7 @@
           v-if="item.exclusivoParaCertificado"
           class="inline-bloc bg-sky-100 text-lime-500 max-w-[175.8px] text-[0.75em] px-2 py-1 rounded"
         >
-          Exclusivo para certificados
+          Exclusivo para certificadosaaa
         </span>
         </div>
 

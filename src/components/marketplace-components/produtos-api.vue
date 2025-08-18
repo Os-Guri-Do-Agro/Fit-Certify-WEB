@@ -6,10 +6,10 @@
   <div
     v-for="item in Produtos.slice(0, 12)"
     :key="item.id"
-    class="w-full max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
+    class="w-full lg:h-[670px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
   >
     <!-- Imagem -->
-    <div class="w-full h-[250px] md:h-[300px] lg:h-[400px] overflow-hidden ">
+    <div class="w-full h-[250px] md:max-h-[300px] lg:h-[400px] overflow-hidden ">
       <img
         class="w-full h-full object-cover"
         :src="item.imagemUrl"
@@ -71,7 +71,7 @@
     v-if="Produtos && Produtos.length"
   >
     <div
-      class="w-full h-[430px] xl:h-[600px] lg:max-w-full bg-white shadow-lg rounded-[12px]"
+      class="w-full h-[430px] lg:max-w-full bg-white shadow-lg rounded-[12px]"
       v-for="item in Produtos.slice(0, 8)"
       :key="item.id"
     >
@@ -105,7 +105,7 @@
 
 
         <h1
-          class="text-[1.125em] lg:text-[1.25em] font-[700] text-cyan-400 max-w-[327.25px]  relative bottom-10"
+          class="text-[1.125em] lg:text-[1.25em] font-[700] text-cyan-400 max-w-[327.25px] mt-3 relative bottom-10"
         >
           {{ item.titulo }}
         </h1>
