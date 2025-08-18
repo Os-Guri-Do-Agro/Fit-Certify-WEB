@@ -1,7 +1,6 @@
 import apiClient from "../api";
 import {handleError} from '../../common/error.utils'
 
-
 class ArtigoService{
 private async handleRequest<T>(
     request: Promise<{ data: T }>,

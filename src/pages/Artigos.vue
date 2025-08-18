@@ -47,13 +47,6 @@
             </div>
 
             <Pages />
-
-    <div class="w-full flex justify-center gap-3 h-40 items-center">
-        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>
-        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer" ></div>
-        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>
-        <div class="w-3 h-3 rounded-[50px] bg-cyan-400 cursor-pointer"></div>        
-    </div>
         </div>
         <div class="w-full max-w-[120px] md:max-w-[180px]  lg:max-w-[218.23px] hidden lg:flex flex-col">
             

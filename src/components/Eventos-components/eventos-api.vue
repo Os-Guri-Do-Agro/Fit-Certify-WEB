@@ -206,6 +206,8 @@ onMounted(async () => {
   Eventos.value = await EventosService.getAllEventos()
 })
 
+
+
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
   const date = new Date(dateStr)

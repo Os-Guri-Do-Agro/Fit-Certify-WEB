@@ -6,6 +6,8 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
+
+
 const showLayout = computed(() => {
   return route.path !== '/login' && route.path !== '/cadastro';
 });

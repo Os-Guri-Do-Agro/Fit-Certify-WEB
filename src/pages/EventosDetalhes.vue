@@ -119,13 +119,9 @@ import { useRoute, useRouter } from 'vue-router'
 import EventosService from '../services/Eventos/eventos-services'
 import Eventos from '../components/Evento-Detalhes-components/EventoDet.vue'
 
-
 const route = useRoute()
 const router = useRouter()
-
-
 const evento = ref(null)
-
 
 const carregarEvento = async (id) => {
   try {
@@ -136,11 +132,9 @@ const carregarEvento = async (id) => {
   }
 }
 
-
 const atualizarPagina = async (id) => {
   await router.push({ name: 'EventoDetalhes', params: { id } })
 }
-
 
 watch(
   () => route.params.id,
