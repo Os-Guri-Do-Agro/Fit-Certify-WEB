@@ -6,7 +6,7 @@
   <div
     v-for="item in Produtos.slice(0, 12)"
     :key="item.id"
-    class="w-full lg:h-[670px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
+    class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
   >
     <!-- Imagem -->
     <div class="w-full h-[250px] md:max-h-[300px] lg:h-[400px] overflow-hidden ">
