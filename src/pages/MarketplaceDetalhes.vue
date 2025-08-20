@@ -1,90 +1,110 @@
 <template>
-  <section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row min-h-170">
-    <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start">
-      <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-          w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]">
-        {{ produto?.titulo }}
-      </h2>
+<section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row min-h-170">
+  <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start">
+    
+    <!-- TÍTULO -->
+    <h2 v-if="!loadingProduto"
+      class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
+      w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]"
+    >
+      {{ produto?.titulo }}
+    </h2>
+    <div v-else class="w-full max-w-[388px] h-[50px] bg-gray-300 rounded animate-pulse mt-[27px]"></div>
 
-      <div class="w-full max-w-[361px] lg:max-w-[658px] flex items-start">
-        <div class="w-full md:max-w-[206px] lg:max-w-[276px] rounded-[20px] flex items-center justify-center">
-          <img class="object-cover md:w-full h-auto" :src="empresa?.logoUrl" alt="" />
-        </div>
+    <!-- LOGO -->
+    <div class="w-full max-w-[361px] lg:max-w-[658px] flex items-start">
+      <div v-if="!loadingProduto" class="w-full md:max-w-[206px] lg:max-w-[276px] rounded-[20px] flex items-center justify-center">
+        <img class="object-cover md:w-full h-auto" :src="empresa?.logoUrl" alt="" />
       </div>
+      <div v-else class="w-[206px] h-[100px] bg-gray-300 rounded-lg animate-pulse"></div>
+    </div>
 
-      <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
-          w-full max-w-[658px] text-center md:text-start">
-        {{ produto?.subTitulo }}
-      </p>
+    <!-- SUBTÍTULO -->
+    <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px] w-full max-w-[658px] text-center md:text-start">
+      {{ produto?.subTitulo }}
+    </p>
+    <div v-else class="w-full max-w-[658px] h-[25px] bg-gray-300 rounded animate-pulse"></div>
 
-      
-      <span class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
-          w-full max-w-[658px] font-[700] opacity-65 text-center md:text-start" v-if="produto?.condicaoEspecial">
-        Desconto de {{ produto?.desconto }} %
+    <!-- CONDIÇÃO ESPECIAL -->
+    <span v-if="!loadingProduto && produto?.condicaoEspecial"
+      class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
+      w-full max-w-[658px] font-[700] opacity-65 text-center md:text-start"
+    >
+      Desconto de {{ produto?.desconto }} %
+    </span>
+    <div v-else-if="loadingProduto" class="w-[150px] h-[20px] bg-gray-300 rounded animate-pulse"></div>
+    
+    <!-- BOTÕES -->
+    <div class="flex flex-col md:flex-row w-full xl:max-w-[500px] 2xl:max-w-[658px] items-stretch md:items-end flex-wrap gap-3 md:gap-5 justify-between">
+      <button v-if="!loadingProduto" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
+        Gerar cupom
+      </button>
+      <div v-else class="w-full md:max-w-[211px] h-[55px] bg-gray-300 rounded-[30px] animate-pulse"></div>
+
+      <span v-if="!loadingProduto && produto?.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
+        Exclusivo para certificados
       </span>
-      <span class="hidden text-center md:text-start" v-else>
-        Sem condição especial
-      </span>
-
-      <div class="flex flex-col md:flex-row w-full xl:max-w-[500px] 2xl:max-w-[658px] items-stretch md:items-end flex-wrap gap-3 md:gap-5 justify-between">
-        <button class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
-          Gerar cupom
-        </button>
-        <span v-if="produto?.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
-          Exclusivo para certificados
-        </span>
-      </div>
+      <div v-else-if="loadingProduto" class="w-full md:max-w-[253px] h-[36px] bg-gray-300 rounded-[30px] animate-pulse"></div>
     </div>
+  </div>
 
-    <div class="absolute inset-y-0 right-0 w-1/2 hidden md:block">
-      <img class="w-full h-full object-cover object-bottom" :src="produto?.imagemUrl" alt="" />
-    </div>
+  <!-- IMAGEM PRODUTO -->
+  <div class="absolute inset-y-0 right-0 w-1/2 hidden md:block">
+    <img v-if="!loadingProduto" class="w-full h-full object-cover object-bottom" :src="produto?.imagemUrl" alt="" />
+    <div v-else class="w-full h-full bg-gray-300 animate-pulse"></div>
+  </div>
 
-    <div class="w-full md:hidden">
-      <img class="w-full object-cover object-bottom min-h-[200px]" :src="produto?.imagemUrl" alt="" />
-    </div>
-  </section>
+  <div class="w-full md:hidden">
+    <img v-if="!loadingProduto" class="w-full object-cover object-bottom min-h-[200px]" :src="produto?.imagemUrl" alt="" />
+    <div v-else class="w-full min-h-[200px] bg-gray-300 animate-pulse"></div>
+  </div>
+</section>
+
 
   <section class="w-full flex justify-center">
-    <div class="container flex flex-col gap-15 p-5 md:p-10">
-      <div class="flex flex-col gap-3">
-        <span
-          class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px]
-          w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80"
-          >Descrição</span
-        >
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
-          {{ produto?.descricao }}
-        </p>
-      </div>
+  <div class="container flex flex-col gap-15 p-5 md:p-10">
 
-      <div class="w-full h-[2px] bg-cyan-400"></div>
-
-      <div class="flex flex-col gap-3">
-        <span
-          class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px]
-          w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80"
-          >Orientação</span
-        >
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
-          {{ produto?.orientacao }}
-        </p>
-      </div>
-
-      <div class="w-full h-[2px] bg-cyan-400"></div>
-
-      <div class="flex flex-col gap-3">
-        <span
-          class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px]
-          w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80"
-          >{{ empresa?.nome }}</span
-        >
-        <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
-          {{ empresa?.sobre }}
-        </p>
-      </div>
+    <!-- DESCRIÇÃO -->
+    <div class="flex flex-col gap-3">
+      <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
+        Descrição
+      </span>
+      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
+        {{ produto?.descricao }}
+      </p>
+      <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
     </div>
-  </section>
+
+    <div class="w-full h-[2px] bg-cyan-400"></div>
+
+    <!-- ORIENTAÇÃO -->
+    <div class="flex flex-col gap-3">
+      <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
+        Orientação
+      </span>
+      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
+        {{ produto?.orientacao }}
+      </p>
+      <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
+    </div>
+
+    <div class="w-full h-[2px] bg-cyan-400"></div>
+
+    <!-- EMPRESA -->
+    <div class="flex flex-col gap-3">
+      <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
+        <template v-if="!loadingProduto">{{ empresa?.nome }}</template>
+        <div v-else class="w-[200px] h-[20px] bg-gray-300 rounded animate-pulse"></div>
+      </span>
+      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
+        {{ empresa?.sobre }}
+      </p>
+      <div v-else class="w-full max-w-[658px] h-[60px] bg-gray-300 rounded animate-pulse"></div>
+    </div>
+
+  </div>
+</section>
+
 
   <section class="w-full flex justify-center bg-sky-50 ">
     <div class="container flex flex-col gap-5 p-5 md:p-10">
@@ -278,6 +298,7 @@ const produto = ref<any>(null)
 const empresa = ref<any>(null)
 const avaliacoes = ref<any[]>([])
 
+const loadingProduto = ref(true)      // <--- Skeleton loading
 const loadingAvaliacoes = ref(false)
 const errorAvaliacoes = ref<string | null>(null)
 
@@ -285,6 +306,7 @@ const getStarsArray = (stars: number) =>
   Array.from({ length: stars }, (_, i) => i + 1)
 
 const loadProduto = async (id: string) => {
+  loadingProduto.value = true
   try {
     const response = await ProdutosServices.getProdutoById(id)
     produto.value = response.data
@@ -293,6 +315,8 @@ const loadProduto = async (id: string) => {
     console.error('Erro ao carregar produto:', error)
     produto.value = null
     empresa.value = null
+  } finally {
+    loadingProduto.value = false
   }
 }
 
@@ -322,9 +346,7 @@ const loadAvaliacoes = async (produtoId: string) => {
 
 const refreshPage = async (id: string) => {
   await router.replace({ name: 'MarketDetalhes', params: { id } }) 
-
 }
-
 
 watch(
   () => route.params.id,
@@ -344,4 +366,5 @@ watch(
   { immediate: true }
 )
 </script>
+
 
