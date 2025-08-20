@@ -1,7 +1,7 @@
 <template>
     <section class="w-full"> <!-- altura fixa -->
         <div>
-            <img class="w-full h-full object-cover" src="../assets/eventoDetalhes-imgs/banner.jpg" alt="">
+            <img class="w-full h-full object-cover" :src="evento?.imagemUrl" alt="">
         </div>
     </section>
 
@@ -18,7 +18,7 @@
             </div>
             <div class="md:w-1/2 flex justify-end ">
                 <div class="max-w-[455px] h-[256px] rounded-[20px] bg-white overflow-hidden flex items-center justify-center">
-                    <img class="object-cover w-full max-w-[410px]" src="../assets/eventoDetalhes-imgs/img-01.jpg" alt="">
+                    <img class="object-cover w-full max-w-[410px]" :src="evento?.logoUrl" alt="">
                 </div>
             </div>
         </div>
@@ -131,6 +131,10 @@ const carregarEvento = async (id) => {
     console.error('Erro ao carregar o evento:', erro)
   }
 }
+
+onMounted(async() => {
+  await carregarEvento(route.params.id)
+})
 
 const atualizarPagina = async (id) => {
   await router.push({ name: 'EventoDetalhes', params: { id } })

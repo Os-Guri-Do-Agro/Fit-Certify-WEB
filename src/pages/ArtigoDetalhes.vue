@@ -125,31 +125,36 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
 import ArtigoService from '../services/Artigos/artigos-service'
-import { RouterLink } from 'vue-router'
 import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vue'
 
-const route = useRoute();
-const router = useRouter();
+const route = useRoute()
 const artigo = ref(null)
+const loading = ref(false)
+const error = ref(null)
 
 const loadArtigo = async (id) => {
-  const response = await ArtigoService.getByArtigoId(id)
-  artigo.value = response.data
+  try {
+    loading.value = true
+    error.value = null
+    const response = await ArtigoService.getByArtigoId(id)
+    artigo.value = response.data
+  } catch (err) {
+    error.value = 'Erro ao carregar artigo'
+    console.error(err)
+  } finally {
+    loading.value = false
+  }
 }
 
-const refreshPage = async (id) => {
-  await router.push({ name: 'ArtigoDetalhe', params: { id } })
-}
-
-watch(() => route.params.id, (newId) => {
-  if (newId) loadArtigo(newId)
-}, { immediate: true })
-
-onMounted(() => {
-  loadArtigo(route.params.id)
-})
-
+// sempre que o ID mudar, recarrega o artigo
+watch(
+  () => route.params.id,
+  (newId) => {
+    if (newId) loadArtigo(newId)
+  },
+  { immediate: true }
+)
 </script>

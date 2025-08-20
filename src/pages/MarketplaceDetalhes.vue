@@ -1,5 +1,5 @@
 <template>
-  <section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row">
+  <section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row min-h-170">
     <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start">
       <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
           w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]">
@@ -7,8 +7,8 @@
       </h2>
 
       <div class="w-full max-w-[361px] lg:max-w-[658px] flex items-start">
-        <div class="w-full md:max-w-[206px] lg:max-w-[276px] h-[77px] rounded-[20px] bg-white flex items-center justify-center">
-          <img class="object-cover md:w-[150px] lg:w-[171px]" src="../assets/market-detalhes-imgs/LogoDasa 1.jpg" alt="" />
+        <div class="w-full md:max-w-[206px] lg:max-w-[276px] rounded-[20px] border-1 flex items-center justify-center">
+          <img class="object-cover md:w-full h-auto" :src="empresa?.logoUrl" alt="" />
         </div>
       </div>
 
@@ -30,7 +30,7 @@
         <button class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
           Gerar cupom
         </button>
-        <span v-if="produto.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
+        <span v-if="produto?.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
           Exclusivo para certificados
         </span>
       </div>
@@ -321,12 +321,14 @@ const loadAvaliacoes = async (produtoId: string) => {
 }
 
 const refreshPage = async (id: string) => {
-  await router.push({ name: 'MarketDetalhes', params: { id } })
+  await router.replace({ name: 'MarketDetalhes', params: { id } }) 
+
 }
+
 
 watch(
   () => route.params.id,
-  (newId) => {
+  async (newId) => {
     if (!newId) {
       produto.value = null
       empresa.value = null
@@ -336,9 +338,10 @@ watch(
 
     const idStr = Array.isArray(newId) ? newId[0] : newId
 
-    loadProduto(idStr)
-    loadAvaliacoes(idStr)
+    await loadProduto(idStr)
+    await loadAvaliacoes(idStr)
   },
   { immediate: true }
 )
 </script>
+

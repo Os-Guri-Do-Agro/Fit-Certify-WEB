@@ -1,10 +1,9 @@
 <template>
   <div>
     <!-- Grid de Cards -->
-    <div class="grid md:grid-cols-2 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center"
-         v-if="paginatedItems.length">
+    <div class="grid md:grid-cols-2 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center">
       <div class="w-full md:max-w-[558px] shadow-xl md:shadow-none pb-5 md:pb-0 rounded-lg lg:max-w-full min-h-[680px] md:min-h-[700px] lg:min-h-[850px] xl:min-h-[750px]"
-           v-for="item in paginatedItems" :key="item.id">
+           v-for="item in Artigos.data" :key="item.id">
         <div class="flex">
           <img class="w-full max-w-[558px] lg:max-w-full h-[433px] object-cover"
                :src="item.imagensArtigo.find((i: any) => i.isBanner == false)?.imagemUrl" alt="">
@@ -35,7 +34,22 @@
     </div>
 
     <!-- Paginação -->
-    <div class="flex items-center md:justify-center gap-4 mt-6 flex-col md:flex-row mt-10 md:mt-20">
+
+    <div class="flex justify-center">
+      <el-pagination
+      v-model:current-page="currentPage"
+      v-model:page-size="itemsPerPage"
+      :total="totalItens"
+      :pager-count="totalPages"
+      layout="prev, pager, next"
+      background
+      @current-change="buscarArtigos"
+    />
+    </div>
+
+    </div>
+
+    <!-- <div class="flex items-center md:justify-center gap-4 mt-6 flex-col md:flex-row mt-10 md:mt-20">
       <div class="flex md:hidden">
         <span class="flex items-center text-cyan-400"> {{ currentPage }} - {{ totalPages }}</span>
       </div>
@@ -53,13 +67,14 @@
       </div>
 
 
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import ArtigoService from '../../services/Artigos/artigos-service'
+
 
 const emit = defineEmits<{
   'refresh-page': [id: string]
@@ -71,35 +86,58 @@ const Artigos = ref<{ data: any[] }>({ data: [] })
 // Paginação
 const currentPage = ref(1)
 const itemsPerPage = 6
+const categoriaArtigoId = ref('')
+const totalPages = ref(1)
+const totalItens = ref(0)
 
-const totalPages = computed(() => Math.ceil(Artigos.value.data.length / itemsPerPage))
-const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return Artigos.value.data.slice(start, end)
+async function buscarArtigos() {
+  const response = await ArtigoService.getAllPaginated(
+    currentPage.value,        
+    itemsPerPage,         
+    categoriaArtigoId.value,  
+    false
+  )
+  const data = response.data
+  totalItens.value=data.total
+  Artigos.value.data=data.itens
+  totalPages.value=data.totalPages
+}
+
+
+onMounted(async () => {
+  buscarArtigos()
 })
+
+watch([currentPage, categoriaArtigoId], () => {
+  buscarArtigos();
+});
+
+// const totalPages = computed(() => Math.ceil(Artigos.value.data.length / itemsPerPage))
+// const paginatedItems = computed(() => {
+//   const start = (currentPage.value - 1) * itemsPerPage
+//   const end = start + itemsPerPage
+//   return Artigos.value.data.slice(start, end)
+// })
 
 // Funções de navegação
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) currentPage.value++
-}
+// const nextPage = () => {
+//   if (currentPage.value < totalPages.value) currentPage.value++
+// }
 
-const prevPage = () => {
-  if (currentPage.value > 1) currentPage.value--
-}
+// const prevPage = () => {
+//   if (currentPage.value > 1) currentPage.value--
+// }
 
-const goToFirstPage = () => {
-  currentPage.value = 1
-}
+// const goToFirstPage = () => {
+//   currentPage.value = 1
+// }
 
-const goToLastPage = () => {
-  currentPage.value = totalPages.value
-}
+// const goToLastPage = () => {
+//   currentPage.value = totalPages.value
+// }
 
 // Buscar artigos e filtrar apenas isDesktop = true
-onMounted(async () => {
-  const allArtigos = await ArtigoService.getAllArtigos()
-  Artigos.value.data = allArtigos.data.filter((item: any) => item.isDesktop)
-})
+
+
 </script>
 
