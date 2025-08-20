@@ -7,7 +7,7 @@
       </h2>
 
       <div class="w-full max-w-[361px] lg:max-w-[658px] flex items-start">
-        <div class="w-full md:max-w-[206px] lg:max-w-[276px] rounded-[20px] border-1 flex items-center justify-center">
+        <div class="w-full md:max-w-[206px] lg:max-w-[276px] rounded-[20px] flex items-center justify-center">
           <img class="object-cover md:w-full h-auto" :src="empresa?.logoUrl" alt="" />
         </div>
       </div>
