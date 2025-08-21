@@ -142,9 +142,9 @@
       <div v-else class="flex items-center justify-center gap-7">
         <img class="rounded-[50%]" src="../assets/artigo-detalhe-imgs/perfil.jpg" alt="">
         <div class="flex flex-col">
-          <span class="font-semibold text-[1.5em]">Por Nome Sobrenome</span>
+          <span class="font-semibold text-[1.5em]">{{ criadoPor.nome }}</span>
           <span>Médica do esporte</span>
-          <span>email@email.com</span>
+          <span>{{ criadoPor.email }}</span>
         </div>
       </div>
 
@@ -198,6 +198,7 @@ import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vu
 
 const route = useRoute()
 const artigo = ref(null)
+const criadoPor = ref(null) // Guarda quem criou o artigo
 const loading = ref(false)
 const error = ref(null)
 
@@ -207,6 +208,9 @@ const loadArtigo = async (id) => {
     error.value = null
     const response = await ArtigoService.getByArtigoId(id)
     artigo.value = response.data
+
+    // Supondo que a API retorne algo como { artigo: {...}, criadoPor: {...} }
+    criadoPor.value = response.data.criadoPor || null
   } catch (err) {
     error.value = 'Erro ao carregar artigo'
     console.error(err)
@@ -224,4 +228,5 @@ watch(
   { immediate: true }
 )
 </script>
+
 
