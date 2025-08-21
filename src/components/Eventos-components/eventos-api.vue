@@ -232,20 +232,32 @@ import EventosService from '../../services/Eventos/eventos-services'
 import Carousel from './eventos-carousel.vue'
 import { RouterLink } from 'vue-router'
 
-const Eventos = ref<{ data: any[] }>({ data: [] })
+// Interface para tipar os eventos
+interface Evento {
+  id: string
+  title?: string
+  createdAt: string
+  dataEvento?: string
+  distancias?: { distancia: number }[]
+  [key: string]: any
+}
 
+const Eventos = ref<{ data: Evento[] }>({ data: [] })
 const isLoading = ref(false)
 
 onMounted(async () => {
- try {
-  isLoading.value = true
-  const response = await EventosService.getAllEventos()
-  Eventos.value = response
- } finally {
-  isLoading.value = false
- }
+  try {
+    isLoading.value = true
+    const response = await EventosService.getAllEventos()
+    
+    // Ordena os eventos do mais recente para o mais antigo
+    Eventos.value.data = response.data.sort((a: Evento, b: Evento) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
+  } finally {
+    isLoading.value = false
+  }
 })
-
 
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
@@ -253,8 +265,7 @@ function formatDate(dateStr: string) {
   return date.toLocaleDateString('pt-BR')
 }
 
-
-function formatDistancias(distancias: any[]) {
+function formatDistancias(distancias: { distancia: number }[]) {
   if (!distancias || !distancias.length) return ''
   return distancias
     .sort((a, b) => a.distancia - b.distancia)
@@ -262,5 +273,6 @@ function formatDistancias(distancias: any[]) {
     .join(' | ')
 }
 </script>
+
 
 
