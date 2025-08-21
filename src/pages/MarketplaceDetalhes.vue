@@ -1,11 +1,11 @@
 <template>
-<section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row min-h-170">
+<section class="relative w-full bg-sky-100 flex justify-center overflow-hidden flex-col-reverse md:flex-row">
   <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start">
     
     <!-- TÍTULO -->
     <h2 v-if="!loadingProduto"
       class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-      w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]"
+        w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] mt-[27px] leading-[35px] lg:leading-[62px] break-words border-1"
     >
       {{ produto?.titulo }}
     </h2>
@@ -20,7 +20,8 @@
     </div>
 
     <!-- SUBTÍTULO -->
-    <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px] w-full max-w-full md:max-w-[400px] lg:max-w-[488px] xl:max-w-[600px] text-center md:text-start">
+    <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
+        w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] text-center md:text-start break-words">
       {{ produto?.subTitulo }}
     </p>
     <div v-else class="w-full max-w-[658px] h-[25px] bg-gray-300 rounded animate-pulse"></div>
@@ -54,8 +55,8 @@
     <div v-else class="w-full h-full bg-gray-300 animate-pulse"></div>
   </div>
 
-  <div class="w-full md:hidden">
-    <img v-if="!loadingProduto" class="w-full object-cover object-bottom min-h-[200px]" :src="produto?.imagemUrl" alt="" />
+  <div class="w-full h-full md:hidden">
+    <img v-if="!loadingProduto" class="w-full object-cover object-bottom  md:min-h-[200px]" :src="produto?.imagemUrl" alt="" />
     <div v-else class="w-full min-h-[200px] bg-gray-300 animate-pulse"></div>
   </div>
 </section>
@@ -69,7 +70,7 @@
       <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
         Descrição
       </span>
-      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
+      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
         {{ produto?.descricao }}
       </p>
       <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
@@ -82,7 +83,7 @@
       <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
         Orientação
       </span>
-      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
+      <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
         {{ produto?.orientacao }}
       </p>
       <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
