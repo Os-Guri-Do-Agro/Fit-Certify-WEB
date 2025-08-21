@@ -84,6 +84,7 @@ import ProdutosServices from '../../services/marketplace/marketplace-services'
 
 const Produtos = ref<{ data: any[] }>({ data: [] })
 const loadingProdutos = ref(true)
+
 const emit = defineEmits<{
   'refresh-page': [id: string]
 }>()

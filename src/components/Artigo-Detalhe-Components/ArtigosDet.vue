@@ -1,6 +1,22 @@
 <template>
+  <!-- Skeleton Loading -->
+  <div v-if="!Artigos.data || Artigos.data.length === 0" class="grid md:grid-cols-3 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center">
+    <div v-for="n in 3" :key="n" class="w-full md:max-w-[558px] lg:max-w-full min-h-[680px] md:min-h-[700px] lg:min-h-[850px] xl:min-h-[750px] animate-pulse">
+      
+      <div class="w-full h-[433px] bg-gray-300 rounded-lg"></div>
+      
+      <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px]">
+        <div class="h-[40px] lg:h-[52px] bg-gray-300 rounded w-full max-w-[525px]"></div>
+        <div class="h-[60px] lg:h-[80px] bg-gray-300 rounded w-full max-w-[551px]"></div>
+        <div class="h-[36px] lg:h-[40px] bg-gray-300 rounded w-[550px] lg:w-[212px]"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Artigos Reais -->
   <div class="grid md:grid-cols-3 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center"
-    v-if="Artigos.data && Artigos.data.length">
+    v-else>
     <div class="w-full md:max-w-[558px] lg:max-w-full min-h-[680px] md:min-h-[700px] lg:min-h-[850px] xl:min-h-[750px]" v-for="item in Artigos.data.slice(0, 3)" :key="item.id">
       <div class="flex">
         <img class="w-full max-w-[558px] h-[433px] object-cover"
@@ -19,13 +35,12 @@
           item.subTitulo }}</p>          
         </div>
 
-
         <div class="">
-        <button
+        <RouterLink :to="{ name: 'ArtigoDetalhe', params: { id: item.id } }"
           class="w-full max-w-[150px] lg:max-w-[212.6px] h-[36.3px] rounded-[30px] flex items-center justify-center text-[0.9em] text-cyan-400 font-[500] border border-cyan-400 duration-300 hover:bg-cyan-400 hover:text-white cursor-pointer"
           @click="emit('refresh-page', item.id)">
           LEIA MAIS
-        </button>          
+        </RouterLink>          
         </div>
 
       </div>

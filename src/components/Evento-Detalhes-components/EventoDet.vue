@@ -65,11 +65,9 @@
         {{ item.titulo }}
       </h1>
 
-
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
         📍 {{ item.local }}
       </span>
-
 
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
         📅 {{ formatDate(item.data) }}
@@ -83,11 +81,9 @@
         </span>
       </span>
 
-
       <div class="bg-cyan-50 text-cyan-400 text-[0.6em] lg:text-[0.75em]  rounded-[8px] w-full max-w-[241px] lg:h-[25px] flex items-center px-2 mt-3 mb-3">
         Prova conectada com a FitCertify365
       </div>
-
 
       <button  @click="emit('refresh-page', item.id)"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
@@ -103,7 +99,6 @@
       <div class="w-3 h-3 bg-lime-400 rounded-2xl cursor-pointer"></div>
     </div>
   </div>
-
 
 </template>
 
