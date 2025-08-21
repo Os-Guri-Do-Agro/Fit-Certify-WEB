@@ -20,7 +20,7 @@
     </div>
 
     <!-- SUBTÍTULO -->
-    <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px] w-full max-w-[658px] text-center md:text-start">
+    <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px] w-full max-w-full md:max-w-[400px] lg:max-w-[488px] xl:max-w-[600px] text-center md:text-start">
       {{ produto?.subTitulo }}
     </p>
     <div v-else class="w-full max-w-[658px] h-[25px] bg-gray-300 rounded animate-pulse"></div>
