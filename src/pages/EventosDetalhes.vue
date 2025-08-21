@@ -5,7 +5,7 @@
     <div v-if="!evento?.imagemUrl" class="w-full h-64 md:h-96 bg-gray-300 animate-pulse"></div>
 
     <!-- Imagem real -->
-    <img v-else class="w-full h-full object-cover" :src="evento?.imagemUrl" alt="">
+    <img v-else class="w-full h-full object-cover max-h-[637px]" :src="evento?.imagemUrl" alt="">
   </div>
 </section>
 
@@ -41,7 +41,7 @@
 
     <!-- Conteúdo da imagem -->
     <div class="md:w-1/2 flex justify-end ">
-      <div class="max-w-[455px] h-[256px] rounded-[20px] bg-white overflow-hidden flex items-center justify-center">
+      <div class=" max-w-[350px] lg:max-w-[455px]  max-h-[256px] rounded-[20px] bg-white overflow-hidden flex items-center justify-center">
         <!-- Skeleton para imagem -->
         <div v-if="carregando" class="w-full h-full bg-gray-300 animate-pulse rounded-[20px]"></div>
         <!-- Imagem real -->
@@ -121,24 +121,29 @@
 </section>
 
 
-    <section class="w-full flex justify-center">
-        <div class="container flex-col md:flex-row flex gap-5 p-5 md:p-10 text-center md:text-start">
+<section class="w-full flex justify-center">
+  <div class="container flex-col md:flex-row flex gap-5 p-5 md:p-10 text-center md:text-start">
 
-            <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">Organização</span>
+    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">Organizações</span>
 
-            <div class="flex flex-col md:flex-row items-center w-full">
-                <div class="flex items-center justify-center w-[203px] h-[203px]">
-                    <img src="../assets/eventoDetalhes-imgs/logo-01.jpg" alt=""></img>
-                </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+      <!-- Skeleton enquanto não carrega -->
+      <div v-if="carregando" v-for="n in 5" :key="n" class="flex flex-col items-center justify-center bg-gray-300 rounded-lg shadow-md animate-pulse">
+        <div class="w-full h-full md:w-32 md:h-32 lg:w-36 lg:h-36 bg-gray-400 rounded-md"></div>
+      </div>
 
-                <div class="flex items-center justify-center w-[203px] h-[203px]">
-                    <img src="../assets/eventoDetalhes-imgs/logo-02.jpg" alt=""></img>
-                </div>
+      <!-- Logos reais -->
+      <div v-else v-for="org in organizacao" :key="org.id" class="flex flex-col items-center justify-center bg-white rounded-lg shadow-md">
+        <img
+          class="object-cover w-full h-full md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-md"
+          :src="org.logoUrl"
+          :alt="org.nome"
+        />
+      </div>
+    </div>
 
-            </div>
-        </div>
-
-    </section>
+  </div>
+</section>
 
 
 
@@ -164,13 +169,17 @@ import Eventos from '../components/Evento-Detalhes-components/EventoDet.vue'
 const route = useRoute()
 const router = useRouter()
 const evento = ref(null)
-const carregando = ref(true) // <-- adicionado para controlar o skeleton
+const organizacao = ref([]) // organização ligada ao evento
+const carregando = ref(true)
 
 const carregarEvento = async (id) => {
   try {
     carregando.value = true
     const resposta = await EventosService.getByEventoId(id)
+
     evento.value = resposta.data
+    // pega a organização (ajuste aqui dependendo de como vem na API)
+    organizacao.value = resposta.data.organizacaoEvento.map(item => item.organizacao)
   } catch (erro) {
     console.error('Erro ao carregar o evento:', erro)
   } finally {
@@ -178,7 +187,7 @@ const carregarEvento = async (id) => {
   }
 }
 
-onMounted(async() => {
+onMounted(async () => {
   await carregarEvento(route.params.id)
 })
 
@@ -194,4 +203,5 @@ watch(
   { immediate: true }
 )
 </script>
+
 
