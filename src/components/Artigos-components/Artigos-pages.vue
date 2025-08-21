@@ -88,8 +88,16 @@ const emit = defineEmits<{
   'refresh-page': [id: string]
 }>()
 
+// Interface para tipar os artigos
+interface Artigo {
+  id: string
+  title?: string
+  createdAt: string
+  [key: string]: any // outros campos opcionais
+}
+
 // Dados
-const Artigos = ref<{ data: any[] }>({ data: [] })
+const Artigos = ref<{ data: Artigo[] }>({ data: [] })
 const isLoading = ref(false)
 
 // Paginação
@@ -108,9 +116,15 @@ async function buscarArtigos() {
       categoriaArtigoId.value,  
       false
     )
+    
     const data = response.data
     totalItens.value = data.total
-    Artigos.value.data = data.itens
+
+    // Ordena os artigos do mais recente para o mais antigo
+    Artigos.value.data = data.itens.sort((a: Artigo, b: Artigo) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
+    
     totalPages.value = data.totalPages
   } finally {
     isLoading.value = false
@@ -125,3 +139,5 @@ watch([currentPage, categoriaArtigoId], () => {
   buscarArtigos()
 })
 </script>
+
+
