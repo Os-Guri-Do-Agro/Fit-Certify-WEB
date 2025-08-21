@@ -33,12 +33,12 @@
     <section class="w-full flex flex-col items-center justify-center gap-5">
       <div class="container p-5 lg:p-10">
         <div class="flex flex-col gap-20 ">
-          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
+          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
             {{ artigo?.introducao }}
           </p>
 
 
-          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full overflow-y-auto flex flex-col gap-3 opacity-90 max-h-[400px] lg:max-h-full">
+          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full  flex flex-col gap-3 opacity-90 max-h-[400px] lg:max-h-full break-words whitespace-normal overflow-y-auto ">
             <span class="font-bold opacity-80 text-[1.5em]">Duis aute irure dolor</span>
             {{ artigo?.conteudo }}
           </p>
@@ -50,10 +50,11 @@
                 <img class="w-8 lg:w-12" src="../assets/artigo-detalhe-imgs/citacao-left.jpg" alt="">
                 <div class="w-full h-[3px] bg-sky-100"></div>
             </div>
-            <p class="text-[0.875em] lg:text-[1.375em] font-[600] opacity-90 leading-[32px] lg:leading-[43px] w-full text-center">
-              {{ artigo?.citacao }}
-            </p>
-
+            <div class="flex w-full h-[135px]">
+              <p class="text-[0.875em] lg:text-[1.375em] font-[600] opacity-90 leading-[32px] lg:leading-[43px] text-center break-words whitespace-normal overflow-y-auto">
+                {{ artigo?.citacao }}
+              </p>
+            </div>
             <div class="flex gap-10 items-end flex-row-reverse">
                 <img class="w-8 lg:w-12 rotate-180" src="../assets/artigo-detalhe-imgs/citacao-left.jpg" alt="">
                 <div class="w-full h-[3px] bg-sky-100"></div>
@@ -69,7 +70,7 @@
       <div class="container p-5 lg:p-10">
         <div class="flex flex-col gap-20 ">
             <img class="w-full h-[350px] md:h-[595px] object-cover object-bottom" :src="artigo?.imagensArtigo.find((i) => i.isBanner == true)?.imagemUrl" alt="">
-          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
+          <p class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg :leading-[43px] w-full max-h-[300px] overflow-y-auto break-words opacity-90">
             {{ artigo?.conclusao }} 
           </p>
         </div>
