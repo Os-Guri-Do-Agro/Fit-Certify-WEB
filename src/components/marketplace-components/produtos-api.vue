@@ -108,15 +108,28 @@ import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import ProdutosServices from '../../services/marketplace/marketplace-services'
 
-const Produtos = ref<any[]>([])
+// Interface para tipar os produtos
+interface Produto {
+  id: string
+  name?: string
+  createdAt: string
+  [key: string]: any // outros campos opcionais
+}
+
+const Produtos = ref<Produto[]>([])
 const isLoading = ref(true) // ⬅️ controle do loading
 
 onMounted(async () => {
   try {
     const response = await ProdutosServices.getAllProdutos()
-    Produtos.value = response.data
+    
+    // Ordena os produtos do mais recente para o mais antigo
+    Produtos.value = response.data.sort((a: Produto, b: Produto) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
   } finally {
     isLoading.value = false // ⬅️ desliga o skeleton
   }
 })
 </script>
+
