@@ -139,12 +139,14 @@
       </div>
 
       <!-- Conteúdo real do autor -->
-      <div v-else class="flex items-center justify-center gap-7">
-        <img class="rounded-[50%]" src="../assets/artigo-detalhe-imgs/perfil.jpg" alt="">
+      <div v-else class="flex flex-col md:flex-row items-center justify-center gap-7 w-full md:w-auto">
+        <div class="flex flex-col md:flex-row text-center md:text-start gap-5 items-center">
+        <img class="rounded-[50%] max-w-[116px]" src="../assets/artigo-detalhe-imgs/perfil.jpg" alt="">
         <div class="flex flex-col">
           <span class="font-semibold text-[1.5em]">{{ criadoPor.nome }}</span>
           <span>Médica do esporte</span>
           <span>{{ criadoPor.email }}</span>
+        </div>
         </div>
       </div>
 
@@ -155,7 +157,7 @@
       </div>
 
       <!-- Botões reais -->
-      <div v-else class="flex gap-7 items-center justify-center flex-wrap">
+      <div v-else class="flex gap-7 items-center justify-center flex-wrap w-full md:w-auto">
         <button class="w-[220px] h-[43px] rounded-[50px] bg-sky-100 flex items-center justify-center cursor-pointer hover:scale-105 hover:bg-sky-200 duration-300">
           <RouterLink to="/contato" class="text-[0.875em] font-semibold text-cyan-400">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="black" viewBox="0 0 16 16">
