@@ -5,7 +5,7 @@
     <!-- TÍTULO -->
     <h2 v-if="!loadingProduto"
       class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
-        w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] mt-[27px] leading-[35px] lg:leading-[62px] break-words border-1"
+        w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] mt-[27px] leading-[35px] lg:leading-[62px] break-words"
     >
       {{ produto?.titulo }}
     </h2>
