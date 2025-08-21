@@ -202,6 +202,7 @@ const criadoPor = ref(null) // Guarda quem criou o artigo
 const loading = ref(false)
 const error = ref(null)
 
+// Função para carregar o artigo
 const loadArtigo = async (id) => {
   try {
     loading.value = true
@@ -219,6 +220,14 @@ const loadArtigo = async (id) => {
   }
 }
 
+// === ADICIONADO ===
+const refreshPage = async () => {
+  if (route.params.id) {
+    await loadArtigo(route.params.id)
+  }
+}
+// === FIM ADICIONADO ===
+
 // Sempre que o ID mudar, recarrega o artigo
 watch(
   () => route.params.id,
@@ -228,5 +237,6 @@ watch(
   { immediate: true }
 )
 </script>
+
 
 

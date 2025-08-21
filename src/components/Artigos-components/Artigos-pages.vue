@@ -71,7 +71,7 @@
         v-model:current-page="currentPage"
         v-model:page-size="itemsPerPage"
         :total="totalItens"
-        :pager-count="totalPages"
+        :pager-count="7"
         layout="prev, pager, next"
         background
         @current-change="buscarArtigos"

@@ -195,6 +195,14 @@ const atualizarPagina = async (id) => {
   await router.push({ name: 'EventoDetalhes', params: { id } })
 }
 
+// === ADICIONADO ===
+const refreshPage = async () => {
+  if (route.params.id) {
+    await carregarEvento(route.params.id)
+  }
+}
+// === FIM ADICIONADO ===
+
 watch(
   () => route.params.id,
   (novoId) => {
