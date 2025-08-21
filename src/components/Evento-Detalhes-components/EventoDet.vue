@@ -1,4 +1,5 @@
 <template>
+  <!-- Desktop -->
   <div
     class="hidden md:grid md:grid-cols-3 md:grid-rows-3 w-full mt-5 gap-5 justify-center"
     v-if="Eventos.data && Eventos.data.length"
@@ -13,16 +14,13 @@
         {{ item.titulo }}
       </h1>
 
-
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
         📍 {{ item.local }}
       </span>
 
-
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
         📅 {{ formatDate(item.data) }}
       </span>
-
 
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
         🏃
@@ -31,11 +29,9 @@
         </span>
       </span>
 
-
       <div class="bg-cyan-50 text-cyan-400 text-[0.6em] lg:text-[0.75em]  rounded-[8px] w-full max-w-[241px] lg:h-[25px] flex items-center px-2 mt-3 mb-3">
         Prova conectada com a FitCertify365
       </div>
-
 
       <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
@@ -45,14 +41,27 @@
     </div>
   </div>
 
-
-
-
-
-
-
+  <!-- Skeleton Desktop -->
   <div
-    class="grid md:hidden md:grid-cols-3 md:grid-rows-3 w-full mt-5 gap-5 "
+    class="hidden md:grid md:grid-cols-3 md:grid-rows-3 w-full mt-5 gap-5 justify-center"
+    v-else
+  >
+    <div
+      v-for="n in 6"
+      :key="n"
+      class="bg-gray-300 w-full max-w-full lg:max-w-[364px] xl:max-w-full h-[252px] p-3 flex flex-col gap-2 rounded-[12px] animate-pulse"
+    >
+      <div class="h-6 bg-gray-400 rounded w-3/4 mb-2"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/2 mb-1"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/2 mb-1"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/3 mb-2"></div>
+      <div class="h-5 bg-gray-400 rounded w-full mt-auto"></div>
+    </div>
+  </div>
+
+  <!-- Mobile -->
+  <div
+    class="grid md:hidden md:grid-cols-3 md:grid-rows-3 w-full mt-5 gap-5"
     v-if="Eventos.data && Eventos.data.length"
   >
     <div
@@ -60,37 +69,20 @@
       v-for="item in Eventos.data.slice(0, 3)"
       :key="item.id"
     >
-
       <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
         {{ item.titulo }}
       </h1>
-
-      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
-        📍 {{ item.local }}
-      </span>
-
-      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
-        📅 {{ formatDate(item.data) }}
-      </span>
-
-
-      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
-        🏃
-        <span>
-          {{ formatDistancias(item.distanciasEvento) }}
-        </span>
-      </span>
-
+      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">📍 {{ item.local }}</span>
+      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">📅 {{ formatDate(item.data) }}</span>
+      <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">🏃 <span>{{ formatDistancias(item.distanciasEvento) }}</span></span>
       <div class="bg-cyan-50 text-cyan-400 text-[0.6em] lg:text-[0.75em]  rounded-[8px] w-full max-w-[241px] lg:h-[25px] flex items-center px-2 mt-3 mb-3">
         Prova conectada com a FitCertify365
       </div>
-
-      <button  @click="emit('refresh-page', item.id)"
+      <button @click="emit('refresh-page', item.id)"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
         Enviar certificadooo
-    </button>
-
+      </button>
     </div>
 
     <div class="flex w-full gap-3 justify-center mt-10">
@@ -100,7 +92,25 @@
     </div>
   </div>
 
+  <!-- Skeleton Mobile -->
+  <div
+    class="grid md:hidden md:grid-cols-3 md:grid-rows-3 w-full mt-5 gap-5"
+    v-else
+  >
+    <div
+      v-for="n in 3"
+      :key="n"
+      class="bg-gray-300 w-full max-w-full lg:max-w-[364px] xl:max-w-full h-[252px] p-3 flex flex-col gap-2 rounded-[12px] animate-pulse"
+    >
+      <div class="h-6 bg-gray-400 rounded w-3/4 mb-2"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/2 mb-1"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/2 mb-1"></div>
+      <div class="h-4 bg-gray-400 rounded w-1/3 mb-2"></div>
+      <div class="h-5 bg-gray-400 rounded w-full mt-auto"></div>
+    </div>
+  </div>
 </template>
+
 
 
 
