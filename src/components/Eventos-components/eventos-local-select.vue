@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import {
   Combobox,
   ComboboxInput,
@@ -82,25 +82,50 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import EventosService from '../../services/Eventos/eventos-services'
 
-const people = [
-  { id: 1, name: 'Localidade' },
-  { id: 2, name: 'Porto Alegre - RS' },
-  { id: 3, name: 'Florianópolis - SC' },
-  { id: 4, name: 'Petrópolis - RJ' }
-]
+const emit = defineEmits(['update:cidade'])
 
-let selected = ref(people[0])
+// estado interno
+let selected = ref({ id: 0, name: 'Localidade' })
 let query = ref('')
 
+// eventos vindos da API
+const eventos = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await EventosService.getAllEventos()
+    eventos.value = res.data        // ✅ Axios já entrega o JSON
+  } catch (e) {
+    console.error('Erro ao carregar eventos', e)
+  }
+})
+
+// lista dinâmica de cidades (sem duplicar)
+const cidades = computed(() => {
+  const locais = eventos.value.map(e => e.local).filter(Boolean) // <-- agora certo
+  const unicos = [...new Set(locais)]
+  return [
+    { id: 0, name: 'Localidade' },
+    ...unicos.map((c, i) => ({ id: i + 1, name: c }))
+  ]
+})
+
+// filtro
 let filteredPeople = computed(() =>
   query.value === ''
-    ? people
-    : people.filter((person) =>
-        person.name
-          .toLowerCase()
-          .replace(/\s+/g, '')
-          .includes(query.value.toLowerCase().replace(/\s+/g, ''))
+    ? cidades.value
+    : cidades.value.filter(person =>
+        person.name.toLowerCase().replace(/\s+/g, '').includes(
+          query.value.toLowerCase().replace(/\s+/g, '')
+        )
       )
 )
+
+// emite cidade selecionada
+watch(selected, (val) => {
+  emit('update:cidade', val)
+})
 </script>
+
