@@ -1,8 +1,8 @@
 import apiClient from "../api";
-import {handleError} from '../../common/error.utils'
+import { handleError } from '../../common/error.utils'
 
-class ProdutosServices{
-private async handleRequest<T>(
+class ProdutosServices {
+  private async handleRequest<T>(
     request: Promise<{ data: T }>,
     errorMessage: string
   ): Promise<T> {
@@ -13,19 +13,31 @@ private async handleRequest<T>(
       handleError(`${errorMessage}: ${error.message}`, error)
       throw error
     }
-  } 
+  }
 
-  getAllProdutos(): Promise<any>{
+  getAllProdutos(): Promise<any> {
     return this.handleRequest(
-        apiClient.get("/produto"),
-        "ERROR"
+      apiClient.get("/produto"),
+      "Erro ao buscar todos os produtos"
     )
   }
 
-  getProdutoById(id: string): Promise<any>{
+  getProdutoById(id: string): Promise<any> {
     return this.handleRequest(
       apiClient.get(`/produto/${id}`),
-      `ERROR ao buscar produto${id}`
+      `Erro ao buscar produto ${id}`
+    )
+  }
+
+  getAllPaginated(
+    page: number,
+    pageSize: number,
+    categoriaProdutoId: string,
+    condicaoEspecial: boolean
+  ): Promise<any> {
+    return this.handleRequest(
+      apiClient.get(`/produto/findAllPagined?page=${page}&pageSize=${pageSize}&categoriaProdutoId=${categoriaProdutoId}&condicaoEspecial=${condicaoEspecial}`),
+      "Erro ao buscar produtos paginados"
     )
   }
 }
