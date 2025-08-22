@@ -219,6 +219,7 @@ import { RouterLink } from 'vue-router'
 interface Evento {
   id: string
   title?: string
+  tipoEventoId?: string
   createdAt: string
   dataEvento?: string
   distancias?: { distancia: number }[]
@@ -234,6 +235,10 @@ const props = defineProps({
     mes: {
     type: Object,
     default: () => ({ name: 'Mês' })
+  },
+  tipoEventoId: {
+    type: String,
+    default: () => ('')
   }
 })
 
@@ -267,6 +272,10 @@ const filteredEventos = computed(() => {
       const mesAno = `${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`
       return mesAno === props.mes.name
     })
+  }
+  
+  if (props.tipoEventoId != '') {
+    lista = lista.filter(e => e.tipoEventoId == props.tipoEventoId)
   }
 
   return lista
