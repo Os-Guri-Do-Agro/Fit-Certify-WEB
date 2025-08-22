@@ -285,8 +285,4 @@ function formatDistancias(distancias: { distancia: number }[]) {
     .map(d => `${d.distancia}K`)
     .join(' | ')
 }
-
-
-
-
 </script>

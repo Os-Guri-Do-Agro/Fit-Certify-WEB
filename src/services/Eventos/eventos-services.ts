@@ -28,6 +28,13 @@ private async handleRequest<T>(
         "ERROR"
     )
   }
+
+    getAllTipoEventos(): Promise<any> {
+    return this.handleRequest(
+      apiClient.get("/tipo-evento"),
+      "Erro ao buscar tipos de prova"
+    )
+  }
 }
 
 export default new EventosService()

@@ -7,7 +7,7 @@
         >
           <ComboboxInput
             class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-black text-[0.83em] focus:ring-0"
-            :displayValue="(person) => person.name"
+            :displayValue="(item) => item.name"
             @change="query = $event.target.value"
           />
           <ComboboxButton
@@ -27,19 +27,19 @@
         >
           <ComboboxOptions
             class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm z-50"
->
+          >
             <div
-              v-if="filteredPeople.length === 0 && query !== ''"
+              v-if="filteredOptions.length === 0 && query !== ''"
               class="relative cursor-default select-none px-4 py-2 text-gray-700 "
             >
               Nada encontrado.
             </div>
 
             <ComboboxOption
-              v-for="person in filteredPeople"
+              v-for="option in filteredOptions"
               as="template"
-              :key="person.id"
-              :value="person"
+              :key="option.id"
+              :value="option"
               v-slot="{ selected, active }"
             >
               <li
@@ -53,7 +53,7 @@
                   class="block truncate"
                   :class="{ 'font-medium': selected, 'font-normal': !selected }"
                 >
-                  {{ person.name }}
+                  {{ option.name }}
                 </span>
                 <span
                   v-if="selected"
@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import {
   Combobox,
   ComboboxInput,
@@ -82,27 +82,42 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import EventosService from '../../services/Eventos/eventos-services'
 
-const people = [
-  { id: 1, name: 'Tipo de Prova' },
-  { id: 2, name: 'Corrida' },
-  { id: 3, name: 'Corrida-02' },
-  { id: 4, name: 'Corrida-03' },
-  { id: 5, name: 'Corrida-04' },
-  { id: 6, name: 'Corrida-05' },
-]
+const emit = defineEmits(['update:prova'])
 
-let selected = ref(people[0])
+let selected = ref({ id: 0, name: 'Tipo de Prova' })
 let query = ref('')
 
-let filteredPeople = computed(() =>
+
+const tipos = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await EventosService.getAllTipoEventos()
+    tipos.value = res.data 
+  } catch (e) {
+    console.error('Erro ao carregar tipos de evento', e)
+  }
+})
+
+// mapeia os dados para o formato esperado
+const opcoes = computed(() => [
+  { id: 0, name: 'Tipo de Prova' },
+  ...tipos.value.map((t) => ({ id: t.id, name: t.nome }))
+])
+
+// filtro
+let filteredOptions = computed(() =>
   query.value === ''
-    ? people
-    : people.filter((person) =>
-        person.name
-          .toLowerCase()
-          .replace(/\s+/g, '')
-          .includes(query.value.toLowerCase().replace(/\s+/g, ''))
+    ? opcoes.value
+    : opcoes.value.filter(option =>
+        option.name.toLowerCase().includes(query.value.toLowerCase())
       )
 )
+
+// emite prova selecionada
+watch(selected, (val) => {
+  emit('update:prova', val)
+})
 </script>
