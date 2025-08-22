@@ -6,6 +6,7 @@
 
 * {
   font-family: "Poppins", sans-serif;
+  word-break: break-word;
 }
 
 .container {

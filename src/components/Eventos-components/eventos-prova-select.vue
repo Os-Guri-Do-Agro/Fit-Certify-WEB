@@ -4,9 +4,10 @@
       v-model="selected"
       :options="tipos"
       placeholder="Tipo de Evento"
-      style="width: 240px"
+      style="width: 100%;"
       filterable
       @change="(e) => onChange(e)"
+    
   >
     <el-option
       v-for="item in tipos"
@@ -41,7 +42,10 @@ const tipos = ref([])
 onMounted(async () => {
   try {
     const res = await EventosService.getAllTipoEventos()
-    tipos.value = res.data 
+    tipos.value = [
+      { id: 0, nome: 'Tipo de Prova' },
+      ...res.data
+    ]
   } catch (e) {
     console.error('Erro ao carregar tipos de evento', e)
   }
@@ -65,3 +69,11 @@ watch(selected, (val) => {
   emit('update:tipoEventoId', val)
 })
 </script>
+
+<style scoped>
+.el-select-dropdown__item.is-selected {
+  color: #88CE0D !important;
+  font-weight: bold;
+}
+</style>
+
