@@ -230,6 +230,10 @@ const props = defineProps({
   cidade: {
     type: Object,
     default: () => ({ name: 'Localidade' })
+  },
+    mes: {
+    type: Object,
+    default: () => ({ name: 'Mês' })
   }
 })
 
@@ -249,10 +253,23 @@ onMounted(async () => {
 })
 
 const filteredEventos = computed(() => {
-  if (!props.cidade || props.cidade.name === 'Localidade') {
-    return Eventos.value.data
+  let lista = Eventos.value.data
+
+  // filtro por cidade
+  if (props.cidade && props.cidade.name !== 'Localidade') {
+    lista = lista.filter(e => e.local === props.cidade.name)
   }
-  return Eventos.value.data.filter(e => e.local === props.cidade.name) // <-- corrigido
+
+  // filtro por mês
+  if (props.mes && props.mes.name !== 'Mês') {
+    lista = lista.filter(e => {
+      const date = new Date(e.data)
+      const mesAno = `${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`
+      return mesAno === props.mes.name
+    })
+  }
+
+  return lista
 })
 
 function formatDate(dateStr: string) {

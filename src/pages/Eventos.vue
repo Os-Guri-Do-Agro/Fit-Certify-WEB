@@ -40,7 +40,7 @@
             <SelectProva />
             <!-- 👇 pega cidade aqui -->
             <Localidade v-model:cidade="cidadeSelecionada"/>
-            <Mes /> 
+            <Mes v-model:mes="mesSelecionado"/> 
           </div>
 
           <div class="w-full flex justify-between gap-5">
@@ -50,7 +50,7 @@
               </div>
               <div class="w-full">
                 <!-- 👇 passa cidade como prop -->
-                <Eventos :cidade="cidadeSelecionada" />
+                <Eventos :cidade="cidadeSelecionada" :mes="mesSelecionado" />
               </div>
             </div>
 
@@ -97,7 +97,7 @@
 
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import Eventos from '../components/Eventos-components/eventos-api.vue'
 import SelectProva from '../components/Eventos-components/eventos-prova-select.vue'
 import Localidade from '../components/Eventos-components/eventos-local-select.vue'
@@ -105,4 +105,7 @@ import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 
 // Cidade selecionada no select
 const cidadeSelecionada = ref({ name: "Localidade" })
+
+// Mês selecionado no select
+const mesSelecionado = ref({ name: "Mês" })
 </script>

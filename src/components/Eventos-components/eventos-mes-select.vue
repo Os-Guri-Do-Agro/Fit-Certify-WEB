@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import {
   Combobox,
   ComboboxInput,
@@ -82,25 +82,51 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import EventosService from '../../services/Eventos/eventos-services'
 
-const people = [
-  { id: 1, name: 'Mês' },
-  { id: 2, name: '10/2023' },
-  { id: 3, name: '11/2023' },
-  { id: 4, name: '12/2023' }
-]
+const emit = defineEmits(['update:mes'])
 
-let selected = ref(people[0])
+let selected = ref({ id: 0, name: 'Mês' })
 let query = ref('')
+const eventos = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await EventosService.getAllEventos()
+    eventos.value = res.data
+  } catch (e) {
+    console.error('Erro ao carregar eventos', e)
+  }
+})
+
+// função para formatar data -> "MM/YYYY"
+const format = (d) => {
+  const date = new Date(d)
+  if (isNaN(date)) return null
+  return `${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`
+}
+
+// lista dinâmica de meses
+const meses = computed(() => {
+  const lista = eventos.value.map(e => format(e.data)).filter(Boolean)
+  const unicos = [...new Set(lista)]
+  return [
+    { id: 0, name: 'Mês' },
+    ...unicos.map((m, i) => ({ id: i + 1, name: m }))
+  ]
+})
 
 let filteredPeople = computed(() =>
   query.value === ''
-    ? people
-    : people.filter((person) =>
-        person.name
-          .toLowerCase()
-          .replace(/\s+/g, '')
+    ? meses.value
+    : meses.value.filter(person =>
+        person.name.toLowerCase().replace(/\s+/g, '')
           .includes(query.value.toLowerCase().replace(/\s+/g, ''))
       )
 )
+
+// emite mês selecionado para o pai
+watch(selected, (val) => {
+  emit('update:mes', val)
+})
 </script>
