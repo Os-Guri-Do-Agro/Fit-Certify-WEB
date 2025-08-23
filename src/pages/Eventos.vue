@@ -53,23 +53,22 @@
 
             <div class="w-full md:max-w-[200px]">
               <el-select v-model="cidadeSelecionada" placeholder="Localidade" style="width: 100%;" filterable clearable
-                @change="(e) => onChangeCidade(e)">
+                @change="(e) => onChangeLocalidade(e)">
                 <el-option v-for="item in cidades" :key="item.id" :label="item.name" :value="item.name" />
               </el-select>
             </div>
 
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="selected" placeholder="Mês" style="width: 100%;" filterable clearable
-                @change="(e) => onChangeMes(e)">
+              <el-select v-model="mesSelecionado" placeholder="Mês" style="width: 100%;" filterable clearable
+                value-key="nome" @change="(e) => onChangeMes(e)">
                 <el-option v-for="item in meses" :key="item.value" :label="item.nome" :value="item" />
               </el-select>
             </div>
           </div>
 
-              <div class="hidden md:flex lg:hidden">
-                <img class="w-full  h-[302px] object-cover object-bottom" src="../assets/eventos-imgs/banner-02.jpg"
-                  alt="">
-              </div>
+          <div class="hidden md:flex lg:hidden">
+            <img class="w-full  h-[302px] object-cover object-bottom" src="../assets/eventos-imgs/banner-02.jpg" alt="">
+          </div>
 
           <div class="grid grid-cols-1 md:grid-cols-[3fr_1fr] lg:grid-cols-[5fr_1fr] gap-5 h-auto w-full ">
 
@@ -167,7 +166,7 @@ onMounted(async () => {
 })
 
 const cidades = computed(() => {
-  const locais = eventos.value.map(e => e.local).filter(Boolean)
+  const locais = eventos?.value.map(e => e.local).filter(Boolean)
   const unicos = [...new Set(locais)]
 
   return [
@@ -188,7 +187,7 @@ const buscarTipoEventos = async () => {
 const buscarEventos = async () => {
   try {
     const res = await EventoService.getAllPaginated()
-    eventos.value = res.data
+    eventos.value = res.data?.itens
   } catch (e) {
     console.error('Erro ao carregar eventos', e)
   }
@@ -198,12 +197,12 @@ const onChangeTipoEventoId = (e) => {
   tipoEventoIdSelecionado.value = e
 }
 
-const onChangeCidade = (e) => {
+const onChangeLocalidade = (e) => {
   cidadeSelecionada.value = e
 }
 
 const onChangeMes = (e) => {
-  mesSelecionado.value = e.value
+  mesSelecionado.value = e
 }
 
 </script>
