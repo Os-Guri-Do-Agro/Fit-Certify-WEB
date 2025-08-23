@@ -47,7 +47,7 @@
             </el-select>
           </div>
           <div class="w-full md:max-w-[200px]">
-            <el-select clearable v-model="precoSelecionado" placeholder="Categoria" style="width: 100%;" filterable>
+            <el-select clearable v-model="precoSelecionado" placeholder="Preço" style="width: 100%;" filterable>
               <el-option v-for="item in opcaoPreco" :key="item.value" :label="item.nome" :value="item.value" />
             </el-select>
           </div>
@@ -62,19 +62,19 @@
 
         <div class="w-full mt-5">
 
-          <Produtos :categoria="categoriaSelecionada" :preco="precoSelecionado" :condicao="condicaoSelecionada" />
+          <Produtos :categoria="categoriaSelecionada" :preco="precoSelecionado" :condicaoEspecial="condicaoSelecionada" />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="w-full hidden md:flex justify-center bg-sky-50 p-5 md:p-10">
+  <!-- <section class="w-full hidden md:flex justify-center bg-sky-50 p-5 md:p-10">
     <div class="container flex flex-col gap-5 md:mb-20">
       <div class="w-full h-[246px] bg-gray-300"></div>
       <div class="w-full h-[246px] bg-gray-300"></div>
       <div class="w-full h-[246px] bg-gray-300"></div>
     </div>
-  </section>
+  </section> -->
 
   <section class="w-full flex md:hidden justify-center bg-sky-50 p-5 md:p-10">
     <Carousel />
@@ -91,9 +91,9 @@ import Carousel from '../components/marketplace-components/marketplace-carousel.
 import marketplaceServices from '../services/marketplace/marketplace-services'
 
 // refs dos selects
-const categoriaSelecionada = ref({ nome: 'Categoria' })
-const precoSelecionado = ref({ nome: 'Preço' })
-const condicaoSelecionada = ref({ nome: 'Condição' })
+const categoriaSelecionada = ref()
+const precoSelecionado = ref()
+const condicaoSelecionada = ref()
 const categoriasProduto = ref([])
 const opcaoCondicaoEspecial = [
   {
@@ -104,15 +104,15 @@ const opcaoCondicaoEspecial = [
 const opcaoPreco = [
   {
     value: 50,
-    nome: '0 > 50',
+    nome: 'Até R$50',
   },
   {
     value: 100,
-    nome: '50 > 100',
+    nome: 'Até R$100',
   },
   {
     value: 200,
-    nome: '100 > 200',
+    nome: 'Até R$200',
   },
   {
     value: 1000,

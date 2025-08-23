@@ -2,14 +2,11 @@
   <div>
     <!-- Grid de Cards -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 place-items-center w-full gap-6 md:gap-7 justify-center">
-      
+
       <!-- Skeletons quando está carregando -->
       <template v-if="isLoading">
-        <div 
-          v-for="n in itemsPerPage" 
-          :key="'skeleton-produto-' + n"
-          class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col animate-pulse"
-        >
+        <div v-for="n in itemsPerPage" :key="'skeleton-produto-' + n"
+          class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col animate-pulse">
           <div class="w-full h-[250px] md:max-h-[300px] lg:h-[400px] bg-gray-300"></div>
           <div class="flex flex-col gap-3 p-5 text-left flex-grow min-h-[280px]">
             <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
@@ -24,27 +21,18 @@
 
       <!-- Cards de Produtos -->
       <template v-else>
-        <div 
-          class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
-          v-for="item in Produtos.data" 
-          :key="item.id"
-        >
+        <div class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
+          v-for="item in Produtos.data" :key="item.id">
           <!-- Imagem -->
           <div class="w-full h-[250px] md:max-h-[300px] lg:h-[400px] overflow-hidden">
-            <img 
-              class="w-full h-full object-cover"
-              :src="item.imagemUrl"
-              :alt="item.nomeImagem"
-            />
+            <img class="w-full h-full object-cover" :src="item.imagemUrl" :alt="item.nomeImagem" />
           </div>
 
           <!-- Conteúdo -->
           <div class="flex flex-col gap-3 p-5 text-left flex-grow min-h-[280px]">
             <div class="w-full text-end">
-              <span
-                v-if="item.exclusivoParaCertificado"
-                class="bg-sky-100 text-lime-500 text-[0.75em] px-2 py-1 rounded"
-              >
+              <span v-if="item.exclusivoParaCertificado"
+                class="bg-sky-100 text-lime-500 text-[0.75em] px-2 py-1 rounded">
                 Exclusivo para certificados
               </span>
             </div>
@@ -61,10 +49,8 @@
               A partir de R$ {{ item.preco }}
             </p>
 
-            <RouterLink 
-              :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
-              class="mt-auto w-full max-w-[140px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300"
-            >
+            <RouterLink :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
+              class="mt-auto w-full max-w-[140px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300">
               Saiba Mais
             </RouterLink>
           </div>
@@ -74,15 +60,8 @@
 
     <!-- Paginação -->
     <div class="flex justify-center mt-20">
-      <el-pagination
-        v-model:current-page="currentPage"
-        v-model:page-size="itemsPerPage"
-        :total="totalItens"
-        :pager-count="7"
-        layout="prev, pager, next"
-        background
-        @current-change="buscarProdutos"
-      />
+      <el-pagination v-model:current-page="currentPage" v-model:page-size="itemsPerPage" :total="totalItens"
+        :pager-count="7" layout="prev, pager, next" background @current-change="buscarProdutos" />
     </div>
   </div>
 </template>
@@ -96,7 +75,7 @@ import ProdutosServices from '../../services/marketplace/marketplace-services'
 const props = defineProps<{
   categoria?: any
   preco?: any
-  condicao?: any
+  condicaoEspecial?: any
 }>()
 
 // Interface para tipar os produtos
@@ -129,21 +108,21 @@ async function buscarProdutos() {
   try {
     isLoading.value = true
     const response = await ProdutosServices.getAllPaginated(
-      currentPage.value,        
-      itemsPerPage,         
-      categoriaProdutoId.value, 
+      currentPage.value,
+      itemsPerPage,
+      categoriaProdutoId.value,
       condicaoEspecial.value,
       precoSelected.value
     )
-    
+
     const data = response.data
     totalItens.value = data.total
 
     // Ordena do mais recente para o mais antigo
-Produtos.value.data = (data.itens || data.items || []).sort((a: Produto, b: Produto) => {
-  return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-})
-    
+    Produtos.value.data = (data.itens || data.items || []).sort((a: Produto, b: Produto) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
+
     totalPages.value = data.totalPages
   } finally {
     isLoading.value = false
@@ -154,10 +133,24 @@ onMounted(async () => {
   await buscarProdutos()
 })
 
-watch([currentPage, categoriaProdutoId, () => props.categoria, () => props.preco, () => props.condicao], () => {
-  condicaoEspecial.value = props.condicao || null
-  categoriaProdutoId.value = props.categoria || ''
-  precoSelected.value = props.preco || ''
-  buscarProdutos()
-})
+watch(
+  () => [props.categoria, props.preco, props.condicaoEspecial],
+  (
+    [novaCategoria, novoPreco, novaCondicaoEspecial],
+    [antigaCategoria, antigoPreco, antigaCondicaoEspecial]
+  ) => {
+    if (
+      novaCategoria !== antigaCategoria ||
+      novoPreco !== antigoPreco ||
+      novaCondicaoEspecial !== antigaCondicaoEspecial
+    ) {
+      condicaoEspecial.value = props.condicaoEspecial || null
+      categoriaProdutoId.value = props.categoria || ''
+      precoSelected.value = props.preco || ''
+      currentPage.value = 1
+      buscarProdutos();
+    }
+  }
+);
+
 </script>
