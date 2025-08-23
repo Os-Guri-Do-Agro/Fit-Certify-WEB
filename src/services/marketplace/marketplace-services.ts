@@ -29,17 +29,21 @@ class ProdutosServices {
     )
   }
 
-  getAllPaginated(
-    page: number,
-    pageSize: number,
-    categoriaProdutoId: string,
-    condicaoEspecial: boolean
-  ): Promise<any> {
-    return this.handleRequest(
-      apiClient.get(`/produto/findAllPagined?page=${page}&pageSize=${pageSize}&categoriaProdutoId=${categoriaProdutoId}&condicaoEspecial=${condicaoEspecial}`),
-      "Erro ao buscar produtos paginados"
-    )
-  }
+getAllPaginated(
+  page: number,
+  pageSize: number,
+  categoriaProdutoId?: string,
+  condicaoEspecial?: boolean,
+  preco?: number
+): Promise<any> {
+  return this.handleRequest(
+    apiClient.get(
+      `/produto/findAllPagined?page=${page}&pageSize=${pageSize}&categoriaProdutoId=${categoriaProdutoId}&condicaoEspecial=${condicaoEspecial}&preco=${preco}`
+    ),
+    "Erro ao buscar produtos paginados"
+  )
+}
+
 }
 
 export default new ProdutosServices()

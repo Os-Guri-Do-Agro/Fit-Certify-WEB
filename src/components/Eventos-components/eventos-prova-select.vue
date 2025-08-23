@@ -34,7 +34,7 @@ import EventosService from '../../services/Eventos/eventos-services'
 
 const emit = defineEmits(['update:tipoEventoId'])
 
-let selected = ref(null)
+let selected = ref(0)
 let query = ref('')
 
 const tipos = ref([])

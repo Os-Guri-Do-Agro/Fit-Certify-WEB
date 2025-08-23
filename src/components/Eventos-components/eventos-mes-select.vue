@@ -67,3 +67,10 @@ const onChange = (val) => {
   selected.value = val
 }
 </script>
+
+<style scoped>
+.el-select-dropdown__item.is-selected {
+  color: #88CE0D !important;
+  font-weight: bold;
+}
+</style>

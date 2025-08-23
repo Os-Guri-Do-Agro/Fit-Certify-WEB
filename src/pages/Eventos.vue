@@ -108,6 +108,8 @@ const cidadeSelecionada = ref({ name: "Localidade" })
 
 // Mês selecionado no select
 const mesSelecionado = ref({ name: "Mês" })
+
+//Tipo de prova selecionado no select
 const tipoEventoIdSelecionado = ref('')
 
 </script>
