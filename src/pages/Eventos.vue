@@ -99,7 +99,7 @@
 <script setup>
 import { ref } from 'vue'
 import Eventos from '../components/Eventos-components/eventos-api.vue'
-import SelectProva from '../components/Eventos-components/eventos-prova-select.vue'
+import SelectProva from '../components/Eventos-components/eventos-prova-select.vue' 
 import Localidade from '../components/Eventos-components/eventos-local-select.vue'
 import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 

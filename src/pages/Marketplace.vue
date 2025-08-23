@@ -52,17 +52,16 @@
     </div>
   </section>
 
-  <section class="w-full flex justify-center bg-sky-50 p-5 md:p-10">
+  <section class="w-full hidden md:flex justify-center bg-sky-50 p-5 md:p-10">
     <div class="container flex flex-col gap-5 md:mb-20">
       <div class="w-full h-[246px] bg-gray-300"></div>
-      <div class="w-full h-[246px] bg-gray-300 hidden md:flex"></div>
-
-      <div class="w-full flex justify-center h-20 items-center gap-3 md:hidden">
-        <div class="w-3 h-3 bg-cyan-400 rounded-2xl cursor-pointer"></div>
-        <div class="w-3 h-3 bg-cyan-200 rounded-2xl cursor-pointer"></div>
-        <div class="w-3 h-3 bg-cyan-200 rounded-2xl cursor-pointer"></div>
-      </div>
+      <div class="w-full h-[246px] bg-gray-300"></div>
+      <div class="w-full h-[246px] bg-gray-300"></div>
     </div>
+  </section>
+
+  <section class="w-full flex md:hidden justify-center bg-sky-50 p-5 md:p-10">
+    <Carousel />
   </section>
 </template>
 
@@ -72,6 +71,7 @@ import Produtos from '../components/marketplace-components/produtos-api.vue'
 import Categoria from '../components/marketplace-components/market-categoria-select.vue'
 import Preço from '../components/marketplace-components/market-preco-select.vue'
 import Condicao from '../components/marketplace-components/market-condicao-select.vue'
+import Carousel from '../components/marketplace-components/marketplace-carousel.vue'
 
 // refs dos selects
 const categoriaSelecionada = ref({ nome: 'Categoria' })
