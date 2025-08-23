@@ -2,7 +2,7 @@
   <div>
     <!-- 🔹 Grid de Eventos -->
     <div
-      class="grid md:grid-cols-2 lg:grid-cols-3 w-full mt-5 gap-5 justify-center"
+      class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-5 justify-center"
     >
       <!-- Skeletons -->
       <template v-if="isLoading">
@@ -59,12 +59,12 @@
     </div>
 
     <!-- 🔹 Paginação -->
-    <div class="flex justify-center mt-10">
+    <div class="flex justify-center mt-15 md:mt-20">
       <el-pagination
         v-model:current-page="currentPage"
         v-model:page-size="itemsPerPage"
         :total="totalItens"
-        :pager-count="7"
+        :pager-count="5"
         layout="prev, pager, next"
         background
         @current-change="buscarEventos"

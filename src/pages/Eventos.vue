@@ -11,8 +11,8 @@
     </div>
   </section>
 
-  <section class="w-full flex">
-    <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
+  <section class="w-full flex justify-center p-5 lg:p-10">
+    <div class="container h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
       <div class="container w-full p-5 md:p-10">
         <h2
           class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
@@ -22,8 +22,8 @@
     </div>
   </section>
 
-  <section class="flex flex-col items-center justify-center">
-    <div class="w-full flex flex-col justify-center items-center p-5 md:p-10 lg:h-[223px] bg-white">
+  <section class="flex flex-col items-center justify-center p-5 lg:p-10">
+    <div class="container flex flex-col justify-center items-center lg:h-[223px] bg-white ">
       <p
         class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto">
         Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você
@@ -33,8 +33,8 @@
       </p>
     </div>
 
-    <section class="bg-sky-50 w-full flex justify-center p-5 md:p-10">
-      <div class="container flex flex-col items-center">
+    <section class="bg-sky-50 w-full flex justify-center mt-20">
+      <div class="container flex flex-col items-center ">
         <div class="flex flex-col text-center gap-5 w-full items-center">
           <h3 class="text-[2.25em] italic text-lime-500 font-[600]">
             Calendário de corridas
@@ -46,47 +46,55 @@
           <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
             <div class="w-full md:max-w-[200px]">
               <el-select v-model="tipoEventoIdSelecionado" :options="tipos" placeholder="Tipo de Evento"
-                style="width: 100%;" filterable @change="(e) => onChangeTipoEventoId(e)">
+                style="width: 100%;" filterable clearable @change="(e) => onChangeTipoEventoId(e)">
                 <el-option v-for="item in tipoEventos" :key="item.id" :label="item.nome" :value="item.id" />
               </el-select>
             </div>
 
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="cidadeSelecionada" placeholder="Localidade" style="width: 100%;" filterable
+              <el-select v-model="cidadeSelecionada" placeholder="Localidade" style="width: 100%;" filterable clearable
                 @change="(e) => onChangeCidade(e)">
                 <el-option v-for="item in cidades" :key="item.id" :label="item.name" :value="item.name" />
               </el-select>
             </div>
 
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="selected" placeholder="Mês" style="width: 100%;" filterable
+              <el-select v-model="selected" placeholder="Mês" style="width: 100%;" filterable clearable
                 @change="(e) => onChangeMes(e)">
                 <el-option v-for="item in meses" :key="item.value" :label="item.nome" :value="item" />
               </el-select>
             </div>
           </div>
 
-          <div class="w-full flex justify-between gap-5">
-            <div class="flex md:flex-col w-full">
-              <div class="hidden md:flex">
+              <div class="hidden md:flex lg:hidden">
                 <img class="w-full  h-[302px] object-cover object-bottom" src="../assets/eventos-imgs/banner-02.jpg"
                   alt="">
               </div>
-              <div class="w-full">
+
+          <div class="grid grid-cols-1 md:grid-cols-[3fr_1fr] lg:grid-cols-[5fr_1fr] gap-5 h-auto w-full ">
+
+            <div class="flex flex-col gap-2">
+              <div class="hidden lg:flex">
+                <img class="w-full  h-[302px] object-cover object-bottom" src="../assets/eventos-imgs/banner-02.jpg"
+                  alt="">
+              </div>
+              <div class="w-full block justify-center lg:mt-5">
                 <Eventos :cidade="cidadeSelecionada" :mes="mesSelecionado" :tipoEventoId="tipoEventoIdSelecionado" />
               </div>
             </div>
 
+            <div class="w-full hidden md:flex flex-col gap-5 lg:items-end">
+              <img class="w-full max-w-[234px] h-[303px] object-cover" src="../assets/eventos-imgs/image-01.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[168px] object-cover" src="../assets/eventos-imgs/image-02.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[231px] object-cover" src="../assets/eventos-imgs/image-03.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[354px] object-cover" src="../assets/eventos-imgs/image-04.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[238px] object-cover" src="../assets/eventos-imgs/image-05.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[168px] object-cover" src="../assets/eventos-imgs/image-06.jpg" alt="">
+              <img class="w-full max-w-[234px] h-[169px] object-cover" src="../assets/eventos-imgs/image-07.jpg" alt="">
+            </div>
+
           </div>
-          <div class="w-full max-w-[120px] md:max-w-[180px] lg:max-w-[218.23px] hidden lg:flex flex-col gap-5">
-            <img class="w-full h-[303px]" src="../assets/eventos-imgs/image-01.jpg" alt="">
-            <img class="w-full h-[168px]" src="../assets/eventos-imgs/image-02.jpg" alt="">
-            <img class="w-full h-[231px]" src="../assets/eventos-imgs/image-03.jpg" alt="">
-            <img class="w-full h-[354px]" src="../assets/eventos-imgs/image-04.jpg" alt="">
-            <img class="w-full h-[238px]" src="../assets/eventos-imgs/image-05.jpg" alt="">
-            <img class="w-full h-[168px]" src="../assets/eventos-imgs/image-06.jpg" alt="">
-            <img class="w-full h-[169px]" src="../assets/eventos-imgs/image-07.jpg" alt="">
-          </div>
+
         </div>
       </div>
     </section>
