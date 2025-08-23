@@ -29,6 +29,14 @@ class ProdutosServices {
     )
   }
 
+
+    getAllCategoria(): Promise<any>{
+    return this.handleRequest(
+        apiClient.get("/categoria-produto"),
+        "ERROR"
+    )
+  }
+
 getAllPaginated(
   page: number,
   pageSize: number,
