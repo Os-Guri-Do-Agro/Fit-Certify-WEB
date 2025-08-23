@@ -38,7 +38,7 @@
             >
           </div>
 
-          <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px] px-3 md:px-0">
+          <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px] px-5 md:px-0">
             <div>
               <h1 class="text-[1.3em] lg:text-[2.125em] font-[600] italic text-cyan-400 max-w-[525px] lg:leading-[52px] md:leading-[30px] leading-[26px]">
                 {{ item.titulo }}
@@ -66,7 +66,7 @@
     </div>
 
     <!-- Paginação -->
-    <div class="flex justify-center mt-10">
+    <div class="flex justify-center mt-20">
       <el-pagination
         v-model:current-page="currentPage"
         v-model:page-size="itemsPerPage"
