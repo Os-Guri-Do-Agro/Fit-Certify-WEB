@@ -92,6 +92,13 @@ import { ref, onMounted, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import ProdutosServices from '../../services/marketplace/marketplace-services'
 
+// Props
+const props = defineProps<{
+  categoria?: any
+  preco?: any
+  condicao?: any
+}>()
+
 // Interface para tipar os produtos
 interface Produto {
   id: string
@@ -116,6 +123,7 @@ const categoriaProdutoId = ref('')
 const totalPages = ref(1)
 const totalItens = ref(0)
 const condicaoEspecial = ref()
+const precoSelected = ref()
 
 async function buscarProdutos() {
   try {
@@ -125,7 +133,7 @@ async function buscarProdutos() {
       itemsPerPage,         
       categoriaProdutoId.value, 
       condicaoEspecial.value,
-      0 
+      precoSelected.value
     )
     
     const data = response.data
@@ -146,7 +154,10 @@ onMounted(async () => {
   await buscarProdutos()
 })
 
-watch([currentPage, categoriaProdutoId], () => {
+watch([currentPage, categoriaProdutoId, () => props.categoria, () => props.preco, () => props.condicao], () => {
+  condicaoEspecial.value = props.condicao || null
+  categoriaProdutoId.value = props.categoria || ''
+  precoSelected.value = props.preco || ''
   buscarProdutos()
 })
 </script>
