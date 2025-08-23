@@ -33,7 +33,7 @@ class ProdutosServices {
     getAllCategoria(): Promise<any>{
     return this.handleRequest(
         apiClient.get("/categoria-produto"),
-        "ERROR"
+        "`Erro ao buscar categoria produto"
     )
   }
 
