@@ -5,13 +5,13 @@
       placeholder="Mês"
       style="width: 100%;"
       filterable
-      @change="onChange"
+      @change="(e) => onChange(e)"
     >
       <el-option
         v-for="item in meses"
-        :key="item.id"
-        :label="item.name"
-        :value="item.id"
+        :key="item.value"
+        :label="item.nome"
+        :value="item"
       />
     </el-select>
   </div>
@@ -23,19 +23,8 @@ import EventosService from '../../services/Eventos/eventos-services'
 
 const emit = defineEmits(['update:mes'])
 
-let selected = ref(0) 
+let selected = ref(null) 
 let query = ref('')
-const eventos = ref([])
-
-onMounted(async () => {
-  try {
-    const res = await EventosService.getAllPaginated()
-    console.log("📦 Eventos recebidos no seletor de mês:", res.data)
-    eventos.value = res.data
-  } catch (e) {
-    console.error('Erro ao carregar eventos', e)
-  }
-})
 
 const format = (d) => {
   const date = new Date(d)
@@ -43,30 +32,30 @@ const format = (d) => {
   return `${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`
 }
 
-const meses = computed(() => {
-  const lista = eventos.value.map(e => format(e.data)).filter(Boolean)
-  const unicos = [...new Set(lista)]
-  const resultado = [
-    { id: 0, name: 'Mês' },
-    ...unicos.map((m, i) => ({ id: i + 1, name: m }))
-  ]
-  return resultado
+watch(selected, (val) => {
+  console.log(val);
+  emit('update:mes', val?.value)
 })
 
-watch(selected, (val) => {
-  if (val === 0) {
-    console.log("❌ Resetando filtro de mês")
-    emit('update:mes', null) 
-  } else {
-    const mes = meses.value.find(m => m.id === val)
-    console.log("✅ Mês selecionado emitido:", mes)
-    emit('update:mes', mes)
-  }
-})
+const meses = [
+  { value: 1, nome: "Janeiro" },
+  { value: 2, nome: "Fevereiro" },
+  { value: 3, nome: "Março" },
+  { value: 4, nome: "Abril" },
+  { value: 5, nome: "Maio" },
+  { value: 6, nome: "Junho" },
+  { value: 7, nome: "Julho" },
+  { value: 8, nome: "Agosto" },
+  { value: 9, nome: "Setembro" },
+  { value: 10, nome: "Outubro" },
+  { value: 11, nome: "Novembro" },
+  { value: 12, nome: "Dezembro" }
+];
 
 const onChange = (val) => {
   selected.value = val
 }
+
 </script>
 
 

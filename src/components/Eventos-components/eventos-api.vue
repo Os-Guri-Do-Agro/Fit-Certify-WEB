@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 import { RouterLink } from 'vue-router'
 import EventosService from '../../services/Eventos/eventos-services'
 
@@ -93,14 +93,14 @@ const Eventos = ref<{ data: Evento[] }>({ data: [] })
 const isLoading = ref(false)
 
 const props = defineProps<{
-  local?: { name: string }
-  data?: { name: string }
+  local?: string
+  mes?: string
   tipoEventoId?: string
 }>()
 
 // paginação
 const currentPage = ref(1)
-const itemsPerPage = 15 // quantidade de eventos por página
+const itemsPerPage = 6 
 const totalItens = ref(0)
 
 async function buscarEventos() {
@@ -111,8 +111,8 @@ async function buscarEventos() {
       currentPage.value,
       itemsPerPage,
       props.tipoEventoId || undefined,
-      props.local?.name !== 'Localidade' ? props.local?.name : undefined,
-      props.data?.name !== 'Mês' ? props.data?.name : undefined
+      props.local !== '' ? props.local : undefined,
+      props.mes !== '' ? props.mes : undefined
     )
 
     const data: Evento[] = response.data
@@ -137,7 +137,9 @@ onMounted(async () => {
  await  buscarEventos()
 })
 
-watch(currentPage, () => {
+watchEffect(() => {
+  console.log('asdsadada', props);
+  
   buscarEventos()
 })
 

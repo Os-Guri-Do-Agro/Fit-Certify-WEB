@@ -64,7 +64,6 @@ let filteredOptions = computed(() =>
       )
 )
 
-// emite prova selecionada
 watch(selected, (val) => {
   emit('update:tipoEventoId', val)
 })

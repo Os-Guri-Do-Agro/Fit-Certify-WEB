@@ -5,7 +5,7 @@
       placeholder="Localidade"
       style="width: 100%;"
       filterable
-      @change="onChange"
+      @change="(e) => onChange(e)"
     >
       <el-option
         v-for="item in cidades"
@@ -41,7 +41,6 @@ const cidades = computed(() => {
   const locais = eventos.value.map(e => e.local).filter(Boolean)
   const unicos = [...new Set(locais)]
   return [
-    { id: 0, name: 'Localidade' },
     ...unicos.map((c, i) => ({ id: i + 1, name: c }))
   ]
 })
@@ -49,6 +48,7 @@ const cidades = computed(() => {
 watch(selected, (val) => {
   // envia o objeto inteiro (id + name) pro pai
   const cidade = cidades.value.find(c => c.id === val)
+  
   emit('update:cidade', cidade)
 })
 
