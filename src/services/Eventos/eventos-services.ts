@@ -42,6 +42,21 @@ class EventosService {
       "Erro ao buscar tipos de prova"
     )
   }
+
+getAllPaginated(
+  page: number,
+  pageSize: number,
+  tipoEventoId?: string,
+  local?: string,
+  data?: string
+): Promise<any> {
+  return this.handleRequest(
+    apiClient.get("/evento", {
+      params: { page, pageSize, tipoEventoId, local, data }
+    }),
+    "Erro ao buscar eventos paginados"
+  )
+}
 }
 
 export default new EventosService()
