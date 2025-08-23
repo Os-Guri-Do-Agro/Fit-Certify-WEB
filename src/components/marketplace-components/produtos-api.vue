@@ -115,6 +115,7 @@ const itemsPerPage = 12
 const categoriaProdutoId = ref('')
 const totalPages = ref(1)
 const totalItens = ref(0)
+const condicaoEspecial = ref()
 
 async function buscarProdutos() {
   try {
@@ -122,9 +123,9 @@ async function buscarProdutos() {
     const response = await ProdutosServices.getAllPaginated(
       currentPage.value,        
       itemsPerPage,         
-      categoriaProdutoId.value,  
-      false,  // condicaoEspecial (ajuste se necessário)
-      0       // preco (ajuste se necessário)
+      categoriaProdutoId.value, 
+      condicaoEspecial.value,
+      0 
     )
     
     const data = response.data
@@ -141,8 +142,8 @@ Produtos.value.data = (data.itens || data.items || []).sort((a: Produto, b: Prod
   }
 }
 
-onMounted(() => {
-  buscarProdutos()
+onMounted(async () => {
+  await buscarProdutos()
 })
 
 watch([currentPage, categoriaProdutoId], () => {

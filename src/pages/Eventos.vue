@@ -37,10 +37,9 @@
           </span>
 
           <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
-            <SelectProva v-model:tipoEventoId="tipoEventoIdSelecionado"/>
-            <!-- 👇 pega cidade aqui -->
-            <Localidade v-model:cidade="cidadeSelecionada"/>
-            <Mes v-model:mes="mesSelecionado"/> 
+            <SelectProva v-model:tipoEventoId="tipoEventoIdSelecionado" />
+            <Localidade v-model:cidade="cidadeSelecionada" />
+            <Mes v-model:mes="mesSelecionado" />
           </div>
 
           <div class="w-full flex justify-between gap-5">
@@ -50,7 +49,11 @@
               </div>
               <div class="w-full">
                 <!-- 👇 passa cidade como prop -->
-                <Eventos :cidade="cidadeSelecionada" :mes="mesSelecionado" :tipo-evento-id="tipoEventoIdSelecionado"/>
+                    <Eventos
+      :cidade="cidadeSelecionada"
+      :mes="mesSelecionado"
+      :tipoEventoId="tipoEventoIdSelecionado"
+    />
               </div>
             </div>
 
@@ -103,13 +106,7 @@ import SelectProva from '../components/Eventos-components/eventos-prova-select.v
 import Localidade from '../components/Eventos-components/eventos-local-select.vue'
 import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 
-// Cidade selecionada no select
-const cidadeSelecionada = ref({ name: "Localidade" })
-
-// Mês selecionado no select
-const mesSelecionado = ref({ name: "Mês" })
-
-//Tipo de prova selecionado no select
+const cidadeSelecionada = ref({ name: 'Localidade' })
+const mesSelecionado = ref({ name: 'Mês' })
 const tipoEventoIdSelecionado = ref('')
-
 </script>

@@ -29,13 +29,13 @@ const eventos = ref([])
 
 onMounted(async () => {
   try {
-    const res = await EventosService.getAllEventos()
+    const res = await EventosService.getAllPaginated()
+    console.log("📦 Eventos recebidos no seletor de mês:", res.data)
     eventos.value = res.data
   } catch (e) {
     console.error('Erro ao carregar eventos', e)
   }
 })
-
 
 const format = (d) => {
   const date = new Date(d)
@@ -43,22 +43,23 @@ const format = (d) => {
   return `${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`
 }
 
-
 const meses = computed(() => {
   const lista = eventos.value.map(e => format(e.data)).filter(Boolean)
   const unicos = [...new Set(lista)]
-  return [
+  const resultado = [
     { id: 0, name: 'Mês' },
     ...unicos.map((m, i) => ({ id: i + 1, name: m }))
   ]
+  return resultado
 })
-
 
 watch(selected, (val) => {
   if (val === 0) {
+    console.log("❌ Resetando filtro de mês")
     emit('update:mes', null) 
   } else {
     const mes = meses.value.find(m => m.id === val)
+    console.log("✅ Mês selecionado emitido:", mes)
     emit('update:mes', mes)
   }
 })
@@ -67,6 +68,7 @@ const onChange = (val) => {
   selected.value = val
 }
 </script>
+
 
 <style scoped>
 .el-select-dropdown__item.is-selected {

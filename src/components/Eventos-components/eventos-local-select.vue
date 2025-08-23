@@ -30,7 +30,7 @@ const eventos = ref([])
 
 onMounted(async () => {
   try {
-    const res = await EventosService.getAllEventos()
+    const res = await EventosService.getAllPaginated()
     eventos.value = res.data
   } catch (e) {
     console.error('Erro ao carregar eventos', e)
