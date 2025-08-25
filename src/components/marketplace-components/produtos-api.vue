@@ -97,7 +97,7 @@ const isLoading = ref(false)
 
 // Paginação
 const currentPage = ref(1)
-const itemsPerPage = 12
+const itemsPerPage = 9
 const categoriaProdutoId = ref('')
 const totalPages = ref(1)
 const totalItens = ref(0)

@@ -72,8 +72,8 @@
         v-model:page-size="itemsPerPage"
         :total="totalItens"
         :pager-count="7"
-        layout="prev, pager, next"
         background
+        layout="prev, pager, next"
         @current-change="buscarArtigos"
       />
     </div>
@@ -86,6 +86,10 @@ import ArtigoService from '../../services/Artigos/artigos-service'
 
 const emit = defineEmits<{
   'refresh-page': [id: string]
+}>()
+
+const props = defineProps<{
+  categoriaId?: string 
 }>()
 
 // Interface para tipar os artigos
@@ -102,8 +106,8 @@ const isLoading = ref(false)
 
 // Paginação
 const currentPage = ref(1)
-const itemsPerPage = 6
-const categoriaArtigoId = ref('')
+const itemsPerPage = ref(4)
+const categoriaArtigoId = ref(props.categoriaId)
 const totalPages = ref(1)
 const totalItens = ref(0)
 
@@ -112,9 +116,10 @@ async function buscarArtigos() {
     isLoading.value = true
     const response = await ArtigoService.getAllPaginated(
       currentPage.value,        
-      itemsPerPage,         
+      itemsPerPage.value,         
       categoriaArtigoId.value,  
-      false
+      false,
+      true
     )
     
     const data = response.data
@@ -131,12 +136,17 @@ async function buscarArtigos() {
   }
 }
 
-onMounted(() => {
-  buscarArtigos()
+onMounted(async() => {
+   await buscarArtigos()
 })
 
 watch([currentPage, categoriaArtigoId], () => {
   buscarArtigos()
+})
+
+watch(() => props.categoriaId, (newValue) => {
+  categoriaArtigoId.value = newValue
+  currentPage.value = 1
 })
 </script>
 

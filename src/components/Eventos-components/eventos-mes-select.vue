@@ -33,7 +33,6 @@ const format = (d) => {
 }
 
 watch(selected, (val) => {
-  console.log(val);
   emit('update:mes', val?.value)
 })
 
