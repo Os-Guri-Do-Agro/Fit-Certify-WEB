@@ -78,7 +78,8 @@
         </h2>
         <p class="text-[0.875em] lg:text-[1em] xl:text-[1.25em]
         w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]">
-          Vai competir? Consulte o seu médico, receba seu certificado e valide ele na FitCertify365. Nós organizar e aplicamos seu certificado nas principais provas do Brasil e do mundo.
+          Vai competir? Consulte seu médico, emita seu certificado de aptidão física e valide-o na FitCertify365.
+Com poucos cliques, você aplica seu certificado nas principais provas do Brasil e do mundo — com validade digital, segurança e praticidade.
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">

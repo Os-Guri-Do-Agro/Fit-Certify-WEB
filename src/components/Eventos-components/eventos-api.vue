@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, watchEffect } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import EventosService from '../../services/Eventos/eventos-services'
 
