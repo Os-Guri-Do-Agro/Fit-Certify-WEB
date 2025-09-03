@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full min-h-50 md:min-h-80 bg-cyan-400 flex items-center justify-center">
+  <div
+    class="w-full min-h-50 md:min-h-80 bg-cyan-400 flex items-center justify-center"
+  >
     <div class="container text-center px-5 md:px-20 lg:px-30">
       <h1
         class="text-white text-[1.3em] md:text-[2em] lg:text-[2.5em] font-bold"
@@ -329,7 +331,7 @@
           <p class="my-5 leading-relaxed">
             Estes Termos serão regidos pelas leis brasileiras, respeitando
             também legislações internacionais aplicáveis à proteção de dados
-            (como GDPR e HIPAA, quando aplicável).
+            (como GDPR, HIPAA e LGPD quando aplicável).
           </p>
           <div class="w-full h-2 bg-sky-100 rounded-lg mt-5 mb-0"></div>
         </div>
