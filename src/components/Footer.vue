@@ -65,6 +65,7 @@ import { RouterLink } from 'vue-router';
 
             <span class="text-white text-[0.75em] lg:text-[0.9em]">
                 © FitCertify365 2025
+                <RouterLink class="hover:underline ml-2" to="/termosprivacidade">Política de Privacidade</RouterLink>
             </span>
             </div>
         </section>

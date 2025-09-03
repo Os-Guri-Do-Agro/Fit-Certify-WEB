@@ -16,6 +16,7 @@ import MarketplaceDetalhes from '../pages/MarketplaceDetalhes.vue'
 import Login from '../pages/Login.vue' 
 import Cadastro from '../pages/Cadastro.vue'
 import Teste from '../pages/teste.vue'
+import TermosPrivacidade from '../pages/TermosPrivacidade.vue'
 
 
 const routes: RouteRecordRaw[] = [
@@ -32,7 +33,8 @@ const routes: RouteRecordRaw[] = [
   {path: '/artigo/:id', name: 'ArtigoDetalhe', component: ArtigoDetalhes,},
   {path: '/evento/:id', name: 'EventoDetalhe', component: EventoDetalhes,},
   {path: '/marketplace/:id', name: 'MarketDetalhes', component: MarketplaceDetalhes,},
-  {path: '/teste', name: 'Teste', component: Teste,}
+  {path: '/teste', name: 'Teste', component: Teste,},
+  {path: '/termosprivacidade', name: 'TermosPrivacidade', component: TermosPrivacidade,}
 ]
 
 const router = createRouter({
