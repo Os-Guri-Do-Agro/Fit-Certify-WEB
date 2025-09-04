@@ -198,10 +198,10 @@
             >Veja nossos parceiros</router-link
         >
 
-                <router-link
+                <a
             class="text-[0.93em] font-[500] w-[192px] lg:w-[230px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 items-center justify-center mb-[32px] md:mb-0 hidden lg:flex"
-            to='/cadastro'
-            >Me Cadastrar</router-link
+            href="https://fit-certify-admin.vercel.app/register"
+            >Me Cadastrar</a
         >
     </div>
   </section>

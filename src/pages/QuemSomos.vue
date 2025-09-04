@@ -237,7 +237,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-start justify-center gap-6 mt-5">
+            <div class="hidden md:flex flex-wrap items-start justify-center gap-6 mt-5">
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
                         src="../assets/quems-imgs/perfil-01.jpg" alt="">
@@ -281,13 +281,8 @@
                 </div>
             </div>
 
-
-
-            <div class="w-full gap-3 justify-center flex mb-10 mt-10">
-                <div class="w-3 h-3 rounded-2xl bg-lime-500 cursor-pointer"></div>
-                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
-                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
-                <div class="w-3 h-3 rounded-2xl bg-lime-400 cursor-pointer"></div>
+            <div class="flex md:hidden flex-wrap items-start justify-center gap-6 mt-5">
+                <CarouselThird />
             </div>
 
         </div>
@@ -383,4 +378,5 @@
 <script setup>
 import Carousel from '../components/QuemS-components/QuemS-Carousel-First.vue'
 import CarouselSecond from '../components/QuemS-components/QuemS-Carousel-second.vue';
+import CarouselThird from '../components/QuemS-components/QuemSomos-Carousel-third.vue';
 </script>

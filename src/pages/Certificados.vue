@@ -72,10 +72,10 @@
                     </div>
 
                     <div class="">
-                        <router-link
+                        <a
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/cadastro'
-                        >Iniciar</router-link>                        
+                            href="https://fit-certify-admin.vercel.app/register"
+                        >Iniciar</a>                        
                     </div>
                 </div>
 
@@ -90,10 +90,10 @@
                     </div>
 
                     <div class="">
-                        <router-link
+                        <a
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/cadastro'
-                        >Iniciar</router-link>                        
+                            href="https://fit-certify-admin.vercel.app/register"
+                        >Iniciar</a>                        
                     </div>
                 </div>
 
@@ -109,10 +109,10 @@
                     </div>
 
                     <div class="">
-                        <router-link
+                        <a
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/cadastro'
-                        >Iniciar</router-link>                        
+                            href="https://fit-certify-admin.vercel.app/register"
+                        >Iniciar</a>                        
                     </div>
                 </div>
 
@@ -127,10 +127,10 @@
                     </div>
 
                     <div class="">
-                        <router-link
+                        <a
                              class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-                            to='/cadastro'
-                        >Iniciar</router-link>                        
+                            href="https://fit-certify-admin.vercel.app/register"
+                        >Iniciar</a>                        
                     </div>
                 </div>
 

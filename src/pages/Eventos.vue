@@ -11,9 +11,9 @@
     </div>
   </section>
 
-  <section class="w-full flex justify-center p-5 lg:p-10">
-    <div class="container h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
-      <div class="container w-full p-5 md:p-10">
+  <section class="w-full flex justify-center ">
+    <div class="w-full  lg:h-[240px] flex justify-center items-center bg-sky-50">
+      <div class=" w-full p-5 md:p-10">
         <h2
           class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
           Corridas e provas que reconhecem sua saúde em dia
@@ -132,6 +132,7 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
+import { RouterLink } from 'vue-router'
 import Eventos from '../components/Eventos-components/eventos-api.vue'
 import SelectProva from '../components/Eventos-components/eventos-prova-select.vue'
 import Localidade from '../components/Eventos-components/eventos-local-select.vue'
