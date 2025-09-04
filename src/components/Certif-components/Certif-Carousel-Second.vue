@@ -10,6 +10,7 @@
                         </h4>
                         <p class="text-[1em]">
                             Endurance e provas combinadas
+                            Inclui exames opcionais
                         </p>                        
                     </div>
 
