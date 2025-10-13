@@ -37,7 +37,10 @@
     
     <!-- BOTÕES -->
     <div class="flex flex-col md:flex-row w-full xl:max-w-[500px] 2xl:max-w-[658px] items-stretch md:items-end flex-wrap gap-3 md:gap-5 justify-between">
-      <button v-if="!loadingProduto" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
+      <a v-if="!loadingProduto && produto?.linkSiteEmpresa" :href="produto.linkSiteEmpresa" target="_blank" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300 flex items-center justify-center">
+        Gerar cupom
+      </a>
+      <button v-else-if="!loadingProduto" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
         Gerar cupom
       </button>
       <div v-else class="w-full md:max-w-[211px] h-[55px] bg-gray-300 rounded-[30px] animate-pulse"></div>
@@ -311,6 +314,7 @@ const loadProduto = async (id: string) => {
   try {
     const response = await ProdutosServices.getProdutoById(id)
     produto.value = response.data
+    console.log(produto.value)
     empresa.value = response.data?.empresa
   } catch (error) {
     console.error('Erro ao carregar produto:', error)
