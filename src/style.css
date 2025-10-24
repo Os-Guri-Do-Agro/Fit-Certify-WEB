@@ -12,3 +12,38 @@
 .container {
   @apply w-full max-w-[1560px] ;
 }
+
+/* Swiper Custom Styles */
+swiper-container {
+  --swiper-navigation-color: #06b6d4;
+  --swiper-pagination-color: #06b6d4;
+  --swiper-navigation-size: 24px;
+}
+
+swiper-container::part(button-next),
+swiper-container::part(button-prev) {
+  background: rgba(6, 182, 212, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-top: 0;
+  transform: translateY(-50%);
+}
+
+swiper-container::part(button-next):hover,
+swiper-container::part(button-prev):hover {
+  background: rgba(6, 182, 212, 0.4);
+}
+
+swiper-container::part(pagination) {
+  bottom: 16px;
+}
+
+swiper-container::part(bullet) {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+swiper-container::part(bullet-active) {
+  background: #06b6d4;
+}
