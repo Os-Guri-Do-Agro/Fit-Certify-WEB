@@ -69,7 +69,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white backdrop-blur-[5px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5"
       >
         <div
           class="p-5 transition-all flex gap-1 flex-col"
@@ -80,9 +80,10 @@
           <p class="font-semibold text-[18px] text-white mb-1">
             {{ headerInfo.title }}
           </p>
-          <li class="ml-5">
+          <li class="ml-5 hidden md:list-item">
             {{ headerInfo.desc }}
           </li>
+          <p class="flex md:hidden">{{ headerInfo.desc }}</p>
         </div>
       </div>
     </div>
