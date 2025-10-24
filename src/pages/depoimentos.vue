@@ -71,7 +71,7 @@
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white backdrop-blur-[5px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5"
       >
-        <div 
+        <div
           class="p-5 transition-all flex gap-1 flex-col"
           v-for="(headerInfo, index) in headerInfos"
           :key="index"
@@ -154,47 +154,18 @@
       <div class="mb-10">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Como Funciona</h2>
       </div>
-      <div
-        class="grid grid-cols-1 grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-5"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div
           class="bg-gradient-to-b from-cyan-900/50 to-transparent duration-300 hover:-translate-y-5 flex flex-col p-10 gap-4 rounded-[30px]"
+          v-for="(comoFunciona, index) in comoFunciona"
+          :key="index"
         >
-          <i class="fa-solid fa-pen-to-square text-[36px] text-cyan-400"></i>
-          <span class="text-white text-[24px] font-semibold"
-            >Rápido e fácil</span
-          >
-          <p class="text-white">
-            Preencha um cadastro simples com nome, e-mail e WhatsApp. Pronto!
-            Sua conta já está ativa e seu passaporte de aptidão física começa a
-            agregar seus dados de saúde.
-          </p>
-        </div>
-        <div
-          class="bg-gradient-to-b from-cyan-900/50 to-transparent duration-300 hover:-translate-y-5 flex flex-col p-10 gap-4 rounded-[30px]"
-        >
-          <i class="fa-solid fa-code-fork text-[36px] text-cyan-400"></i>
-          <span class="text-white text-[24px] font-semibold"
-            >Conecte seus exames</span
-          >
-          <p class="text-white">
-            Envie seus laudos ou conecte fontes compatíveis. O app organiza,
-            valida e cria seu documento digital com histórico inteligente e
-            prazos de validade.
-          </p>
-        </div>
-        <div
-          class="bg-gradient-to-b from-cyan-900/50 to-transparent duration-300 hover:-translate-y-5 flex flex-col p-10 gap-4 rounded-[30px]"
-        >
-          <i class="fa-solid fa-trophy text-[36px] text-cyan-400"></i>
-          <span class="text-white text-[24px] font-semibold"
-            >Pronto para apresentar</span
-          >
-          <p class="text-white">
-            Veja seu status de aptidão em tempo real, receba lembretes antes de
-            vencer e mostre o passaporte online ou offline nas principais
-            provas. Além de várias vantagens que estamos implementando para sua
-            comodidade.
+          <i :class="`${comoFunciona.icon} text-[36px] text-cyan-400`"></i>
+          <span class="text-white text-[18px] md:text-[24px] font-semibold">{{
+            comoFunciona.title
+          }}</span>
+          <p class="text-white text-[12px] md:text-[16px">
+            {{ comoFunciona.desc }}
           </p>
         </div>
       </div>
@@ -395,6 +366,24 @@ const headerInfos = [
     icon: "fa-solid fa-pen-to-square",
     title: "Segurança Garantida",
     desc: "Seus dados protegidos, com acesso rápido e de forma segura.",
+  },
+];
+
+const comoFunciona = [
+  {
+    icon: "fa-solid fa-pen-to-square",
+    title: "Rápido e fácil",
+    desc: "Preencha um cadastro simples com nome, e-mail e WhatsApp. Pronto! Sua conta já está ativa e seu passaporte de aptidão física começa a agregar seus dados de saúde.",
+  },
+  {
+    icon: "fa-solid fa-code-fork",
+    title: "Conecte seus exames",
+    desc: "Envie seus laudos ou conecte fontes compatíveis. O app organiza, valida e cria seu documento digital com histórico inteligente e prazos de validade.",
+  },
+  {
+    icon: "fa-solid fa-trophy",
+    title: "Pronto para apresentar",
+    desc: "Veja seu status de aptidão em tempo real, receba lembretes antes de vencer e mostre o passaporte online ou offline nas principais provas. Além de várias vantagens que estamos implementando para sua comodidade.",
   },
 ];
 
