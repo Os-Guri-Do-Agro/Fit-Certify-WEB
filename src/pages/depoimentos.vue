@@ -194,7 +194,7 @@
         class="flex flex-col items-center justify-center gap-5"
       >
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-user text-[20px] text-cyan-400"></i>
@@ -210,7 +210,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-envelope text-[20px] text-cyan-400"></i>
@@ -226,7 +226,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105 group-*"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-brands fa-whatsapp text-[20px] text-cyan-400"></i>
@@ -337,7 +337,7 @@ onMounted(() => {
   headerSwiperInstance.value = new Swiper(".swiper", {
     modules: [Autoplay, EffectFade],
     autoplay: {
-      delay: 3000,
+      delay: 9000,
       disableOnInteraction: false,
     },
     effect: "fade",
@@ -413,5 +413,10 @@ const depoimentos = [
 swiper-container::part(button-prev),
 swiper-container::part(button-next) {
   display: none;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>
