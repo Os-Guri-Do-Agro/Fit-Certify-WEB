@@ -17,7 +17,9 @@ import Login from "../pages/Login.vue";
 import Cadastro from "../pages/Cadastro.vue";
 import Teste from "../pages/teste.vue";
 import TermosPrivacidade from "../pages/TermosPrivacidade.vue";
-import Depoimentos from "../pages/depoimentos.vue";
+import DepoimentosM from "../pages/depoimentosM.vue";
+import DepoimentosF from '../pages/depoimentosF.vue'
+import Obrigado from "../pages/Obrigado.vue";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
@@ -43,7 +45,9 @@ const routes: RouteRecordRaw[] = [
     name: "TermosPrivacidade",
     component: TermosPrivacidade,
   },
-  { path: "/depoimentos", name: "Depoimentos", component: Depoimentos },
+  { path: "/depoimentosM", name: "DepoimentosM", component: DepoimentosM },
+    { path: "/depoimentosF", name: "DepoimentosF", component: DepoimentosF },
+    { path: "/obrigado", name: "obrigado", component: Obrigado },
 ];
 
 const router = createRouter({

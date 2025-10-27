@@ -5,14 +5,18 @@ import router from './router/index'
 import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
 import { register } from 'swiper/element/bundle'
-
-
+import PrimeVue from 'primevue/config'
+import ToastService from 'primevue/toastservice'
+import Toast from 'primevue/toast'
 
 register();
 
 const app = createApp(App);
 app.use(router)
 app.use(ElementPlus)
+app.use(PrimeVue)
+app.use(ToastService)
+app.component('Toast', Toast)
 app.mount('#app') 
 
 

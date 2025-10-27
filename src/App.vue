@@ -10,7 +10,9 @@ const showLayout = computed(() => {
   return (
     route.path !== "/login" &&
     route.path !== "/cadastro" &&
-    route.path !== "/depoimentos"
+    route.path !== "/depoimentosM" &&
+    route.path !== "/depoimentosF" &&
+    route.path !== "/obrigado"
   );
 });
 </script>

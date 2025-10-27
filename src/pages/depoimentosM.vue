@@ -3,24 +3,11 @@
     class="relative w-full h-auto overflow-hidden flex items-center justify-center bg-gradient-to-r from-black to-neutral-900 py-10"
   >
     <div class="absolute right-0 top-0 w-full lg:w-[50%] h-full">
-      <div class="swiper w-full h-full">
-        <div class="swiper-wrapper w-full h-full">
-          <div class="swiper-slide w-full h-full">
-            <img
-              src="../assets/novaJanela-imgs/header-01.png"
-              alt="Slide 1"
-              class="w-full h-full object-cover object-flex-right sm:object-right"
-            />
-          </div>
-          <div class="swiper-slide w-full h-full">
-            <img
-              src="../assets/novaJanela-imgs/header-02.png"
-              alt="Slide 2"
-              class="w-full h-full object-cover object-flex-right sm:object-right"
-            />
-          </div>
-        </div>
-      </div>
+      <img
+        src="../assets/novaJanela-imgs/header-01.png"
+        alt="Header"
+        class="w-full h-full object-cover object-flex-right sm:object-right"
+      />
 
       <div
         class="absolute inset-0 bg-gradient-to-r from-black/90 to-black-30 z-10"
@@ -62,6 +49,7 @@
         </p>
 
         <button
+          @click="scrollToForm"
           class="bg-cyan-500 hover:bg-cyan-300 text-black font-semibold rounded-full px-8 py-3 lg:text-[18px] md:text-[16px] text-[12px] w-fit transition-all shadow-lg shadow-cyan-500/20 mb-12 cursor-pointer duration-300 hover:-translate-y-1"
         >
           Faça o seu cadastro!
@@ -174,6 +162,7 @@
   </section>
 
   <section
+    id="formulario"
     class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
   >
     <div
@@ -242,6 +231,7 @@
           />
         </label>
 
+
         <button
           type="submit"
           class="bg-cyan-500 hover:bg-cyan-300 text-black font-medium rounded-full px-8 py-3 text-lg transition-all shadow-lg shadow-cyan-500/20 mt-5 text-[18px] md:text-[24px] cursor-pointer hover:-translate-y-1 duration-300"
@@ -251,6 +241,8 @@
       </form>
     </div>
   </section>
+
+  <Toast position="top-right" />
 
   <footer
     class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 pt-20 pb-10 px-5 backdrop-blur-[5px]"
@@ -307,6 +299,11 @@ import Swiper from "swiper";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { useToast } from 'primevue/usetoast';
+import { useRouter } from 'vue-router';
+
+const toast = useToast();
+const router = useRouter();
 
 const form = reactive({
   nome: "",
@@ -314,10 +311,32 @@ const form = reactive({
   whatsapp: "",
 });
 
+function EnviarCadastro() {
+  // const nome = form.nome;
+  // const email = form.email;
+  // const whatsapp = form.whatsapp;
+
+  
+  toast.add({
+    severity: 'success',
+    summary: '🎉 Cadastro Realizado!',
+    detail: 'Seus dados foram enviados com sucesso. Em breve entraremos em contato!',
+    life: 4000
+  });
+  
+  // form.nome = "";
+  // form.email = "";
+  // form.whatsapp = "";
+  
+  setTimeout(() => {
+    router.push('/obrigado');
+  }, 1000);
+}
+
 const headerSwiperInstance = ref(null);
 
 const submitForm = () => {
-  console.log("Dados do formulário:", form);
+  EnviarCadastro();
 };
 
 const nextSlide = () => {
@@ -332,6 +351,10 @@ const prevSlide = () => {
   if (swiperEl && swiperEl.swiper) {
     swiperEl.swiper.slidePrev();
   }
+};
+
+const scrollToForm = () => {
+  document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
 };
 
 onMounted(() => {
