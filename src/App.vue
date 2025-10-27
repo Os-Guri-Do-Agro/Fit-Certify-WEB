@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import TheHeader from './components/TheHeader.vue';
-import Footer from './components/Footer.vue';
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import TheHeader from "./components/TheHeader.vue";
+import Footer from "./components/Footer.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-
-
 const showLayout = computed(() => {
-  return route.path !== '/login' && route.path !== '/cadastro';
+  return (
+    route.path !== "/login" &&
+    route.path !== "/cadastro" &&
+    route.path !== "/depoimentosM" &&
+    route.path !== "/depoimentosF" &&
+    route.path !== "/obrigado"
+  );
 });
 </script>
 

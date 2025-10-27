@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
     "@primeuix/themes": "^1.2.3",
