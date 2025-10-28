@@ -1,37 +1,65 @@
 <template>
-  <section
-    class="relative w-full h-auto overflow-hidden flex items-center justify-center bg-gradient-to-r from-black to-neutral-900 py-10"
+<div class="bg-black">
+  <section class="flex md:hidden items-center justify-center bg-black py-5 px-5 w-full pt-10 pb-5">
+    <router-link to="/" class="flex justify-center items-center">
+      <img src="/Logo-Grande.png" alt="Logo" class="w-full max-w-[80%] sm:max-w-full" />
+    </router-link>
+  </section>
+
+<section class="relative w-full h-auto flex md:hidden">
+  <img
+    class="w-full h-full object-cover"
+    src="../../../assets/novaJanela-imgs/banner-mobileF.jpg"
+    alt=""
   >
-    <div class="absolute right-0 top-0 w-full lg:w-[50%] h-full">
+
+
+  <h1 class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-3xl   font-bold drop-shadow-lg text-center w-full max-w-[80%]">
+              Agora, você 
+          vai mais longe!
+  </h1>
+</section>
+
+
+
+  <section
+    class="relative w-full h-screen md:h-auto overflow-hidden md:flex items-center justify-center bg-gradient-to-r from-black to-neutral-900 py-10 hidden"
+  >
+
+    <div class="absolute right-0 top-0 w-full lg:w-[100%] h-full header-image-container ">
       <img
         src="../../../assets/novaJanela-imgs/header-02.png"
         alt="Header"
-        class="w-full h-full object-cover object-flex-right sm:object-right"
+        class="w-full h-full object-cover object-right hidden md:block"
       />
 
       <div
-        class="absolute inset-0 bg-gradient-to-r from-black/90 to-black-30 z-10"
+        class="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent z-10 hidden md:flex"
       ></div>
 
-      <div
-        class="absolute left-0 top-0 h-full w-48 bg-gradient-to-l from-zinc-950/90 to-transparent"
-      ></div>
+      <div class="absolute bottom-8 sm:bottom-10 left-0 right-0 z-20 flex flex-col justify-center md:hidden px-10">
+        <h1 class="text-4xl font-extrabold leading-tight text-white text-center px-5">
+          Agora, você <br />
+          vai mais longe!
+        </h1>
+      </div>
+
     </div>
 
     <div
-      class="relative z-20 w-full max-w-7xl px-6 md:px-16 lg:px-24 text-white flex flex-col justify-center"
+      class="container px-5 sm:px-10 md:header relative z-20 w-full  text-white flex flex-col justify-center "
     >
       <div
-        class="backdrop-blur-[2px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent w-full lg:w-[60%] p-10 mb-10"
+        class="backdrop-blur-[2px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent w-full lg:w-[60%] p-10 hidden md:flex flex-col"
       >
-             <div class="">
+      <div class="">
               <router-link to="/" class="inline-block">
         <img src="/Logo-Grande.png" alt="Logo" class="w-50 lg:w-70 mb-5" />
       </router-link>
       </div>
 
         <h1
-          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6"
+          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6 "
         >
           Agora, você <br />
           vai mais longe!
@@ -46,9 +74,9 @@
           >
           está te esperando! Vamos facilitar sua vida antes das provas: sem
           correria, sem certificados perdidos, sem retrabalho e sem gastar duas
-          vezes. <br />
+          vezes. 
           <span class="font-semibold text-white"
-            >Seja o primeiro! Entre na lista de espera!</span
+            >Seja o primeira! Entre na lista de espera!</span
           >
         </p>
 
@@ -61,7 +89,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5"
+        class="md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full hidden"
       >
         <div
           class="p-5 transition-all flex gap-1 flex-col"
@@ -78,14 +106,61 @@
           <p class="flex md:hidden">{{ headerInfo.desc }}</p>
         </div>
       </div>
+      </div>
+
+
+
+  </section>
+
+
+  <section class="flex flex-col md:hidden bg-black">
+    <div class="flex flex-col items-center justify-center px-10 ">
+                      <p
+          class="text-[14px] md:text-[16px] lg:text-[18px] text-zinc-300 max-w-xl mb-8 leading-relaxed text-center"
+        >
+          Seu
+          <span class="font-semibold text-white"
+            >passaporte digital de aptidão esportiva</span
+          >
+          está te esperando! Vamos facilitar sua vida antes das provas: sem
+          correria, sem certificados perdidos, sem retrabalho e sem gastar duas
+          vezes. 
+          <span class="font-semibold text-white"
+            >Seja o primeira! Entre na lista de espera!</span
+          >
+        </p>
+                <button
+          @click="scrollToForm"
+          class="bg-cyan-500 hover:bg-cyan-300 text-black font-semibold rounded-full px-8 py-3 lg:text-[18px] md:text-[16px] text-[12px] w-fit transition-all shadow-lg shadow-cyan-500/20 mb-12 cursor-pointer duration-300 hover:-translate-y-1"
+        >
+          Faça o seu cadastro!
+        </button>
     </div>
+                <div
+        class="grid md:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full"
+      >
+        <div
+          class="p-5 transition-all flex gap-1 flex-col"
+          v-for="(headerInfo, index) in headerInfos"
+          :key="index"
+        >
+          <i :class="`${headerInfo.icon} text-[18px] mb-2`"></i>
+          <p class="font-semibold text-[18px] text-white mb-1">
+            {{ headerInfo.title }}
+          </p>
+          <li class="ml-5 hidden md:list-item">
+            {{ headerInfo.desc }}
+          </li>
+          <p class="flex md:hidden">{{ headerInfo.desc }}</p>
+        </div>
+      </div>
   </section>
 
   <section
-    class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
-    <div class="container">
-      <div class="mb-10">
+    <div class="container px-5 sm:px-10 md:depoimentos">
+      <div class="mb-10 text-center md:text-start">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Depoimentos</h2>
       </div>
       <div
@@ -141,10 +216,10 @@
   </section>
 
   <section
-    class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
-    <div class="container">
-      <div class="mb-10">
+    <div class="container px-5 sm:px-10 md:comoFunciona">
+      <div class="mb-10 text-center md:text-start">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Como Funciona</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -153,11 +228,11 @@
           v-for="(comoFunciona, index) in comoFunciona"
           :key="index"
         >
-          <i :class="`${comoFunciona.icon} text-[36px] text-cyan-400`"></i>
-          <span class="text-white text-[18px] md:text-[24px] font-semibold">{{
+          <i :class="`${comoFunciona.icon} text-[28px] lg:text-[36px] text-cyan-400`"></i>
+          <span class="text-white text-[18px] md:text-[22px] font-semibold">{{
             comoFunciona.title
           }}</span>
-          <p class="text-white text-[12px] md:text-[16px">
+          <p class="text-white text-[12px] md:text-[14px">
             {{ comoFunciona.desc }}
           </p>
         </div>
@@ -167,28 +242,27 @@
 
   <section
     id="formulario"
-    class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 py-20 px-5 sm:px-10 md:px-0"
   >
+  <div class="container  md:px-10">
     <div
-      class="container bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px]"
+      class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px] px-5 "
     >
-      <div class="mb-10 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-5">
-          Faça parte da revolução esportiva
+      <div class=" text-center">
+        <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white">
+          Faça parte dessa revolução esportiva
         </h2>
-        <span class="text-white text-[13px] md:text-[16px]"
-          >Informe seus dados para que possamos entrar em contato.</span
         >
       </div>
-      <div class="w-full flex items-center justify-center my-20">
-        <div class="w-[5%] h-[3px] bg-cyan-400 rounded-full"></div>
+      <div class="w-full flex items-center justify-center py-10 md:my-10">
+        <div class="w-[20%] md:w-[5%] h-[3px] bg-cyan-400 rounded-full"></div>
       </div>
       <form
         @submit.prevent="submitForm"
         class="flex flex-col items-center justify-center gap-5"
       >
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-user text-[20px] text-cyan-400"></i>
@@ -204,7 +278,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-envelope text-[20px] text-cyan-400"></i>
@@ -220,7 +294,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105 group-*"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105 group-*"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-brands fa-whatsapp text-[20px] text-cyan-400"></i>
@@ -253,12 +327,13 @@
         </button>
       </form>
     </div>
+    </div>
   </section>
 
   <Toast position="top-right" />
 
   <footer
-    class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 pt-20 pb-10 px-5 backdrop-blur-[5px]"
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 pb-10 px-5 backdrop-blur-[5px]"
   >
     <div class="container">
       <div
@@ -270,7 +345,21 @@
           >
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+        <div class="flex md:hidden gap-4">
+          <a href="https://www.instagram.com/fitcertify365" target="_blank"
+            class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
+          >
+            <i class="fab fa-instagram text-white text-[17px]"></i>
+        </a>
+          <a href="https://www.facebook.com/profile.php?id=61581850576820" target="_blank"
+            class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
+          >
+            <i class="fab fa-facebook text-white text-[17px]"></i>
+      </a>
+
+
+        </div>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <a
             class="text-neutral-500/50 hover:underline text-sm md:text-base"
             href="https://fitcertify365.com/#/termosprivacidade"
@@ -279,31 +368,24 @@
           >
         </div>
 
-        <div class="flex gap-4">
-          <div
+                <div class="md:flex hidden gap-4">
+          <a href="https://www.instagram.com/fitcertify365" target="_blank"
             class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
           >
-            <i class="fab fa-instagram text-white text-[18px]"></i>
-          </div>
-          <div
+            <i class="fab fa-instagram text-white text-[17px]"></i>
+        </a>
+          <a href="https://www.facebook.com/profile.php?id=61581850576820" target="_blank"
             class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
           >
-            <i class="fa-solid fa-globe text-white text-[18px]"></i>
-          </div>
-          <div
-            class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
-          >
-            <i class="fab fa-twitter text-white text-[18px]"></i>
-          </div>
-          <div
-            class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
-          >
-            <i class="fab fa-youtube text-white text-[18px]"></i>
-          </div>
+            <i class="fab fa-facebook text-white text-[17px]"></i>
+      </a>
+
+
         </div>
       </div>
     </div>
   </footer>
+  </div>
 </template>
 
 <script setup>
@@ -314,7 +396,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { useToast } from 'primevue/usetoast';
 import { useRouter } from 'vue-router';
-import ctaService from "../../../services/cta/cta-service.ts";
+import ctaService from "../../../services/cta/cta-service";
 
 const toast = useToast();
 const router = useRouter();
@@ -479,5 +561,32 @@ swiper-container::part(button-next) {
 input:focus {
   outline: none;
   box-shadow: none;
+}
+
+  .depoimentos{
+    padding: 0 100px 0px 100px;
+  }
+
+  .header {
+    padding: 0 100px 0px 100px;
+  }
+
+  .comoFunciona{
+    padding: 0 100px 0px 100px;
+  }
+
+  .facaParte{
+    padding: 0 100px 0px 100px!important;
+  }
+
+
+.header-image-container {
+  max-width: 1500px!important;
+}
+
+@media (min-width: 1024px) {
+  .header-image-container {
+    max-width: none;
+  }
 }
 </style>

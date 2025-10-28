@@ -1,5 +1,5 @@
 <template>
-
+<div class="bg-black">
   <section class="flex md:hidden items-center justify-center bg-black py-5 px-5 w-full pt-10 pb-5">
     <router-link to="/" class="flex justify-center items-center">
       <img src="/Logo-Grande.png" alt="Logo" class="w-full max-w-[80%] sm:max-w-full" />
@@ -160,7 +160,7 @@
     class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
     <div class="container px-5 sm:px-10 md:depoimentos">
-      <div class="mb-10 ">
+      <div class="mb-10 text-center md:text-start">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Depoimentos</h2>
       </div>
       <div
@@ -219,7 +219,7 @@
     class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
     <div class="container px-5 sm:px-10 md:comoFunciona">
-      <div class="mb-10">
+      <div class="mb-10 text-center md:text-start">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Como Funciona</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -249,11 +249,9 @@
       class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px] px-5 "
     >
       <div class=" text-center">
-        <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-5">
+        <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white">
           Faça parte dessa revolução esportiva
         </h2>
-        <span class="text-white text-[13px] md:text-[16px]"
-          >Informe seus dados para que possamos entrar em contato.</span
         >
       </div>
       <div class="w-full flex items-center justify-center py-10 md:my-10">
@@ -264,7 +262,7 @@
         class="flex flex-col items-center justify-center gap-5"
       >
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-user text-[20px] text-cyan-400"></i>
@@ -280,7 +278,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-envelope text-[20px] text-cyan-400"></i>
@@ -296,7 +294,7 @@
         </label>
 
         <label
-          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/20 rounded-[15px] cursor-pointer duration-300 hover:scale-105 group-*"
+          class="w-full max-w-[700px] flex flex-col gap-3 justify-center p-5 bg-gradient-to-b from-cyan-900 to-teal-600/10 rounded-[15px] cursor-pointer duration-300 hover:scale-105 group-*"
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-brands fa-whatsapp text-[20px] text-cyan-400"></i>
@@ -387,6 +385,7 @@
       </div>
     </div>
   </footer>
+  </div>
 </template>
 
 <script setup>
