@@ -8,10 +8,10 @@ const route = useRoute();
 
 const showLayout = computed(() => {
   return (
-    route.path !== "/login" &&
+    // route.path !== "/login" &&
+    // route.path !== "/cadastro" &&
     route.path !== "/cadastro" &&
-    route.path !== "/depoimentosM" &&
-    route.path !== "/depoimentosF" &&
+    route.path !== "/f/cadastro" &&
     route.path !== "/obrigado"
   );
 });
