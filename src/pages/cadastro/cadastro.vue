@@ -157,7 +157,7 @@
   </section>
 
   <section
-    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 py-20 "
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
     <div class="container px-5 sm:px-10 md:depoimentos">
       <div class="mb-10 ">
@@ -216,7 +216,7 @@
   </section>
 
   <section
-    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 py-20 "
+    class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 "
   >
     <div class="container px-5 sm:px-10 md:comoFunciona">
       <div class="mb-10">
