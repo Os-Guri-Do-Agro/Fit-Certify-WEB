@@ -9,7 +9,7 @@
 <section class="relative w-full h-auto flex md:hidden">
   <img
     class="w-full h-full object-cover"
-    src="../../../assets/novaJanela-imgs/banner-mobileF.jpg"
+    src="../../../assets/NovoCadastro-imgs/banner-mobile.jpg"
     alt=""
   >
 
@@ -28,7 +28,7 @@
 
     <div class="absolute right-0 top-0 w-full lg:w-[100%] h-full header-image-container ">
       <img
-        src="../../../assets/novaJanela-imgs/header-02.png"
+        src="../../../assets/NovoCadastro-imgs/header-02.png"
         alt="Header"
         class="w-full h-full object-cover object-right hidden md:block"
       />
@@ -76,7 +76,7 @@
           correria, sem certificados perdidos, sem retrabalho e sem gastar duas
           vezes. 
           <span class="font-semibold text-white"
-            >Seja o primeira! Entre na lista de espera!</span
+            >Seja a primeira! Entre na lista de espera!</span
           >
         </p>
 
@@ -88,12 +88,11 @@
         </button>
       </div>
 
-    <div class="px-5 sm:px-10">
-                <div
-        class="grid md:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full"
+      <div
+        class="md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full hidden"
       >
         <div
-          class=" p-5 transition-all flex gap-1 flex-col"
+          class="p-5 transition-all flex gap-1 flex-col"
           v-for="(headerInfo, index) in headerInfos"
           :key="index"
         >
@@ -106,7 +105,6 @@
           </li>
           <p class="flex md:hidden">{{ headerInfo.desc }}</p>
         </div>
-      </div>
       </div>
       </div>
 
@@ -128,7 +126,7 @@
           correria, sem certificados perdidos, sem retrabalho e sem gastar duas
           vezes. 
           <span class="font-semibold text-white"
-            >Seja o primeira! Entre na lista de espera!</span
+            >Seja o primeiro! Entre na lista de espera!</span
           >
         </p>
                 <button
@@ -138,11 +136,12 @@
           Faça o seu cadastro!
         </button>
     </div>
+    <div class="px-5 sm:px-10">
                 <div
         class="grid md:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full"
       >
         <div
-          class="p-5 transition-all flex gap-1 flex-col"
+          class=" p-5 transition-all flex gap-1 flex-col"
           v-for="(headerInfo, index) in headerInfos"
           :key="index"
         >
@@ -155,6 +154,7 @@
           </li>
           <p class="flex md:hidden">{{ headerInfo.desc }}</p>
         </div>
+      </div>
       </div>
   </section>
 
@@ -248,7 +248,7 @@
   >
   <div class="container  md:px-10">
     <div
-      class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px] "
+      class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px]"
     >
       <div class=" text-center">
         <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white">

@@ -9,7 +9,7 @@
 <section class="relative w-full h-auto flex md:hidden">
   <img
     class="w-full h-full object-cover"
-    src="../../assets/novaJanela-imgs/banner-mobileM.jpg"
+    src="../../assets/NovoCadastro-imgs/banner-mobileM.jpg"
     alt=""
   >
 
@@ -28,7 +28,7 @@
 
     <div class="absolute right-0 top-0 w-full lg:w-[100%] h-full header-image-container ">
       <img
-        src="../../assets/novaJanela-imgs/header-01.png"
+        src="../../assets/NovoCadastro-imgs/header-01.png"
         alt="Header"
         class="w-full h-full object-cover object-right hidden md:block"
       />
