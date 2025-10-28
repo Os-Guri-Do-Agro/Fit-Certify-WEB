@@ -114,7 +114,7 @@
 
 
   <section class="flex flex-col md:hidden bg-black">
-    <div class="flex flex-col items-center justify-center px-10 ">
+    <div class="flex flex-col items-center justify-center px-15 ">
                       <p
           class="text-[14px] md:text-[16px] lg:text-[18px] text-zinc-300 max-w-xl mb-8 leading-relaxed text-center"
         >
@@ -136,11 +136,12 @@
           Faça o seu cadastro!
         </button>
     </div>
+    <div class="px-5 sm:px-10">
                 <div
         class="grid md:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full"
       >
         <div
-          class="p-5 transition-all flex gap-1 flex-col"
+          class=" p-5 transition-all flex gap-1 flex-col"
           v-for="(headerInfo, index) in headerInfos"
           :key="index"
         >
@@ -153,6 +154,7 @@
           </li>
           <p class="flex md:hidden">{{ headerInfo.desc }}</p>
         </div>
+      </div>
       </div>
   </section>
 
@@ -246,7 +248,7 @@
   >
   <div class="container  md:px-10">
     <div
-      class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px] px-5 "
+      class=" bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px]"
     >
       <div class=" text-center">
         <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white">
