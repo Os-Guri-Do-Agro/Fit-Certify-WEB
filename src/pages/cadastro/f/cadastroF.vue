@@ -126,7 +126,7 @@
           correria, sem certificados perdidos, sem retrabalho e sem gastar duas
           vezes. 
           <span class="font-semibold text-white"
-            >Seja o primeiro! Entre na lista de espera!</span
+            >Seja a primeira! Entre na lista de espera!</span
           >
         </p>
                 <button
