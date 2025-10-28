@@ -47,20 +47,20 @@
       <div class="">
         <h3 class="text-white font-medium mb-5">Fique por dentro das novidades da Fitcertify365</h3>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 w-full md:max-w-5xl">
-        <a href="#" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:max-w-5xl items-center">
+        <a href="https://www.instagram.com/fitcertify365 " target="_blank" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
           <i class="fab fa-instagram text-3xl text-cyan-400 mb-4"></i>
           <h3 class="text-white text-lg font-semibold mb-2">Instagram</h3>
         </a>
-        <a href="#" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
+        <!-- <a href="#" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
           <i class="fab fa-youtube text-3xl text-cyan-400 mb-4"></i>
           <h3 class="text-white text-lg font-semibold mb-2">YouTube</h3>
         </a>
         <a href="#" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
           <i class="fab fa-twitter text-3xl text-cyan-400 mb-4"></i>
           <h3 class="text-white text-lg font-semibold mb-2">X / Twitter</h3>
-        </a>
-        <a href="#" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
+        </a> -->
+        <a href="https://www.facebook.com/profile.php?id=61581850576820" target="_blank" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
           <i class="fab fa-facebook text-3xl text-cyan-400 mb-4"></i>
           <h3 class="text-white text-lg font-semibold mb-2">Facebook</h3>
         </a>
@@ -113,8 +113,6 @@ const updateCadastro = async () => {
 };
 
 onMounted(() => {
-  updateCadastro();
-  
   setTimeout(() => {
     const cadastroId = localStorage.getItem('cadastroId');
     if (cadastroId) {

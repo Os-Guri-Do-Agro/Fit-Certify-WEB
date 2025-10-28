@@ -4,7 +4,7 @@
   >
     <div class="absolute right-0 top-0 w-full lg:w-[50%] h-full">
       <img
-        src="../assets/novaJanela-imgs/header-01.png"
+        src="../../assets/novaJanela-imgs/header-01.png"
         alt="Header"
         class="w-full h-full object-cover object-flex-right sm:object-right"
       />
@@ -24,7 +24,11 @@
       <div
         class="backdrop-blur-[2px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent w-full lg:w-[60%] p-10 mb-10"
       >
+      <div class="">
+              <router-link to="/" class="inline-block">
         <img src="/Logo-Grande.png" alt="Logo" class="w-50 lg:w-70 mb-5" />
+      </router-link>
+      </div>
 
         <h1
           class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6"
@@ -310,7 +314,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { useToast } from 'primevue/usetoast';
 import { useRouter } from 'vue-router';
-import ctaService from "../services/cta/cta-service";
+import ctaService from "../../services/cta/cta-service";
 
 const toast = useToast();
 const router = useRouter();

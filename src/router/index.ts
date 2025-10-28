@@ -17,8 +17,8 @@ import Login from "../pages/Login.vue";
 import Cadastro from "../pages/Cadastro.vue";
 import Teste from "../pages/teste.vue";
 import TermosPrivacidade from "../pages/TermosPrivacidade.vue";
-import DepoimentosM from "../pages/depoimentosM.vue";
-import DepoimentosF from '../pages/depoimentosF.vue'
+import DepoimentosM from "../pages/cadastro/depoimentosM.vue";
+import DepoimentosF from '../pages/cadastro/f/depoimentosF.vue'
 import Obrigado from "../pages/Obrigado.vue";
 
 const routes: RouteRecordRaw[] = [
