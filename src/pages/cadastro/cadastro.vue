@@ -2,7 +2,7 @@
   <section
     class="relative w-full h-auto overflow-hidden flex items-center justify-center bg-gradient-to-r from-black to-neutral-900 py-10"
   >
-    <div class="absolute right-0 top-0 w-full lg:w-[50%] h-full">
+    <div class="absolute right-0 top-0 w-full lg:w-[100%] h-full header-image-container">
       <img
         src="../../assets/novaJanela-imgs/header-01.png"
         alt="Header"
@@ -22,7 +22,7 @@
       class="relative z-20 w-full max-w-7xl px-6 md:px-16 lg:px-24 text-white flex flex-col justify-center"
     >
       <div
-        class="backdrop-blur-[2px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent w-full lg:w-[60%] p-10 mb-10"
+        class="backdrop-blur-[2px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent w-full lg:w-[60%] p-10  mb-10"
       >
       <div class="">
               <router-link to="/" class="inline-block">
@@ -31,7 +31,7 @@
       </div>
 
         <h1
-          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6"
+          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6 "
         >
           Agora, você <br />
           vai mais longe!
@@ -46,7 +46,7 @@
           >
           está te esperando! Vamos facilitar sua vida antes das provas: sem
           correria, sem certificados perdidos, sem retrabalho e sem gastar duas
-          vezes. <br />
+          vezes. 
           <span class="font-semibold text-white"
             >Seja o primeiro! Entre na lista de espera!</span
           >
@@ -84,8 +84,8 @@
   <section
     class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
   >
-    <div class="container">
-      <div class="mb-10">
+    <div class="container depoimentos">
+      <div class="mb-10 ">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Depoimentos</h2>
       </div>
       <div
@@ -143,11 +143,11 @@
   <section
     class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
   >
-    <div class="container">
+    <div class="container comoFunciona">
       <div class="mb-10">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Como Funciona</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid bg-amber-400 grid-cols-1 md:grid-cols-3 gap-5">
         <div
           class="bg-gradient-to-b from-cyan-900/50 to-transparent duration-300 hover:-translate-y-5 flex flex-col p-10 gap-4 rounded-[30px]"
           v-for="(comoFunciona, index) in comoFunciona"
@@ -167,14 +167,14 @@
 
   <section
     id="formulario"
-    class="w-full flex justify-center bg-gradient-to-r from-black to-neutral-900 py-20 px-5"
+    class="w-full flex justify-center bg-gradient-to-r from-yellow to-neutral-900 py-20 px-5 facaParte"
   >
     <div
-      class="container bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px]"
+      class="container bg-gradient-to-b from-black/30 to-transparent py-10 rounded-[30px] "
     >
       <div class="mb-10 text-center">
         <h2 class="text-3xl md:text-5xl font-bold text-white mb-5">
-          Faça parte da revolução esportiva
+          Faça parte dessa revolução esportiva
         </h2>
         <span class="text-white text-[13px] md:text-[16px]"
           >Informe seus dados para que possamos entrar em contato.</span
@@ -479,5 +479,28 @@ swiper-container::part(button-next) {
 input:focus {
   outline: none;
   box-shadow: none;
+}
+
+  .depoimentos{
+    padding: 0 100px 0px 100px;
+  }
+
+  .comoFunciona{
+    padding: 0 100px 0px 100px;
+  }
+
+  .facaParte{
+    padding: 0 100px 0px 100px!important;
+  }
+
+
+.header-image-container {
+  max-width: 1500px!important;
+}
+
+@media (min-width: 1024px) {
+  .header-image-container {
+    max-width: none;
+  }
 }
 </style>
