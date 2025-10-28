@@ -191,7 +191,7 @@
             <span class="text-white text-[16px] font-medium">Nome</span>
           </div>
           <input
-            v-model="form.nome"
+            v-model="form.nomeCompleto"
             class="w-full p-2 text-white bg-transparent rounded"
             type="text"
             placeholder="Nome completo *"
@@ -223,10 +223,12 @@
             <span class="text-white text-[16px] font-medium">Whatsapp</span>
           </div>
           <input
-            v-model="form.whatsapp"
+            v-model="form.numberWhatsapp"
             class="w-full p-2 text-white bg-transparent rounded"
             type="tel"
             placeholder="Seu whatsapp *"
+            v-maska="'(##) #####-####'"
+            maxlength="15"
             required
           />
         </label>
@@ -234,9 +236,16 @@
 
         <button
           type="submit"
-          class="bg-cyan-500 hover:bg-cyan-300 text-black font-medium rounded-full px-8 py-3 text-lg transition-all shadow-lg shadow-cyan-500/20 mt-5 text-[18px] md:text-[24px] cursor-pointer hover:-translate-y-1 duration-300"
+          :disabled="loading"
+          :class="[
+            'font-medium rounded-full px-8 py-3 text-lg transition-all shadow-lg mt-5 text-[18px] md:text-[24px] duration-300 flex items-center justify-center gap-2',
+            loading 
+              ? 'bg-gray-500 cursor-not-allowed' 
+              : 'bg-cyan-500 hover:bg-cyan-300 cursor-pointer hover:-translate-y-1 shadow-cyan-500/20'
+          ]"
         >
-          Enviar cadastro!
+          <i v-if="loading" class="fas fa-spinner fa-spin"></i>
+          {{ loading ? 'Enviando...' : 'Enviar cadastro!' }}
         </button>
       </form>
     </div>
@@ -301,41 +310,74 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { useToast } from 'primevue/usetoast';
 import { useRouter } from 'vue-router';
+import ctaService from "../services/cta/cta-service";
 
 const toast = useToast();
 const router = useRouter();
+const loading = ref(false)
 
 const form = reactive({
-  nome: "",
+  nomeCompleto: "",
   email: "",
-  whatsapp: "",
+  numberWhatsapp: "",
+  promocaoRef: "Fitcertify - Cadastre-se Masculino"
 });
 
-function EnviarCadastro() {
-  // const nome = form.nome;
-  // const email = form.email;
-  // const whatsapp = form.whatsapp;
-
-  
-  toast.add({
-    severity: 'success',
-    summary: '🎉 Cadastro Realizado!',
-    detail: 'Seus dados foram enviados com sucesso. Em breve entraremos em contato!',
-    life: 4000
-  });
-  
-  // form.nome = "";
-  // form.email = "";
-  // form.whatsapp = "";
-  
-  setTimeout(() => {
-    router.push('/obrigado');
-  }, 1000);
+const EnviarCadastro = async () => {
+  loading.value = true
+  try{
+    const response = await ctaService.createCta(form)
+    
+    if (response && response.data && response.data.id) {
+      localStorage.setItem('cadastroId', response.data.id)
+    }
+    
+    toast.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Cadastro enviado com sucesso!',
+      life: 3000
+    })
+    
+    setTimeout(() => {
+      router.push('/obrigado')
+    }, 1000)
+  } catch (error) {
+    console.error('Erro ao enviar o cadastro:', error)
+    toast.add({
+      severity: 'error',
+      summary: 'Erro',
+      detail: 'Erro ao enviar o cadastro',
+      life: 3000
+    })
+  } finally {
+    loading.value = false
+  }
 }
 
 const headerSwiperInstance = ref(null);
 
 const submitForm = () => {
+  if (!form.nomeCompleto.trim() || !form.email.trim() || !form.numberWhatsapp.trim()) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Por favor, preencha todos os campos obrigatórios',
+      life: 3000
+    })
+    return
+  }
+  
+  if (form.numberWhatsapp.length < 15) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Por favor, digite o número de WhatsApp completo',
+      life: 3000
+    })
+    return
+  }
+  
   EnviarCadastro();
 };
 
@@ -358,16 +400,7 @@ const scrollToForm = () => {
 };
 
 onMounted(() => {
-  headerSwiperInstance.value = new Swiper(".swiper", {
-    modules: [Autoplay, EffectFade],
-    autoplay: {
-      delay: 9000,
-      disableOnInteraction: false,
-    },
-    effect: "fade",
-    fadeEffect: { crossFade: true },
-    loop: true,
-  });
+  // Inicialização do componente
 });
 
 const headerInfos = [

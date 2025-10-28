@@ -8,6 +8,7 @@ import { register } from 'swiper/element/bundle'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 import Toast from 'primevue/toast'
+import { vMaska } from 'maska/vue'
 
 register();
 
@@ -17,6 +18,7 @@ app.use(ElementPlus)
 app.use(PrimeVue)
 app.use(ToastService)
 app.component('Toast', Toast)
+app.directive('maska', vMaska)
 app.mount('#app') 
 
 

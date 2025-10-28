@@ -98,12 +98,33 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import ctaService from '../services/cta/cta-service';
+
+const updateCadastro = async () => {
+  const cadastroId = localStorage.getItem('cadastroId');
+  if (cadastroId) {
+    try {
+      await ctaService.updateCta(cadastroId);
+      console.log('Cadastro atualizado com sucesso');
+    } catch (error) {
+      console.error('Erro ao atualizar cadastro:', error);
+    }
+  }
+};
 
 onMounted(() => {
-
+  updateCadastro();
+  
   setTimeout(() => {
+    const cadastroId = localStorage.getItem('cadastroId');
+    if (cadastroId) {
+      ctaService.updateCta(cadastroId);
+    }
+  }, 5000);
+  
+  // setTimeout(() => {
     // router.push('/');
-  }, 10000);
+  //}, 10000);
 });
 </script>
 
