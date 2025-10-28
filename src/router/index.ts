@@ -13,12 +13,12 @@ import Contato from "../pages/Contato.vue";
 import ArtigoDetalhes from "../pages/ArtigoDetalhes.vue";
 import EventoDetalhes from "../pages/EventosDetalhes.vue";
 import MarketplaceDetalhes from "../pages/MarketplaceDetalhes.vue";
-import Login from "../pages/Login.vue";
-import Cadastro from "../pages/Cadastro.vue";
+// import Login from "../pages/Login.vue";
+// import Cadastro from "../pages/Cadastro.vue";
 import Teste from "../pages/teste.vue";
 import TermosPrivacidade from "../pages/TermosPrivacidade.vue";
-import DepoimentosM from "../pages/depoimentosM.vue";
-import DepoimentosF from '../pages/depoimentosF.vue'
+import Cadastro from "../pages/cadastro/cadastro.vue";
+import CadastroF from "../pages/cadastro/f/cadastroF.vue";
 import Obrigado from "../pages/Obrigado.vue";
 
 const routes: RouteRecordRaw[] = [
@@ -30,8 +30,8 @@ const routes: RouteRecordRaw[] = [
   { path: "/artigos", name: "Artigos", component: Artigos },
   { path: "/marketplace", name: "Marketplace", component: Marketplace },
   { path: "/contato", name: "Contato", component: Contato },
-  { path: "/login", name: "Login", component: Login },
-  { path: "/cadastro", name: "Cadastro", component: Cadastro },
+  // { path: "/login", name: "Login", component: Login },
+  // { path: "/cadastro", name: "Cadastro", component: Cadastro },
   { path: "/artigo/:id", name: "ArtigoDetalhe", component: ArtigoDetalhes },
   { path: "/evento/:id", name: "EventoDetalhe", component: EventoDetalhes },
   {
@@ -45,8 +45,8 @@ const routes: RouteRecordRaw[] = [
     name: "TermosPrivacidade",
     component: TermosPrivacidade,
   },
-  { path: "/depoimentosM", name: "DepoimentosM", component: DepoimentosM },
-    { path: "/depoimentosF", name: "DepoimentosF", component: DepoimentosF },
+  { path: "/cadastro", name: "Cadastro", component: Cadastro },
+  { path: "/f/cadastro", name: "CadastroF", component: CadastroF },
     { path: "/obrigado", name: "obrigado", component: Obrigado },
 ];
 
