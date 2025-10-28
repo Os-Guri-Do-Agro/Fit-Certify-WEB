@@ -4,7 +4,7 @@
   >
     <div class="absolute right-0 top-0 w-full  h-full">
       <img
-        src="../assets/novaJanela-imgs/obrigado-banner.jpg"
+        src="../assets/NovoCadastro-imgs/obrigado-banner.jpg"
         alt="Header"
         class="w-full h-full object-cover object-flex-right sm:object-right"
       />

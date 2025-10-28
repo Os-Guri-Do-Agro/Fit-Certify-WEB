@@ -9,7 +9,7 @@
 <section class="relative w-full h-auto flex md:hidden">
   <img
     class="w-full h-full object-cover"
-    src="../../../assets/NovoCadastro-imgs/banner-mobile.jpg"
+    src="../../../assets/NovoCadastro-imgs/banner-mobileF.jpg"
     alt=""
   >
 
