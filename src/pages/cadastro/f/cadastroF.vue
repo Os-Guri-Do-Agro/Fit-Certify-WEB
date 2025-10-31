@@ -411,10 +411,19 @@ const form = reactive({
   promocaoRef: "Fitcertify - Cadastre-se Feminino"
 });
 
+const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
 const EnviarCadastro = async () => {
   loading.value = true
   try{
-    const response = await ctaService.createCta(form)
+    const formData = {
+      ...form,
+      numberWhatsapp: form.numberWhatsapp.replace(/\D/g, '')
+    }
+    const response = await ctaService.createCta(formData)
     
     if (response && response.data && response.data.id) {
       localStorage.setItem('cadastroId', response.data.id)
@@ -451,6 +460,16 @@ const submitForm = () => {
       severity: 'warn',
       summary: 'Atenção',
       detail: 'Por favor, preencha todos os campos obrigatórios',
+      life: 3000
+    })
+    return
+  }
+  
+  if (!isValidEmail(form.email)) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Por favor, digite um e-mail válido',
       life: 3000
     })
     return
