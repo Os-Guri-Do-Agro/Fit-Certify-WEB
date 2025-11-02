@@ -29,6 +29,10 @@
           >Inicie seu processo agora</a
         >
       </div>
+      <div class="flex absolute">
+        <modalParabens />
+      </div>
+
     </div>
   </section>
 
@@ -323,31 +327,31 @@
 
         <!-- <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
                         <div class="">
-                            <img class="w-full 
-                            max-w-[126px] md:max-w-[222.8px] 
+                            <img class="w-full
+                            max-w-[126px] md:max-w-[222.8px]
                             h-[66px] md:h-[116.6px]" src="../assets/home-imgs/home-nike-logo.jpg" alt="">
                         </div>
                         <div class="">
-                            <img class="w-full 
-                            max-w-[311.2px] md:max-w-[411.4px] 
+                            <img class="w-full
+                            max-w-[311.2px] md:max-w-[411.4px]
                             h-[62px] md:h-[81.9px]" src="../assets/home-imgs/home-decat-logo.jpg" alt="">
                         </div>
                         <div class="">
-                            <img class="w-full 
-                            max-w-[156.5px] md:max-w-[186.1px] 
+                            <img class="w-full
+                            max-w-[156.5px] md:max-w-[186.1px]
                             h-[58px] md:h-[69px]" src="../assets/home-imgs/home-bt-logo.jpg" alt="">
                         </div>
                         <div class="">
-                            <img class="w-full 
-                            max-w-[156.4px] md:max-w-[186.1px] 
+                            <img class="w-full
+                            max-w-[156.4px] md:max-w-[186.1px]
                             h-[88px] md:h-[69px]" src="../assets/home-imgs/home-gatorade-logo.jpg" alt="">
                         </div>
                         <div class="">
-                            <img class="w-full 
-                            max-w-[168.4px] md:max-w-[184px] 
+                            <img class="w-full
+                            max-w-[168.4px] md:max-w-[184px]
                             h-[60px] md:h-[65.5px]" src="../assets/home-imgs/home-amil-logo.jpg" alt="">
                         </div>
-                       
+
                     </div> -->
 
         <div
@@ -363,3 +367,7 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import modalParabens from '../components/modalParabens.vue';
+</script>
