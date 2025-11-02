@@ -1,76 +1,55 @@
 <template>
   <Dialog :open="dialogFormVisible" class="relative z-50 ">
-    <div class="fixed inset-0 bg-black/30 overflow-hidden" aria-hidden="true" />
+    <div class="fixed inset-0 overflow-hidden" style="background-color: rgba(0, 0, 0, 0.7);" aria-hidden="true" />
     <div class="fixed inset-0 flex items-center justify-center p-4 rounded-2xl">
-      <DialogPanel class="w-full max-w-md bg-white rounded-2xl shadow-lg border-2 border-cyan-400" style="width: min(600px, 100vw)">
-    <div class="bg-white p-8 text-center rounded-2xl">
-      <h2 class="text-2xl font-semibold mb-3 text-gray-800">Nosso <span class="text-cyan-400">aplicativo</span> está pronto!</h2>
-      <p class="text-sm leading-relaxed text-gray-600">
-        Como você chegou primeiro por aqui, vamos te presentear com
-        <strong class="text-cyan-400">1 ano</strong> de aplicativo grátis! <br />
-        Basta preencher o formulário e entraremos em contato.
-      </p>
-    </div>
-    <div class="flex w-full items-center justify-around">
-          <div class="w-full max-w-[55%] h-[2px] bg-cyan-400 rounded-lg"></div>
-    </div>
-
-
-    <form @submit.prevent="cadastrar" class="p-8 bg-white flex flex-col gap-5">
-      <div>
-        <span class="font-bold text-sm text-gray-700">Nome:</span>
-        <input
-          v-model="form.nomeCompleto"
-          placeholder="Nome completo *"
-          type="text"
-          required
-          class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none"
-        />
-      </div>
-
-      <div>
-        <span class="font-bold text-sm text-gray-700">E-mail:</span>
-        <input
-          v-model="form.email"
-          placeholder="Seu melhor e-mail *"
-          type="email"
-          required
-          class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none"
-        />
-      </div>
-
-      <div>
-        <span class="font-bold text-sm text-gray-700">Whatsapp:</span>
-        <input
-          v-model="form.numberWhatsapp"
-          placeholder="Seu whatsapp *"
-          type="tel"
-          v-maska="'(##) #####-####'"
-          maxlength="15"
-          required
-          class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none"
-        />
-      </div>
-
-      <button
-        type="submit"
-        :disabled="loading"
-        @click="cadastrar"
-        class="w-full h-11 bg-cyan-400 hover:bg-cyan-500 text-white font-medium rounded-md cursor-pointer "
-      >
-        <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
-        {{ loading ? 'Enviando...' : 'Cadastrar' }}
-      </button>
-    </form>
-
-    <div class="text-center mx-8 mb-5 text-sm text-gray-500">
-      <span>ou faça seu cadastro com</span>
-      <div class="mt-5">
-        <button @click="console.log('Google')"  class="text-white bg-cyan-400  border-1 w-[120px] h-auto rounded-[50px] cursor-pointer hover:scale-110 duration-300 p-2">
-          <i class="fab fa-google text-xl"></i>
+      <DialogPanel class="w-full max-w-md bg-gray-200 rounded-2xl shadow-lg border-2 border-cyan-400 relative"
+        style="width: min(600px, 100vw)">
+        <button @click="dialogFormVisible = false"
+          class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl font-bold">
+          ×
         </button>
-      </div>
-    </div>
+        <div class="bg-gray-200 p-8 text-center rounded-2xl">
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800">Nosso <span class="text-cyan-400">aplicativo</span> está
+            pronto!</h2>
+          <p class="text-sm leading-relaxed text-gray-600">
+            Como você chegou primeiro por aqui, vamos te presentear com
+            <strong class="text-cyan-400">1 ano</strong> de aplicativo grátis! <br />
+            Basta preencher o formulário e entraremos em contato.
+          </p>
+        </div>
+        <div class="flex w-full items-center justify-around">
+          <div class="w-full max-w-[55%] h-[2px] bg-cyan-400 rounded-lg"></div>
+        </div>
+
+
+        <form @submit.prevent="cadastrar" class="p-8  flex flex-col gap-5">
+          <div>
+            <span class="font-bold text-sm text-gray-700">Nome:</span>
+            <input v-model="form.nomeCompleto" placeholder="Nome completo *" type="text" required
+              class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
+          </div>
+
+          <div>
+            <span class="font-bold text-sm text-gray-700">E-mail:</span>
+            <input v-model="form.email" placeholder="Seu melhor e-mail *" type="email" required
+              class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
+          </div>
+
+          <div>
+            <span class="font-bold text-sm text-gray-700">Whatsapp:</span>
+            <input v-model="form.numberWhatsapp" placeholder="Seu whatsapp *" type="tel" v-maska="'(##) #####-####'"
+              maxlength="15" required
+              class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
+          </div>
+
+          <button type="submit" :disabled="loading" @click="cadastrar"
+            class="w-full h-11 bg-cyan-400 hover:bg-cyan-500 text-white font-medium rounded-md cursor-pointer ">
+            <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
+            {{ loading ? 'Enviando...' : 'Cadastrar' }}
+          </button>
+        </form>
+
+
       </DialogPanel>
     </div>
   </Dialog>
