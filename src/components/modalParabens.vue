@@ -1,13 +1,17 @@
 <template>
-  <Dialog :open="dialogFormVisible" class="relative z-50 ">
+  <Dialog :open="dialogFormVisible" class="relative z-50">
     <div class="fixed inset-0 overflow-hidden" style="background-color: rgba(0, 0, 0, 0.7);" aria-hidden="true" />
     <div class="fixed inset-0 flex items-center justify-center p-4 rounded-2xl">
       <DialogPanel class="w-full max-w-md bg-gray-200 rounded-2xl shadow-lg border-2 border-cyan-400 relative"
         style="width: min(600px, 100vw)">
-        <button @click="dialogFormVisible = false"
-          class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl font-bold">
-          ×
+        <div class="flex justify-end align-center w-full">
+                  <button @click="dialogFormVisible = false"
+          class="hover:text-gray-700 text-xl font-bold p-[5px] rounded-[12px] cursor-pointer border-0 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
+        </div>
+
+
         <div class="bg-gray-200 p-8 text-center rounded-2xl">
           <h2 class="text-2xl font-semibold mb-3 text-gray-800">Nosso <span class="text-cyan-400">aplicativo</span> está
             pronto!</h2>
@@ -63,8 +67,13 @@ import { useToast } from 'primevue/usetoast'
 import { reactive, ref } from 'vue'
 import ctaService from '../services/cta/cta-service'
 
+
 const toast = useToast()
-const dialogFormVisible = ref(true)
+const dialogFormVisible = ref(false)
+
+setTimeout(() => {
+  dialogFormVisible.value = true
+}, 3000)
 const loading = ref(false)
 
 const form = reactive({
