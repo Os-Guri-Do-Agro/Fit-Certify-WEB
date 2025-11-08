@@ -250,9 +250,12 @@
           </div>
 
           <div class="flex items-top flex-col lg:flex-row justify-top">
-            <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
+            <div class=" w-10 flex-shrink-0">
+                          <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
               >1.</span
             >
+            </div>
+
             <p class="text-[1em] lg:text-[1.25em]">
               Cadastre-se na nossa plataforma
             </p>
@@ -281,9 +284,11 @@
           </div>
 
           <div class="flex items-top flex-col lg:flex-row justify-top">
-            <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-              >2.</span
-            >
+            <div class=" w-10 flex-shrink-0">
+              <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
+                >2.</span
+              >
+            </div>
             <p class="text-[1em] lg:text-[1.25em]">
               Agende sua consulta e realize a avaliação presencial exigida para
               emissão do certificado.
@@ -312,9 +317,11 @@
           </div>
 
           <div class="flex items-top flex-col lg:flex-row justify-top">
-            <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-              >3.</span
-            >
+            <div class=" w-10 flex-shrink-0">
+              <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
+                >3.</span
+              >
+            </div>
             <p class="text-[1em] lg:text-[1.25em]">
               Após a consulta, o certificado pode ser emitido por um médico
               parceiro ou enviado por você, se for de um médico particular.
@@ -345,9 +352,11 @@
           </div>
 
           <div class="flex items-top flex-col lg:flex-row justify-top">
-            <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-              >4.</span
-            >
+            <div class=" w-10 flex-shrink-0">
+              <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
+                >4.</span
+              >
+            </div>
             <p class="text-[1em] lg:text-[1.25em]">
               Enquanto seu certificado estiver válido, você pode usá-lo em
               diferentes provas do mesmo perfil, com poucos cliques.
