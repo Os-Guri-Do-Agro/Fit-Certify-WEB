@@ -299,9 +299,9 @@
   </section>
 
   <section
-    class="w-full md:pt-[52px] lg:pt-[72px] flex items-center justify-center bg-sky-50"
+    class="w-full  flex items-center justify-center bg-sky-50"
   >
-    <div class="w-full container md:p-10 lg:p-20 flex">
+    <div class="w-full container px-20 md-px-10 pt-20 pb-10">
       <div class="w-full flex flex-col items-center justify-center gap-[32px]">
         <div
           class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px] mt-[43px] md:mt-0"
@@ -309,63 +309,71 @@
           <h2
             class="text-[1.875em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
           >
-            Produtos e serviços para sua rotina esportiva
+            Apoio Institucional
           </h2>
           <p class="text-[1.125em] lg:text-[1.25em] flex md:hidden lg:flex">
-            Com diferenciais exclusivos para assinantes FITCERTIFY365
+            Parceiros que confiam na nossa plataforma
           </p>
         </div>
 
-        <!-- <div class="w-full flex justify-center items-center flex-col-reverse gap-0 md:gap-[16px] md:flex-col lg:flex-row ">
-                        <div class="w-full  flex items-center justify-center">
-                            <img class="block  w-full   md:max-w-[917px] h-auto md:h-full lg:h-[213px] object-fill md:object-cover" src="../assets/home-imgs/home-nike-banner.jpg" alt=""></img>
-                        </div>
-                        <div class="w-full flex items-center justify-center">
-                            <img class="block  w-full md:max-w-[917px] h-auto lg:h-[213px] md:h-full object-fill md:object-cover" src="../assets/home-imgs/home-gatorade-banner.jpg" alt=""></img>
-                        </div>
-                    </div> -->
-
-        <!-- <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
-                        <div class="">
-                            <img class="w-full
-                            max-w-[126px] md:max-w-[222.8px]
-                            h-[66px] md:h-[116.6px]" src="../assets/home-imgs/home-nike-logo.jpg" alt="">
-                        </div>
-                        <div class="">
-                            <img class="w-full
-                            max-w-[311.2px] md:max-w-[411.4px]
-                            h-[62px] md:h-[81.9px]" src="../assets/home-imgs/home-decat-logo.jpg" alt="">
-                        </div>
-                        <div class="">
-                            <img class="w-full
-                            max-w-[156.5px] md:max-w-[186.1px]
-                            h-[58px] md:h-[69px]" src="../assets/home-imgs/home-bt-logo.jpg" alt="">
-                        </div>
-                        <div class="">
-                            <img class="w-full
-                            max-w-[156.4px] md:max-w-[186.1px]
-                            h-[88px] md:h-[69px]" src="../assets/home-imgs/home-gatorade-logo.jpg" alt="">
-                        </div>
-                        <div class="">
-                            <img class="w-full
-                            max-w-[168.4px] md:max-w-[184px]
-                            h-[60px] md:h-[65.5px]" src="../assets/home-imgs/home-amil-logo.jpg" alt="">
-                        </div>
-
-                    </div> -->
+        <div class="flex items-center justify-center">
+          <img 
+            class="w-[200px] h-auto" 
+            src="../assets/home-imgs/LOGO.png" 
+            alt="Logo Parceiro"
+          />
+        </div>
 
         <div
           class="flex w-full items-center justify-center mt-[32px] mb-[43px] md:mb-0"
         >
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center"
-            to="/marketplace"
-            >Veja nossos parceiros</router-link
+            to="/contato"
+            >Torne-se um apoiador</router-link
           >
         </div>
       </div>
     </div>
   </section>
+
+  <section
+    class="w-full flex items-center justify-center bg-sky-50 pb-20"
+  >
+    <div class="w-full container px-20 md-px-10 flex ">
+      <div class="w-full flex flex-col items-center justify-center gap-[32px]">
+        <div
+          class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px] mt-[43px] md:mt-0"
+        >
+          <h2
+            class="text-[1.875em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
+          >
+            Conheça os patrocinadores da FitCertify365
+          </h2>
+          <p class="text-[1.125em] lg:text-[1.25em] flex md:hidden lg:flex">
+            Empresas que apoiam a medicina esportiva e o bem-estar dos atletas
+          </p>
+        </div>
+
+        <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
+                        <div class="">
+                          <a href="https://emmitec.health/index.html" target="_blank">
+                            <img class="w-full max-w-[200px]  md:max-w-[300px] object-cover" src="../assets/home-imgs/logo-EMMI.png" alt="">
+                          </a>
+                        </div>
+
+
+                    </div> 
+                    <router-link
+            class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mt-5"
+            to="/marketplace"
+            >Ver mais</router-link
+          >
+      </div>
+    </div>
+  </section>
+
+
 </template>
 
 <script setup>
