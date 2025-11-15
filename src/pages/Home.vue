@@ -301,28 +301,42 @@
   <section
     class="w-full  flex items-center justify-center bg-sky-50"
   >
-    <div class="w-full container px-20 md-px-10 pt-20 pb-10">
+    <div class="w-full container px-5 md:px-20 md-px-10 pt-20 pb-10">
       <div class="w-full flex flex-col items-center justify-center gap-[32px]">
         <div
-          class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px] mt-[43px] md:mt-0"
+          class="flex w-full flex-col justify-center items-center text-center gap-[16px] p-[10px] mt-[43px] md:mt-0"
         >
           <h2
-            class="text-[1.875em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
+            class="text-[1.6em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 w-full md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
           >
             Apoio Institucional
           </h2>
-          <p class="text-[1.125em] lg:text-[1.25em] flex md:hidden lg:flex">
+          <p class="text-[0.9em] lg:text-[1.25em] flex md:hidden lg:flex">
             Parceiros que confiam na nossa plataforma
           </p>
         </div>
 
         <div class="flex items-center justify-center">
-          <img 
-            class="w-[200px] h-auto" 
-            src="../assets/home-imgs/LOGO.png" 
-            alt="Logo Parceiro"
-          />
-        </div>
+  <ul class="flex flex-wrap gap-8 justify-center">
+    <li 
+      v-for="item in afiliadosApoiadores" 
+      :key="item.id"
+      class="flex items-center justify-center w-[280px] h-[170px] rounded-xl"
+    >
+      <a 
+        :href="item?.linkRedirect" 
+        target="_blank" 
+        class="flex items-center justify-center w-full h-full"
+      >
+        <img 
+          :src="item.imagemUrl"
+          alt="Logo Parceiro"
+          class="max-w-full max-h-full object-contain p-2"
+        />
+      </a>
+    </li>
+  </ul>
+</div>
 
         <div
           class="flex w-full items-center justify-center mt-[32px] mb-[43px] md:mb-0"
@@ -340,30 +354,42 @@
   <section
     class="w-full flex items-center justify-center bg-sky-50 pb-20"
   >
-    <div class="w-full container px-20 md-px-10 flex ">
+    <div class="w-full container px-5 md:px-20 md-px-10 flex ">
       <div class="w-full flex flex-col items-center justify-center gap-[32px]">
         <div
           class="flex flex-col justify-center items-center text-center gap-[16px] p-[10px] mt-[43px] md:mt-0"
         >
           <h2
-            class="text-[1.875em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
+            class="text-[1.6em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
           >
             Conheça os patrocinadores da FitCertify365
           </h2>
-          <p class="text-[1.125em] lg:text-[1.25em] flex md:hidden lg:flex">
+          <p class="text-[0.9em] lg:text-[1.25em] flex md:hidden lg:flex">
             Empresas que apoiam a medicina esportiva e o bem-estar dos atletas
           </p>
         </div>
 
-        <div class="w-full flex items-center justify-center gap-[32px] flex-wrap lg:flex-nowrap mt-[32px]">
-                        <div class="">
-                          <a href="https://emmitec.health/index.html" target="_blank">
-                            <img class="w-full max-w-[200px]  md:max-w-[300px] object-cover" src="../assets/home-imgs/logo-EMMI.png" alt="">
-                          </a>
-                        </div>
-
-
-                    </div> 
+        <div class="flex items-center justify-center">
+  <ul class="flex flex-wrap gap-8 justify-center">
+    <li 
+      v-for="item in afiliadosPatrocinadores" 
+      :key="item.id"
+      class="flex items-center justify-center w-[280px] h-[170px] rounded-xl"
+    >
+      <a 
+        :href="item?.linkRedirect" 
+        target="_blank" 
+        class="flex items-center justify-center w-full h-full"
+      >
+        <img 
+          :src="item.imagemUrl"
+          alt="Logo Parceiro"
+          class="max-w-full max-h-full object-contain p-2"
+        />
+      </a>
+    </li>
+  </ul>
+</div>
                     <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mt-5"
             to="/marketplace"
@@ -378,4 +404,29 @@
 
 <script setup>
 import modalParabens from '../components/modalParabens.vue';
+import afiliadoService from '../services/Afiliados/afiliadoService';
+import {ref, onMounted, computed} from 'vue'
+
+const afiliados = ref([])
+
+const afiliadosApoiadores = computed(() => {
+  return afiliados.value.filter(item => item.isApoiador === true)
+})
+
+const afiliadosPatrocinadores = computed(() => {
+  return afiliados.value.filter(item => item.isPatrocinador === true)
+})
+
+onMounted(() => {
+  buscarAfiliados()
+})
+
+const buscarAfiliados = async () => {
+  try {
+    const response = await afiliadoService.getAllAfiliados()
+    afiliados.value = response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
