@@ -330,7 +330,7 @@
       >
         <img 
           :src="item.imagemUrl"
-          alt="Logo Parceiro"
+          alt="Logo Apoiador"
           class="max-w-full max-h-full object-contain p-2"
         />
       </a>
@@ -383,7 +383,7 @@
       >
         <img 
           :src="item.imagemUrl"
-          alt="Logo Parceiro"
+          alt="Logo Patrocinador"
           class="max-w-full max-h-full object-contain p-2"
         />
       </a>
