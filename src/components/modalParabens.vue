@@ -70,11 +70,14 @@ import ctaService from '../services/cta/cta-service'
 
 const toast = useToast()
 const dialogFormVisible = ref(false)
-
-setTimeout(() => {
-  dialogFormVisible.value = true
-}, 3000)
 const loading = ref(false)
+
+const cadastroSalvo = localStorage.getItem('cadastroId')
+if (!cadastroSalvo) {
+  setTimeout(() => {
+    dialogFormVisible.value = true
+  }, 3000)
+}
 
 const form = reactive({
   nomeCompleto: "",
@@ -154,8 +157,5 @@ const cadastrar = async () => {
   }
 }
 
-const cadastroSalvo = localStorage.getItem('cadastroId');
-if (cadastroSalvo) {
-  dialogFormVisible.value = false
-}
+
 </script>
