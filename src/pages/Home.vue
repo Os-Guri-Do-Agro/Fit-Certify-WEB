@@ -404,7 +404,7 @@
 
 <script setup>
 import modalParabens from '../components/modalParabens.vue';
-import afiliadoService from '../services/Afiliados/afiliadoService';
+import afiliadoService from '../services/Afiliados/afiliado-service';
 import {ref, onMounted, computed} from 'vue'
 
 const afiliados = ref([])
