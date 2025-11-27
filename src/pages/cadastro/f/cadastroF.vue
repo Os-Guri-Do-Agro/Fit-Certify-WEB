@@ -560,7 +560,7 @@ const depoimentos = [
   },
   {
     texto:
-      "O Fit Certify revolucionou minha preparação para provas esportivas. Agora tenho todos os meus exames organizados em um só lugar!",
+      "O FitCertify365 revolucionou minha preparação para provas esportivas. Agora tenho todos os meus exames organizados em um só lugar!",
     nome: "Maria Silva",
     desc: "Atleta",
   },
