@@ -2,6 +2,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 import { nextTick } from "vue";
+
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
 import Home from "../pages/Home.vue";
 import QuemSomos from "../pages/QuemSomos.vue";
 import Certificados from "../pages/Certificados.vue";
@@ -65,6 +71,14 @@ const router = createRouter({
     });
     return false;
   },
+});
+
+router.afterEach((to) => {
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('config', 'G-XXXXXXXXXX', {
+      page_path: to.fullPath
+    });
+  }
 });
 
 export default router;
