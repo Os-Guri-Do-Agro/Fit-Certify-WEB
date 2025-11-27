@@ -1,5 +1,62 @@
-<script setup lang="ts">
+<script>
 import { RouterLink } from 'vue-router';
+import emailjs from '@emailjs/browser';
+import { ref } from 'vue';
+import { useToast } from 'primevue/usetoast';
+
+export default {
+  setup() {
+    const toast = useToast();
+    return { toast };
+  },
+  data() {
+    return {
+      telefone: '',
+      loading: false
+    }
+  },
+  methods: {
+    formatPhone(event) {
+      let value = event.target.value.replace(/\D/g, '');
+      if (value.length <= 11) {
+        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        if (value.length < 14) {
+          value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+        }
+      }
+      this.telefone = value;
+      event.target.value = value;
+    },
+    async sendEmail() {
+      this.loading = true;
+      try {
+        await emailjs.sendForm(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+          this.$refs.form, 
+          {
+            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+          }
+        );
+        this.toast.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Contato enviado com sucesso!',
+          life: 3000
+        });
+      } catch (error) {
+        this.toast.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: 'Erro ao tentar entrar em contato',
+          life: 3000
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
+  },
+};
 
 </script>
 
@@ -50,7 +107,7 @@ import { RouterLink } from 'vue-router';
       </div>
 
       <div class="flex w-full p-5 md:p-10 h-full items-end">
-        <form class="flex flex-col w-full h-full gap-4 justify-center" action="">
+        <form class="flex flex-col w-full h-full gap-4 justify-center" action="" ref="form" @submit.prevent="sendEmail">
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">Nome</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="text" id="nome" name="nome" required>                
@@ -63,17 +120,23 @@ import { RouterLink } from 'vue-router';
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">Telefone</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="tel" id="telephone" name="telephone" required>                
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="tel" id="telefone" name="telefone" :value="telefone" @input="formatPhone" placeholder="(11) 99999-9999" required>                
+            </div>
+
+            <div class="flex flex-col">
+                <label class="font-[500] mb-2" for="">Assunto</label>
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="assunto" id="assunto" name="assunto" required>                
             </div>
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">Mensagem</label>
-                <textarea class="w-full max-w-[622.4px] max-h-[136px] min-h-[136px] md:max-h-[136px] md:min-h-[136px] lg:min-h-[208px] lg:max-h-[208px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" name="mensage" id="mensage"></textarea>               
+                <textarea class="w-full max-w-[622.4px] max-h-[136px] min-h-[136px] md:max-h-[136px] md:min-h-[136px] lg:min-h-[208px] lg:max-h-[208px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" name="mensagem" id="mensagem"></textarea>               
             </div>
             
             <div class="flex w-full max-w-[622.4px] justify-center md:justify-end">
-                <button class="w-[146.4px] md:w-[178px] lg:w-[106px] h-[42px] bg-cyan-400 rounded-[30px] text-white text-[0.9em] hover:bg-cyan-500 duration-300 cursor-pointer">
-                    Enviar
+                <button type="submit" :disabled="loading" class="w-[146.4px] md:w-[178px] lg:w-[106px] h-[42px] bg-cyan-400 rounded-[30px] text-white text-[0.9em] hover:bg-cyan-500 duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
+                    <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
+                    {{ loading ? 'Enviando...' : 'Enviar' }}
                 </button>
             </div>
 
@@ -132,4 +195,6 @@ import { RouterLink } from 'vue-router';
 
     </div>        
     </section>
+
+    <Toast position="top-right" />
 </template>
