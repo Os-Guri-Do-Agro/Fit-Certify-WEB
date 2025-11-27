@@ -31,7 +31,7 @@
         <a href="https://www.facebook.com/profile.php?id=61581850576820" target="_blank" class="bg-blue-500 w-15 h-15 rounded-4xl flex items-center justify-center">
             <i class="text-white fab fa-facebook"></i>
         </a>
-        <a href="https://wa.me/5511919072667?text=Olá! Gostaria de saber mais sobre a FitCertify365." target="_blank" class="bg-green-500 w-15 h-15 rounded-4xl flex items-center justify-center">
+        <a href="https://wa.me/5521400495694?text=Olá! Gostaria de saber mais sobre a FitCertify365." target="_blank" class="bg-green-500 w-15 h-15 rounded-4xl flex items-center justify-center">
             <i class="text-white fab fa-whatsapp"></i>
         </a>
         <a href="https://fitcertify365.com/#/contato" target="_blank" class="bg-sky-500 w-15 h-15 rounded-4xl flex items-center justify-center">
