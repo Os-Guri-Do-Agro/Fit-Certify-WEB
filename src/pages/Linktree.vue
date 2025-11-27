@@ -1,7 +1,7 @@
 <template>
     <div class="w-full min-h-screen  flex flex-col items-center py-10 px-1 md:px-4">
         <img src="/Logo-Grande.png" alt="FitCertify365" class="h-12 mb-8" />
-    <div class="bg-gray-100 flex flex-col items-center justify-center py-10 px-2 md:px-10">
+    <div class="bg-gray-100 flex flex-col items-center justify-center py-10 px-2 md:px-10 rounded-xl">
     <div class="bg-white rounded-2xl p-2 md:p-8 max-w-md w-full text-center relative pt-16 pb-8 my-15 border-2 border-gray-200">
     <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
         <div class="w-24 h-24 rounded-full overflow-hidden">
@@ -55,7 +55,7 @@
         </div>
     </a> 
 
-    <a href="" class="bg-white rounded-full shadow flex items-center justify-center w-full h-20 gap-2">
+    <a href="https://apps.apple.com/br/app/fitcertify365/id6752969790" target="_blank" class="bg-white rounded-full shadow flex items-center justify-center w-full h-20 gap-2">
         <div class="">
             <img src="/appleStore.png" alt="logo">
         </div>

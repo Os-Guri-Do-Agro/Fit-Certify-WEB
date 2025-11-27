@@ -75,7 +75,7 @@ const router = createRouter({
 
 router.afterEach((to) => {
   if (typeof window.gtag !== 'undefined') {
-    window.gtag('config', 'G-XXXXXXXXXX', {
+    window.gtag('config', 'G-XTN2MCVPCG', {
       page_path: to.fullPath
     });
   }
