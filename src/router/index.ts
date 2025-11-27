@@ -20,6 +20,7 @@ import TermosPrivacidade from "../pages/TermosPrivacidade.vue";
 import Cadastro from "../pages/cadastro/cadastro.vue";
 import CadastroF from "../pages/cadastro/f/cadastroF.vue";
 import Obrigado from "../pages/Obrigado.vue";
+import Linktree from "../pages/Linktree.vue";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
@@ -34,6 +35,7 @@ const routes: RouteRecordRaw[] = [
   // { path: "/cadastro", name: "Cadastro", component: Cadastro },
   { path: "/artigo/:id", name: "ArtigoDetalhe", component: ArtigoDetalhes },
   { path: "/evento/:id", name: "EventoDetalhe", component: EventoDetalhes },
+  { path: "/linktree", name: "Linktree", component: Linktree },
   {
     path: "/marketplace/:id",
     name: "MarketDetalhes",

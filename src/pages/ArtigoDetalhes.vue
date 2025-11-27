@@ -59,7 +59,6 @@
         <div class="w-full h-32 lg:h-40 bg-gray-300 animate-pulse rounded-md"></div>
       </div>
       <p v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full flex flex-col gap-3 opacity-90 max-h-[400px] lg:max-h-full break-words whitespace-normal overflow-y-auto">
-        <span class="font-bold opacity-80 text-[1.5em]">Duis aute irure dolor</span>
         {{ artigo?.conteudo }}
       </p>
 

@@ -12,7 +12,8 @@ const showLayout = computed(() => {
     // route.path !== "/cadastro" &&
     route.path !== "/cadastro" &&
     route.path !== "/f/cadastro" &&
-    route.path !== "/obrigado"
+    route.path !== "/obrigado" &&
+    route.path !== "/linktree"
   );
 });
 </script>

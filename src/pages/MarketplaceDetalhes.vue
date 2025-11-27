@@ -314,7 +314,6 @@ const loadProduto = async (id: string) => {
   try {
     const response = await ProdutosServices.getProdutoById(id)
     produto.value = response.data
-    console.log(produto.value)
     empresa.value = response.data?.empresa
   } catch (error) {
     console.error('Erro ao carregar produto:', error)

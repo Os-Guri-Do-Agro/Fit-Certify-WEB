@@ -426,7 +426,7 @@ const buscarAfiliados = async () => {
     const response = await afiliadoService.getAllAfiliados()
     afiliados.value = response.data
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 </script>
