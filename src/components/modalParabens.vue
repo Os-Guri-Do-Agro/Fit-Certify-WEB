@@ -17,7 +17,7 @@
             pronto!</h2>
           <p class="text-sm leading-relaxed text-gray-600">
             Como você chegou primeiro por aqui, vamos te presentear com
-            <strong class="text-cyan-400">1 ano</strong> de aplicativo grátis! <br />
+            <strong class="text-cyan-400">3 meses</strong> de aplicativo grátis! <br />
             Basta preencher o formulário e entraremos em contato.
           </p>
         </div>
