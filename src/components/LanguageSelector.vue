@@ -34,8 +34,8 @@ const { currentLocale, changeLocale, initLocale } = useI18n()
 const isOpen = ref(false)
 
 const locales = [
-  { code: 'pt', name: 'Português', flag: 'https://flagcdn.com/w40/br.png' },
-  { code: 'en', name: 'English', flag: 'https://flagcdn.com/w40/us.png' }
+  { code: 'pt' as const, name: 'Português', flag: 'https://flagcdn.com/w40/br.png' },
+  { code: 'en' as const, name: 'English', flag: 'https://flagcdn.com/w40/us.png' }
 ]
 
 const currentFlag = computed(() => {
@@ -46,7 +46,7 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
 
-const selectLocale = (locale: 'pt' | 'en') => {
+const selectLocale = (locale: typeof locales[number]['code']) => {
   changeLocale(locale)
   isOpen.value = false
 }

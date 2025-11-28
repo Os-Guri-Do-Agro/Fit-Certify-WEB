@@ -12,7 +12,6 @@ export default defineConfig({
       launchEditor: 'webstorm',
     }),
   ],
-  base: './',
   build: {
     outDir: 'dist',
   },
@@ -21,4 +20,8 @@ export default defineConfig({
       strict: true,
     },
   },
+  preview: {
+    port: 4173,
+    host: true
+  }
 })
