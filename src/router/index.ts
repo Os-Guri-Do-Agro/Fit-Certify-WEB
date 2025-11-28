@@ -1,5 +1,5 @@
 // src/router/index.ts
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 import { nextTick } from "vue";
 
@@ -59,7 +59,7 @@ const routes: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 
   scrollBehavior() {
@@ -72,6 +72,7 @@ const router = createRouter({
     return false;
   },
 });
+
 
 router.afterEach((to) => {
   if (typeof window.gtag !== 'undefined') {
