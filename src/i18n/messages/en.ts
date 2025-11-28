@@ -96,11 +96,22 @@ export default {
   },
   marketplace: {
     title: 'Marketplace',
+    subtitle: 'Benefits for those with good health',
+    text: 'Athletes who issue certificates or use the marker dashboard gain access to special conditions on selected products and services in our marketplace. FitCertify365 connects health, performance, and partner brands so you can train, care, and evolve with more advantages.',
+    filtro: 'Filter by',
+    categoria: 'Category',
+    Preço: 'Price',
+    CondicaoEspecial: 'Special Condition',
     noProducts: 'No products found',
     price: 'Price',
     condition: 'Condition',
     category: 'Category',
-    addToCart: 'Add to cart'
+    addToCart: 'Add to cart',
+    condicaoEspecial: 'Special Condition',
+    ate50: 'Up to $50',
+    ate100: 'Up to $100',
+    ate200: 'Up to $200',
+    acima200: 'Above 200'
   },
   articles: {
     title: 'Articles',

@@ -96,11 +96,22 @@ export default {
   },
   marketplace: {
     title: 'Marketplace',
+    subtitle: 'Vantagens para quem tem saúde em dia',
+    text: 'Atletas que emitem certificados ou utilizam o painel de marcadores têm acesso a condições especiais em produtos e serviços selecionados no nosso marketplace. A FitCertify365 conecta saúde, performance e marcas parceiras para que você treine, cuide e evolua com mais vantagens.',
+    categoria: 'Categoria',
+    Preço: 'Preço',
+    CondicaoEspecial: 'Condição Especial',
+    filtro: 'Filtrar por',
     noProducts: 'Nenhum produto encontrado',
     price: 'Preço',
     condition: 'Condição',
     category: 'Categoria',
-    addToCart: 'Adicionar ao carrinho'
+    addToCart: 'Adicionar ao carrinho',
+    condicaoEspecial: 'Condição Especial',
+    ate50: 'Até R$50',
+    ate100: 'Até R$100',
+    ate200: 'Até R$200',
+    acima200: 'Acima de 200'
   },
   articles: {
     title: 'Artigos',
@@ -369,6 +380,6 @@ export default {
     text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
     categorias: 'Categorias',
     todasCategorias: 'Todas as categorias'
-  }
+  },
 }
 
