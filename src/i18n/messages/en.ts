@@ -25,7 +25,21 @@ export default {
     clear: 'Clear',
     select: 'Select',
     viewMore: 'View more',
-    readMore: 'Read more'
+    readMore: 'Read more',
+    months: {
+      janeiro: 'January',
+      fevereiro: 'February',
+      marco: 'March',
+      abril: 'April',
+      maio: 'May',
+      junho: 'June',
+      julho: 'July',
+      agosto: 'August',
+      setembro: 'September',
+      outubro: 'October',
+      novembro: 'November',
+      dezembro: 'December'
+    }
   },
   home: {
     title: 'Welcome to Fit Certify',
@@ -328,6 +342,29 @@ export default {
         title: 'Want your race here?',
         text: 'Sports event organizers can integrate their race with FitCertify365 and offer athletes even more convenience — with digital certificates, centralized management, and legal security.',
         button: 'Make my race a partner'
+      },
+      listEventos: {
+        subtitle: 'Event connected with FitCertify365',
+        button: 'Send certificate'
+      }
+    },
+    eventosDetalhes: {
+      button1: 'Send certificate',
+      button2: 'Event website',
+      section1: {
+        data: 'Date',
+        local: 'Location',
+        modalidade: 'Modality',
+        distancia: 'Distance'
+      },
+      section2: {
+        title: 'Description'
+      },
+      section3: {
+        title: 'Organizations'
+      },
+      section4: {
+        title: 'Upcoming events'
       }
     },
     marcadores: {

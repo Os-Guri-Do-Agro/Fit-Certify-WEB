@@ -30,10 +30,10 @@
         <!-- Botões reais -->
         <template v-else>
           <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" to="/eventos" >
-            Enviar certificado
+            {{ t('eventosDetalhes.button1') }}
           </RouterLink>
           <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-lime-500 hover:text-white border-2 border-lime-500 hover:bg-lime-500 duration-300" to="/eventos" >
-            Site da prova
+            {{ t('eventosDetalhes.button2') }}
           </RouterLink>
         </template>
       </div>
@@ -62,7 +62,7 @@
     >
       <!-- Data -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-10">
-        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">Data</span>
+        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.data') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
           <span v-else>{{ evento?.data?.slice(0, 10)?.split('-')?.reverse()?.join('/') }}</span>
@@ -71,7 +71,7 @@
 
       <!-- Local -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left px-4 gap-10">
-        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">Local</span>
+        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.local') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-32 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
           <span v-else>{{ evento?.local }}</span>
@@ -80,7 +80,7 @@
 
       <!-- Modalidade -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left px-4 gap-10">
-        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">Modalidade</span>
+        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.modalidade') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
           <span v-else>Corrida</span>
@@ -89,7 +89,7 @@
 
       <!-- Distância -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left px-4 gap-10">
-        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">Distância</span>
+        <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.distancia') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-36 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
           <span v-else>{{ evento?.distanciasEvento?.map(d => d.distancia + ' km').join(' / ') }}</span>
@@ -106,7 +106,7 @@
   <div class="container flex gap-5 flex-col p-5 md:p-10">
     <div class="w-full h-[2px] bg-sky-100 mb-7"></div>
 
-    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">Descrição</span>
+    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">{{ t('eventosDetalhes.section2.title') }}</span>
 
     <!-- Skeleton para descrição -->
     <div v-if="carregando" class="w-full h-24 md:h-32 lg:h-36 bg-gray-300 rounded animate-pulse"></div>
@@ -124,7 +124,7 @@
 <section class="w-full flex justify-center">
   <div class="container flex-col md:flex-row flex gap-5 p-5 md:p-10 text-center md:text-start">
 
-    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">Organizações</span>
+    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">{{ t('eventosDetalhes.section3.title') }}</span>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
       <!-- Skeleton enquanto não carrega -->
@@ -149,7 +149,7 @@
 
     <section class="flex bg-sky-50 justify-center mt-10 md:h-[800px]">
         <div class="container flex flex-col p-5 md:p-10">
-            <h2 class="text-[1.75em] md:text-[2.25em] text-center lg:text-[3em] italic font-[600] text-lime-500 mb-5">Próximos eventos</h2>
+            <h2 class="text-[1.75em] md:text-[2.25em] text-center lg:text-[3em] italic font-[600] text-lime-500 mb-5">{{ t('eventosDetalhes.section4.title') }}</h2>
 
             <div class="flex w-full">
                 <Eventos @refresh-page="refreshPage"/>
@@ -165,12 +165,14 @@ import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import EventosService from '../services/Eventos/eventos-services'
 import Eventos from '../components/Evento-Detalhes-components/EventoDet.vue'
+import { useI18n } from '../composables/useI18n'
 
 const route = useRoute()
 const router = useRouter()
 const evento = ref(null)
 const organizacao = ref([]) // organização ligada ao evento
 const carregando = ref(true)
+const { t } = useI18n()
 
 const carregarEvento = async (id) => {
   try {

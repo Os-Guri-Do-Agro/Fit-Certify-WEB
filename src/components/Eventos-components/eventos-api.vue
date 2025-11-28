@@ -34,12 +34,12 @@
 
           <div
             class="bg-cyan-50 text-cyan-400 text-[0.7em] rounded-[8px] w-full max-w-[241px] flex items-center px-2 mt-3 mb-3">
-            Prova conectada com a FitCertify365
+            {{ t('eventos.listEventos.subtitle') }}
           </div>
 
           <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
             class="w-full max-w-[178.4px] h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center">
-            Enviar certificado
+            {{ t('eventos.listEventos.button') }}
           </RouterLink>
         </div>
       </template>
@@ -57,6 +57,7 @@
 import { onMounted, ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import EventosService from '../../services/Eventos/eventos-services'
+import { useI18n } from '../../composables/useI18n'
 
 interface Evento {
   id: string
@@ -69,6 +70,7 @@ interface Evento {
   [key: string]: any
 }
 
+const { t } = useI18n();
 const Eventos = ref<{ data: Evento[] }>({ data: [] })
 const isLoading = ref(false)
 

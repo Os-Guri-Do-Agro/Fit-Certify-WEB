@@ -25,7 +25,21 @@ export default {
     clear: 'Limpar',
     select: 'Selecionar',
     viewMore: 'Ver mais',
-    readMore: 'Leia mais'
+    readMore: 'Leia mais',
+    months: {
+      janeiro: 'Janeiro',
+      fevereiro: 'Fevereiro',
+      marco: 'Março',
+      abril: 'Abril',
+      maio: 'Maio',
+      junho: 'Junho',
+      julho: 'Julho',
+      agosto: 'Agosto',
+      setembro: 'Setembro',
+      outubro: 'Outubro',
+      novembro: 'Novembro',
+      dezembro: 'Dezembro'
+    }
   },
   home: {
     title: 'Bem-vindo ao Fit Certify',
@@ -328,6 +342,29 @@ export default {
       title: 'Quer sua prova aqui?',
       text: 'Organizadores de eventos esportivos podem integrar sua corrida com a FitCertify365 e oferecer ainda mais praticidade aos atletas — com certificados digitais, gestão centralizada e segurança jurídica.',
       button: 'Tornar minha prova parceira'
+    },
+    listEventos: {
+      subtitle: 'Prova conectada com a FitCertify365',
+      button: 'Enviar certificado'
+    }
+  },
+  eventosDetalhes: {
+    button1: 'Enviar certificado',
+    button2: 'Site da prova',
+    section1: {
+      data: 'Data',
+      local: 'Local',
+      modalidade: 'Modalidade',
+      distancia: 'Distância'
+    },
+    section2: {
+      title: 'Descrição'
+    },
+    section3: {
+      title: 'Organizações'
+    },
+    section4: {
+      title: 'Próximos eventos'
     }
   },
   marcadores: {

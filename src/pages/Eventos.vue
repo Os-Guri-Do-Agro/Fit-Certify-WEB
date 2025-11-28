@@ -144,18 +144,18 @@ const mesSelecionado = ref('')
 const tipoEventoIdSelecionado = ref('')
 
 const meses = [
-  { value: 1, nome: "Janeiro" },
-  { value: 2, nome: "Fevereiro" },
-  { value: 3, nome: "Março" },
-  { value: 4, nome: "Abril" },
-  { value: 5, nome: "Maio" },
-  { value: 6, nome: "Junho" },
-  { value: 7, nome: "Julho" },
-  { value: 8, nome: "Agosto" },
-  { value: 9, nome: "Setembro" },
-  { value: 10, nome: "Outubro" },
-  { value: 11, nome: "Novembro" },
-  { value: 12, nome: "Dezembro" }
+  { value: 1, nome: t('common.months.janeiro') },
+  { value: 2, nome: t('common.months.fevereiro') },
+  { value: 3, nome: t('common.months.marco') },
+  { value: 4, nome: t('common.months.abril') },
+  { value: 5, nome: t('common.months.maio') },
+  { value: 6, nome: t('common.months.junho') },
+  { value: 7, nome: t('common.months.julho') },
+  { value: 8, nome: t('common.months.agosto') },
+  { value: 9, nome: t('common.months.setembro') },
+  { value: 10, nome: t('common.months.outubro') },
+  { value: 11, nome: t('common.months.novembro') },
+  { value: 12, nome: t('common.months.dezembro') }
 ];
 
 onMounted(async () => {

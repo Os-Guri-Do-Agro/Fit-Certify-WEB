@@ -30,13 +30,13 @@
       </span>
 
       <div class="bg-cyan-50 text-cyan-400 text-[0.6em] lg:text-[0.75em]  rounded-[8px] w-full max-w-[241px] lg:h-[25px] flex items-center px-2 mt-3 mb-3">
-        Prova conectada com a FitCertify365
+        {{ t('eventos.listEventos.subtitle') }}
       </div>
 
       <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
-        Enviar certificado
+      {{ t('eventos.listEventos.button') }}
       </RouterLink>
     </div>
   </div>
@@ -76,12 +76,12 @@
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">📅 {{ formatDate(item.data) }}</span>
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">🏃 <span>{{ formatDistancias(item.distanciasEvento) }}</span></span>
       <div class="bg-cyan-50 text-cyan-400 text-[0.6em] lg:text-[0.75em]  rounded-[8px] w-full max-w-[241px] lg:h-[25px] flex items-center px-2 mt-3 mb-3">
-        Prova conectada com a FitCertify365
+        {{ t('eventos.listEventos.subtitle') }}
       </div>
       <button @click="emit('refresh-page', item.id)"
         class="w-full max-w-[178.4px] h-[40px]  lg:h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center"
       >
-        Enviar certificadooo
+      {{ t('eventos.listEventos.button') }}
       </button>
     </div>
 
@@ -118,11 +118,13 @@
 import { onMounted, ref } from 'vue'
 import EventosService from '../../services/Eventos/eventos-services'
 import { RouterLink } from 'vue-router'
+import { useI18n } from '../../composables/useI18n'
 
 const Eventos = ref<{ data: any[] }>({ data: [] })
 const emit = defineEmits<{
   'refresh-page': [id: string]
 }>()
+const { t } = useI18n()
 
 onMounted(async () => {
   Eventos.value = await EventosService.getAllEventos()
