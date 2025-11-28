@@ -33,7 +33,7 @@
             <div class="w-full text-end">
               <span v-if="item.exclusivoParaCertificado"
                 class="bg-sky-100 text-lime-500 text-[0.75em] px-2 py-1 rounded">
-                Exclusivo para certificados
+                {{ t('marketplace.exclusivo') }}
               </span>
             </div>
 
@@ -46,12 +46,12 @@
             </p>
 
             <p class="text-[0.875em] font-semibold text-gray-600">
-              A partir de R$ {{ item.preco }}
+              {{ t('marketplace.valor')  }} {{ item.preco }}
             </p>
 
             <RouterLink :to="{ name: 'MarketDetalhes', params: { id: item.id } }"
               class="mt-auto w-full max-w-[140px] h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300">
-              Saiba Mais
+              {{ t('marketplace.button')  }}
             </RouterLink>
           </div>
         </div>
@@ -70,8 +70,10 @@
 import { ref, onMounted, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import ProdutosServices from '../../services/marketplace/marketplace-services'
+import { useI18n } from '../../composables/useI18n';
 
 // Props
+const { t } = useI18n()
 const props = defineProps<{
   categoria?: any
   preco?: any

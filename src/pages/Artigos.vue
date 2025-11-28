@@ -69,7 +69,7 @@
 
                 <div class="text-center flex flex-col gap-10">
                     <h3 class="text-cyan-400 mt-2 text-[0.9em] md:text-[1em] lg:text-[1.125em] font-[600]">
-                        Categorias
+                        {{ t('artigos.categorias') }}
                     </h3>
 
                     <a 

@@ -110,6 +110,9 @@ export default {
   },
   marketplace: {
     title: 'Marketplace',
+    button: 'Saiba Mais',
+    valor: 'A partir de R$',
+    exclusivo: 'Exclusivo para certificados',
     subtitle: 'Vantagens para quem tem saúde em dia',
     text: 'Atletas que emitem certificados ou utilizam o painel de marcadores têm acesso a condições especiais em produtos e serviços selecionados no nosso marketplace. A FitCertify365 conecta saúde, performance e marcas parceiras para que você treine, cuide e evolua com mais vantagens.',
     categoria: 'Categoria',
@@ -423,7 +426,8 @@ export default {
     subtitle: 'Conteúdo confiável para quem leva o esporte a sério',
     text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
     categorias: 'Categorias',
-    todasCategorias: 'Todas as categorias'
+    todasCategorias: 'Todas as categorias',
+    button: 'LEIA MAIS'
   },
 }
 

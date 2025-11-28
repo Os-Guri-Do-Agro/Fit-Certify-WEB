@@ -110,6 +110,9 @@ export default {
   },
   marketplace: {
     title: 'Marketplace',
+    button: 'Learn More',
+    valor: 'From $',
+    exclusivo: 'Exclusive to certificates',
     subtitle: 'Benefits for those with good health',
     text: 'Athletes who issue certificates or use the marker dashboard gain access to special conditions on selected products and services in our marketplace. FitCertify365 connects health, performance, and partner brands so you can train, care, and evolve with more advantages.',
     filtro: 'Filter by',
@@ -423,6 +426,7 @@ export default {
       subtitle: 'Reliable content for those who take sports seriously',
       text: 'Tips, studies and updates on health, prevention, performance and everything that moves people who live the sport.',
       categorias: 'Categories',
-      todasCategorias: 'All categories'
+      todasCategorias: 'All categories',
+      button: 'READ MORE'
     }
   }
