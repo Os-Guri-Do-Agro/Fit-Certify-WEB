@@ -204,5 +204,160 @@ export default {
       title: 'Uma solução para atletas, treinadores e organizadores',
       text: 'Se você participa de provas, treina com frequência ou organiza eventos, a FitCertify365 foi feita para facilitar sua rotina. Emita, monitore e avance com saúde em dia , do primeiro treino à medalha.'
     }
+  },
+  certificados: {
+    title: 'Certificados',
+    subtitle: 'Certificados digitais para sua segurança e performance',
+    section1: {
+      text: 'Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.',
+      textSeparado1: 'Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico.',
+      textSeparado2: 'Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.'
+    },
+    section2: {
+      title: 'Tipos de Certificado',
+      streetRunning: {
+        title: 'Corrida de Rua',
+        description: 'Para provas de 5K a maratona',
+        button: 'Iniciar'
+      },
+      gymsTraining: {
+        title: 'Academias e Treinos',
+        description: 'Crossfit, musculação e funcional',
+        button: 'Iniciar'
+      },
+      cyclingTriathlon: {
+        title: 'Ciclismo e Triathlon',
+        description: 'Endurance e provas combinadas<br />Inclui exames opcionais',
+        button: 'Iniciar'
+      },
+      corporatePrograms: {
+        title: 'Programas Corporativos',
+        description: 'Para funcionários que participam de ações esportivas',
+        button: 'Iniciar'
+      },
+      validityNote: 'O certificado é válido pelo período definido pelo médico (até 12 meses). Durante esse tempo, você pode usá-lo para quantas provas quiser.'
+    },
+    section3: {
+      title: 'Como funciona?',
+      step1: {
+        number: '1.',
+        description: 'Cadastre-se na nossa plataforma'
+      },
+      step2: {
+        number: '2.',
+        description: 'Agende sua consulta e realize a avaliação presencial exigida para emissão do certificado.'
+      },
+      step3: {
+        number: '3.',
+        description: 'Após a consulta, o certificado pode ser emitido por um médico parceiro ou enviado por você, se for de um médico particular.'
+      },
+      step4: {
+        number: '4.',
+        description: 'Enquanto seu certificado estiver válido, você pode usá-lo em diferentes provas do mesmo perfil, com poucos cliques.'
+      }
+    },
+    section4: {
+      title: 'Garanta sua aptidão com segurança e agilidade.',
+      description: 'Utilizamos criptografia, assinatura digital e integração com dados clínicos reais. Além disso, criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.',
+      button: 'Iniciar emissão de certificado'
+    },
+    faq: {
+      title: 'Perguntas Frequentes',
+      question1: {
+        question: 'O certificado serve para todas as provas?',
+        answer: 'Sim. O certificado de aptidão física emitido pelo FitCertify365 é válido para qualquer competição que exija comprovação de saúde, conforme as diretrizes das autoridades esportivas e médicas. Recomendamos apenas verificar se a organização do evento aceita certificados digitais.'
+      },
+      question2: {
+        question: 'Preciso fazer exames antes?',
+        answer: 'Depende. Alguns usuários já possuem exames recentes e não precisam repetir. Outros podem ser orientados a realizar exames complementares, de acordo com a análise do profissional de saúde responsável. O FitCertify365 conecta você a médicos que seguirão critérios clínicos para garantir sua segurança.'
+      },
+      question3: {
+        question: 'Quem assina os certificados?',
+        answer: 'Todos os certificados são assinados por médicos registrados no Conselho Regional de Medicina (CRM), com experiência em saúde esportiva e aptidão física. A plataforma garante a verificação e o registro digital da assinatura para sua validade.'
+      },
+      question4: {
+        question: 'Como sei se ele é válido?',
+        answer: 'O certificado conta com autenticação digital, número de identificação único e validação online através do QR Code. Qualquer organizador ou terceiro autorizado pode verificar a autenticidade em segundos, acessando o link indicado no documento.'
+      },
+      question5: {
+        question: 'Quanto tempo leva?',
+        answer: 'O processo é rápido. O médico realiza os exames com você no consultório e, se estiver tudo certo, o certificado é emitido na hora, de forma digital e com autenticação válida em todo o território nacional.'
+      },
+      question6: {
+        question: 'Posso usar o mesmo para várias provas?',
+        answer: 'Sim. O certificado pode ser utilizado em diversas provas, desde que esteja dentro do período de validade definido pelo médico (geralmente entre 3 e 12 meses). Basta apresentá-lo aos organizadores quando solicitado.'
+      }
+    }
+  },
+  eventos: {
+    title: 'Provas Parceiras',
+    subtitle: 'Corridas e provas que reconhecem sua saúde em dia',
+    section1: {
+      text: 'Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você encontra eventos parceiros com integração direta, um calendário completo de provas aceitas e, nos eventos conectados, a equipe médica da organização pode, com sua autorização, acessar seus dados de saúde em caso de necessidade durante a prova.'
+    },
+    section2: {
+      title: 'Calendário de corridas',
+      subtitle: 'Filtrar provas',
+      tipoEvento: 'Tipo de Evento',
+      localidade: 'Localidade',
+      mes: 'Mês'
+    },
+    section3: {
+      title: 'Quer sua prova aqui?',
+      text: 'Organizadores de eventos esportivos podem integrar sua corrida com a FitCertify365 e oferecer ainda mais praticidade aos atletas — com certificados digitais, gestão centralizada e segurança jurídica.',
+      button: 'Tornar minha prova parceira'
+    }
+  },
+  marcadores: {
+    title: 'Marcadores',
+    subtitle: 'Acompanhe sua saúde com inteligência',
+    text: 'Tenha acesso aos principais indicadores da sua saúde esportiva em tempo real. Com gráficos, histórico e alertas, você entende seu corpo e treina com mais segurança.',
+    section1: {
+      title: 'Marcadores de Saúde',
+      subtitle: 'Monitore seus principais indicadores de saúde esportiva. Entenda seu corpo, treine com segurança e acompanhe sua evolução.',
+      card1: {
+        title: '💓 Frequência Cardíaca de Repouso',
+        text: 'Identifique padrões de recuperação e esforço com base nos seus batimentos em repouso.'
+      },
+      card2: {
+        title: '⚖️ IMC e Composição Corporal',
+        text: 'Avaliação de massa, peso e proporção corporal para acompanhamento físico contínuo.'
+      },
+      card3: {
+        title: '🧪 Exames Laboratoriais',
+        text: 'Visualize resultados como colesterol, glicemia, ferritina e outros indicadores clínicos.'
+      },
+      card4: {
+        title: '🫑 VO₂ Máx',
+        text: 'Estimativa de consumo máximo de oxigênio — essencial para esportes de resistência.'
+      },
+      card5: {
+        title: '🩺 Pressão Arterial',
+        text: 'Acompanhamento regular dos seus níveis de pressão, com registros manuais ou automáticos.'
+      },
+      card6: {
+        title: '📈 Histórico de Certificados',
+        text: 'Acompanhe sua linha do tempo de atestados, consultas e avaliações médicas.'
+      }
+    },
+    section2: {
+      title: 'Integração com dispositivos',
+      text: 'Tudo conectado. Tudo no seu painel. Sincronize com smartwatches, gadgets de saúde ou laboratórios parceiros. Os dados são processados de forma segura e usados para gerar insights úteis para seu dia a dia.',
+      button: 'Lista de dispositivos compatíveis'
+    },
+    section3: {
+      title: 'Alertas inteligentes',
+      text: 'Cuide antes que vire problema.<br /><br />O sistema envia alertas se detectar alterações relevantes nos seus dados — como IMC em mudança, frequência cardíaca acima do normal ou exames fora da faixa ideal.'
+    },
+    section4: {
+      title: 'Seu treino conta.<br />E a gente registra.',
+      text: 'Ao integrar seus dados de apps como Apple Saúde, Google Fit, Strava, Garmin e outros, você transforma corrida, bike, musculação e funcional em indicadores reais de evolução. A FitCertify365 usa esses dados para atualizar seus marcadores de saúde e oferecer alertas mais precisos, tudo em um só lugar.'
+    },
+    section5: {
+      title: 'Seu corpo fala.<br />A FitCertify365 ajuda a escutar.',
+      buttonMobile: 'Veja nossos parceiros',
+      buttonDesktop: 'Me Cadastrar'
+    }
   }
 }
+

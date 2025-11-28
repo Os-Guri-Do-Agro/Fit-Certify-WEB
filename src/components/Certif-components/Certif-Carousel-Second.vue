@@ -9,10 +9,10 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Ciclismo e Triathlon
+              {{ $t('certificados.section2.cyclingTriathlon.title') }}
             </h4>
             <p class="text-[1em]">
-              Endurance e provas combinadas Inclui exames opcionais
+              {{ $t('certificados.section2.cyclingTriathlon.description') }}
             </p>
           </div>
 
@@ -22,7 +22,7 @@
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
-              >Iniciar</a
+              >{{ $t('certificados.section2.cyclingTriathlon.button') }}</a
             >
           </div>
         </div>
@@ -37,9 +37,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Corrida de Rua
+              {{ $t('certificados.section2.streetRunning.title') }}
             </h4>
-            <p class="text-[1em]">Para provas de 5K a maratona</p>
+            <p class="text-[1em]">{{ $t('certificados.section2.streetRunning.description') }}</p>
           </div>
 
           <div class="">
@@ -48,7 +48,7 @@
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
-              >Iniciar</a
+              >{{ $t('certificados.section2.streetRunning.button') }}</a
             >
           </div>
         </div>
@@ -63,9 +63,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Academias e Treinos
+              {{ $t('certificados.section2.gymsTraining.title') }}
             </h4>
-            <p class="text-[1em]">Crossfit, musculação e funcional</p>
+            <p class="text-[1em]">{{ $t('certificados.section2.gymsTraining.description') }}</p>
           </div>
 
           <div class="">
@@ -74,7 +74,7 @@
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
-              >Iniciar</a
+              >{{ $t('certificados.section2.gymsTraining.button') }}</a
             >
           </div>
         </div>
@@ -89,10 +89,10 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Programas Corporativos
+              {{ $t('certificados.section2.corporatePrograms.title') }} 
             </h4>
             <p class="text-[1em]">
-              Para funcionários que participam de ações esportivas
+              {{ $t('certificados.section2.corporatePrograms.description') }} 
             </p>
           </div>
 
@@ -102,7 +102,7 @@
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
-              >Iniciar</a
+              >{{ $t('certificados.section2.corporatePrograms.button') }} </a
             >
           </div>
         </div>
@@ -122,14 +122,19 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 
+import { useI18n } from "../../composables/useI18n";
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
   setup() {
+    const { t } = useI18n();
+    
     return {
       modules: [Pagination],
+      t,
     };
   },
 };

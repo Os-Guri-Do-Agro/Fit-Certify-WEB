@@ -5,10 +5,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        💓 Frequência Cardíaca de Repouso
+                        {{ t('marcadores.section1.card1.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Identifique padrões de recuperação e esforço com base nos seus batimentos em repouso.
+                        {{ t('marcadores.section1.card1.text') }}
                     </p>
                 </div>
         </div>   
@@ -18,10 +18,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        ⚖️ IMC e Composição Corporal
+                        {{ t('marcadores.section1.card2.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Avaliação de massa, peso e proporção corporal para acompanhamento físico contínuo.
+                        {{ t('marcadores.section1.card2.text') }}
                     </p>
                 </div>
         </div>   
@@ -30,10 +30,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        🧪 Exames Laboratoriais
+                        {{ t('marcadores.section1.card3.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Visualize resultados como colesterol, glicemia, ferritina e outros indicadores clínicos.
+                        {{ t('marcadores.section1.card3.text') }}
                     </p>
                 </div>
         </div>   
@@ -42,10 +42,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        🫁 VO₂ Máx
+                        {{ t('marcadores.section1.card4.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Estimativa de consumo máximo de oxigênio — essencial para esportes de resistência.
+                        {{ t('marcadores.section1.card4.text') }}
                     </p>
                 </div>
         </div>    
@@ -54,10 +54,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        🩺 Pressão Arterial
+                        {{ t('marcadores.section1.card5.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Acompanhamento regular dos seus níveis de pressão, com registros manuais ou automáticos.
+                        {{ t('marcadores.section1.card5.text') }}
                     </p>
                 </div>
         </div>    
@@ -66,10 +66,10 @@
         <div class="w-full flex-shrink-0 p-5 text-left flex flex-col justify-center items-center">
                 <div class="flex flex-col w-full max-w-[320px] h-[178px] md:h-[204px] bg-white rounded-[12px] shadow-xl p-5 gap-[12px]">
                     <h3 class="text-[1.125em] font-[700] text-lime-500">
-                        📈 Histórico de Certificados
+                        {{ t('marcadores.section1.card6.title') }}
                     </h3>
                     <p class="text-[0.875em] text-slate-700">
-                        Acompanhe sua linha do tempo de atestados, consultas e avaliações médicas.
+                        {{ t('marcadores.section1.card6.text') }}
                     </p>
                 </div>
         </div>    
@@ -79,6 +79,7 @@
 <script>
   // Import Swiper Vue.js components
   import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { useI18n } from '../../composables/useI18n';
 
   // Import Swiper styles
   import 'swiper/css';
@@ -94,8 +95,11 @@
       SwiperSlide,
     },
     setup() {
+      const { t } = useI18n();
+      
       return {
         modules: [Pagination],
+        t
       };
     },
   };

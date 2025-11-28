@@ -10,7 +10,7 @@
                     <div class="w-full max-w-[224px] h-1/2">
                         <span class="text-[1.25em] font-bold text-lime-500">1.</span>
                         <p class="text-[1em] leading-[30px]">
-                            Cadastre-se na nossa plataforma
+                            {{ $t('certificados.section3.step1.description')  }}
                         </p>
                     </div>
                 </div>    
@@ -25,8 +25,7 @@
                     <div class="w-full max-w-[224px] h-1/2">
                         <span class="text-[1.25em] font-bold text-lime-500">2.</span>
                         <p class="text-[1em] leading-[30px]">
-                            Agende sua consulta e realize a avaliação presencial exigida para emissão do certificado.
-                        </p>
+                          {{ $t('certificados.section3.step2.description')  }}                        </p>
                     </div>
                 </div>      
     </swiper-slide>
@@ -39,8 +38,7 @@
                     <div class="w-full max-w-[224px] h-1/2">
                         <span class="text-[1.25em] font-bold text-lime-500">3.</span>
                         <p class="text-[1em] leading-[30px]">
-                            Após a consulta, o certificado pode ser emitido por um médico parceiro ou enviado por você, se for de um médico particular.
-                        </p>
+                          {{ $t('certificados.section3.step3.description')  }}                        </p>
                     </div>
                 </div>    
     </swiper-slide>
@@ -53,8 +51,7 @@
                     <div class="w-full max-w-[224px] h-1/2">
                         <span class="text-[1.25em] font-bold text-lime-500">4.</span>
                         <p class="text-[1em] leading-[30px]">
-                            Enquanto seu certificado estiver válido, você pode usá-lo em diferentes provas do mesmo perfil, com poucos cliques. 
-                        </p>
+                          {{ $t('certificados.section3.step4.description')  }}                        </p>
                     </div>
                 </div>    
     </swiper-slide>
@@ -72,14 +69,18 @@
   // import required modules
   import { Pagination } from 'swiper/modules';
 
+  import { useI18n } from '../../composables/useI18n';
+
   export default {
     components: {
       Swiper,
       SwiperSlide,
     },
     setup() {
+      const { t } = useI18n();
       return {
         modules: [Pagination],
+        t,
       };
     },
   };

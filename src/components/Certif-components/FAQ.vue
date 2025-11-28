@@ -22,7 +22,7 @@
           </div>
           <div class="flex-1">
             <h3 class="flex font-[600] text-slate-600">
-              O certificado serve para todas as provas?
+              {{ t('certificados.faq.question1.question') }}
             </h3>
           </div>
         </button>
@@ -31,11 +31,7 @@
           v-if="openFaq === 0"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          Sim. O certificado de aptidão física emitido pelo FitCertify365 é
-          válido para qualquer competição que exija comprovação de saúde,
-          conforme as diretrizes das autoridades esportivas e médicas.
-          Recomendamos apenas verificar se a organização do evento aceita
-          certificados digitais.
+        {{ t('certificados.faq.question1.answer') }}
         </div>
       </div>
 
@@ -60,7 +56,7 @@
           </div>
           <div class="flex-1">
             <h3 class="flex font-[600] text-slate-600">
-              Preciso fazer exames antes?
+              {{ t('certificados.faq.question2.question') }}
             </h3>
           </div>
         </button>
@@ -69,11 +65,7 @@
           v-if="openFaq === 1"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          Depende. Alguns usuários já possuem exames recentes e não precisam
-          repetir. Outros podem ser orientados a realizar exames complementares,
-          de acordo com a análise do profissional de saúde responsável. O
-          FitCertify365 conecta você a médicos que seguirão critérios clínicos
-          para garantir sua segurança.
+        {{ t('certificados.faq.question2.answer') }}
         </div>
       </div>
 
@@ -98,7 +90,7 @@
           </div>
           <div class="flex-1">
             <h3 class="flex font-[600] text-slate-600">
-              Quem assina os certificados?
+              {{ t('certificados.faq.question3.question') }}
             </h3>
           </div>
         </button>
@@ -107,10 +99,7 @@
           v-if="openFaq === 2"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          Todos os certificados são assinados por médicos registrados no
-          Conselho Regional de Medicina (CRM), com experiência em saúde
-          esportiva e aptidão física. A plataforma garante a verificação e o
-          registro digital da assinatura para sua validade.
+        {{ t('certificados.faq.question3.answer') }}
         </div>
       </div>
 
@@ -135,7 +124,7 @@
           </div>
           <div class="flex-1">
             <h3 class="flex font-[600] text-slate-600">
-              Como sei se ele é válido?
+              {{ t('certificados.faq.question4.question') }}
             </h3>
           </div>
         </button>
@@ -144,10 +133,7 @@
           v-if="openFaq === 3"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          O certificado conta com autenticação digital, número de identificação
-          único e validação online através do QR Code. Qualquer organizador ou
-          terceiro autorizado pode verificar a autenticidade em segundos,
-          acessando o link indicado no documento.
+        {{ t('certificados.faq.question4.answer') }}
         </div>
       </div>
 
@@ -171,7 +157,7 @@
             </svg>
           </div>
           <div class="flex-1">
-            <h3 class="flex font-[600] text-slate-600">Quanto tempo leva?</h3>
+            <h3 class="flex font-[600] text-slate-600">{{ t('certificados.faq.question5.question') }}</h3>
           </div>
         </button>
 
@@ -179,10 +165,7 @@
           v-if="openFaq === 4"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          O processo é rápido. O médico realiza os exames com você no
-          consultório e, se estiver tudo certo, o certificado é emitido na hora,
-          de forma digital e com autenticação válida em todo o território
-          nacional
+        {{ t('certificados.faq.question5.answer') }}
         </div>
       </div>
 
@@ -207,7 +190,7 @@
           </div>
           <div class="flex-1">
             <h3 class="flex font-[600] text-slate-600">
-              Posso usar o mesmo para várias provas?
+              {{ t('certificados.faq.question6.question') }}
             </h3>
           </div>
         </button>
@@ -216,10 +199,7 @@
           v-if="openFaq === 5"
           class="ml-8 pb-4 pr-4 text-gray-600 leading-relaxed animate-fade-in"
         >
-          Sim. O certificado pode ser utilizado em diversas provas, desde que
-          esteja dentro do período de validade definido pelo médico (geralmente
-          entre 3 e 12 meses). Basta apresentá-lo aos organizadores
-          quando solicitado.
+        {{ t('certificados.faq.question6.answer') }}
         </div>
       </div>
     </div>
@@ -229,8 +209,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import { useI18n } from "../../composables/useI18n";
+
 // Reactive data
 const openFaq = ref<number | null>(null);
+
+const { t } = useI18n();
 
 // Methods
 const toggleFaq = (index: number): void => {

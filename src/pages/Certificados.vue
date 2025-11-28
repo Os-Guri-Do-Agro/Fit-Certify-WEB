@@ -7,7 +7,7 @@
         class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic"
       >
         <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
-          Certificados
+          {{ t('certificados.title') }}
         </h1>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <h2
           class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px] text-center"
         >
-          Certificados digitais para sua segurança e performance
+        {{ t('certificados.subtitle') }}
         </h2>
       </div>
     </div>
@@ -46,30 +46,20 @@
           <p
             class="text-[1em] lg:text-[1.5em] leading-[30px] lg:leading-[40px] xl:leading-[50px] hidden lg:flex w-full lg:max-w-[603.2px] xl:max-w-[658px]"
           >
-            Após a consulta médica, seu certificado pode ser incluído na
-            plataforma de duas formas: diretamente por um dos médicos parceiros
-            da FitCertify365 ou por upload, caso tenha sido emitido pelo seu
-            próprio médico. Após validado, ele fica disponível na sua conta para
-            ser baixado, adaptado aos templates das provas e utilizado enquanto
-            estiver dentro do prazo de validade.
+          {{ t('certificados.section1.text') }}
           </p>
 
           <div class="lg:hidden flex flex-col mt-[16px] pt-5 pb-5 md:mt-0">
             <p
               class="text-[1em] leading-[30px] w-full max-w-[325px] md:max-w-[355px] md:p-10 md:pb-0"
             >
-              Após a consulta médica, seu certificado pode ser incluído na
-              plataforma de duas formas: diretamente por um dos médicos
-              parceiros da FitCertify365 ou por upload, caso tenha sido emitido
-              pelo seu próprio médico.
+            {{ t('certificados.section1.textSeparado1') }}
             </p>
 
             <p
               class="text-[1em] leading-[30px] md:leading-[25px] w-full max-w-[325px] md:max-w-[355px] md:p-10 pt-0"
             >
-              Após validado, ele fica disponível na sua conta para ser baixado,
-              adaptado aos templates das provas e utilizado enquanto estiver
-              dentro do prazo de validade.
+            {{ t('certificados.section1.textSeparado2') }}
             </p>
           </div>
         </div>
@@ -86,7 +76,7 @@
       <h2
         class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-white font-[600] italic leading-[40px] md:leading-[55px] md:text-center mt-[52px]"
       >
-        Tipos de Certificado
+        {{ t('certificados.section2.title') }}
       </h2>
       <div
         class="w-full container hidden md:flex items-center justify-center gap-[18px] flex-wrap lg:flex-nowrap p-5"
@@ -96,9 +86,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Corrida de Rua
+              {{ t('certificados.section2.streetRunning.title') }}
             </h4>
-            <p class="text-[1em]">Para provas de 5K a maratona</p>
+            <p class="text-[1em]" v-html="t('certificados.section2.streetRunning.description')"></p>
           </div>
 
           <div class="">
@@ -106,7 +96,7 @@
               href="https://fit-certify-admin.vercel.app/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-              >Iniciar</a
+              >{{ t('certificados.section2.streetRunning.button') }}</a
             >
           </div>
         </div>
@@ -116,9 +106,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Academias e Treinos
+              {{ t('certificados.section2.gymsTraining.title') }}
             </h4>
-            <p class="text-[1em]">Crossfit, musculação e funcional</p>
+            <p class="text-[1em]" v-html="t('certificados.section2.gymsTraining.description')"></p>
           </div>
 
           <div class="">
@@ -126,7 +116,7 @@
               href="https://fit-certify-admin.vercel.app/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-              >Iniciar</a
+              >{{ t('certificados.section2.gymsTraining.button') }}</a
             >
           </div>
         </div>
@@ -136,11 +126,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Ciclismo e Triathlon
+              {{ t('certificados.section2.cyclingTriathlon.title') }}
             </h4>
-            <p class="text-[1em]">
-              Endurance e provas combinadas <br />
-              Inclui exames opcionais
+            <p class="text-[1em]" v-html="t('certificados.section2.cyclingTriathlon.description')">
             </p>
           </div>
 
@@ -149,7 +137,7 @@
               href="https://fit-certify-admin.vercel.app/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-              >Iniciar</a
+              >{{ t('certificados.section2.cyclingTriathlon.button') }}</a
             >
           </div>
         </div>
@@ -159,10 +147,9 @@
         >
           <div class="">
             <h4 class="text-[1.17em] text-cyan-400 font-[700] mb-[12px]">
-              Programas Corporativos
+              {{ t('certificados.section2.corporatePrograms.title') }}
             </h4>
-            <p class="text-[1em]">
-              Para funcionários que participam de ações esportivas
+            <p class="text-[1em]" v-html="t('certificados.section2.corporatePrograms.description')">
             </p>
           </div>
 
@@ -171,7 +158,7 @@
               href="https://fit-certify-admin.vercel.app/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
-              >Iniciar</a
+              >{{ t('certificados.section2.corporatePrograms.button') }}</a
             >
           </div>
         </div>
@@ -179,9 +166,7 @@
 
       <div class="text-center pb-[32px] p-5">
         <span class="text-zinc-800">
-          O certificado é válido pelo período definido pelo médico (até 12
-          meses). Durante br esse tempo, você pode usá-lo para quantas provas
-          quiser.
+          {{ t('certificados.section2.validityNote') }}
         </span>
       </div>
     </div>
@@ -195,7 +180,7 @@
         <h2
           class="text-[1.375em] text-white font-[600] italic leading-[40px] md:text-center mt-[52px]"
         >
-          Tipos de Certificado
+          {{ t('certificados.section2.title') }}
         </h2>
       </div>
 
@@ -205,9 +190,7 @@
 
       <div class="text-center pb-[52px] p-5">
         <span class="text-zinc-800">
-          O certificado é válido pelo período definido pelo médico (até 12
-          meses). Durante br esse tempo, você pode usá-lo para quantas provas
-          quiser.
+          {{ t('certificados.section2.validityNote') }}
         </span>
       </div>
     </div>
@@ -222,7 +205,7 @@
       <h2
         class="text-[1.375em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] md:text-center mt-[52px]"
       >
-        Como funciona?
+        {{ t('certificados.section3.title') }}
       </h2>
       <div
         class="w-full container hidden md:flex items-center justify-center gap-[52px] lg:gap-[84px] lg:flex-nowrap p-5 md:p-10"
@@ -252,12 +235,12 @@
           <div class="flex items-top flex-col lg:flex-row justify-top">
             <div class=" w-10 flex-shrink-0">
                           <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-              >1.</span
+              >{{ t('certificados.section3.step1.number') }}</span
             >
             </div>
 
             <p class="text-[1em] lg:text-[1.25em]">
-              Cadastre-se na nossa plataforma
+              {{ t('certificados.section3.step1.description') }}
             </p>
           </div>
         </div>
@@ -286,12 +269,11 @@
           <div class="flex items-top flex-col lg:flex-row justify-top">
             <div class=" w-10 flex-shrink-0">
               <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-                >2.</span
+                >{{ t('certificados.section3.step2.number') }}</span
               >
             </div>
             <p class="text-[1em] lg:text-[1.25em]">
-              Agende sua consulta e realize a avaliação presencial exigida para
-              emissão do certificado.
+              {{ t('certificados.section3.step2.description') }}
             </p>
           </div>
         </div>
@@ -319,12 +301,11 @@
           <div class="flex items-top flex-col lg:flex-row justify-top">
             <div class=" w-10 flex-shrink-0">
               <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-                >3.</span
+                >{{ t('certificados.section3.step3.number') }}</span
               >
             </div>
             <p class="text-[1em] lg:text-[1.25em]">
-              Após a consulta, o certificado pode ser emitido por um médico
-              parceiro ou enviado por você, se for de um médico particular.
+              {{ t('certificados.section3.step3.description') }}
             </p>
           </div>
         </div>
@@ -354,12 +335,11 @@
           <div class="flex items-top flex-col lg:flex-row justify-top">
             <div class=" w-10 flex-shrink-0">
               <span class="text-[1em] lg:text-[1.25em] text-lime-500 font-[700]"
-                >4.</span
+                >{{ t('certificados.section3.step4.number') }}</span
               >
             </div>
             <p class="text-[1em] lg:text-[1.25em]">
-              Enquanto seu certificado estiver válido, você pode usá-lo em
-              diferentes provas do mesmo perfil, com poucos cliques.
+              {{ t('certificados.section3.step4.description') }}
             </p>
           </div>
         </div>
@@ -372,7 +352,7 @@
       <h2
         class="text-[1.375em] text-lime-500 font-[600] italic leading-[40px] text-center mt-[52px]"
       >
-        Como funciona?
+        {{ t('certificados.section3.title') }}
       </h2>
       <Carousel />
     </div>
@@ -398,14 +378,12 @@
         <h2
           class="text-[1.625em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400 w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] leading-[35px] lg:leading-[55px]"
         >
-          Garanta sua aptidão com segurança e agilidade.
+          {{ t('certificados.section4.title') }}
         </h2>
         <p
           class="text-[1em] xl:text-[1.25em] leading-[32px] w-full max-w-[322px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]"
         >
-          Utilizamos criptografia, assinatura digital e integração com dados
-          clínicos reais. Além disso, criamos uma experiência fluida e confiável
-          para quem precisa cuidar da saúde sem burocracia.
+          {{ t('certificados.section4.description') }}
         </p>
 
         <div class="hidden md:flex w-full lg:max-w-[658px] md:ml-[24px]">
@@ -414,7 +392,7 @@
             target="_blank"
             class="text-[0.93em] w-full font-[500] max-w-[359px] h-[41px] lg:h-[53px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/cadastro"
-            >Iniciar emissão de certificado</a
+            >{{ t('certificados.section4.button') }}</a
           >
         </div>
       </div>
@@ -429,7 +407,7 @@
         <h2
           class="text-[1.375em] md:text-[2em] text-lime-500 font-[600] italic"
         >
-          Perguntas Frequentes
+          {{ t('certificados.faq.title') }}
         </h2>
       </div>
 
@@ -450,15 +428,11 @@
             >
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            O certificado serve para todas as provas?
+            {{ t('certificados.faq.question1.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-            Sim. O certificado de aptidão física emitido pelo FitCertify365 é
-            válido para qualquer competição que exija comprovação de saúde,
-            conforme as diretrizes das autoridades esportivas e médicas.
-            Recomendamos apenas verificar se a organização do evento aceita
-            certificados digitais.
+            {{ t('certificados.faq.question1.answer') }}
           </p>
         </div>
 
@@ -478,15 +452,11 @@
             >
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            Preciso fazer exames antes?
+            {{ t('certificados.faq.question2.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-            Depende. Alguns usuários já possuem exames recentes e não precisam
-            repetir. Outros podem ser orientados a realizar exames
-            complementares, de acordo com a análise do profissional de saúde
-            responsável. O FitCertify365 conecta você a médicos que seguirão
-            critérios clínicos para garantir sua segurança.
+            {{ t('certificados.faq.question2.answer') }}
           </p>
         </div>
 
@@ -506,14 +476,11 @@
             >
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            Quem assina os certificados?
+            {{ t('certificados.faq.question3.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-            Todos os certificados são assinados por médicos registrados no
-            Conselho Regional de Medicina (CRM), com experiência em saúde
-            esportiva e aptidão física. A plataforma garante a verificação e o
-            registro digital da assinatura para sua validade.
+            {{ t('certificados.faq.question3.answer') }}
           </p>
         </div>
 
@@ -532,14 +499,11 @@
               class="lucide lucide-check-icon lucide-check"
             >
               <path d="M20 6 9 17l-5-5" /></svg
-            >Como sei se ele é válido?
+            >{{ t('certificados.faq.question4.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-            O certificado conta com autenticação digital, número de
-            identificação único e validação online através do QR Code. Qualquer
-            organizador ou terceiro autorizado pode verificar a autenticidade em
-            segundos, acessando o link indicado no documento.
+            {{ t('certificados.faq.question4.answer') }}
           </p>
         </div>
 
@@ -559,14 +523,11 @@
             >
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            Quanto tempo leva?
+            {{ t('certificados.faq.question5.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
-            O processo é rápido. O médico realiza os exames com você no
-            consultório e, se estiver tudo certo, o certificado é emitido na
-            hora, de forma digital e com autenticação válida em todo o
-            território nacional
+            {{ t('certificados.faq.question5.answer') }}
           </p>
         </div>
 
@@ -586,7 +547,7 @@
             >
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            Posso usar o mesmo para várias provas?
+            {{ t('certificados.faq.question6.question') }}
           </h6>
 
           <p class="md:max-w-[400px] lg:max-w-[800px] opacity-80">
@@ -611,6 +572,10 @@ import { useRoute } from "vue-router";
 import Carousel from "../components/Certif-components/Certif-Carousel-First.vue";
 import CarouselSecond from "../components/Certif-components/Certif-Carousel-Second.vue";
 import Faq from "../components/Certif-components/FAQ.vue";
+import { useI18n } from "../composables/useI18n";
+
+const { t } = useI18n();
+
 
 const route = useRoute();
 

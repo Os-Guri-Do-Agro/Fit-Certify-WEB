@@ -5,7 +5,7 @@
       <div
         class="w-full max-w-[261px] h-[53px] md:max-w-[659px] md:h-[82px] lg:max-w-[728px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
         <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
-          Provas Parceiras
+          {{ t('eventos.title') }}
         </h1>
       </div>
     </div>
@@ -16,7 +16,7 @@
       <div class=" w-full p-5 md:p-10">
         <h2
           class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
-          Corridas e provas que reconhecem sua saúde em dia
+          {{ t('eventos.subtitle') }}
         </h2>
       </div>
     </div>
@@ -26,10 +26,7 @@
     <div class="container flex flex-col justify-center items-center lg:h-[223px] bg-white ">
       <p
         class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto">
-        Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você
-        encontra eventos parceiros com integração direta, um calendário completo de provas aceitas e, nos eventos
-        conectados, a equipe médica da organização pode, com sua autorização, acessar seus dados de saúde em caso de
-        necessidade durante a prova.
+        {{ t('eventos.section1.text') }}
       </p>
     </div>
 
@@ -37,29 +34,29 @@
       <div class="container flex flex-col items-center ">
         <div class="flex flex-col text-center gap-5 w-full items-center">
           <h3 class="text-[2.25em] italic text-lime-500 font-[600]">
-            Calendário de corridas
+            {{ t('eventos.section2.title') }}
           </h3>
           <span class="text-[1.5em] text-lime-500 font-[700]">
-            Filtrar provas
+            {{ t('eventos.section2.subtitle') }}
           </span>
 
           <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="tipoEventoIdSelecionado" :options="tipos" placeholder="Tipo de Evento"
+              <el-select v-model="tipoEventoIdSelecionado" :options="tipos" :placeholder="t('eventos.section2.tipoEvento')"
                 style="width: 100%;" filterable clearable @change="(e) => onChangeTipoEventoId(e)">
                 <el-option v-for="item in tipoEventos" :key="item.id" :label="item.nome" :value="item.id" />
               </el-select>
             </div>
 
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="cidadeSelecionada" placeholder="Localidade" style="width: 100%;" filterable clearable
+              <el-select v-model="cidadeSelecionada" :placeholder="t('eventos.section2.localidade')" style="width: 100%;" filterable clearable
                 @change="(e) => onChangeLocalidade(e)">
                 <el-option v-for="item in cidades" :key="item.id" :label="item.name" :value="item.name" />
               </el-select>
             </div>
 
             <div class="w-full md:max-w-[200px]">
-              <el-select v-model="mesSelecionado" placeholder="Mês" style="width: 100%;" filterable clearable
+              <el-select v-model="mesSelecionado" :placeholder="t('eventos.section2.mes')" style="width: 100%;" filterable clearable
                 value-key="nome" @change="(e) => onChangeMes(e)">
                 <el-option v-for="item in meses" :key="item.value" :label="item.nome" :value="item" />
               </el-select>
@@ -110,19 +107,18 @@
         class=" w-full max-w-[655px] flex md:h-auto flex-col lg:items-center justify-center gap-[22px] md:gap-[20px] p-5 md:p-10">
         <h2 class="text-[1.75em] md:text-[2em] lg:text-[2.25em]  font-[700] italic text-cyan-400
         w-full  lg:leading-[55px]">
-          Quer sua prova aqui?
+        {{ t('eventos.section3.title') }}
         </h2>
         <p class="text-[1em] lg:text-[1.25em] leading-[30px] md:leading-[35px] lg:leading-[40px] lg:flex
         w-full">
-          Organizadores de eventos esportivos podem integrar sua corrida com a FitCertify365 e oferecer ainda mais
-          praticidade aos atletas — com certificados digitais, gestão centralizada e segurança jurídica.
+        {{ t('eventos.section3.text') }}
         </p>
 
         <div class="w-full flex ">
           <RouterLink
             class="flex w-[284px] lg:w-[282px] h-[40px] lg:h-[40px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-[0.8em] text-white font-[500] bg-cyan-400 hover:bg-cyan-500  duration-300"
             to="/contato">
-            Tornar minha prova parceira
+            {{ t('eventos.section3.button') }}
           </RouterLink>
         </div>
       </div>
@@ -138,10 +134,11 @@ import SelectProva from '../components/Eventos-components/eventos-prova-select.v
 import Localidade from '../components/Eventos-components/eventos-local-select.vue'
 import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 import EventoService from '../services/Eventos/eventos-services'
+import { useI18n } from '../composables/useI18n'
 
 const tipoEventos = ref([])
 const eventos = ref([])
-
+const { t } = useI18n();
 const cidadeSelecionada = ref('')
 const mesSelecionado = ref('')
 const tipoEventoIdSelecionado = ref('')

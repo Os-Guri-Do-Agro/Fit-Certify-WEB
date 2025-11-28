@@ -204,5 +204,159 @@ export default {
       title: 'A solution for athletes, trainers and organizers',
       text: 'If you participate in races, train regularly or organize events, FitCertify365 has been created to facilitate your routine. Issue, monitor and advance with health in day, from the first training to the medal.'
     }
+  },
+  certificados: {
+    title: 'Certificates',
+    subtitle: 'Digital certificates for your security and performance',
+      section1: {
+        text: 'After the medical consultation, your certificate can be included in the platform in two ways: directly by one of the partner doctors of FitCertify365 or by upload, if it has been issued by your own doctor. After validated, it becomes available on your account to be downloaded, adapted to the race templates and used while within the validity period.',
+        textSeparado1: 'After the medical consultation, your certificate can be included in the platform in two ways: directly by one of the partner doctors of FitCertify365 or by upload, if it has been issued by your own doctor.',
+        textSeparado2: 'After validated, it becomes available on your account to be downloaded, adapted to the race templates and used while within the validity period.'
+      },
+      section2: {
+        title: 'Types of Certificate',
+        streetRunning: {
+          title: 'Street Running',
+          description: 'For races from 5K to marathon',
+          button: 'Start'
+        },
+        gymsTraining: {
+          title: 'Gyms and Training',
+          description: 'Crossfit, weight training and functional',
+          button: 'Start'
+        },
+        cyclingTriathlon: {
+          title: 'Cycling and Triathlon',
+          description: 'Endurance and combined races Includes optional exams',
+          button: 'Start'
+        },
+        corporatePrograms: {
+          title: 'Corporate Programs',
+          description: 'For employees participating in sports activities',
+          button: 'Start'
+        },
+        validityNote: 'The certificate is valid for the period defined by the doctor (up to 12 months). During this time, you can use it for as many races as you want.'
+      },
+      section3: {
+        title: 'How does it work?',
+        step1: {
+          number: '1.',
+          description: 'Register on our platform'
+        },
+        step2: {
+          number: '2.',
+          description: 'Schedule your consultation and perform the in-person evaluation required for certificate issuance.'
+        },
+        step3: {
+          number: '3.',
+          description: 'After the consultation, the certificate can be issued by a partner doctor or sent by you, if it is from a private doctor.'
+        },
+        step4: {
+          number: '4.',
+          description: 'While your certificate is valid, you can use it in different races of the same profile, with just a few clicks.'
+        }
+      },
+      section4: {
+        title: 'Ensure your fitness with security and agility.',
+        description: 'We use encryption, digital signature and integration with real clinical data. In addition, we create a fluid and reliable experience for those who need to take care of their health without bureaucracy.',
+        button: 'Start certificate issuance'
+      },
+      faq: {
+        title: 'Frequently Asked Questions',
+        question1: {
+          question: 'Does the certificate work for all races?',
+          answer: 'Yes. The physical fitness certificate issued by FitCertify365 is valid for any competition that requires health proof, according to the guidelines of sports and medical authorities. We only recommend checking if the event organization accepts digital certificates.'
+        },
+        question2: {
+          question: 'Do I need to take exams beforehand?',
+          answer: 'It depends. Some users already have recent exams and do not need to repeat them. Others may be advised to perform complementary exams, according to the analysis of the responsible health professional. FitCertify365 connects you to doctors who will follow clinical criteria to ensure your safety.'
+        },
+        question3: {
+          question: 'Who signs the certificates?',
+          answer: 'All certificates are signed by doctors registered with the Regional Medical Council (CRM), with experience in sports health and physical fitness. The platform ensures verification and digital registration of the signature for its validity.'
+        },
+        question4: {
+          question: 'How do I know if it is valid?',
+          answer: 'The certificate has digital authentication, unique identification number and online validation through QR Code. Any organizer or authorized third party can verify authenticity in seconds, accessing the link indicated in the document.'
+        },
+        question5: {
+          question: 'How long does it take?',
+          answer: 'The process is fast. The doctor performs the exams with you in the office and, if everything is right, the certificate is issued immediately, digitally and with valid authentication throughout the national territory.'
+        },
+        question6: {
+          question: 'Can I use the same one for multiple races?',
+          answer: 'Yes. The certificate can be used in various races, as long as it is within the validity period defined by the doctor (usually between 3 and 12 months). Just present it to the organizers when requested.'
+        }
+      }
+    },
+    eventos: {
+      title: 'Partner Events',
+      subtitle: 'Races and events that recognize your health today',
+      section1: {
+        text: 'Our physical fitness certificate is accepted in any race or event that requires a medical certificate. Here you will find partner events with direct integration, a complete calendar of races accepted and, in connected events, the team of the organization can, with your authorization, access their data in case of need during the race.'
+      },
+      section2: {
+        title: 'Race calendar',
+        subtitle: 'Filter races',
+        tipoEvento: 'Type of Event',
+        localidade: 'Location',
+        mes: 'Month',
+      },
+      section3: {
+        title: 'Want your race here?',
+        text: 'Sports event organizers can integrate their race with FitCertify365 and offer athletes even more convenience — with digital certificates, centralized management, and legal security.',
+        button: 'Make my race a partner'
+      }
+    },
+    marcadores: {
+      title: 'Markers',
+      subtitle: 'Track your health with intelligence',
+      text: 'Access your main sports health indicators in real time. With charts, history and alerts, you understand your body and train with more safety.',
+      section1: {
+        title: 'Health Markers',
+        subtitle: 'Monitor your main sports health indicators. Understand your body, train safely and track your progress.',
+        card1: {
+          title: '💓 Resting Heart Rate',
+          text: 'Identify recovery and effort patterns based on your resting heart rate.'
+        },
+        card2: {
+          title: '⚖️ BMI and Body Composition',
+          text: 'Assessment of mass, weight and body proportion for continuous physical monitoring.'
+        },
+        card3: {
+          title: '🧪 Laboratory Tests',
+          text: 'View results like cholesterol, blood glucose, ferritin and other clinical indicators.'
+        },
+        card4: {
+          title: '🫁 VO₂ Max',
+          text: 'Estimate of maximum oxygen consumption — essential for endurance sports.'
+        },
+        card5: {
+          title: '🩺 Blood Pressure',
+          text: 'Regular monitoring of your pressure levels, with manual or automatic records.'
+        },
+        card6: {
+          title: '📈 Certificate History',
+          text: 'Track your timeline of certificates, consultations and medical evaluations.'
+        }
+      },
+      section2: {
+        title: 'Device integration',
+        text: 'Everything connected. Everything on your dashboard. Sync with smartwatches, health gadgets or partner laboratories. Data is processed securely and used to generate useful insights for your daily life.',
+        button: 'List of compatible devices'
+      },
+      section3: {
+        title: 'Smart alerts',
+        text: 'Take care before it becomes a problem.<br /><br />The system sends alerts if it detects relevant changes in your data — such as changing BMI, heart rate above normal or tests outside the ideal range.'
+      },
+      section4: {
+        title: 'Your workout counts.<br />And we record it.',
+        text: 'By integrating your data from apps like Apple Health, Google Fit, Strava, Garmin and others, you transform running, cycling, weight training and functional training into real indicators of progress. FitCertify365 uses this data to update your health markers and offer more accurate alerts, all in one place.'
+      },
+      section5: {
+        title: 'Your body speaks.<br />FitCertify365 helps you listen.',
+        buttonMobile: 'See our partners',
+        buttonDesktop: 'Sign Up'
+      }
+    }
   }
-}
