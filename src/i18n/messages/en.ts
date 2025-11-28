@@ -132,8 +132,9 @@ export default {
   },
   contact: {
     title: 'Contact',
+    text: 'Questions about certificates, sports health, event integration or partnerships? We are here to help you.',
     name: 'Name',
-    email: 'Email',
+    email: 'E-mail',
     message: 'Message',
     send: 'Send',
     phone: 'Phone',
@@ -148,7 +149,13 @@ export default {
       title: 'Want to be part of our ecosystem?',
       description: 'If you are an event organizer, doctor, clinic or sports brand and want to connect to FitCertify365, contact us.',
       cta: 'Talk about partnerships'
-    }
+    },
+    sectionContact: 'Direct channels',
+    lastSection: {
+      title: 'Want to be part of our ecosystem?',
+      text: 'If you are an event organizer, doctor, clinic or sports brand and want to connect to FitCertify365, contact us.',
+      button: 'Talk about partnerships'
+    } 
   },
   footer: {
     navegacao: {

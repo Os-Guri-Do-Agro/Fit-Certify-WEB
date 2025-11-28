@@ -90,12 +90,10 @@ export default {
     <section class="flex flex-col items-center justify-center pb-10">
         <div class="w-full flex flex-col justify-center items-center p-5 md:p-10 lg:h-[223px] bg-white">
             <p class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto hidden lg:flex">
-                Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? <br> <br>
-                Estamos aqui para te atender.
+              {{ t('contact.text') }}
             </p>
             <p class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto lg:hidden">
-                Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias?
-                Estamos aqui para te atender.
+              {{ t('contact.text') }}
             </p>
         </div>
 
@@ -152,7 +150,7 @@ export default {
     <section class="w-full flex items-center justify-center p-5 md:p-10">
         <div class="flex container flex-col p-5 md:p-10 md:gap-0 lg:gap-[52px]">
             <h3 class="text-[1.65em] text-cyan-400 font-[500] text-center">
-                Canais diretos
+                {{ t('contact.sectionContact')  }}
             </h3>
 
 
@@ -181,16 +179,16 @@ export default {
       <div class=" w-full max-w-[1069px] flex md:h-auto flex-col lg:items-center justify-center gap-[22px] md:gap-[20px] p-5 md:p-10">
         <h2 class="text-[1.75em] md:text-[2em] lg:text-[2.25em]  font-[700] italic text-cyan-400
         w-full  lg:leading-[55px]">
-          Quer fazer parte do nosso ecossistema?
+          {{ t('contact.lastSection.title')  }}
         </h2>
         <p class="text-[1em] lg:text-[1.25em] leading-[30px] md:leading-[35px] lg:leading-[40px] lg:flex
         w-full ">
-          Se você é organizador de eventos, médico, clínica ou marca esportiva e quer se conectar à FitCertify365, entre em contato conosco.
+        {{ t('contact.lastSection.text')  }}
         </p>
 
         <div class="w-full flex  justify-center">
         <RouterLink class="flex w-[284px] lg:-[203px] h-[41px] lg:h-[52px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-cyan-400 font-[500] hover:bg-cyan-400 hover:text-white duration-300" to="/">
-            Falar sobre parcerias
+          {{ t('contact.lastSection.button')  }}
         </RouterLink>
         </div>
       </div>
