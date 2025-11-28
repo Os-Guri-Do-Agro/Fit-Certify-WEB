@@ -225,7 +225,7 @@
                     <img class="w-full h-[349px] min-h-[300px] object-cover object-left-center rounded-[12px]"
                         src="../assets/quems-imgs/emilio-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Emilio Machado</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Founder & CEO</span>
+                    <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.emilioTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
                         {{ t('quemSomos.section6.emilioDesc') }}
                     </p>
@@ -233,28 +233,28 @@
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-02.jpg" alt="">
+                        src="../assets/quems-imgs/perfil-04.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
+                    <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.lucasTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
                         {{ t('quemSomos.section6.lucasDesc') }}                    </p>
                 </div>
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-03.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Adriana Gabardo</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Chief Financial Officer (CFO)</span>
+                        src="../assets/quems-imgs/perfil-02.jpg" alt="">
+                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Dr. Marcelo Leitão</h3>
+                    <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.marceloTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                         {{ t('quemSomos.section6.adrianaDesc') }}
+                         {{ t('quemSomos.section6.marceloDesc') }}
                     </p>
                 </div>
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-04.jpg" alt="">
+                        src="../assets/quems-imgs/datcho-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
+                    <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.alessandroTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
                         {{ t('quemSomos.section6.alessandroDesc') }}
                     </p>

@@ -5,7 +5,7 @@
             <div
                 class="w-full max-w-[261px] h-[53px] md:max-w-[659px] md:h-[82px] lg:max-w-[728px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
-                    Artigos
+                    {{ t('artigos.title') }}
                 </h1>
             </div>
         </div>
@@ -18,8 +18,7 @@
             <div class="container w-full p-5 md:p-10">
                 <h2
                     class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
-                    Conteúdo confiável para quem leva o esporte a sério
-                </h2>
+                    {{ t('artigos.subtitle') }}                </h2>
             </div>
         </div>
     </section>
@@ -30,8 +29,7 @@
         <div class="w-full flex flex-col justify-center items-center p-5 md:p-10 lg:h-[223px] bg-white">
             <p
                 class="text-[1em] lg:text-[1.375em] md:text-center leading-[30px] md:leading-[35px] max-h-[205px] md:max-h-full overflow-scroll md:overflow-auto">
-                Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.
-            </p>
+                {{ t('artigos.text') }}            </p>
         </div>
     </section>
 
@@ -45,12 +43,12 @@
             <div class="flex flex-col lg:mr-5 gap-10 w-full">
                 <div class="flex lg:hidden flex-col items-center gap-5">
                     <h3 class="text-cyan-400 mt-2 md:text-[1em] lg:text-[1.125em] font-[600]">
-                        Categorias
+                        {{ t('artigos.categorias') }}
                     </h3>
                     <Listbox v-model="selectedPerson" @update:modelValue="selecionarCategoria(selectedPerson.id)">
                         <ListboxButton
                             class="w-full max-w-[400px] text-cyan-400 font-semibold p-3 shadow-lg border-1 border-cyan-400 rounded-[30px] cursor-pointer">
-                            {{ selectedPerson.name }}</ListboxButton>
+                            {{ selectedPerson.nome }}</ListboxButton>
                         <ListboxOptions
                             class="flex flex-col bg-gray-50 border-1 border-cyan-300 p-5 rounded-[12px] shadow-2xl w-full max-w-[400px]">
                             <ListboxOption 
@@ -113,10 +111,11 @@ import {
     ListboxOption,
 } from '@headlessui/vue'
 import { onMounted, ref } from 'vue'
+import { useI18n } from '../composables/useI18n.ts'
 
-
+const { t } = useI18n();
 const CategoriasArtigos = ref([])
-const selectedPerson = ref({ id: null, nome: 'Todas as Categorias' })
+const selectedPerson = ref({ id: null, nome: t('artigos.todasCategorias') })
 const categoriaIdSelecionada = ref(null)
 
 const selecionarCategoria = (categoriaId) => {
@@ -128,7 +127,7 @@ onMounted(async () => {
    CategoriasArtigos.value = response.data || []
    
    // Adiciona "Todas as Categorias" no início
-   CategoriasArtigos.value.unshift({ id: null, nome: 'Todas as Categorias' })
+   CategoriasArtigos.value.unshift({ id: null, nome: t('artigos.todasCategorias') })
 })
 
 </script>

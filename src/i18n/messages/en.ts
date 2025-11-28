@@ -195,9 +195,13 @@ export default {
       text2: 'In addition to the medical team, our technical team is composed of experts in technology, data protection and digital health, ensuring quality, security and scalability of our platform. Our commitment is with security, agility and credibility in all the certification process.',
     },
     section6: {
+      emilioTitle:'Founder & CEO',
       emilioDesc: 'Specialist in digital strategies and branding, leads communication and positioning of FitCertify365',
+      lucasTitle:'Head of Business Development',
       lucasDesc: 'Responsible for commercial partnerships and the strategic expansion of FitCertify365',
-      adrianaDesc: 'With solid experience in both the healthcare and financial sectors, he leads FitCertify365’s financial management with a focus on sustainability and growth.',
+      marceloTitle: 'Chief Medical Officer (CMO)',
+      marceloDesc: 'A cardiologist and a reference in sports medicine, she leads the clinical front of FitCertify365 with a focus on safety, prevention, and medical responsibility.',
+      alessandroTitle: 'Chief Marketing Officer (CMO)',
       alessandroDesc: 'Specialist in digital strategies and branding, leads communication and positioning of FitCertify365',
     },
     section7: {
@@ -358,5 +362,12 @@ export default {
         buttonMobile: 'See our partners',
         buttonDesktop: 'Sign Up'
       }
+    },
+    artigos: {
+      title: 'Articles',
+      subtitle: 'Reliable content for those who take sports seriously',
+      text: 'Tips, studies and updates on health, prevention, performance and everything that moves people who live the sport.',
+      categorias: 'Categories',
+      todasCategorias: 'All categories'
     }
   }

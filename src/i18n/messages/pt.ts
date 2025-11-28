@@ -195,9 +195,13 @@ export default {
       text2: 'Além dos profissionais da saúde, nossa equipe técnica é composta por especialistas em tecnologia, proteção de dados e inovação em saúde digital, garantindo a qualidade, segurança e escalabilidade da nossa plataforma. Nosso compromisso é com a segurança, agilidade e credibilidade em todo o processo de certificação.',
     },
     section6: {
+      emilioTitle:'Fundador e CEO',
       emilioDesc: 'Empreendedor com mais de 30 anos de experiência e apaixonado por inovação em saúde',
+      lucasTitle:'Head de Desenvolvimento de Negócios',
       lucasDesc: 'Responsável pelas parcerias comerciais e expansão estratégica do FitCertify365',
-      adrianaDesc: 'Com sólida experiência nas áreas da saúde e financeira, lidera a gestão econômica do FitCertify365 com foco em sustentabilidade e crescimento',
+      marceloTitle: 'Diretor Médico (CMO)',
+      marceloDesc: 'Cardiologista e referência em medicina esportiva, lidera a frente clínica do FitCertify365 com foco em segurança, prevenção e responsabilidade médica.',
+      alessandroTitle: 'Diretor de Marketing (CMO)',
       alessandroDesc: 'Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do FitCertify365',
     },
     section7: {
@@ -358,6 +362,13 @@ export default {
       buttonMobile: 'Veja nossos parceiros',
       buttonDesktop: 'Me Cadastrar'
     }
+  },
+  artigos: {
+    title: 'Artigos',
+    subtitle: 'Conteúdo confiável para quem leva o esporte a sério',
+    text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
+    categorias: 'Categorias',
+    todasCategorias: 'Todas as categorias'
   }
 }
 
