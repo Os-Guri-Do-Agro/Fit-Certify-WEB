@@ -8,17 +8,14 @@
       >
         <h1
           class="text-[1.5em] md:text-[1.875em] lg:text-[4.875em] font-[600] italic text-cyan-400 leading-[30px] md:leading-[35px] lg:leading-[90px]"
+          v-html="t('home.banner.title')"
         >
-          Saúde em dia<br />para o esporte.
         </h1>
 
         <p
           class="text-[0.875em] lg:text-[1.5em] text-white font-[400] leading-[22px] md:leading-[26px] lg:leading-[40px] max-w-[317px] md:max-w-[394.7px] lg:max-w-[717px]"
         >
-          A FitCertify365 conecta atletas e médicos parceiros. Após uma consulta
-          presencial, o médico emite seu certificado, que fica salvo na
-          plataforma, pronto para ser usado em diferentes provas — com templates
-          personalizados e validade definida pelo profissional.
+          {{ t('home.banner.description') }}
         </p>
 
         <a
@@ -26,7 +23,7 @@
           target="_blank"
           class="w-[197px] lg:w-[294.9px] h-[34px] lg:h-[50.57px] text-[0.8em] lg:text-[1.1em] bg-lime-500 rounded-[30px] flex items-center justify-center text-white tracking-[1.5%] text-center hover:bg-lime-600 duration-300"
           to="/cadastro"
-          >Inicie seu processo agora</a
+          >{{ t('home.banner.cta') }}</a
         >
       </div>
       <div class="flex absolute">
@@ -60,13 +57,13 @@
         </svg>
 
         <h2 class="text-[1.5em] lg:text-[2.25em] italic font-[700] text-white">
-          AGILIDADE
+          {{ t('home.features.agility.title') }}
         </h2>
 
         <span
           class="text-[1em] lg:text-[1.5em] font-[400] max-w-[256px] xl:max-w-[453.2px] text-white"
         >
-          Certificados válidos por até 12 meses
+          {{ t('home.features.agility.description') }}
         </span>
       </div>
 
@@ -97,13 +94,13 @@
         </svg>
 
         <h2 class="text-[1.5em] lg:text-[2.25em] italic font-[700] text-white">
-          SEGURANÇA
+          {{ t('home.features.security.title') }}
         </h2>
 
         <span
           class="text-[1em] lg:text-[1.5em] font-[400] max-w-[256px] xl:max-w-[443.2px] text-white"
         >
-          Assinatura médica digital
+          {{ t('home.features.security.description') }}
         </span>
       </div>
 
@@ -134,13 +131,13 @@
         </svg>
 
         <h2 class="text-[1.5em] lg:text-[2.25em] italic font-[700] text-white">
-          TECNOLOGIA
+          {{ t('home.features.technology.title') }}
         </h2>
 
         <span
           class="text-[1em] lg:text-[1.5em] font-[400] w-full max-w-[256px] xl:max-w-[443.2px] text-white mb-[32px] md:mb-0"
         >
-          Plataforma integrada
+          {{ t('home.features.technology.description') }}
         </span>
       </div>
     </div>
@@ -163,24 +160,21 @@
       >
         <h2
           class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400 w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]"
+          v-html="t('home.sections.health.title')"
         >
-          Sua saúde validada. <br />
-          Seu esporte garantido.
         </h2>
         <p
+         
+          v-html="t('home.sections.health.description')"
           class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]"
         >
-          Vai competir? Consulte seu médico, emita seu certificado de aptidão
-          física e valide-o na FitCertify365. Com poucos cliques, você aplica
-          seu certificado nas principais provas do Brasil e do mundo — com
-          validade digital, segurança e praticidade.
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/quemsomos"
-            >Saiba Mais</router-link
+            >{{ t('home.learnMore') }}</router-link
           >
         </div>
       </div>
@@ -202,23 +196,20 @@
       >
         <h2
           class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-lime-500 w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]"
+          v-html="t('home.sections.events.title')"
         >
-          Vai correr? <br />
-          Confira eventos parceiros
         </h2>
         <p
           class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]"
         >
-          Após sua consulta com um médico, faça o upload do seu certificado na
-          plataforma e gere o modelo de certificado ideal para sua prova —
-          válido e personalizado nas principais corridas do Brasil e do mundo.
+          {{ t('home.sections.events.description') }}
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/eventos"
-            >Saiba Mais</router-link
+            >{{ t('home.learnMore') }}</router-link
           >
         </div>
       </div>
@@ -240,22 +231,20 @@
       >
         <h2
           class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400 w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]"
+          v-html="t('home.sections.tracking.title')"
         >
-          Acompanhe seus <br />
-          indicadores em tempo real.
         </h2>
         <p
           class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]"
         >
-          Acesse indicadores, histórico de exames e alertas inteligentes sobre
-          sua saúde esportiva. Tudo integrado em um só painel.
+          {{ t('home.sections.tracking.description') }}
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/marcadores"
-            >Saiba Mais</router-link
+            >{{ t('home.learnMore') }}</router-link
           >
         </div>
       </div>
@@ -278,20 +267,19 @@
         <h2
           class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-lime-500 w-full max-w-[461px] lg:max-w-[658px] md:ml-[24px] mt-[27px] leading-[35px] lg:leading-[55px]"
         >
-          Conteúdos e Artigos
+          {{ t('home.sections.content.title') }}
         </h2>
         <p
           class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] w-full max-w-[250px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] md:ml-[24px] lg:pr-[24px]"
         >
-          Dicas médicas, atualizações sobre check-ups, cuidados para provas e
-          novidades da medicina esportiva.
+          {{ t('home.sections.content.description') }}
         </p>
 
         <div class="w-full md:max-w-[461px] lg:max-w-[658px] md:ml-[24px]">
           <router-link
-            class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
+            class="text-[0.93em] font-[500] w-[224px] h-[28px] lg:h-[42px] rounded-[30px] border-1 border-lime-500 text-center text-lime-500 hover:bg-lime-500 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/artigos"
-            >Saiba Mais</router-link
+            >{{ t('home.learnMore') }}</router-link
           >
         </div>
       </div>
@@ -309,10 +297,10 @@
           <h2
             class="text-[1.6em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 w-full md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
           >
-            Apoio Institucional
+            {{ t('home.support.title') }}
           </h2>
           <p class="text-[0.9em] lg:text-[1.25em] flex md:hidden lg:flex">
-            Parceiros que confiam na nossa plataforma
+            {{ t('home.support.description') }}
           </p>
         </div>
 
@@ -344,7 +332,7 @@
           <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center"
             to="/contato"
-            >Torne-se um apoiador</router-link
+            >{{ t('home.support.cta') }}</router-link
           >
         </div>
       </div>
@@ -362,10 +350,10 @@
           <h2
             class="text-[1.6em] md:text-[2.25em] lg:text-[2.75em] xl:text-[3em] font-[600] italic text-cyan-400 md:max-w-[768px] lg:max-w-[1392px] lg:mt-[32px]"
           >
-            Conheça os patrocinadores da FitCertify365
+            {{ t('home.sponsors.title') }}
           </h2>
           <p class="text-[0.9em] lg:text-[1.25em] flex md:hidden lg:flex">
-            Empresas que apoiam a medicina esportiva e o bem-estar dos atletas
+            {{ t('home.sponsors.description') }}
           </p>
         </div>
 
@@ -393,7 +381,7 @@
             <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mt-5"
             to="/marketplace"
-            >Ver mais</router-link
+            >{{ t('home.viewMore') }}</router-link
           >
       </div>
     </div>
@@ -406,6 +394,9 @@
 import modalParabens from '../components/modalParabens.vue';
 import afiliadoService from '../services/Afiliados/afiliado-service';
 import {ref, onMounted, computed} from 'vue'
+import { useI18n } from '../composables/useI18n'
+
+const { t } = useI18n()
 
 const afiliados = ref([])
 

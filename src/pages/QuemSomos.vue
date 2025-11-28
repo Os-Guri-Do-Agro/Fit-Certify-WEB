@@ -5,7 +5,7 @@
             <div
                 class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
-                    Quem somos
+                    {{ t('quemSomos.title') }}
                 </h1>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="container w-full p-5 md:p-10">
                 <h2
                     class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
-                    Tecnologia a favor da saúde esportiva
+                    {{ t('quemSomos.subtitle') }}
                 </h2>
             </div>
         </div>
@@ -36,25 +36,18 @@
 
                 <div class="md:w-1/2 md:h-auto flex flex-col lg:items-center justify-center gap-[24px]">
                     <p class="text-[1em] lg:text-[1.5em] leading-[30px] lg:leading-[40px] xl:leading-[50px] hidden lg:flex
-        w-full lg:max-w-[603.2px] xl:max-w-[658px]">
-                        FitCertify365 nasceu para facilitar a vida de quem pratica esportes e precisa manter seus
-                        certificados médicos organizados e válidos. Conectamos médicos parceiros, atletas e eventos em
-                        uma única plataforma, oferecendo praticidade na gestão de documentos, sem abrir mão da
-                        responsabilidade médica e da segurança dos dados.
+        w-full lg:max-w-[603.2px] xl:max-w-[658px]">                {{ t('quemSomos.section1.text1') }}
                     </p>
 
                     <div class="lg:hidden  flex flex-col gap-[20px] mt-[16px] p-10 md:mt-0">
                         <p class="text-[1em]  leading-[30px]
         w-full max-w-[325px]  md:max-w-[355px]">
-                            FitCertify365 nasceu para facilitar a vida de quem pratica esportes e precisa manter seus
-                            certificados médicos organizados e válidos.
+        {{ t('quemSomos.section1.textSeparado1') }}
                         </p>
 
                         <p class="text-[1em]  leading-[30px] md:leading-[25px]
         w-full max-w-[325px] md:max-w-[355px] ">
-                            Conectamos médicos parceiros, atletas e eventos em uma única plataforma, oferecendo
-                            praticidade na gestão de documentos, sem abrir mão da responsabilidade médica e da segurança
-                            dos dados.
+        {{ t('quemSomos.section1.textSeparado2') }}
                         </p>
 
                     </div>
@@ -72,7 +65,7 @@
         <div class="w-full h-full flex justify-center items-center bg-sky-50 md:gap-[32px] lg:gap-0 flex-wrap">
             <h2
                 class="text-[1.625em] md:text-[1.75em] lg:text-[2.25em] text-lime-500 font-[600] italic leading-[40px] md:leading-[55px] p-10 md:text-center mt-[52px]">
-                Mais do que certificados. Uma plataforma completa de saúde esportiva.
+                {{ t('quemSomos.section2.title') }}
             </h2>
             <div
                 class="w-full md:h-[656px] lg:h-[501px] container hidden md:flex items-center justify-center gap-[32px] lg:gap-[64px] md:flex-wrap lg:flex-nowrap">
@@ -88,7 +81,7 @@
 
                     <div class="w-full md:max-w-[155px]  lg:max-w-[237px] h-[228px]">
                         <p class="text-[1em] lg:text-[1.25em] leading-[40px] md:p-0">
-                            Validamos atestados digitais com validade <br> legal
+                            {{ t('quemSomos.section2.card1') }}
                         </p>
                     </div>
                 </div>
@@ -106,7 +99,7 @@
 
                     <div class="w-full md:max-w-[155px]  lg:max-w-[237px] h-[228px]">
                         <p class="text-[1em] lg:text-[1.25em] leading-[40px] md:p-0">
-                            Monitoramos marcadores de saúde ao longo do tempo
+                            {{ t('quemSomos.section2.card2') }}
                         </p>
                     </div>
                 </div>
@@ -124,7 +117,7 @@
 
                     <div class="w-full md:max-w-[155px]  lg:max-w-[237px] h-[228px]">
                         <p class="text-[1em] lg:text-[1.25em] leading-[40px] p-10 md:p-0">
-                            Integramos dados de exames e dispositivos inteligentes
+                            {{ t('quemSomos.section2.card3') }}
                         </p>
                     </div>
                 </div>
@@ -143,7 +136,7 @@
 
                     <div class="w-full md:max-w-[155px]  lg:max-w-[237px] h-[228px]">
                         <p class="text-[1em] lg:text-[1.25em] leading-[40px] p-10 md:p-0">
-                            Facilitamos a jornada do atleta e do organizador de eventos
+                            {{ t('quemSomos.section2.card4') }}
                         </p>
                     </div>
                 </div>
@@ -161,7 +154,7 @@
 
                     <div class="w-full md:max-w-[155px]  lg:max-w-[237px] h-[228px]">
                         <p class="text-[1em] lg:text-[1.25em] leading-[40px] p-10 md:p-0">
-                            Criamos conexões com corridas e provas que valorizam a saúde
+                            {{ t('quemSomos.section2.card5') }}
                         </p>
                     </div>
                 </div>
@@ -190,12 +183,11 @@
                 class="hidden md:flex md:w-1/2 md:h-auto flex-col lg:items-center justify-center gap-[22px] lg:gap-[54px] md:p-10">
                 <h2 class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
         w-full max-w-[461px] lg:max-w-[658px] mt-[27px] leading-[35px] lg:leading-[55px]">
-                    Humanização, inovação e responsabilidade
+                    {{ t('quemSomos.section3.title') }}
                 </h2>
                 <p class="text-[1em] lg:text-[1.25em] leading-[30px] md:leading-[35px] lg:leading-[40px] xl:leading-[40px] lg:flex
         w-full lg:max-w-[603.2px] xl:max-w-[658px]">
-                    Utilizamos criptografia, assinatura digital e integração com dados clínicos reais. <br> Além disso,
-                    criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.
+                    {{ t('quemSomos.section3.text') }}
                 </p>
 
             </div>
@@ -216,35 +208,26 @@
             <div class="w-full  flex flex-col items-center text-center">
                 <h2 class="text-[1.5em] md:text-[2em] lg:text-[2em] xl:text-[2.3em] font-[700] italic text-lime-500
         w-full max-w-[461px] lg:max-w-[658px] mt-[27px] leading-[35px] lg:leading-[55px]">
-                    Nossa equipe
+        {{ t('quemSomos.section5.title') }}
                 </h2>
                 <p class="w-full max-w-[1140px] leading-[39px] mt-3 mb-5">
-                    O FitCertify365 conta com uma equipe multidisciplinar formada por médicos, especialistas em
-                    tecnologia, profissionais do esporte e da gestão da saúde.
-                    Todos os nossos médicos são devidamente registrados nos Conselhos Regionais de Medicina e
-                    capacitados para atuar com segurança na avaliação da aptidão física de atletas e praticantes de
-                    atividades físicas. Trabalhamos com profissionais de diversas especialidades, como Medicina do
-                    Esporte, Clínica Médica e Cardiologia, sempre priorizando o cuidado com a saúde, a prevenção e a
-                    responsabilidade médica.
+                    {{ t('quemSomos.section5.text1') }}
 
                 </p>
                 <p class="w-full max-w-[1140px] leading-[39px] mt-3 mb-5">
-                    Além dos profissionais da saúde, nossa equipe técnica é composta por especialistas em tecnologia,
-                    proteção de dados e inovação em saúde digital, garantindo a qualidade, segurança e escalabilidade da
-                    nossa plataforma.
-                    Nosso compromisso é com a segurança, agilidade e credibilidade em todo o processo de certificação.
+                    {{ t('quemSomos.section5.text2') }}
 
                 </p>
             </div>
 
             <div class="hidden md:flex flex-wrap items-start justify-center gap-6 mt-5">
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
-                    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-01.jpg" alt="">
+                    <img class="w-full h-[349px] min-h-[300px] object-cover object-left-center rounded-[12px]"
+                        src="../assets/quems-imgs/emilio-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Emilio Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Founder & CEO</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Empreendedor com mais de 30 anos de experiência e apaixonado por inovação em saúde
+                        {{ t('quemSomos.section6.emilioDesc') }}
                     </p>
                 </div>
 
@@ -254,8 +237,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Responsável pelas parcerias comerciais e expansão estratégica do FitCertify365
-                    </p>
+                        {{ t('quemSomos.section6.lucasDesc') }}                    </p>
                 </div>
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
@@ -264,8 +246,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Adriana Gabardo</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Chief Financial Officer (CFO)</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Com sólida experiência nas áreas da saúde e financeira, lidera a gestão econômica do
-                        FitCertify365 com foco em sustentabilidade e crescimento
+                         {{ t('quemSomos.section6.adrianaDesc') }}
                     </p>
                 </div>
 
@@ -275,8 +256,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do
-                        FitCertify365
+                        {{ t('quemSomos.section6.alessandroDesc') }}
                     </p>
                 </div>
             </div>
@@ -300,42 +280,42 @@
         <div class="w-full container hidden md:flex items-top justify-center">
             <div class="w-full md:w-1/2 lg:max-w-[408px] h-[276px] p-10 flex flex-col  text-start">
                 <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
-                    Missão
+                    {{ t('quemSomos.section4.card1.text') }}
                 </h3>
                 <p class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                    Tornar a saúde esportiva mais acessível, integrada e conectada à realidade dos atletas modernos.
+                    {{ t('quemSomos.section4.card1.descricao') }}
                 </p>
             </div>
 
             <div class="w-full md:w-1/2 lg:max-w-[408px] h-[276px] p-10 flex flex-col text-start">
                 <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
-                    Visão
+                    {{ t('quemSomos.section4.card2.text') }}
                 </h3>
                 <p class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                    Ser referência nacional em certificações digitais e monitoramento de saúde esportiva até 2027.
+                    {{ t('quemSomos.section4.card2.descricao') }}
                 </p>
             </div>
 
             <div class="w-full md:w-1/2 lg:max-w-[408px] min-h-[276px] p-10 flex flex-col text-start">
                 <h3 class="text-[2em] lg:text-[2.25em] italic text-cyan-400 font-[600] mb-[18px] leading-[40px]">
-                    Valores
+                    {{ t('quemSomos.section4.card3.text') }}
                 </h3>
 
                 <span>
                     <li class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                        Integridade física do atleta
+                        {{ t('quemSomos.section4.card3.descricao') }}
                     </li>
                     <li class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                        Ética
+                        {{ t('quemSomos.section4.card3.descricao2') }}
                     </li>
                     <li class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                        Inovação com propósito
+                        {{ t('quemSomos.section4.card3.descricao3') }}
                     </li>
                     <li class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                        Segurança digital
+                        {{ t('quemSomos.section4.card3.descricao4') }}
                     </li>
                     <li class="text-[0.95em] lg:text-[1.25em] font-[400] leading-[35px] lg:leading-[40px]">
-                        Responsabilidade clínica
+                        {{ t('quemSomos.section4.card3.descricao5') }}
                     </li>
                 </span>
             </div>
@@ -358,14 +338,11 @@
                 class=" md:w-[571px] flex md:h-auto flex-col lg:items-center justify-center gap-[22px] md:gap-[20px] p-10">
                 <h2 class="text-[1.75em] md:text-[2em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-lime-500
         w-full max-w-[249px] md:max-w-[535px] lg:max-w-[520px] mt-[27px] leading-[55px] lg:leading-[55px]">
-                    Uma solução para
-                    atletas, treinadores e
-                    organizadores
+                    {{ t('quemSomos.section7.title') }}
                 </h2>
                 <p class="text-[1em] lg:text-[1.25em] leading-[30px] md:leading-[35px] lg:leading-[40px] xl:leading-[40px] lg:flex
         w-full max-w-[318px] md:max-w-[571px] lg:max-w-[603.2px] xl:max-w-[658px]">
-                    Se você participa de provas, treina com frequência ou organiza eventos, a FitCertify365 foi feita
-                    para facilitar sua rotina. Emita, monitore e avance com saúde em dia , do primeiro treino à medalha.
+                    {{ t('quemSomos.section7.text') }}
                 </p>
 
             </div>
@@ -379,4 +356,7 @@
 import Carousel from '../components/QuemS-components/QuemS-Carousel-First.vue'
 import CarouselSecond from '../components/QuemS-components/QuemS-Carousel-second.vue';
 import CarouselThird from '../components/QuemS-components/QuemSomos-Carousel-third.vue';
+import { useI18n } from '../composables/useI18n'
+
+const { t } = useI18n()
 </script>

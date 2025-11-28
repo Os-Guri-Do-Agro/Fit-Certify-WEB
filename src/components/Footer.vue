@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { useI18n } from '../composables/useI18n'
+const { t } = useI18n()
 
 </script>
 
@@ -22,9 +24,9 @@ import { RouterLink } from 'vue-router';
 
         <section class="w-full container flex items-end justify-center p-5 md:p-10 mb-[32px] md:mb-[52px]">
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-start md:items-center justify-center">
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/quemsomos'>Quem somos</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>Certificados</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>Contato</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/quemsomos'>{{ t('footer.navegacao.quemSomos') }}</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>{{ t('footer.navegacao.certificados') }}</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>{{ t('footer.navegacao.contato') }}</RouterLink>
                 <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
                     <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
                 </RouterLink>                 -->
@@ -37,9 +39,9 @@ import { RouterLink } from 'vue-router';
             </div>
 
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-end md:items-center justify-center">
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>SAC</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados#faq'>FAQ</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>Parceiros</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>{{ t('footer.navegacao.sac') }}</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados#faq'>{{ t('footer.navegacao.faq') }}</RouterLink>
+                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>{{ t('footer.navegacao.paceiros') }}</RouterLink>
                 <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
                     <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
                 </RouterLink> -->
@@ -65,7 +67,7 @@ import { RouterLink } from 'vue-router';
 
             <span class="text-white text-[0.75em] lg:text-[0.9em]">
                 © FitCertify365 2025
-                <RouterLink class="hover:underline ml-2" to="/termosprivacidade">Termos de Serviço | Política de Privacidade</RouterLink>
+                <RouterLink class="hover:underline ml-2" to="/termosprivacidade">{{ t('footer.privacy') }}</RouterLink>
             </span>
             </div>
         </section>

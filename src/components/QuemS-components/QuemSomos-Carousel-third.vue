@@ -5,11 +5,11 @@
                 <div class="w-full h-[600px] flex items-center  flex-col text-center gap-[18px] ">
                     <div class="text-center w-full ">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../../assets/quems-imgs/perfil-01.jpg" alt="">
+                        src="../../assets/quems-imgs/emilio-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Emilio Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Founder & CEO</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Empreendedor com mais de 30 anos de experiência e apaixonado por inovação em saúde
+                      {{ t('quemSomos.section6.emilioDesc') }}
                     </p>
                 </div>
                 </div>    
@@ -23,7 +23,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Responsável pelas parcerias comerciais e expansão estratégica do FitCertify365
+                      {{ t('quemSomos.section6.lucasDesc') }}
                     </p>
                 </div>
                 </div>    
@@ -36,8 +36,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Adriana Gabardo</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Chief Financial Officer (CFO)</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Com sólida experiência nas áreas da saúde e financeira, lidera a gestão econômica do
-                        FitCertify365 com foco em sustentabilidade e crescimento
+                      {{ t('quemSomos.section6.adrianaDesc') }}
                     </p>
                 </div>
                 </div>    
@@ -50,8 +49,7 @@
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Alessandro Datcho</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Chief Marketing Officer (CMO)</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                        Especialista em estratégias digitais e branding, lidera a comunicação e posicionamento do
-                        FitCertify365
+                      {{ t('quemSomos.section6.alessandroDesc') }}
                     </p>
                 </div>
                 </div>    
@@ -69,6 +67,7 @@
 
   // import required modules
   import { Pagination } from 'swiper/modules';
+import { useI18n } from '../../composables/useI18n'
 
   export default {
     components: {
@@ -76,8 +75,11 @@
       SwiperSlide,
     },
     setup() {
+      const { t } = useI18n();
+      
       return {
         modules: [Pagination],
+        t,
       };
     },
   };

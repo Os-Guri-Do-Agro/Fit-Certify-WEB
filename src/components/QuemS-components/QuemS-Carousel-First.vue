@@ -9,7 +9,7 @@
                     
                     <div class="w-full max-w-[224px] h-1/2">
                         <p class="text-[1em] leading-[40px]">
-                            Validamos atestados digitais com validade <br> legal
+                            {{ t('quemSomos.section2.card1') }}
                         </p>
                     </div>
                 </div>    
@@ -23,7 +23,7 @@
                     
                     <div class="w-full max-w-[224px] h-1/2">
                         <p class="text-[1em] leading-[40px]">
-                            Monitoramos marcadores de saúde ao longo do tempo
+                            {{ t('quemSomos.section2.card2') }}
                         </p>
                     </div>
                 </div>    
@@ -36,7 +36,7 @@
                     
                     <div class="w-full max-w-[224px] h-1/2">
                         <p class="text-[1em] leading-[40px]">
-                            Integramos dados de exames e dispositivos inteligentes
+                            {{ t('quemSomos.section2.card3') }}
                         </p>
                     </div>
                 </div>    
@@ -49,7 +49,7 @@
                     
                     <div class="w-full max-w-[224px] h-1/2">
                         <p class="text-[1em] leading-[40px]">
-                            Facilitamos a jornada do atleta e do organizador de eventos
+                            {{ t('quemSomos.section2.card4') }}
                         </p>
                     </div>
                 </div>    
@@ -62,7 +62,7 @@
                     
                     <div class="w-full max-w-[224px] h-1/2">
                         <p class="text-[1em] leading-[40px]">
-                            Criamos conexões com corridas e provas que valorizam a saúde
+                            {{ t('quemSomos.section2.card5') }}
                         </p>
                     </div>
                 </div>    
@@ -81,14 +81,19 @@
   // import required modules
   import { Pagination } from 'swiper/modules';
 
+import { useI18n } from '../../composables/useI18n'
+
   export default {
     components: {
       Swiper,
       SwiperSlide,
     },
     setup() {
+      const { t } = useI18n();
+      
       return {
         modules: [Pagination],
+        t,
       };
     },
   };

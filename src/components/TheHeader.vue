@@ -23,19 +23,20 @@
 
           
           <ul class="hidden lg:flex gap-[18px] items-center justify-center flex-wrap">
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/'>Home</router-link></li>
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>Quem Somos</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>Certificados</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>Eventos</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/'>{{ t('nav.home') }}</router-link></li>
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>{{ t('nav.about') }}</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>{{ t('nav.certificates') }}</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>{{ t('nav.events') }}</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marcadores'>Marcadores</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>Artigos</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>Marketplace</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>{{ t('nav.articles') }}</router-link></li> 
+            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li> 
           </ul>
 
           
-          <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[32px] md:flex-col lg:flex-row">
-            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">Login</a>
-            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login?tipo-cadastro">Cadastro</a>
+          <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[16px] md:flex-col lg:flex-row items-center">
+            <div class="hidden lg:flex"><LanguageSelector /></div>
+            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">{{ t('auth.login') }}</a>
+            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login?tipo-cadastro">{{ t('auth.register') }}</a>
           </div>
 
           <!-- Menu Mobile/Tablet Dropdown -->
@@ -44,17 +45,18 @@
               v-if="menuOpen"
               class="absolute top-[60px] right-0 w-[250px] bg-white shadow-xl rounded-md p-6 flex flex-col gap-4 lg:hidden z-50 "
             >
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/'>Home</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>Quem Somos</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>Certificados</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>Eventos</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/'>{{ t('nav.home') }}</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>{{ t('nav.about') }}</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>{{ t('nav.certificates') }}</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>{{ t('nav.events') }}</router-link></li>
               <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marcadores'>Marcadores</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/artigos'>Artigos</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>Marketplace</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/artigos'>{{ t('nav.articles') }}</router-link></li>
+              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li>
+              <LanguageSelector />
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <a @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">Login</a>
-                <a @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/register">Cadastro</a>
+                <a @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">{{ t('auth.login') }}</a>
+                <a @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/register">{{ t('auth.register') }}</a>
               </div>
             </div>
           </transition>
@@ -66,7 +68,11 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from '../composables/useI18n'
+import LanguageSelector from './LanguageSelector.vue'
+
 const menuOpen = ref(false)
+const { t } = useI18n()
 </script>
 
 <style scoped>

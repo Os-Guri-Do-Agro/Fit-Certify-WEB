@@ -3,11 +3,13 @@ import { RouterLink } from 'vue-router';
 import emailjs from '@emailjs/browser';
 import { ref } from 'vue';
 import { useToast } from 'primevue/usetoast';
+import { useI18n } from '../composables/useI18n';
 
 export default {
   setup() {
     const toast = useToast();
-    return { toast };
+    const { t } = useI18n();
+    return { toast, t };
   },
   data() {
     return {
@@ -65,7 +67,7 @@ export default {
         <div class="w-full container flex items-center justify-center">
             <div class="w-full max-w-[261px] h-[53px] md:max-w-[406px] md:h-[82px] lg:max-w-[647.5px] lg:h-[131.1px] bg-cyan-400 transform -skew-x-12 flex items-center justify-center text-center text-white font-[600] italic">
                 <h1 class="text-[1.625em] md:text-[2.5em] lg:text-[4.5em]">
-                    Contato
+                    {{ t('contact.title') }}
                 </h1>
             </div>
         </div>
@@ -77,7 +79,7 @@ export default {
         <div class="w-full h-[115px] lg:h-[240px] flex justify-center items-center bg-sky-50">
             <div class="container w-full p-5 md:p-10">
             <h2 class="text-[1.375em] md:text-[1.5em] lg:text-[2.25em] text-cyan-400 font-[600] italic leading-[34px]  text-center">
-                Fale com a equipe FitCertify365
+                {{ t('contact.teamContact') }}
             </h2>                
             </div>
         </div>
@@ -109,34 +111,34 @@ export default {
       <div class="flex w-full p-5 md:p-10 h-full items-end">
         <form class="flex flex-col w-full h-full gap-4 justify-center" action="" ref="form" @submit.prevent="sendEmail">
             <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">Nome</label>
+                <label class="font-[500] mb-2" for="">{{ t('contact.name') }}</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="text" id="nome" name="nome" required>                
             </div>
 
             <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">Email</label>
+                <label class="font-[500] mb-2" for="">{{ t('contact.email') }}</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="email" id="email" name="email" required>                
             </div>
 
             <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">Telefone</label>
+                <label class="font-[500] mb-2" for="">{{ t('contact.phone') }}</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="tel" id="telefone" name="telefone" :value="telefone" @input="formatPhone" placeholder="(11) 99999-9999" required>                
             </div>
 
             <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">Assunto</label>
+                <label class="font-[500] mb-2" for="">{{ t('contact.subject') }}</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="assunto" id="assunto" name="assunto" required>                
             </div>
 
             <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">Mensagem</label>
+                <label class="font-[500] mb-2" for="">{{ t('contact.message') }}</label>
                 <textarea class="w-full max-w-[622.4px] max-h-[136px] min-h-[136px] md:max-h-[136px] md:min-h-[136px] lg:min-h-[208px] lg:max-h-[208px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" name="mensagem" id="mensagem"></textarea>               
             </div>
             
             <div class="flex w-full max-w-[622.4px] justify-center md:justify-end">
                 <button type="submit" :disabled="loading" class="w-[146.4px] md:w-[178px] lg:w-[106px] h-[42px] bg-cyan-400 rounded-[30px] text-white text-[0.9em] hover:bg-cyan-500 duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
                     <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
-                    {{ loading ? 'Enviando...' : 'Enviar' }}
+                    {{ loading ? t('contact.sending') : t('contact.send') }}
                 </button>
             </div>
 
