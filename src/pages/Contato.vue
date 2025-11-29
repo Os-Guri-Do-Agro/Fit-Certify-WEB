@@ -1,64 +1,97 @@
-<script>
+<script setup>
 import { RouterLink } from 'vue-router';
-import emailjs from '@emailjs/browser';
-import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
 import { useI18n } from '../composables/useI18n';
+import contatoService from '../services/contato/contato-service';
+import { useToast } from 'primevue/usetoast';
+import { ref, computed } from 'vue';
 
-export default {
-  setup() {
-    const toast = useToast();
-    const { t } = useI18n();
-    return { toast, t };
-  },
-  data() {
-    return {
-      telefone: '',
-      loading: false
+const { t } = useI18n();
+const toast = useToast();
+const loading = ref(false);
+
+const form = ref({
+  nome: '',
+  email: '',
+  telefone: '',
+  assunto: '',
+  mensagem: '',
+})
+
+const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
+const isFormValid = computed(() => {
+  return form.value.nome.trim() && 
+         form.value.email.trim() && 
+         form.value.telefone.trim() && 
+         form.value.assunto.trim() && 
+         form.value.mensagem.trim()
+})
+
+const enviarEmail = async() => {
+  if (!form.value.nome.trim() || !form.value.email.trim() || !form.value.telefone.trim() || !form.value.assunto.trim() || !form.value.mensagem.trim()) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Todos os campos são obrigatórios',
+      life: 3000
+    })
+    return
+  }
+
+  if (!isValidEmail(form.value.email)) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Por favor, insira um email válido',
+      life: 3000
+    })
+    return
+  }
+
+  if (form.value.telefone.length < 15) {
+    toast.add({
+      severity: 'warn',
+      summary: 'Atenção',
+      detail: 'Por favor, insira um telefone válido',
+      life: 3000
+    })
+    return
+  }
+
+  loading.value = true;
+  
+  try {
+    const data = {
+      nome: form.value.nome,
+      email: form.value.email,
+      telefone: form.value.telefone,
+      assunto: form.value.assunto,
+      mensagem: form.value.mensagem
     }
-  },
-  methods: {
-    formatPhone(event) {
-      let value = event.target.value.replace(/\D/g, '');
-      if (value.length <= 11) {
-        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        if (value.length < 14) {
-          value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-        }
-      }
-      this.telefone = value;
-      event.target.value = value;
-    },
-    async sendEmail() {
-      this.loading = true;
-      try {
-        await emailjs.sendForm(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
-          this.$refs.form, 
-          {
-            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-          }
-        );
-        this.toast.add({
-          severity: 'success',
-          summary: 'Sucesso',
-          detail: 'Contato enviado com sucesso!',
-          life: 3000
-        });
-      } catch (error) {
-        this.toast.add({
-          severity: 'error',
-          summary: 'Erro',
-          detail: 'Erro ao tentar entrar em contato',
-          life: 3000
-        });
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
-};
+    await contatoService.enviarEmail(data)
+    
+    toast.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Contato enviado com sucesso!',
+      life: 3000
+    });
+    
+  } catch (error) {
+    console.log('Erro ao entrar em contato. ', error)
+    toast.add({
+      severity: 'error',
+      summary: 'Erro',
+      detail: 'Erro ao tentar entrar em contato',
+      life: 3000
+    });
+  } finally {
+    loading.value = false;
+  }
+}
 
 </script>
 
@@ -107,34 +140,34 @@ export default {
       </div>
 
       <div class="flex w-full p-5 md:p-10 h-full items-end">
-        <form class="flex flex-col w-full h-full gap-4 justify-center" action="" ref="form" @submit.prevent="sendEmail">
+        <form class="flex flex-col w-full h-full gap-4 justify-center" @submit.prevent="enviarEmail">
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.name') }}</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="text" id="nome" name="nome" required>                
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.nome" type="text" id="nome" name="nome" required>   
             </div>
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.email') }}</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="email" id="email" name="email" required>                
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.email" type="email" id="email" name="email" required>                
             </div>
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.phone') }}</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="tel" id="telefone" name="telefone" :value="telefone" @input="formatPhone" placeholder="(11) 99999-9999" required>                
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.telefone" type="tel" id="telefone" name="telefone" v-maska="'(##) #####-####'" maxlength="15" placeholder="(11) 99999-9999" required>                
             </div>
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.subject') }}</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" type="assunto" id="assunto" name="assunto" required>                
+                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.assunto" type="assunto" id="assunto" name="assunto" required>                
             </div>
 
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.message') }}</label>
-                <textarea class="w-full max-w-[622.4px] max-h-[136px] min-h-[136px] md:max-h-[136px] md:min-h-[136px] lg:min-h-[208px] lg:max-h-[208px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" name="mensagem" id="mensagem"></textarea>               
+                <textarea class="w-full max-w-[622.4px] max-h-[136px] min-h-[136px] md:max-h-[136px] md:min-h-[136px] lg:min-h-[208px] lg:max-h-[208px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.mensagem" name="mensagem" id="mensagem"></textarea>               
             </div>
             
             <div class="flex w-full max-w-[622.4px] justify-center md:justify-end">
-                <button type="submit" :disabled="loading" class="w-[146.4px] md:w-[178px] lg:w-[106px] h-[42px] bg-cyan-400 rounded-[30px] text-white text-[0.9em] hover:bg-cyan-500 duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
+                <button type="submit" :disabled="loading || !isFormValid" class="w-[146.4px] md:w-[178px] lg:w-[106px] h-[42px] bg-cyan-400 rounded-[30px] text-white text-[0.9em] hover:bg-cyan-500 duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
                     <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
                     {{ loading ? t('contact.sending') : t('contact.send') }}
                 </button>
@@ -195,6 +228,7 @@ export default {
 
     </div>        
     </section>
+
 
     <Toast position="top-right" />
 </template>
