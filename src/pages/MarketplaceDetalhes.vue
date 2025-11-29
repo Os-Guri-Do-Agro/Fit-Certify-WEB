@@ -31,22 +31,22 @@
       class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
       w-full max-w-[658px] font-[700] opacity-65 text-center md:text-start"
     >
-      Desconto de {{ produto?.desconto }} %
+      {{ t('marketplaceDetalhes.desconto') }} {{ produto?.desconto }} %
     </span>
     <div v-else-if="loadingProduto" class="w-[150px] h-[20px] bg-gray-300 rounded animate-pulse"></div>
     
     <!-- BOTÕES -->
     <div class="flex flex-col md:flex-row w-full xl:max-w-[500px] 2xl:max-w-[658px] items-stretch md:items-end flex-wrap gap-3 md:gap-5 justify-between">
       <a v-if="!loadingProduto && produto?.linkSiteEmpresa" :href="produto.linkSiteEmpresa" target="_blank" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300 flex items-center justify-center">
-        Gerar cupom
+        {{ t('marketplaceDetalhes.button') }}
       </a>
       <button v-else-if="!loadingProduto" class="text-white font-semibold bg-lime-500 w-full md:max-w-[211px] h-[55px] rounded-[30px] cursor-pointer hover:bg-lime-600 transition-colors duration-300">
-        Gerar cupom
+        {{ t('marketplaceDetalhes.button') }}
       </button>
       <div v-else class="w-full md:max-w-[211px] h-[55px] bg-gray-300 rounded-[30px] animate-pulse"></div>
 
       <span v-if="!loadingProduto && produto?.exclusivoParaCertificado" class="w-full md:max-w-[253px] min-h-[36px] bg-white text-lime-500 rounded-[30px] flex items-center justify-center">
-        Exclusivo para certificados
+        {{ t('marketplace.exclusivo') }}
       </span>
       <div v-else-if="loadingProduto" class="w-full md:max-w-[253px] h-[36px] bg-gray-300 rounded-[30px] animate-pulse"></div>
     </div>
@@ -71,7 +71,7 @@
     <!-- DESCRIÇÃO -->
     <div class="flex flex-col gap-3">
       <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
-        Descrição
+        {{ t('marketplaceDetalhes.descricao') }}
       </span>
       <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
         {{ produto?.descricao }}
@@ -84,7 +84,7 @@
     <!-- ORIENTAÇÃO -->
     <div class="flex flex-col gap-3">
       <span class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px] w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80">
-        Orientação
+        {{ t('marketplaceDetalhes.orientacao') }}
       </span>
       <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
         {{ produto?.orientacao }}
@@ -117,7 +117,7 @@
           <span
             class="text-[0.875em] lg:text-[1em] xl:text-[1.5em] leading-[26px] md:leading-[43px]
           w-full max-w-[330px] md:max-w-[325px] lg:max-w-[658px] xl:max-w-[658px] font-[700] opacity-80"
-            >Avaliações</span
+            >{{ t('marketplaceDetalhes.avaliacao') }}</span
           >
         </div>
 
@@ -130,7 +130,7 @@
         </div>
       </div>
 
-      <div class="w-full flex flex-col gap-5">
+      <div v-if="avaliacoes.length > 0" class="w-full flex flex-col gap-5">
         <!-- Avaliação 1 -->
         <div class="flex items-center gap-5">
           <img class="w-[81px] h-[81px] rounded-[50%]" src="../assets/market-detalhes-imgs/perfil.jpg" alt="" />
@@ -138,7 +138,7 @@
         </div>
 
         <div class="flex flex-col gap-3">
-          <div class="flex gap-1" v-if="avaliacoes.length > 0">
+          <div class="flex gap-1">
             <img
               v-for="n in getStarsArray(avaliacoes[0].estrelas)"
               :key="n"
@@ -150,14 +150,13 @@
         </div>
 
         <div>
-          <div v-if="loadingAvaliacoes">Carregando avaliação...</div>
-          <div v-else-if="errorAvaliacoes">Erro: {{ errorAvaliacoes }}</div>
-          <div v-else-if="avaliacoes.length > 0">
+          <div v-if="loadingAvaliacoes">{{ t('common.loading') }}</div>
+          <div v-else-if="errorAvaliacoes">{{ t('common.error') }}: {{ errorAvaliacoes }}</div>
+          <div v-else>
             <div class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
                {{ avaliacoes[0].comentario }}
             </div>
           </div>
-          <div v-else>Nenhuma avaliação encontrada.</div>
         </div>
 
         <div class="flex gap-5">
@@ -278,6 +277,13 @@
           </div>
         </div>
       </div>
+      
+      <!-- Mensagem quando não há avaliações -->
+      <div v-else class="w-full flex items-center justify-center py-10">
+        <p class="text-[1em] lg:text-[1.25em] text-gray-500 text-center">
+          {{ t('marketplaceDetalhes.noAvaliacoes') }}
+        </p>
+      </div>
     </div>
   </section>
 
@@ -294,7 +300,9 @@ import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import ProdutosServices from '../services/marketplace/marketplace-services'
 import MarketDetalhes from '../components/Marketp-Detalhes-components/MarketDetalhes.vue'
+import { useI18n } from '../composables/useI18n'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 

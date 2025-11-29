@@ -130,6 +130,14 @@ export default {
     ate200: 'Até R$200',
     acima200: 'Acima de 200'
   },
+  marketplaceDetalhes: {
+    button: 'Gerar cupom',
+    descricao: 'Descrição',
+    orientacao: 'Orientação',
+    avaliacao: 'Avaliações',
+    desconto: 'Desconto de ',
+    noAvaliacoes: 'Nenhuma avaliação disponível no momento.'
+  },
   articles: {
     title: 'Artigos',
     noArticles: 'Nenhum artigo encontrado',
@@ -429,5 +437,93 @@ export default {
     todasCategorias: 'Todas as categorias',
     button: 'LEIA MAIS'
   },
+  termos: {
+    title: 'Política de Privacidade, Termos e Condições de Uso e Proteção de Dados',
+    section1: {
+      title: '1. Introdução',
+      paragraph1: 'Bem-vindo(a) à <strong>FitCertify365</strong> ("Companhia", "nós", "nosso", "conosco")!',
+      paragraph2: 'Estes Termos de Serviço ("Termos", "Termos de Serviço", "Termos e Condições de Uso") regem o uso dos nossos aplicativos móveis e plataforma digital, desenvolvidos pela FitCertify365.',
+      paragraph3: 'Nossa <strong>Política de Privacidade</strong> também rege o uso do nosso Serviço e explica como coletamos, protegemos e divulgamos informações resultantes da sua utilização dos aplicativos móveis e páginas web.',
+      paragraph4: 'Seu acordo conosco inclui estes Termos e nossa Política de Privacidade ("Acordos"). Ao utilizar nossos serviços, você reconhece que leu e compreendeu os Acordos, e concorda em estar legalmente vinculado a eles.',
+      paragraph5: 'Caso não concorde (ou não possa cumprir) os Acordos, você não poderá utilizar o Serviço. Neste caso, solicitamos que nos comunique pelo e-mail <strong>atendimento@fitcertify365.com</strong> para que possamos buscar uma solução.',
+      paragraph6: 'Estes Termos aplicam-se a todos os visitantes, usuários e demais pessoas que desejarem acessar ou utilizar o Serviço.',
+      paragraph7: 'Este aplicativo pode se integrar com o <strong>Apple Saúde (HealthKit ou CareKit)</strong> e com o <strong>Google Health Connect</strong>, para leitura e acompanhamento de dados obtidos via Apple Watch e outros dispositivos wearables compatíveis, permitindo também o envio de dados manuais e de dispositivos Bluetooth (BLE), sempre mediante autorização do usuário.'
+    },
+    section2: {
+      title: '2. Comunicações',
+      paragraph1: 'Ao utilizar nossos serviços, você concorda em receber newsletters, materiais de marketing ou promocionais e outras informações que possamos enviar. No entanto, você pode optar por não receber tais comunicações seguindo o link de descadastramento incluso nas mensagens ou enviando um e-mail para <strong>atendimento@fitcertify365.com</strong>.'
+    },
+    section3: {
+      title: '3. Conteúdo',
+      paragraph1: 'Nosso Serviço permite que você publique, armazene, compartilhe e disponibilize informações, textos, gráficos, vídeos ou outros materiais ("Conteúdo"). Você é responsável pelo Conteúdo que publica no ou por meio do Serviço, incluindo sua legalidade, confiabilidade e adequação.',
+      paragraph2: 'Ao publicar Conteúdo, você declara e garante que:',
+      list1: 'O Conteúdo é de sua propriedade e/ou você possui os direitos para utilizá-lo e conceder à FitCertify365 os direitos de uso conforme previsto nestes Termos.',
+      list2: 'A publicação do Conteúdo não viola direitos de privacidade, direitos de imagem, direitos autorais, contratos ou quaisquer outros direitos de terceiros.',
+      paragraph3: 'Você mantém todos os direitos sobre o Conteúdo enviado, publicado ou exibido, mas concede à FitCertify365 uma licença mundial, gratuita e não exclusiva para usar, modificar, reproduzir, distribuir, exibir e compartilhar tal Conteúdo por meio do Serviço.',
+      paragraph4: 'O Conteúdo encontrado no Serviço é de propriedade da FitCertify365 ou utilizado com autorização. É proibida a distribuição, modificação, transmissão, reutilização, cópia ou uso para fins comerciais sem autorização expressa e por escrito.'
+    },
+    section4: {
+      title: '4. Dados de Saúde e Registros Médicos',
+      paragraph1: 'Nosso Serviço permite o armazenamento de dados de saúde pessoais e registros coletados a partir de dispositivos e aplicativos de saúde, fitness e bem-estar. Você é responsável pelo Conteúdo e pelos Dados que envia e armazena no Serviço.'
+    },
+    section5: {
+      title: '5. Usos Proibidos',
+      paragraph1: 'Você concorda em utilizar o Serviço apenas para fins lícitos, não podendo:',
+      list1: 'Violar leis nacionais ou internacionais aplicáveis.',
+      list2: 'Explorar ou prejudicar menores.',
+      list3: 'Enviar spam, correntes, mensagens não solicitadas ou semelhantes.',
+      list4: 'Usar identidade falsa ou se passar por terceiros.',
+      list5: 'Introduzir vírus, malwares ou qualquer material tecnicamente nocivo.',
+      list6: 'Interferir na operação adequada do Serviço ou tentar acessar áreas restritas sem autorização.'
+    },
+    section6: {
+      title: '6. Análises e Monitoramento',
+      paragraph1: 'Podemos utilizar prestadores de serviços terceirizados para monitorar e analisar o uso da plataforma.'
+    },
+    section7: {
+      title: '7. Idade Mínima',
+      paragraph1: 'O Serviço é destinado apenas a pessoas maiores de 18 anos. Ao utilizá-lo, você declara possuir plena capacidade legal para aceitar estes Termos.'
+    },
+    section8: {
+      title: '8. Contas',
+      paragraph1: 'Ao criar uma conta, você se compromete a fornecer informações verdadeiras, completas e atualizadas. Você é responsável por manter a confidencialidade de seu login e senha, bem como por todas as atividades realizadas sob sua conta.'
+    },
+    section9: {
+      title: '9. Exclusão de Conta e Dados',
+      paragraph1: 'Você pode solicitar a exclusão de sua conta e dos dados pessoais armazenados pela FitCertify365, em conformidade com a <strong>LGPD (Lei Geral de Proteção de Dados)</strong>, GDPR (Regulamento Europeu de Proteção de Dados) e demais legislações aplicáveis.',
+      paragraph2: 'Após aprovação do pedido, sua conta será desativada e você terá 30 dias para realizar o download dos seus dados antes da exclusão definitiva.'
+    },
+    section10: {
+      title: '10. Propriedade Intelectual',
+      paragraph1: 'O Serviço, seu design original, funcionalidades e conteúdos (exceto Conteúdo de usuários) permanecem de propriedade exclusiva da FitCertify365 e de seus licenciadores, estando protegidos por direitos autorais, marcas registradas e demais legislações aplicáveis.'
+    },
+    section11: {
+      title: '11. Direitos Autorais',
+      paragraph1: 'Respeitamos os direitos autorais e atenderemos a qualquer notificação de infração enviada ao e-mail <strong>atendimento@fitcertify365.com</strong>.'
+    },
+    section12: {
+      title: '12. Limitação de Responsabilidade',
+      paragraph1: 'Exceto quando proibido por lei, a FitCertify365 não será responsável por danos indiretos, incidentais ou consequenciais decorrentes do uso do Serviço.'
+    },
+    section13: {
+      title: '13. Encerramento de Conta',
+      paragraph1: 'Podemos suspender ou encerrar sua conta imediatamente, sem aviso prévio, caso você viole estes Termos.'
+    },
+    section14: {
+      title: '14. Legislação Aplicável',
+      paragraph1: 'Estes Termos serão regidos pelas leis brasileiras, respeitando também legislações internacionais aplicáveis à proteção de dados (como GDPR, HIPAA e LGPD quando aplicável).'
+    },
+    section15: {
+      title: '15. Alterações',
+      paragraph1: 'Reservamo-nos o direito de modificar estes Termos a qualquer momento. O uso contínuo da plataforma após a publicação das alterações implicará aceitação dos novos Termos.'
+    },
+    section16: {
+      title: '16. Reconhecimento',
+      paragraph1: 'AO UTILIZAR O SERVIÇO, VOCÊ RECONHECE QUE LEU E CONCORDA COM ESTES TERMOS E CONDIÇÕES DE USO.'
+    },
+    section17: {
+      title: '17. Contato',
+      paragraph1: 'Dúvidas, comentários ou solicitações podem ser enviadas para: 📧 <strong>atendimento@fitcertify365.com</strong>'
+    }
+  }
 }
-

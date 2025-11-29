@@ -42,7 +42,7 @@
 
           <div>
             <p class="text-[0.875em] font-semibold text-gray-600">
-              A partir de R$ {{ item.preco }}
+              {{ t('marketplace.valor') }} {{ item.preco }}
             </p>
           </div>
 
@@ -51,7 +51,7 @@
               class="w-full max-w-[127.32px] lg:max-w-[137.48px] cursor-pointer h-[35.5px] rounded-[30px] flex items-center justify-center text-[0.83em] text-white font-[500] bg-lime-500 hover:bg-lime-600 duration-300 mb-7"
               @click="emit('refresh-page', item.id)"
             >
-              Saiba Mais
+              {{ t('marketplace.button') }}
             </button>
           </div>
         </div>
@@ -81,9 +81,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import ProdutosServices from '../../services/marketplace/marketplace-services'
+import { useI18n } from '../../composables/useI18n'
 
 const Produtos = ref<{ data: any[] }>({ data: [] })
 const loadingProdutos = ref(true)
+const { t } = useI18n() 
 
 const emit = defineEmits<{
   'refresh-page': [id: string]
