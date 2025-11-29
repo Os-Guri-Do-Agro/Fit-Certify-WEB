@@ -242,7 +242,7 @@
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-02.jpg" alt="">
+                        src="../assets/quems-imgs/marcelo-perfil.png" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Dr. Marcelo Leitão</h3>
                     <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.marceloTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">

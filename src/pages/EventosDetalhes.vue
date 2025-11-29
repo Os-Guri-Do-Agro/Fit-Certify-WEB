@@ -83,7 +83,7 @@
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.modalidade') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          <span v-else>Corrida</span>
+          <span v-else>{{ tipoEvento?.nome }}</span>
         </span>
       </div>
 
@@ -170,8 +170,10 @@ import { useI18n } from '../composables/useI18n'
 const route = useRoute()
 const router = useRouter()
 const evento = ref(null)
-const organizacao = ref([]) // organização ligada ao evento
+const tipoEvento = ref(null)
+const organizacao = ref([])
 const carregando = ref(true)
+const tipoEventoId = ref(null)
 const { t } = useI18n()
 
 const carregarEvento = async (id) => {
@@ -180,14 +182,33 @@ const carregarEvento = async (id) => {
     const resposta = await EventosService.getByEventoId(id)
 
     evento.value = resposta.data
+    tipoEventoId.value = evento.value.tipoEventoId
     // pega a organização (ajuste aqui dependendo de como vem na API)
     organizacao.value = resposta.data.organizacaoEvento.map(item => item.organizacao)
+    
+    // Chama getTipoEventoId após definir tipoEventoId
+    await getTipoEventoId()
   } catch (erro) {
     console.error('Erro ao carregar o evento:', erro)
   } finally {
     carregando.value = false
   }
 }
+
+const getTipoEventoId = async () => {
+  try {
+    if (!tipoEventoId.value) {
+      console.error('tipoEventoId está vazio ou null')
+      return
+    }
+    const response = await EventosService.getTipoEventoById(tipoEventoId.value)
+    tipoEvento.value = response.data
+  } catch (error) {
+    console.error('Erro ao buscar o tipo de evento:', error)
+  }
+}
+
+
 
 onMounted(async () => {
   await carregarEvento(route.params.id)
@@ -197,20 +218,17 @@ const atualizarPagina = async (id) => {
   await router.push({ name: 'EventoDetalhes', params: { id } })
 }
 
-// === ADICIONADO ===
 const refreshPage = async () => {
   if (route.params.id) {
     await carregarEvento(route.params.id)
   }
 }
-// === FIM ADICIONADO ===
 
 watch(
   () => route.params.id,
   (novoId) => {
     if (novoId) carregarEvento(novoId)
-  },
-  { immediate: true }
+  }
 )
 </script>
 

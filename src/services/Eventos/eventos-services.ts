@@ -29,6 +29,13 @@ class EventosService {
     )
   }
 
+  getTipoEventoById(id: string): Promise<any> {
+    return this.handleRequest(
+      apiClient.get(`/tipo-evento/${id}`),
+      "ERROR to get event by id"
+    )
+  }
+
   getAllTipoEventos(): Promise<any> {
     return this.handleRequest(
       apiClient.get("/tipo-evento"),
