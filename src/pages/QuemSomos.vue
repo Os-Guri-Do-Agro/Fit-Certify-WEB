@@ -233,7 +233,7 @@
 
                 <div class="text-center w-full sm:w-[300px] md:w-[310px] max-w-[400px]">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../assets/quems-imgs/perfil-04.jpg" alt="">
+                        src="../assets/quems-imgs/lucas-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.lucasTitle') }}</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">

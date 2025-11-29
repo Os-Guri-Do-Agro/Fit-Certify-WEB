@@ -23,10 +23,10 @@
           <i class="fa-solid fa-check text-3xl text-black"></i>
         </div>
         <h1 class="text-white text-4xl md:text-6xl font-bold mb-6">
-          Obrigado!
+          {{ t('obrigado.title') }}
         </h1>
         <h2 class="text-cyan-400 text-xl md:text-2xl font-medium mb-8 md:max-w-[50%]">
-          Sua inscrição foi recebida com sucesso. Em breve, entraremos em contato para você participar do nosso lançamento. 
+          {{ t('obrigado.text') }}
         </h2>
 
       </div>
@@ -40,12 +40,12 @@
           @click="$router.push('/')"
           class="bg-cyan-500 hover:bg-cyan-300 text-black font-medium rounded-full px-8 py-3 text-lg transition-all shadow-lg shadow-cyan-500/20 cursor-pointer hover:-translate-y-1 duration-300"
         >
-          Voltar ao Início
+          {{ t('obrigado.button') }}
         </button>
       </div>
 
       <div class="">
-        <h3 class="text-white font-medium mb-5">Fique por dentro das novidades da Fitcertify365</h3>
+        <h3 class="text-white font-medium mb-5">{{ t('obrigado.span') }}</h3>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:max-w-5xl items-center">
         <a href="https://www.instagram.com/fitcertify365 " target="_blank" class="flex flex-col items-center text-center p-6 bg-gradient-to-b from-cyan-900/30 to-teal-600/10 rounded-2xl duration-300 hover:bg-gradient hover:from-cyan-900 hover:to-teal-300/20 hover:scale-110">
@@ -77,7 +77,7 @@
       >
         <div>
           <span class="text-neutral-500/50 text-sm md:text-base lg:mr-10"
-            >© 2025 FitCertify365. Todos os direitos reservados</span
+            >{{ t('obrigado.footer.direitos') }}</span
           >
         </div>
 
@@ -86,7 +86,7 @@
             class="text-neutral-500/50 hover:underline text-sm md:text-base"
             href="https://fitcertify365.com/#/termosprivacidade"
             target="_blank"
-            >Política de Privacidade | Termos de uso</a
+            >{{ t('obrigado.footer.termos') }}</a
           >
         </div>
 
@@ -98,7 +98,10 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useI18n } from '../composables/useI18n';
 import ctaService from '../services/cta/cta-service';
+
+const { t } = useI18n();
 
 const updateCadastro = async () => {
   const cadastroId = localStorage.getItem('cadastroId');

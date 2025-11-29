@@ -13,12 +13,8 @@
 
 
         <div class="bg-gray-200 p-8 text-center rounded-2xl">
-          <h2 class="text-2xl font-semibold mb-3 text-gray-800">Nosso <span class="text-cyan-400">aplicativo</span> está
-            pronto!</h2>
-          <p class="text-sm leading-relaxed text-gray-600">
-            Como você chegou primeiro por aqui, vamos te presentear com
-            <strong class="text-cyan-400">3 meses</strong> de aplicativo grátis! <br />
-            Basta preencher o formulário e entraremos em contato.
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800" v-html="t('modalParabens.title')"></h2>
+          <p class="text-sm leading-relaxed text-gray-600" v-html="t('modalParabens.description')">
           </p>
         </div>
         <div class="flex w-full items-center justify-around">
@@ -28,20 +24,20 @@
 
         <form @submit.prevent="cadastrar" class="p-8  flex flex-col gap-5">
           <div>
-            <span class="font-bold text-sm text-gray-700">Nome:</span>
-            <input v-model="form.nomeCompleto" placeholder="Nome completo *" type="text" required
+            <span class="font-bold text-sm text-gray-700">{{ t('modalParabens.form.name') }}</span>
+            <input v-model="form.nomeCompleto" :placeholder="t('modalParabens.form.namePlaceholder')" type="text" required
               class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
           </div>
 
           <div>
-            <span class="font-bold text-sm text-gray-700">E-mail:</span>
-            <input v-model="form.email" placeholder="Seu melhor e-mail *" type="email" required
+            <span class="font-bold text-sm text-gray-700">{{ t('modalParabens.form.email') }}</span>
+            <input v-model="form.email" :placeholder="t('modalParabens.form.emailPlaceholder')" type="email" required
               class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
           </div>
 
           <div>
-            <span class="font-bold text-sm text-gray-700">Whatsapp:</span>
-            <input v-model="form.numberWhatsapp" placeholder="Seu whatsapp *" type="tel" v-maska="'(##) #####-####'"
+            <span class="font-bold text-sm text-gray-700">{{ t('modalParabens.form.whatsapp') }}</span>
+            <input v-model="form.numberWhatsapp" :placeholder="t('modalParabens.form.whatsappPlaceholder')" type="tel" v-maska="'(##) #####-####'"
               maxlength="15" required
               class="w-full h-11 p-3 border border-gray-300 rounded-md focus:border-cyan-400 focus:outline-none" />
           </div>
@@ -49,7 +45,7 @@
           <button type="submit" :disabled="loading" @click="cadastrar"
             class="w-full h-11 bg-cyan-400 hover:bg-cyan-500 text-white font-medium rounded-md cursor-pointer ">
             <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
-            {{ loading ? 'Enviando...' : 'Cadastrar' }}
+            {{ loading ? t('modalParabens.form.submittingButton') : t('modalParabens.form.submitButton') }}
           </button>
         </form>
 
@@ -66,9 +62,11 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { useToast } from 'primevue/usetoast'
 import { reactive, ref } from 'vue'
 import ctaService from '../services/cta/cta-service'
+import { useI18n } from '../composables/useI18n'
 
 
 const toast = useToast()
+const { t } = useI18n()
 const dialogFormVisible = ref(false)
 const loading = ref(false)
 
@@ -95,8 +93,8 @@ const cadastrar = async () => {
   if (!form.nomeCompleto.trim() || !form.email.trim() || !form.numberWhatsapp.trim()) {
     toast.add({
       severity: 'warn',
-      summary: 'Atenção',
-      detail: 'Por favor, preencha todos os campos obrigatórios',
+      summary: t('modalParabens.messages.attention'),
+      detail: t('modalParabens.validation.requiredFields'),
       life: 3000
     })
     return
@@ -105,8 +103,8 @@ const cadastrar = async () => {
   if (!isValidEmail(form.email)) {
     toast.add({
       severity: 'warn',
-      summary: 'Atenção',
-      detail: 'Por favor, digite um e-mail válido',
+      summary: t('modalParabens.messages.attention'),
+      detail: t('modalParabens.validation.invalidEmail'),
       life: 3000
     })
     return
@@ -115,8 +113,8 @@ const cadastrar = async () => {
   if (form.numberWhatsapp.length < 15) {
     toast.add({
       severity: 'warn',
-      summary: 'Atenção',
-      detail: 'Por favor, digite o número de WhatsApp completo',
+      summary: t('modalParabens.messages.attention'),
+      detail: t('modalParabens.validation.invalidWhatsapp'),
       life: 3000
     })
     return
@@ -137,8 +135,8 @@ const cadastrar = async () => {
 
     toast.add({
       severity: 'success',
-      summary: 'Sucesso',
-      detail: 'Cadastro enviado com sucesso!',
+      summary: t('common.success'),
+      detail: t('modalParabens.messages.success'),
       life: 3000
     })
 
@@ -148,8 +146,8 @@ const cadastrar = async () => {
     console.error('Erro ao enviar o cadastro:', error)
     toast.add({
       severity: 'error',
-      summary: 'Erro',
-      detail: 'Erro ao enviar o cadastro',
+      summary: t('common.error'),
+      detail: t('modalParabens.messages.error'),
       life: 3000
     })
   } finally {

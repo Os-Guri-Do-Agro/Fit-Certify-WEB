@@ -13,14 +13,9 @@
     alt=""
   >
 
-
-  <h1 class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-3xl   font-bold drop-shadow-lg text-center w-full max-w-[80%]">
-              Agora, você 
-          vai mais longe!
+  <h1 class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-3xl font-bold drop-shadow-lg text-center w-full max-w-[80%]" v-html="t('cadastro.title')">
   </h1>
 </section>
-
-
 
   <section
     class="relative w-full h-screen md:h-auto overflow-hidden md:flex items-center justify-center bg-gradient-to-r from-black to-neutral-900 py-10 hidden"
@@ -38,9 +33,7 @@
       ></div>
 
       <div class="absolute bottom-8 sm:bottom-10 left-0 right-0 z-20 flex flex-col justify-center md:hidden px-10">
-        <h1 class="text-4xl font-extrabold leading-tight text-white text-center px-5">
-          Agora, você <br />
-          vai mais longe!
+        <h1 class="text-4xl font-extrabold leading-tight text-white text-center px-5" v-html="t('cadastro.title')">
         </h1>
       </div>
 
@@ -59,32 +52,22 @@
       </div>
 
         <h1
-          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6 "
+          class="text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-6"
+          v-html="t('cadastro.title')"
         >
-          Agora, você <br />
-          vai mais longe!
         </h1>
 
         <p
           class="text-[14px] md:text-[16px] lg:text-[18px] text-zinc-300 max-w-xl mb-8 leading-relaxed"
+          v-html="t('cadastro.descriptionF')"
         >
-          Seu
-          <span class="font-semibold text-white"
-            >passaporte digital de aptidão esportiva</span
-          >
-          está te esperando! Vamos facilitar sua vida antes das provas: sem
-          correria, sem certificados perdidos, sem retrabalho e sem gastar duas
-          vezes. 
-          <span class="font-semibold text-white"
-            >Seja a primeira! Entre na lista de espera!</span
-          >
         </p>
 
         <button
           @click="scrollToForm"
           class="bg-cyan-500 hover:bg-cyan-300 text-black font-semibold rounded-full px-8 py-3 lg:text-[18px] md:text-[16px] text-[12px] w-fit transition-all shadow-lg shadow-cyan-500/20 mb-12 cursor-pointer duration-300 hover:-translate-y-1"
         >
-          Faça o seu cadastro!
+          {{ t('cadastro.button') }}
         </button>
       </div>
 
@@ -108,36 +91,24 @@
       </div>
       </div>
 
-
-
   </section>
-
 
   <section class="flex flex-col md:hidden bg-black">
     <div class="flex flex-col items-center justify-center px-15 ">
-                      <p
+        <p
           class="text-[14px] md:text-[16px] lg:text-[18px] text-zinc-300 max-w-xl mb-8 leading-relaxed text-center"
+          v-html="t('cadastro.descriptionF')"
         >
-          Seu
-          <span class="font-semibold text-white"
-            >passaporte digital de aptidão esportiva</span
-          >
-          está te esperando! Vamos facilitar sua vida antes das provas: sem
-          correria, sem certificados perdidos, sem retrabalho e sem gastar duas
-          vezes. 
-          <span class="font-semibold text-white"
-            >Seja a primeira! Entre na lista de espera!</span
-          >
         </p>
-                <button
+        <button
           @click="scrollToForm"
           class="bg-cyan-500 hover:bg-cyan-300 text-black font-semibold rounded-full px-8 py-3 lg:text-[18px] md:text-[16px] text-[12px] w-fit transition-all shadow-lg shadow-cyan-500/20 mb-12 cursor-pointer duration-300 hover:-translate-y-1"
         >
-          Faça o seu cadastro!
+          {{ t('cadastro.button') }}
         </button>
     </div>
     <div class="px-5 sm:px-10">
-                <div
+        <div
         class="grid md:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- text-sm text-white backdrop-blur-[4px] rounded-[30px] bg-gradient-to-b from-black/50 to-transparent p-5 w-full"
       >
         <div
@@ -163,7 +134,7 @@
   >
     <div class="container px-5 sm:px-10 md:depoimentos">
       <div class="mb-10 text-center md:text-start">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">Depoimentos</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">{{ t('cadastro.depoimentos.title') }}</h2>
       </div>
       <div
         class="relative mx-auto py-10 rounded-[30px] bg-gradient-to-b from-black/30 to-transparent"
@@ -222,7 +193,7 @@
   >
     <div class="container px-5 sm:px-10 md:comoFunciona">
       <div class="mb-10 text-center md:text-start">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">Como Funciona</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">{{ t('cadastro.comoFunciona.title') }}</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div
@@ -252,9 +223,8 @@
     >
       <div class=" text-center">
         <h2 class=" text-2xl md:text-3xl lg:text-5xl font-bold text-white">
-          Faça parte dessa revolução esportiva
+          {{ t('cadastro.formulario.title') }}
         </h2>
-        >
       </div>
       <div class="w-full flex items-center justify-center py-10 md:my-10">
         <div class="w-[20%] md:w-[5%] h-[3px] bg-cyan-400 rounded-full"></div>
@@ -268,13 +238,13 @@
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-user text-[20px] text-cyan-400"></i>
-            <span class="text-white text-[16px] font-medium">Nome</span>
+            <span class="text-white text-[16px] font-medium">{{ t('cadastro.formulario.nome') }}</span>
           </div>
           <input
             v-model="form.nomeCompleto"
             class="w-full p-2 text-white bg-transparent rounded"
             type="text"
-            placeholder="Nome completo *"
+            :placeholder="t('cadastro.formulario.nomePlaceholder')"
             required
           />
         </label>
@@ -284,13 +254,13 @@
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-regular fa-envelope text-[20px] text-cyan-400"></i>
-            <span class="text-white text-[16px] font-medium">E-mail</span>
+            <span class="text-white text-[16px] font-medium">{{ t('cadastro.formulario.email') }}</span>
           </div>
           <input
             v-model="form.email"
             class="w-full p-2 text-white bg-transparent rounded"
             type="email"
-            placeholder="Seu melhor e-mail *"
+            :placeholder="t('cadastro.formulario.emailPlaceholder')"
             required
           />
         </label>
@@ -300,19 +270,18 @@
         >
           <div class="flex gap-3 w-full items-center">
             <i class="fa-brands fa-whatsapp text-[20px] text-cyan-400"></i>
-            <span class="text-white text-[16px] font-medium">Whatsapp</span>
+            <span class="text-white text-[16px] font-medium">{{ t('cadastro.formulario.whatsapp') }}</span>
           </div>
           <input
             v-model="form.numberWhatsapp"
             class="w-full p-2 text-white bg-transparent rounded"
             type="tel"
-            placeholder="Seu whatsapp *"
+            :placeholder="t('cadastro.formulario.whatsappPlaceholder')"
             v-maska="'(##) #####-####'"
             maxlength="15"
             required
           />
         </label>
-
 
         <button
           type="submit"
@@ -325,7 +294,7 @@
           ]"
         >
           <i v-if="loading" class="fas fa-spinner fa-spin"></i>
-          {{ loading ? 'Enviando...' : 'Enviar cadastro!' }}
+          {{ loading ? t('cadastro.formulario.buttonEnviando') : t('cadastro.formulario.buttonEnviar') }}
         </button>
       </form>
     </div>
@@ -333,6 +302,11 @@
   </section>
 
   <Toast position="top-right" />
+  
+  <!-- Language Selector Fixed -->
+  <div class="fixed top-4 left-20 z-50">
+    <LanguageSelector />
+  </div>
 
   <footer
     class="w-full flex justify-center bg-black md:bg-gradient-to-r md:from-black md:to-neutral-900 pt-20 pb-10 px-5 backdrop-blur-[5px]"
@@ -343,7 +317,7 @@
       >
         <div>
           <span class="text-neutral-500/50 text-sm md:text-base"
-            >© 2025 FitCertify365. Todos os direitos reservados</span
+            >{{ t('cadastro.footer.direitos') }}</span
           >
         </div>
 
@@ -359,18 +333,18 @@
             <i class="fab fa-facebook text-white text-[17px]"></i>
       </a>
 
-
         </div>
-                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+        
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <a
             class="text-neutral-500/50 hover:underline text-sm md:text-base"
             href="https://fitcertify365.com/#/termosprivacidade"
             target="_blank"
-            >Política de Privacidade | Termos de uso</a
+            >{{ t('cadastro.footer.termos') }}</a
           >
         </div>
 
-                <div class="md:flex hidden gap-4">
+        <div class="md:flex hidden gap-4">
           <a href="https://www.instagram.com/fitcertify365" target="_blank"
             class="w-[35px] h-[35px] rounded-[50%] bg-neutral-600/50 flex items-center justify-center cursor-pointer duration-300 hover:-translate-y-1"
           >
@@ -382,7 +356,6 @@
             <i class="fab fa-facebook text-white text-[17px]"></i>
       </a>
 
-
         </div>
       </div>
     </div>
@@ -391,15 +364,18 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref, computed } from "vue";
 import Swiper from "swiper";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { useToast } from 'primevue/usetoast';
 import { useRouter } from 'vue-router';
+import { useI18n } from '../../../composables/useI18n';
+import LanguageSelector from '../../../components/LanguageSelector.vue';
 import ctaService from "../../../services/cta/cta-service";
 
+const { t } = useI18n();
 const toast = useToast();
 const router = useRouter();
 const loading = ref(false)
@@ -510,67 +486,64 @@ onMounted(() => {
   // Inicialização do componente
 });
 
-const headerInfos = [
+const headerInfos = computed(() => [
   {
     icon: "fa-solid fa-pen-to-square",
-    title: "Passaporte Digital",
-    desc: "Seu atestado em versão digital, validado e sempre à mão.",
+    title: t('cadastro.headerInfos.passaporte.title'),
+    desc: t('cadastro.headerInfos.passaporte.desc'),
   },
   {
     icon: "fa-solid fa-pen-to-square",
-    title: "Aptidão Unificada",
-    desc: "Exames e laudos reunidos num só lugar, claros e totalmente confiáveis.",
+    title: t('cadastro.headerInfos.aptidao.title'),
+    desc: t('cadastro.headerInfos.aptidao.desc'),
   },
   {
     icon: "fa-solid fa-pen-to-square",
-    title: "Alertas Proativos",
-    desc: "Lembretes de validade e atualizações antes de expirar.",
+    title: t('cadastro.headerInfos.alertas.title'),
+    desc: t('cadastro.headerInfos.alertas.desc'),
   },
   {
     icon: "fa-solid fa-pen-to-square",
-    title: "Segurança Garantida",
-    desc: "Seus dados protegidos, com acesso rápido e de forma segura.",
+    title: t('cadastro.headerInfos.seguranca.title'),
+    desc: t('cadastro.headerInfos.seguranca.desc'),
   },
-];
+]);
 
-const comoFunciona = [
+const comoFunciona = computed(() => [
   {
     icon: "fa-solid fa-pen-to-square",
-    title: "Rápido e fácil",
-    desc: "Preencha um cadastro simples com nome, e-mail e WhatsApp. Pronto! Sua conta já está ativa e seu passaporte de aptidão física começa a agregar seus dados de saúde.",
+    title: t('cadastro.comoFunciona.items.rapido.title'),
+    desc: t('cadastro.comoFunciona.items.rapido.desc'),
   },
   {
     icon: "fa-solid fa-code-fork",
-    title: "Conecte seus exames",
-    desc: "Envie seus laudos ou conecte fontes compatíveis. O app organiza, valida e cria seu documento digital com histórico inteligente e prazos de validade.",
+    title: t('cadastro.comoFunciona.items.conecte.title'),
+    desc: t('cadastro.comoFunciona.items.conecte.desc'),
   },
   {
     icon: "fa-solid fa-trophy",
-    title: "Pronto para apresentar",
-    desc: "Veja seu status de aptidão em tempo real, receba lembretes antes de vencer e mostre o passaporte online ou offline nas principais provas. Além de várias vantagens que estamos implementando para sua comodidade.",
+    title: t('cadastro.comoFunciona.items.pronto.title'),
+    desc: t('cadastro.comoFunciona.items.pronto.desc'),
   },
-];
+]);
 
-const depoimentos = [
+const depoimentos = computed(() => [
   {
-    texto:
-      "Finalmente parei de sofrer com papelada e prazos. Centralizei meus exames no app e agora tenho meu atestado validado no celular, até offline! Meu foco agora é no treino. Chego nas provas sem stress.",
-    nome: "Luiz Araújo",
-    desc: "Corredor de provas 10k",
+    texto: t('cadastro.depoimentos.items.luiz.texto'),
+    nome: t('cadastro.depoimentos.items.luiz.nome'),
+    desc: t('cadastro.depoimentos.items.luiz.desc'),
   },
   {
-    texto:
-      "O FitCertify365 revolucionou minha preparação para provas esportivas. Agora tenho todos os meus exames organizados em um só lugar!",
-    nome: "Maria Silva",
-    desc: "Atleta",
+    texto: t('cadastro.depoimentos.items.maria.texto'),
+    nome: t('cadastro.depoimentos.items.maria.nome'),
+    desc: t('cadastro.depoimentos.items.maria.desc'),
   },
   {
-    texto:
-      "Nunca mais perdi um certificado ou esqueci de renovar meus exames. O sistema de alertas é fantástico!",
-    nome: "João Santos",
-    desc: "Corredor",
+    texto: t('cadastro.depoimentos.items.joao.texto'),
+    nome: t('cadastro.depoimentos.items.joao.nome'),
+    desc: t('cadastro.depoimentos.items.joao.desc'),
   },
-];
+]);
 </script>
 
 <style>

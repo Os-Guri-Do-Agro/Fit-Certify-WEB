@@ -19,7 +19,7 @@
                 <div class="w-full h-[600px] flex items-center  flex-col text-center gap-[18px] ">
                     <div class="text-center w-full ">
                     <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../../assets/quems-imgs/perfil-02.jpg" alt="">
+                        src="../../assets/quems-imgs/lucas-perfil.jpg" alt="">
                     <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
                     <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
                     <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">

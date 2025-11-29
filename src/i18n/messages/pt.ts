@@ -525,5 +525,115 @@ export default {
       title: '17. Contato',
       paragraph1: 'Dúvidas, comentários ou solicitações podem ser enviadas para: 📧 <strong>atendimento@fitcertify365.com</strong>'
     }
+  },
+  obrigado: {
+    title: 'Obrigado!',
+    text: 'Sua inscrição foi recebida com sucesso. Em breve, entraremos em contato para você participar do nosso lançamento.',
+    button: 'Voltar ao Início',
+    span: 'Fique por dentro das novidades da Fitcertify365',
+    footer: {
+      direitos: '© 2025 FitCertify365. Todos os direitos reservados',
+      termos: 'Política de Privacidade | Termos de uso'
+    }
+  },
+  cadastro: {
+    title: 'Agora, você vai mais longe!',
+    description: 'Seu <strong>passaporte digital de aptidão esportiva</strong> está te esperando! Vamos facilitar sua vida antes das provas: sem correria, sem certificados perdidos, sem retrabalho e sem gastar duas vezes. <strong>Seja o primeiro! Entre na lista de espera!</strong>',
+    descriptionF: 'Seu <strong>passaporte digital de aptidão esportiva</strong> está te esperando! Vamos facilitar sua vida antes das provas: sem correria, sem certificados perdidos, sem retrabalho e sem gastar duas vezes. <strong>Seja a primeira! Entre na lista de espera!</strong>',
+    button: 'Faça o seu cadastro!',
+    headerInfos: {
+      passaporte: {
+        title: 'Passaporte Digital',
+        desc: 'Seu atestado em versão digital, validado e sempre à mão.'
+      },
+      aptidao: {
+        title: 'Aptidão Unificada',
+        desc: 'Exames e laudos reunidos num só lugar, claros e totalmente confiáveis.'
+      },
+      alertas: {
+        title: 'Alertas Proativos',
+        desc: 'Lembretes de validade e atualizações antes de expirar.'
+      },
+      seguranca: {
+        title: 'Segurança Garantida',
+        desc: 'Seus dados protegidos, com acesso rápido e de forma segura.'
+      }
+    },
+    depoimentos: {
+      title: 'Depoimentos',
+      items: {
+        luiz: {
+          texto: 'Finalmente parei de sofrer com papelada e prazos. Centralizei meus exames no app e agora tenho meu atestado validado no celular, até offline! Meu foco agora é no treino. Chego nas provas sem stress.',
+          nome: 'Luiz Araújo',
+          desc: 'Corredor de provas 10k'
+        },
+        maria: {
+          texto: 'O FitCertify365 revolucionou minha preparação para provas esportivas. Agora tenho todos os meus exames organizados em um só lugar!',
+          nome: 'Maria Silva',
+          desc: 'Atleta'
+        },
+        joao: {
+          texto: 'Nunca mais perdi um certificado ou esqueci de renovar meus exames. O sistema de alertas é fantástico!',
+          nome: 'João Santos',
+          desc: 'Corredor'
+        }
+      }
+    },
+    comoFunciona: {
+      title: 'Como Funciona',
+      items: {
+        rapido: {
+          title: 'Rápido e fácil',
+          desc: 'Preencha um cadastro simples com nome, e-mail e WhatsApp. Pronto! Sua conta já está ativa e seu passaporte de aptidão física começa a agregar seus dados de saúde.'
+        },
+        conecte: {
+          title: 'Conecte seus exames',
+          desc: 'Envie seus laudos ou conecte fontes compatíveis. O app organiza, valida e cria seu documento digital com histórico inteligente e prazos de validade.'
+        },
+        pronto: {
+          title: 'Pronto para apresentar',
+          desc: 'Veja seu status de aptidão em tempo real, receba lembretes antes de vencer e mostre o passaporte online ou offline nas principais provas. Além de várias vantagens que estamos implementando para sua comodidade.'
+        }
+      }
+    },
+    formulario: {
+      title: 'Faça parte dessa revolução esportiva',
+      nome: 'Nome',
+      nomePlaceholder: 'Nome completo *',
+      email: 'E-mail',
+      emailPlaceholder: 'Seu melhor e-mail *',
+      whatsapp: 'Whatsapp',
+      whatsappPlaceholder: 'Seu whatsapp *',
+      buttonEnviando: 'Enviando...',
+      buttonEnviar: 'Enviar cadastro!'
+    },
+    footer: {
+      direitos: '© 2025 FitCertify365. Todos os direitos reservados',
+      termos: 'Política de Privacidade | Termos de uso'
+    }
+  },
+  modalParabens: {
+    title: 'Nosso <span class="text-cyan-400">aplicativo</span> está pronto!',
+    description: 'Como você chegou primeiro por aqui, vamos te presentear com <strong class="text-cyan-400">3 meses</strong> de aplicativo grátis! <br />Basta preencher o formulário e entraremos em contato.',
+    form: {
+      name: 'Nome:',
+      namePlaceholder: 'Nome completo *',
+      email: 'E-mail:',
+      emailPlaceholder: 'Seu melhor e-mail *',
+      whatsapp: 'Whatsapp:',
+      whatsappPlaceholder: 'Seu whatsapp *',
+      submitButton: 'Cadastrar',
+      submittingButton: 'Enviando...'
+    },
+    validation: {
+      requiredFields: 'Por favor, preencha todos os campos obrigatórios',
+      invalidEmail: 'Por favor, digite um e-mail válido',
+      invalidWhatsapp: 'Por favor, digite o número de WhatsApp completo'
+    },
+    messages: {
+      success: 'Cadastro enviado com sucesso!',
+      error: 'Erro ao enviar o cadastro',
+      attention: 'Atenção'
+    }
   }
 }

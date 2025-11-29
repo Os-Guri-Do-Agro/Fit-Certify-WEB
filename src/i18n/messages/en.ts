@@ -437,6 +437,92 @@ export default {
       todasCategorias: 'All categories',
       button: 'READ MORE'
     },
+    obrigado: {
+      title: 'Thank you!',
+      text: 'Your registration has been successfully received. We will contact you soon so you can participate in our launch.',
+      button: 'Back to Home',
+      span: 'Stay up to date with FitCertify365 news',
+      footer: {
+        direitos: '© 2025 FitCertify365. All rights reserved',
+        termos: 'Privacy Policy | Terms of use'
+      }
+    },
+    cadastro: {
+      title: 'Now, you go further!',
+      description: 'Your <strong>digital sports fitness passport</strong> is waiting for you! We will make your life easier before competitions: no rush, no lost certificates, no rework and no spending twice. <strong>Be the first! Join the waiting list!</strong>',
+      descriptionF: 'Your <strong>digital sports fitness passport</strong> is waiting for you! We will make your life easier before competitions: no rush, no lost certificates, no rework and no spending twice. <strong>Be the first! Join the waiting list!</strong>',
+      button: 'Sign up now!',
+      headerInfos: {
+        passaporte: {
+          title: 'Digital Passport',
+          desc: 'Your certificate in digital version, validated and always at hand.'
+        },
+        aptidao: {
+          title: 'Unified Fitness',
+          desc: 'Exams and reports gathered in one place, clear and totally reliable.'
+        },
+        alertas: {
+          title: 'Proactive Alerts',
+          desc: 'Validity reminders and updates before expiring.'
+        },
+        seguranca: {
+          title: 'Guaranteed Security',
+          desc: 'Your data protected, with quick and secure access.'
+        }
+      },
+      depoimentos: {
+        title: 'Testimonials',
+        items: {
+          luiz: {
+            texto: 'I finally stopped suffering with paperwork and deadlines. I centralized my exams in the app and now I have my certificate validated on my phone, even offline! My focus now is on training. I arrive at competitions without stress.',
+            nome: 'Luiz Araújo',
+            desc: '10k race runner'
+          },
+          maria: {
+            texto: 'FitCertify365 revolutionized my preparation for sports competitions. Now I have all my exams organized in one place!',
+            nome: 'Maria Silva',
+            desc: 'Athlete'
+          },
+          joao: {
+            texto: 'I never lost a certificate again or forgot to renew my exams. The alert system is fantastic!',
+            nome: 'João Santos',
+            desc: 'Runner'
+          }
+        }
+      },
+      comoFunciona: {
+        title: 'How It Works',
+        items: {
+          rapido: {
+            title: 'Quick and easy',
+            desc: 'Fill out a simple registration with name, email and WhatsApp. Done! Your account is already active and your physical fitness passport starts aggregating your health data.'
+          },
+          conecte: {
+            title: 'Connect your exams',
+            desc: 'Send your reports or connect compatible sources. The app organizes, validates and creates your digital document with intelligent history and validity periods.'
+          },
+          pronto: {
+            title: 'Ready to present',
+            desc: 'See your fitness status in real time, receive reminders before expiring and show your passport online or offline at major competitions. Plus various advantages we are implementing for your convenience.'
+          }
+        }
+      },
+      formulario: {
+        title: 'Be part of this sports revolution',
+        nome: 'Name',
+        nomePlaceholder: 'Full name *',
+        email: 'E-mail',
+        emailPlaceholder: 'Your best email *',
+        whatsapp: 'WhatsApp',
+        whatsappPlaceholder: 'Your WhatsApp *',
+        buttonEnviando: 'Sending...',
+        buttonEnviar: 'Submit registration!'
+      },
+      footer: {
+        direitos: '© 2025 FitCertify365. All rights reserved',
+        termos: 'Privacy Policy | Terms of use'
+      }
+    },
     termos: {
       title: 'Privacy Policy, Terms and Conditions of Use and Data Protection',
       section1: {
@@ -525,5 +611,30 @@ export default {
         title: '17. Contact',
         paragraph1: 'Questions, comments, or requests may be directed to: 📧 <strong>atendimento@fitcertify365.com</strong>'
       }
+    },
+    modalParabens: {
+      title: 'Our app is ready!',
+      description: 'Since you got here first, were going to give you 3 months of free app! Just fill out the form and well get in touch.',
+      form: {
+        name: 'Name:',
+        namePlaceholder: 'Full name *',
+        email: 'Email:',
+        emailPlaceholder: 'Your best email *',
+        whatsapp: 'WhatsApp:',
+        whatsappPlaceholder: 'Your WhatsApp *',
+        submitButton: 'Register',
+        submittingButton: 'Sending...'
+      },
+      validation: {
+        requiredFields: 'Please fill in all required fields',
+        invalidEmail: 'Please enter a valid email',
+        invalidWhatsapp: 'Please enter the complete WhatsApp number'
+      },
+      messages: {
+        success: 'Registration sent successfully!',
+        error: 'Error sending registration',
+        attention: 'Attention'
+      }
     }
   }
+
