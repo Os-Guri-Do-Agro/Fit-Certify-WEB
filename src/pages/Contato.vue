@@ -13,7 +13,6 @@ const form = ref({
   nome: '',
   email: '',
   telefone: '',
-  assunto: '',
   mensagem: '',
 })
 
@@ -25,13 +24,12 @@ const isValidEmail = (email) => {
 const isFormValid = computed(() => {
   return form.value.nome.trim() && 
          form.value.email.trim() && 
-         form.value.telefone.trim() && 
-         form.value.assunto.trim() && 
+         form.value.telefone.trim() &&  
          form.value.mensagem.trim()
 })
 
 const enviarEmail = async() => {
-  if (!form.value.nome.trim() || !form.value.email.trim() || !form.value.telefone.trim() || !form.value.assunto.trim() || !form.value.mensagem.trim()) {
+  if (!form.value.nome.trim() || !form.value.email.trim() || !form.value.telefone.trim() || !form.value.mensagem.trim()) {
     toast.add({
       severity: 'warn',
       summary: 'Atenção',
@@ -68,7 +66,6 @@ const enviarEmail = async() => {
       nome: form.value.nome,
       email: form.value.email,
       telefone: form.value.telefone,
-      assunto: form.value.assunto,
       mensagem: form.value.mensagem
     }
     await contatoService.enviarEmail(data)
@@ -154,11 +151,6 @@ const enviarEmail = async() => {
             <div class="flex flex-col">
                 <label class="font-[500] mb-2" for="">{{ t('contact.phone') }}</label>
                 <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.telefone" type="tel" id="telefone" name="telefone" v-maska="'(##) #####-####'" maxlength="15" placeholder="(11) 99999-9999" required>                
-            </div>
-
-            <div class="flex flex-col">
-                <label class="font-[500] mb-2" for="">{{ t('contact.subject') }}</label>
-                <input class="w-full max-w-[622.4px] h-[42px] bg-white border-1 border-stone-300 rounded-[8px] p-[10px]" v-model="form.assunto" type="assunto" id="assunto" name="assunto" required>                
             </div>
 
             <div class="flex flex-col">

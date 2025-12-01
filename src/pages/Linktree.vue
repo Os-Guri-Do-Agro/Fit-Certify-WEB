@@ -34,11 +34,11 @@
         <a href="https://wa.me/5521400495694?text=Olá! Gostaria de saber mais sobre a FitCertify365." target="_blank" class="bg-green-500 w-15 h-15 rounded-4xl flex items-center justify-center hover:-translate-y-3 duration-300">
             <i class="text-white fab fa-whatsapp"></i>
         </a>
-        <a href="https://fitcertify365.com/#/contato" target="_blank" class="bg-sky-500 w-15 h-15 rounded-4xl flex items-center justify-center hover:-translate-y-3 duration-300">
+        <a href="https://fitcertify365.com/contato" target="_blank" class="bg-sky-500 w-15 h-15 rounded-4xl flex items-center justify-center hover:-translate-y-3 duration-300">
             <i class="text-white fas fa-envelope"></i>
         </a>
     
-        <a href="https://fitcertify365.com/#/" target="_blank" class="bg-lime-500 w-15 h-15 rounded-4xl flex items-center justify-center hover:-translate-y-3 duration-300">
+        <a href="https://fitcertify365.com/" target="_blank" class="bg-lime-500 w-15 h-15 rounded-4xl flex items-center justify-center hover:-translate-y-3 duration-300">
             <i class="text-white fas fa-globe"></i>
         </a>
     
