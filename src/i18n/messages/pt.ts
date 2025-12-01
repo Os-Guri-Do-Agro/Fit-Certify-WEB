@@ -6,6 +6,7 @@ export default {
     marketplace: 'Marketplace',
     articles: 'Artigos',
     about: 'Quem Somos',
+    marcadores: 'Marcadores',
     contact: 'Contato',
     login: 'Login',
     register: 'Cadastro'
