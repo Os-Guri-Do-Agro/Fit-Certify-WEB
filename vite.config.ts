@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     vueDevTools({
-      componentInspector: false,
+      componentInspector: true,
       launchEditor: 'webstorm',
     }),
   ],
