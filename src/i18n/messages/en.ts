@@ -43,7 +43,7 @@ export default {
     }
   },
   home: {
-    title: 'Welcome to Fit Certify',
+    title: 'Welcome to FitCertify365',
     subtitle: 'Your fitness certification platform',
     description: 'Find events, certificates and products for your fitness journey',
     banner: {
