@@ -3,40 +3,40 @@
   <div class="container relative z-10 flex flex-col justify-center gap-6 p-5 lg:p-10 items-center md:items-start text-center md:text-start min-h-[300px] md:min-h-[400px] lg:min-h-[637px]">
 
     <!-- Skeleton Loading para título -->
-    <h2 v-if="!artigo"
+    <h2 v-if="!item"
         class="w-full max-w-[301px] lg:max-w-[388px] h-10 lg:h-16 bg-gray-300 animate-pulse rounded-md mt-[27px]">
     </h2>
     <h2 v-else
         class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
         w-full max-w-[301px] lg:max-w-[388px] mt-[27px] leading-[35px] lg:leading-[62px]">
-      {{ artigo?.titulo }}
+      {{ getLocalizedField(item, 'titulo') }}
     </h2>
 
     <!-- Skeleton Loading para subtítulo -->
-    <p v-if="!artigo"
+    <p v-if="!item"
        class="w-full max-w-[658px] h-6 lg:h-8 bg-gray-300 animate-pulse rounded-md">
     </p>
     <p v-else
        class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
         w-full max-w-[658px] text-center md:text-start" style="word-break: break-all; max-width: 50%;">
-      {{ artigo?.subTitulo }}
+      {{ getLocalizedField(item, 'subTitulo') }}
     </p>
 
   </div>
 
   <!-- Skeleton Loading para imagem -->
   <div class="absolute inset-y-0 right-0 w-1/2 hidden md:block">
-    <div v-if="!artigo" class="w-full h-full bg-gray-300 animate-pulse"></div>
+    <div v-if="!item" class="w-full h-full bg-gray-300 animate-pulse"></div>
     <img v-else
          class="w-full h-full object-cover object-bottom"
-         :src="artigo?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
+         :src="item?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
   </div>
 
   <div class="w-full md:hidden">
-    <div v-if="!artigo" class="w-full min-h-[200px] bg-gray-300 animate-pulse"></div>
+    <div v-if="!item" class="w-full min-h-[200px] bg-gray-300 animate-pulse"></div>
     <img v-else
          class="w-full object-cover object-bottom min-h-[200px]"
-         :src="artigo?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
+         :src="item?.imagensArtigo.find((i) => i.isBanner == false)?.imagemUrl" alt="">
   </div>
 </section>
 
@@ -50,7 +50,7 @@
       <!-- Skeleton Loading para introdução -->
       <p v-if="loading" class="w-full h-20 lg:h-28 bg-gray-300 animate-pulse rounded-md"></p>
       <p v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
-        {{ artigo?.introducao }}
+        {{ getLocalizedField(item, 'introducao') }}
       </p>
 
       <!-- Skeleton Loading para conteúdo -->
@@ -59,7 +59,7 @@
         <div class="w-full h-32 lg:h-40 bg-gray-300 animate-pulse rounded-md"></div>
       </div>
       <p v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full flex flex-col gap-3 opacity-90 max-h-[400px] lg:max-h-full break-words whitespace-normal overflow-y-auto">
-        {{ artigo?.conteudo }}
+        {{ getLocalizedField(item, 'conteudo') }}
       </p>
 
     </div>
@@ -80,7 +80,7 @@
         </div>
         <div class="flex w-full h-[135px] justify-center">
           <p class="text-[0.875em] lg:text-[1.375em] font-[600] opacity-90 leading-[32px] lg:leading-[43px] break-words whitespace-normal overflow-y-auto text-center">
-            {{ artigo?.citacao }}
+            {{ getLocalizedField(item, 'citacao') }}
           </p>
         </div>
         <div class="flex gap-10 items-end flex-row-reverse">
@@ -104,13 +104,13 @@
       <div v-if="loading" class="w-full h-[350px] md:h-[595px] bg-gray-300 animate-pulse rounded-md"></div>
       <img v-else
            class="w-full h-[350px] md:h-[595px] object-cover object-bottom"
-           :src="artigo?.imagensArtigo.find((i) => i.isBanner == true)?.imagemUrl"
+           :src="item?.imagensArtigo.find((i) => i.isBanner == true)?.imagemUrl"
            alt="">
 
       <!-- Skeleton Loading para conclusão -->
       <div v-if="loading" class="w-full h-24 lg:h-32 bg-gray-300 animate-pulse rounded-md"></div>
       <p v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] overflow-y-auto break-words opacity-90">
-        {{ artigo?.conclusao }}
+        {{ getLocalizedField(item, 'conclusao') }}
       </p>
 
     </div>
@@ -194,20 +194,26 @@ import ArtigoService from '../services/Artigos/artigos-service'
 import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vue'
 import medicoService from '../services/Medico/medico-service'
 import { useDisabled } from 'element-plus'
+import { useI18n } from '../composables/useI18n'
 
 const route = useRoute()
-const artigo = ref(null)
+const item = ref(null)
 const criadoPor = ref(null) 
 const loading = ref(false)
 const error = ref(null)
 const medico = ref(null)
+const { t, currentLocale } = useI18n()
+
+function getLocalizedField(item, field) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 const loadArtigo = async (id) => {
   try {
     loading.value = true
     error.value = null
     const response = await ArtigoService.getByArtigoId(id)
-    artigo.value = response.data
+    item.value = response.data
 
     criadoPor.value = response.data.criadoPor || null
     
