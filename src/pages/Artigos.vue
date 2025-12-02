@@ -48,7 +48,7 @@
                     <Listbox v-model="selectedPerson" @update:modelValue="selecionarCategoria(selectedPerson.id)">
                         <ListboxButton
                             class="w-full max-w-[400px] text-cyan-400 font-semibold p-3 shadow-lg border-1 border-cyan-400 rounded-[30px] cursor-pointer">
-                            {{ selectedPerson.nome }}</ListboxButton>
+                            {{ selectedPerson.id === null ? t('artigos.todasCategorias') : getLocalizedField(selectedPerson, 'nome') }}</ListboxButton>
                         <ListboxOptions
                             class="flex flex-col bg-gray-50 border-1 border-cyan-300 p-5 rounded-[12px] shadow-2xl w-full max-w-[400px]">
                             <ListboxOption 
@@ -57,7 +57,7 @@
                                 :key="categoria.id" 
                                 :value="categoria"
                             >
-                                {{ categoria.nome }}
+                                {{ categoria.id === null ? t('artigos.todasCategorias') : getLocalizedField(categoria, 'nome') }}
                             </ListboxOption>
                         </ListboxOptions>
                     </Listbox>
@@ -73,12 +73,12 @@
                     </h3>
 
                     <a 
-                        v-for="categoria in CategoriasArtigos" 
+                        v-for="categoria in CategoriasArtigos"
                         :key="categoria.id"
                         @click="selecionarCategoria(categoria.id)"
                         class="text-[0.9em] md:text-[1em] lg:text-[1.125em] duration-300 hover:text-cyan-400 cursor-pointer"
                     >
-                        {{ categoria.nome }}
+                        {{ categoria.id === null ? t('artigos.todasCategorias') : getLocalizedField(categoria, 'nome') }}
                     </a>
                 </div>
 
@@ -110,13 +110,19 @@ import {
     ListboxOptions,
     ListboxOption,
 } from '@headlessui/vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useI18n } from '../composables/useI18n.ts'
 
-const { t } = useI18n();
+const { t, currentLocale } = useI18n();
 const CategoriasArtigos = ref([])
-const selectedPerson = ref({ id: null, nome: t('artigos.todasCategorias') })
+const selectedPerson = ref({ id: null, nome: '', en_nome: '' })
 const categoriaIdSelecionada = ref(null)
+
+
+
+function getLocalizedField(item, field) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 const selecionarCategoria = (categoriaId) => {
     categoriaIdSelecionada.value = categoriaId
@@ -127,7 +133,9 @@ onMounted(async () => {
    CategoriasArtigos.value = response.data || []
    
    // Adiciona "Todas as Categorias" no início
-   CategoriasArtigos.value.unshift({ id: null, nome: t('artigos.todasCategorias') })
+   const todasCategorias = { id: null, nome: '', en_nome: '' }
+   CategoriasArtigos.value.unshift(todasCategorias)
+   selectedPerson.value = todasCategorias
 })
 
 </script>

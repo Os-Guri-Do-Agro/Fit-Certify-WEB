@@ -436,7 +436,16 @@ export default {
     text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
     categorias: 'Categorias',
     todasCategorias: 'Todas as categorias',
-    button: 'LEIA MAIS'
+    categoriaItems: 'categoria.nome',
+    button: 'LEIA MAIS',
+      card: { 
+        title: '{{ item.titulo }}',
+        subtitulo: '{{ item.subTitulo }}',
+        introducao: '{{ item.introducao }}',
+        citacao: '{{ item.citacao }}',
+        conteudo: '{{ item.conteudo }}',
+        conclusao: '{{ item.conclusao }}'
+      }
   },
   termos: {
     title: 'Política de Privacidade, Termos e Condições de Uso e Proteção de Dados',
