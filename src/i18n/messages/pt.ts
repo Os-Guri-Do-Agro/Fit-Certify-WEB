@@ -43,7 +43,7 @@ export default {
     }
   },
   home: {
-    title: 'Bem-vindo ao Fit Certify',
+    title: 'Bem-vindo ao FitCertify365',
     subtitle: 'Sua plataforma de certificação fitness',
     description: 'Encontre eventos, certificados e produtos para sua jornada fitness',
     banner: {
