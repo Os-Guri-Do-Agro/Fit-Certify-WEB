@@ -18,7 +18,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/register"
+              href="https://fit-certify-admin.vercel.app/registers"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
@@ -44,7 +44,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/register"
+              href="https://fit-certify-admin.vercel.app/registers"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
@@ -70,7 +70,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/register"
+              href="https://fit-certify-admin.vercel.app/registers"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
@@ -98,7 +98,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/register"
+              href="https://fit-certify-admin.vercel.app/registers"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               to="/cadastro"
