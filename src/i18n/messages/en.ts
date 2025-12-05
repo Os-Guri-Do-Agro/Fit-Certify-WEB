@@ -340,6 +340,9 @@ export default {
     eventos: {
       title: 'Partner Events',
       subtitle: 'Races and events that recognize your health today',
+      card: {
+        title: '{{ item.en_titulo }}'
+      },
       section1: {
         text: 'Our physical fitness certificate is accepted in any race or event that requires a medical certificate. Here you will find partner events with direct integration, a complete calendar of races accepted and, in connected events, the team of the organization can, with your authorization, access their data in case of need during the race.'
       },
@@ -436,7 +439,16 @@ export default {
       text: 'Tips, studies and updates on health, prevention, performance and everything that moves people who live the sport.',
       categorias: 'Categories',
       todasCategorias: 'All categories',
-      button: 'READ MORE'
+      categoriaItems: 'categoria.en_nome',
+      button: 'READ MORE',
+      card: {
+        title: '{{ item.en_titulo }}',
+        subtitulo: '{{ item.en_subTitulo }}',
+        introducao: '{{ item.en_introducao }}',
+        citacao: '{{ item.en_citacao }}',
+        conteudo: '{{ item.en_conteudo }}',
+        conclusao: '{{ item.en_conclusao }}'
+      }
     },
     obrigado: {
       title: 'Thank you!',

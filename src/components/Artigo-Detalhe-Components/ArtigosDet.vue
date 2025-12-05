@@ -26,13 +26,12 @@
       <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px]">
         <div class="">
         <h1
-          class="text-[1.3em] lg:text-[2.25em] font-[600] italic text-cyan-400 max-w-[525px] lg:leading-[52px] md:leading-[30px] leading-[26px]">
-          {{ item.titulo }}</h1>          
+          class="text-[1.3em] lg:text-[2.25em] font-[600] italic text-cyan-400 max-w-[525px] lg:leading-[52px] md:leading-[30px] leading-[26px] line-clamp-3 overflow-hidden">
+          {{ getLocalizedField(item, 'titulo') }}</h1>          
         </div>
 
         <div class="">
-        <p class="text-[0.85em] lg:text-[1.25em] w-full max-w-[551px] leading-[26px] lg:leading-[36px]">{{
-          item.subTitulo }}</p>          
+        <p class="text-[0.85em] lg:text-[1.25em] w-full max-w-[551px] leading-[26px] lg:leading-[36px] line-clamp-2 overflow-hidden">{{ getLocalizedField(item, 'subTitulo') }}</p>          
         </div>
 
         <div class="">
@@ -54,7 +53,11 @@ import { onMounted, ref } from 'vue'
 import ArtigoService from '../../services/Artigos/artigos-service'
 import { useI18n } from '../../composables/useI18n';
 
-const { t } = useI18n() 
+const { t, currentLocale } = useI18n()
+
+function getLocalizedField(item: any, field: any) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 const emit = defineEmits<{
   'refresh-page': [id: string]

@@ -18,7 +18,7 @@
       <!-- Skeleton para título -->
       <div v-if="carregando" class="h-12 md:h-14 lg:h-16 bg-gray-300 rounded-md animate-pulse w-full"></div>
       <!-- Título real -->
-      <h1 v-else class="text-[2em] md:text-[2.5em] text-center md:text-start lg:text-[3em] italic font-[600] text-cyan-400">{{ evento?.titulo }}</h1>
+      <h1 v-else class="text-[2em] md:text-[2.5em] text-center md:text-start lg:text-[3em] italic font-[600] text-cyan-400">{{ getLocalizedField(evento, 'titulo', tipoEvento) }}</h1>
 
       <div class="flex gap-5 items-center md:items-start flex-col md:flex-row">
         <!-- Skeleton para botões -->
@@ -29,12 +29,16 @@
 
         <!-- Botões reais -->
         <template v-else>
-          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" to="/eventos" >
+          <div class="" v-if="evento?.linkEnviarCertificado">
+          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" :to="evento?.linkEnviarCertificado" >
             {{ t('eventosDetalhes.button1') }}
-          </RouterLink>
-          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-lime-500 hover:text-white border-2 border-lime-500 hover:bg-lime-500 duration-300" to="/eventos" >
+          </RouterLink>            
+          </div>
+          <div class="" v-if="evento?.linkSiteProva">
+          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-lime-500 hover:text-white border-2 border-lime-500 hover:bg-lime-500 duration-300" :to="evento?.linkSiteProva" target="_blank" >
             {{ t('eventosDetalhes.button2') }}
-          </RouterLink>
+          </RouterLink>            
+          </div>
         </template>
       </div>
     </div>
@@ -65,7 +69,7 @@
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.data') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          <span v-else>{{ evento?.data?.slice(0, 10)?.split('-')?.reverse()?.join('/') }}</span>
+          <span v-else>{{ formatDate(evento?.data) }}</span>
         </span>
       </div>
 
@@ -83,7 +87,7 @@
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.modalidade') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          <span v-else>{{ tipoEvento?.nome }}</span>
+          <span v-else>{{ getLocalizedField(tipoEvento, 'nome', null) }}</span>
         </span>
       </div>
 
@@ -92,7 +96,7 @@
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.distancia') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-36 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          <span v-else>{{ evento?.distanciasEvento?.map(d => d.distancia + ' km').join(' / ') }}</span>
+          <span v-else>{{ formatDistancias(evento?.distanciasEvento) }}</span>
         </span>
       </div>
 
@@ -113,7 +117,7 @@
 
     <!-- Texto real -->
     <span v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
-      {{ evento?.descricao }}
+      {{ getLocalizedField(evento, 'descricao', tipoEvento) }}
     </span>
 
     <div class="w-full h-[2px] bg-sky-100 mt-7"></div>
@@ -174,7 +178,35 @@ const tipoEvento = ref(null)
 const organizacao = ref([])
 const carregando = ref(true)
 const tipoEventoId = ref(null)
-const { t } = useI18n()
+const { t, currentLocale } = useI18n()
+
+function getLocalizedField(evento, field, tipoEvento) {
+  return currentLocale.value === 'en' ? evento[`en_${field}`] : evento[field] || tipoEvento?.[field]
+}
+
+
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  if (currentLocale.value === 'pt') {
+      return date.toLocaleDateString('pt-BR')
+  } else {
+    return date.toLocaleDateString('en-US')
+  }
+}
+
+function formatDistancias(distancias) {
+  if (!distancias || !distancias.length) return ''
+  return distancias
+    .map(d => {
+      if (currentLocale.value === 'en') {
+        const miles = (d.distancia * 0.621371).toFixed(1)
+        return `${miles} mi`
+      }
+      return `${d.distancia} km`
+    })
+    .join(' / ')
+}
 
 const carregarEvento = async (id) => {
   try {

@@ -340,6 +340,9 @@ export default {
   eventos: {
     title: 'Provas Parceiras',
     subtitle: 'Corridas e provas que reconhecem sua saúde em dia',
+    card: {
+      title: 'item.titulo'
+    },
     section1: {
       text: 'Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você encontra eventos parceiros com integração direta, um calendário completo de provas aceitas e, nos eventos conectados, a equipe médica da organização pode, com sua autorização, acessar seus dados de saúde em caso de necessidade durante a prova.'
     },
@@ -436,7 +439,16 @@ export default {
     text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
     categorias: 'Categorias',
     todasCategorias: 'Todas as categorias',
-    button: 'LEIA MAIS'
+    categoriaItems: 'categoria.nome',
+    button: 'LEIA MAIS',
+      card: { 
+        title: '{{ item.titulo }}',
+        subtitulo: '{{ item.subTitulo }}',
+        introducao: '{{ item.introducao }}',
+        citacao: '{{ item.citacao }}',
+        conteudo: '{{ item.conteudo }}',
+        conclusao: '{{ item.conclusao }}'
+      }
   },
   termos: {
     title: 'Política de Privacidade, Termos e Condições de Uso e Proteção de Dados',
