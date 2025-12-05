@@ -146,9 +146,9 @@
   alt=""
 >
         <div class="flex flex-col">
-          <span class="font-semibold text-[1.5em]">{{ criadoPor.nome }}</span>
+          <span class="font-semibold text-[1.5em]">{{ criadoPor?.nome }}</span>
           <span>{{ medico?.especializacao }}</span>
-          <span>{{ criadoPor.email }}</span>
+          <span>{{ criadoPor?.email }}</span>
         </div>
         </div>
       </div>
