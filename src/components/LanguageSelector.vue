@@ -35,7 +35,7 @@ const isOpen = ref(false)
 
 const locales = [
   { code: 'pt' as const, name: 'Português', flag: 'https://flagcdn.com/w40/br.png' },
-  { code: 'en' as const, name: 'English', flag: 'https://flagcdn.com/w40/us.png' }
+  { code: 'en' as const, name: 'English', flag: 'https://flagcdn.com/w40/gb.png' }
 ]
 
 const currentFlag = computed(() => {

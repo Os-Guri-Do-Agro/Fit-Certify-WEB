@@ -20,7 +20,7 @@
         <div v-for="item in Eventos.data" :key="item.id"
           class="bg-white w-full h-[252px] p-3 text-start gap-1 flex flex-col rounded-[12px] shadow-lg">
           <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
-            {{ item.titulo }}
+            {{ getLocalizedField(item, 'titulo') }}
           </h1>
           <span class="text-[0.85em] flex items-center gap-1">
             📍 {{ item.local }}
@@ -62,6 +62,7 @@ import { useI18n } from '../../composables/useI18n'
 interface Evento {
   id: string
   titulo: string
+  en_titulo?: string
   local?: string
   data?: string
   tipoEventoId?: string
@@ -70,9 +71,13 @@ interface Evento {
   [key: string]: any
 }
 
-const { t } = useI18n();
+const { t, currentLocale } = useI18n();
 const Eventos = ref<{ data: Evento[] }>({ data: [] })
 const isLoading = ref(false)
+
+function getLocalizedField(item: any, field: any) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 const props = defineProps<{
   cidade?: string
@@ -97,8 +102,8 @@ async function buscarEventos() {
       props.mes?.nome !== '' ? props.mes?.value?.toString() : undefined
     )
 
-    const data: Evento[] = response.data.itens
-    totalItens.value = response.data?.total
+    const data: Evento[] = response.data?.itens || []
+    totalItens.value = response.data?.total || 0
 
     Eventos.value.data = data
       .sort(
@@ -107,6 +112,10 @@ async function buscarEventos() {
           new Date(a.createdAt).getTime()
       )
 
+  } catch (error) {
+    console.error('Erro ao buscar eventos:', error)
+    Eventos.value.data = []
+    totalItens.value = 0
   } finally {
     isLoading.value = false
   }
@@ -118,7 +127,7 @@ onMounted(async () => {
 
 watch(
   () => [props.tipoEventoId, props.cidade, props.mes],
-  (
+  async (
     [novoTipoEventoId, novoCidade, novoMes],
     [antigoTipoEventoId, antigoCidade, antigoMes]
   ) => {
@@ -128,23 +137,34 @@ watch(
       novoMes !== antigoMes
     ) {
       currentPage.value = 1
-      buscarEventos();
+      await buscarEventos()
     }
   }
-);
+)
 
 
 function formatDate(dateStr?: string) {
   if (!dateStr) return ''
   const date = new Date(dateStr)
-  return date.toLocaleDateString('pt-BR')
+  if (currentLocale.value === 'pt') {
+      return date.toLocaleDateString('pt-BR')
+  } else {
+      return date.toLocaleDateString('en-US')
+  }
+
 }
 
 function formatDistancias(distancias?: any) {
   if (!distancias || !distancias.length) return ''
   return distancias
     .sort((a: any, b: any) => a.distancia - b.distancia)
-    .map((d: any) => `${d.distancia}K`)
+    .map((d: any) => {
+      if (currentLocale.value === 'en') {
+        const miles = (d.distancia * 0.621371).toFixed(1)
+        return `${miles}mi`
+      }
+      return `${d.distancia}K`
+    })
     .join(' | ')
 }
 </script>

@@ -44,7 +44,7 @@
             <div class="w-full md:max-w-[200px]">
               <el-select v-model="tipoEventoIdSelecionado" :options="tipos" :placeholder="t('eventos.section2.tipoEvento')"
                 style="width: 100%;" filterable clearable @change="(e) => onChangeTipoEventoId(e)">
-                <el-option v-for="item in tipoEventos" :key="item.id" :label="item.nome" :value="item.id" />
+                <el-option v-for="item in tipoEventos" :key="item.id" :label="getLocalizedField(item, 'nome')" :value="item.id" />
               </el-select>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="w-full md:max-w-[200px]">
               <el-select v-model="mesSelecionado" :placeholder="t('eventos.section2.mes')" style="width: 100%;" filterable clearable
                 value-key="nome" @change="(e) => onChangeMes(e)">
-                <el-option v-for="item in meses" :key="item.value" :label="item.nome" :value="item" />
+                <el-option v-for="item in listaMeses()" :key="item.value" :label="item.nome" :value="item" />
               </el-select>
             </div>
           </div>
@@ -138,12 +138,24 @@ import { useI18n } from '../composables/useI18n'
 
 const tipoEventos = ref([])
 const eventos = ref([])
-const { t } = useI18n();
+const { t, currentLocale } = useI18n();
 const cidadeSelecionada = ref('')
 const mesSelecionado = ref('')
 const tipoEventoIdSelecionado = ref('')
 
-const meses = [
+function getLocalizedField(tipoEventos, field) {
+  return currentLocale.value === 'en' ? tipoEventos[`en_${field}`] : tipoEventos[field]
+}
+
+const listaMeses = () => {
+  if (currentLocale.value === 'pt') {
+    return mesesPt
+  } else {
+    return mesesEn
+  }
+}
+
+const mesesPt = [
   { value: 1, nome: t('common.months.janeiro') },
   { value: 2, nome: t('common.months.fevereiro') },
   { value: 3, nome: t('common.months.marco') },
@@ -156,6 +168,21 @@ const meses = [
   { value: 10, nome: t('common.months.outubro') },
   { value: 11, nome: t('common.months.novembro') },
   { value: 12, nome: t('common.months.dezembro') }
+];
+
+const mesesEn = [
+  { value: 1, nome: 'January' },
+  { value: 2, nome: 'February' },
+  { value: 3, nome: 'March' },
+  { value: 4, nome: 'April' },
+  { value: 5, nome: 'May' },
+  { value: 6, nome: 'June' },
+  { value: 7, nome: 'July' },
+  { value: 8, nome: 'August' },
+  { value: 9, nome: 'September' },
+  { value: 10, nome: 'October' },
+  { value: 11, nome: 'November' },
+  { value: 12, nome: 'December' }
 ];
 
 onMounted(async () => {

@@ -7,7 +7,7 @@
       class="text-[1.25em] md:text-[1.75em] lg:text-[2.5em] xl:text-[3em] font-[700] italic text-cyan-400
         w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] mt-[27px] leading-[35px] lg:leading-[62px] break-words"
     >
-      {{ produto?.titulo }}
+      {{ getLocalizedField(produto, 'titulo') }}
     </h2>
     <div v-else class="w-full max-w-[388px] h-[50px] bg-gray-300 rounded animate-pulse mt-[27px]"></div>
 
@@ -22,7 +22,7 @@
     <!-- SUBTÍTULO -->
     <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]
         w-full max-w-full md:max-w-[320px] lg:max-w-[400px] xl:max-w-[550px] text-center md:text-start break-words">
-      {{ produto?.subTitulo }}
+        {{ getLocalizedField(produto, 'subTitulo') }}
     </p>
     <div v-else class="w-full max-w-[658px] h-[25px] bg-gray-300 rounded animate-pulse"></div>
 
@@ -74,7 +74,7 @@
         {{ t('marketplaceDetalhes.descricao') }}
       </span>
       <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
-        {{ produto?.descricao }}
+        {{ getLocalizedField(produto, 'descricao') }}
       </p>
       <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
     </div>
@@ -87,7 +87,7 @@
         {{ t('marketplaceDetalhes.orientacao') }}
       </span>
       <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] break-words whitespace-normal overflow-y-auto opacity-90">
-        {{ produto?.orientacao }}
+        {{ getLocalizedField(produto, 'orientacao') }}
       </p>
       <div v-else class="w-full max-w-[658px] h-[80px] bg-gray-300 rounded animate-pulse"></div>
     </div>
@@ -101,7 +101,7 @@
         <div v-else class="w-[200px] h-[20px] bg-gray-300 rounded animate-pulse"></div>
       </span>
       <p v-if="!loadingProduto" class="text-[0.875em] lg:text-[1em] xl:text-[1.25em] leading-[26px] md:leading-[43px]">
-        {{ empresa?.sobre }}
+        {{ getLocalizedFieldEmpresa(empresa, 'sobre') }}
       </p>
       <div v-else class="w-full max-w-[658px] h-[60px] bg-gray-300 rounded animate-pulse"></div>
     </div>
@@ -302,7 +302,7 @@ import ProdutosServices from '../services/marketplace/marketplace-services'
 import MarketDetalhes from '../components/Marketp-Detalhes-components/MarketDetalhes.vue'
 import { useI18n } from '../composables/useI18n'
 
-const { t } = useI18n()
+const { t, currentLocale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
@@ -313,6 +313,14 @@ const avaliacoes = ref<any[]>([])
 const loadingProduto = ref(true)      // <--- Skeleton loading
 const loadingAvaliacoes = ref(false)
 const errorAvaliacoes = ref<string | null>(null)
+
+function getLocalizedField(produto: any, field: any) {
+  return currentLocale.value === 'en' ? produto[`en_${field}`] : produto[field]
+}
+
+function getLocalizedFieldEmpresa(empresa: any, field: any) {
+  return currentLocale.value === 'en' ? empresa[`en_${field}`] : empresa[field]
+} 
 
 const getStarsArray = (stars: number) =>
   Array.from({ length: stars }, (_, i) => i + 1)

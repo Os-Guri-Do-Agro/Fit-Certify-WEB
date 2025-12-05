@@ -38,11 +38,11 @@
             </div>
 
             <h1 class="text-[1.125em] lg:text-[1.25em] font-[700] text-cyan-400 break-words">
-              {{ item.titulo }}
+              {{ getLocalizedField(item, 'titulo') }}
             </h1>
 
             <p class="text-[0.75em] lg:text-[0.875em] text-gray-500 break-words">
-              {{ item.descricao }}
+              {{ getLocalizedField(item, 'descricao') }}
             </p>
 
             <p class="text-[0.875em] font-semibold text-gray-600">
@@ -73,7 +73,12 @@ import ProdutosServices from '../../services/marketplace/marketplace-services'
 import { useI18n } from '../../composables/useI18n';
 
 // Props
-const { t } = useI18n()
+const { t, currentLocale } = useI18n()
+
+function getLocalizedField(item: any, field: any) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
+
 const props = defineProps<{
   categoria?: any
   preco?: any
