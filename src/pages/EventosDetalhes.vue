@@ -18,7 +18,7 @@
       <!-- Skeleton para título -->
       <div v-if="carregando" class="h-12 md:h-14 lg:h-16 bg-gray-300 rounded-md animate-pulse w-full"></div>
       <!-- Título real -->
-      <h1 v-else class="text-[2em] md:text-[2.5em] text-center md:text-start lg:text-[3em] italic font-[600] text-cyan-400">{{ getLocalizedField(evento, 'titulo') }}</h1>
+      <h1 v-else class="text-[2em] md:text-[2.5em] text-center md:text-start lg:text-[3em] italic font-[600] text-cyan-400">{{ getLocalizedField(evento, 'titulo', tipoEvento) }}</h1>
 
       <div class="flex gap-5 items-center md:items-start flex-col md:flex-row">
         <!-- Skeleton para botões -->
@@ -87,7 +87,7 @@
         <span class="font-bold text-base md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section1.modalidade') }}</span>
         <span class="text-xl md:text-2xl lg:text-4xl text-zinc-500">
           <div v-if="carregando" class="w-24 h-8 md:h-10 lg:h-12 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          <span v-else>{{ getLocalizedField(tipoEvento, 'nome') }}</span>
+          <span v-else>{{ getLocalizedField(tipoEvento, 'nome', null) }}</span>
         </span>
       </div>
 
@@ -117,7 +117,7 @@
 
     <!-- Texto real -->
     <span v-else class="text-[0.875em] lg:text-[1.25em] xl:text-[1.25em] leading-[32px] lg:leading-[43px] w-full max-h-[300px] overflow-y-auto opacity-90">
-      {{ getLocalizedField(evento, 'descricao') }}
+      {{ getLocalizedField(evento, 'descricao', tipoEvento) }}
     </span>
 
     <div class="w-full h-[2px] bg-sky-100 mt-7"></div>
