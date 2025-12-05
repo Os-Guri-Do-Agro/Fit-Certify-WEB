@@ -30,13 +30,13 @@
           <p class="my-5 leading-relaxed" v-html="t('termos.section1.paragraph4')">
           </p>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section1.paragraph5')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section1.paragraph5'))">
           </p>
 
           <p class="my-5 leading-relaxed" v-html="t('termos.section1.paragraph6')">
           </p>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section1.paragraph7')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section1.paragraph7'))">
           </p>
 
           <div class="w-full h-2 bg-sky-100 rounded-lg mt-5 mb-0"></div>
@@ -49,7 +49,7 @@
             {{ t('termos.section2.title') }}
           </h2>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section2.paragraph1')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section2.paragraph1'))">
           </p>
 
           <div class="w-full h-2 bg-sky-100 rounded-lg mt-5 mb-0"></div>
@@ -167,7 +167,7 @@
             {{ t('termos.section9.title') }}
           </h2>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section9.paragraph1')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section9.paragraph1'))">
           </p>
 
           <p class="my-5 leading-relaxed" v-html="t('termos.section9.paragraph2')">
@@ -196,7 +196,7 @@
             {{ t('termos.section11.title') }}
           </h2>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section11.paragraph1')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section11.paragraph1'))">
           </p>
           <div class="w-full h-2 bg-sky-100 rounded-lg mt-5 mb-0"></div>
         </div>
@@ -268,7 +268,7 @@
             {{ t('termos.section17.title') }}
           </h2>
 
-          <p class="my-5 leading-relaxed" v-html="t('termos.section17.paragraph1')">
+          <p class="my-5 leading-relaxed" v-html="formatText(t('termos.section17.paragraph1'))">
           </p>
         </div>
       </section>
@@ -280,4 +280,12 @@
 import { useI18n } from '../composables/useI18n'
 
 const { t } = useI18n()
+
+// Helper function to replace placeholders with HTML tags
+const formatText = (text) => {
+  return text
+    .replace(/{strongOpen}/g, '<strong>')
+    .replace(/{strongClose}/g, '</strong>')
+    .replace(/{at}/g, '@')
+}
 </script>

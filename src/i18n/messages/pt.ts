@@ -458,13 +458,13 @@ export default {
       paragraph2: 'Estes Termos de Serviço ("Termos", "Termos de Serviço", "Termos e Condições de Uso") regem o uso dos nossos aplicativos móveis e plataforma digital, desenvolvidos pela FitCertify365.',
       paragraph3: 'Nossa <strong>Política de Privacidade</strong> também rege o uso do nosso Serviço e explica como coletamos, protegemos e divulgamos informações resultantes da sua utilização dos aplicativos móveis e páginas web.',
       paragraph4: 'Seu acordo conosco inclui estes Termos e nossa Política de Privacidade ("Acordos"). Ao utilizar nossos serviços, você reconhece que leu e compreendeu os Acordos, e concorda em estar legalmente vinculado a eles.',
-      paragraph5: 'Caso não concorde (ou não possa cumprir) os Acordos, você não poderá utilizar o Serviço. Neste caso, solicitamos que nos comunique pelo e-mail <strong>atendimento@fitcertify365.com</strong> para que possamos buscar uma solução.',
+      paragraph5: 'Caso não concorde (ou não possa cumprir) os Acordos, você não poderá utilizar o Serviço. Neste caso, solicitamos que nos comunique pelo e-mail {strongOpen}atendimento{at}fitcertify365.com{strongClose} para que possamos buscar uma solução.',
       paragraph6: 'Estes Termos aplicam-se a todos os visitantes, usuários e demais pessoas que desejarem acessar ou utilizar o Serviço.',
-      paragraph7: 'Este aplicativo pode se integrar com o <strong>Apple Saúde (HealthKit ou CareKit)</strong> e com o <strong>Google Health Connect</strong>, para leitura e acompanhamento de dados obtidos via Apple Watch e outros dispositivos wearables compatíveis, permitindo também o envio de dados manuais e de dispositivos Bluetooth (BLE), sempre mediante autorização do usuário.'
+      paragraph7: 'Este aplicativo pode se integrar com o {strongOpen}Apple Saúde (HealthKit ou CareKit){strongClose} e com o {strongOpen}Google Health Connect{strongClose}, para leitura e acompanhamento de dados obtidos via Apple Watch e outros dispositivos wearables compatíveis, permitindo também o envio de dados manuais e de dispositivos Bluetooth (BLE), sempre mediante autorização do usuário.'
     },
     section2: {
       title: '2. Comunicações',
-      paragraph1: 'Ao utilizar nossos serviços, você concorda em receber newsletters, materiais de marketing ou promocionais e outras informações que possamos enviar. No entanto, você pode optar por não receber tais comunicações seguindo o link de descadastramento incluso nas mensagens ou enviando um e-mail para <strong>atendimento@fitcertify365.com</strong>.'
+      paragraph1: 'Ao utilizar nossos serviços, você concorda em receber newsletters, materiais de marketing ou promocionais e outras informações que possamos enviar. No entanto, você pode optar por não receber tais comunicações seguindo o link de descadastramento incluso nas mensagens ou enviando um e-mail para {strongOpen}atendimento{at}fitcertify365.com{strongClose}.'
     },
     section3: {
       title: '3. Conteúdo',
@@ -503,7 +503,7 @@ export default {
     },
     section9: {
       title: '9. Exclusão de Conta e Dados',
-      paragraph1: 'Você pode solicitar a exclusão de sua conta e dos dados pessoais armazenados pela FitCertify365, em conformidade com a <strong>LGPD (Lei Geral de Proteção de Dados)</strong>, GDPR (Regulamento Europeu de Proteção de Dados) e demais legislações aplicáveis.',
+      paragraph1: 'Você pode solicitar a exclusão de sua conta e dos dados pessoais armazenados pela FitCertify365, em conformidade com a {strongOpen}LGPD (Lei Geral de Proteção de Dados){strongClose}, GDPR (Regulamento Europeu de Proteção de Dados) e demais legislações aplicáveis.',
       paragraph2: 'Após aprovação do pedido, sua conta será desativada e você terá 30 dias para realizar o download dos seus dados antes da exclusão definitiva.'
     },
     section10: {
@@ -512,7 +512,7 @@ export default {
     },
     section11: {
       title: '11. Direitos Autorais',
-      paragraph1: 'Respeitamos os direitos autorais e atenderemos a qualquer notificação de infração enviada ao e-mail <strong>atendimento@fitcertify365.com</strong>.'
+      paragraph1: 'Respeitamos os direitos autorais e atenderemos a qualquer notificação de infração enviada ao e-mail {strongOpen}atendimento{at}fitcertify365.com{strongClose}.'
     },
     section12: {
       title: '12. Limitação de Responsabilidade',
@@ -536,7 +536,7 @@ export default {
     },
     section17: {
       title: '17. Contato',
-      paragraph1: 'Dúvidas, comentários ou solicitações podem ser enviadas para: 📧 <strong>atendimento@fitcertify365.com</strong>'
+      paragraph1: 'Dúvidas, comentários ou solicitações podem ser enviadas para: 📧 {strongOpen}atendimento{at}fitcertify365.com{strongClose}'
     }
   },
   obrigado: {

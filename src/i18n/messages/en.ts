@@ -544,13 +544,13 @@ export default {
         paragraph2: 'These Terms of Service ("Terms", "Terms of Use") govern the use of our mobile applications and digital platform developed by FitCertify365.',
         paragraph3: 'Our <strong>Privacy Policy</strong> also applies to your use of the Service and explains how we collect, protect, and disclose information generated from your interactions with our mobile apps and web pages.',
         paragraph4: 'Your agreement with us includes these Terms and our Privacy Policy ("Agreements"). By using our services, you acknowledge that you have read and understood the Agreements and agree to be legally bound by them.',
-        paragraph5: 'If you do not agree (or are unable to comply) with the Agreements, you may not use the Service. In that case, please contact us at <strong>atendimento@fitcertify365.com</strong> so we can try to assist you.',
+        paragraph5: 'If you do not agree (or are unable to comply) with the Agreements, you may not use the Service. In that case, please contact us at {strongOpen}atendimento{at}fitcertify365.com{strongClose} so we can try to assist you.',
         paragraph6: 'These Terms apply to all visitors, users, and anyone who accesses or uses the Service.',
         paragraph7: 'This application may integrate with <strong>Apple Health (HealthKit or CareKit)</strong> and <strong>Google Health Connect</strong> to read and track data from Apple Watch and other compatible wearables, as well as to receive manual entries and data from Bluetooth (BLE) devices, always with the user\'s explicit permission.'
       },
       section2: {
         title: '2. Communications',
-        paragraph1: 'By using our services, you agree to receive newsletters, marketing materials, promotional content, and other information we may send. You can opt out at any time by using the unsubscribe link provided in our messages or by contacting <strong>atendimento@fitcertify365.com</strong>.'
+        paragraph1: 'By using our services, you agree to receive newsletters, marketing materials, promotional content, and other information we may send. You can opt out at any time by using the unsubscribe link provided in our messages or by contacting {strongOpen}atendimento{at}fitcertify365.com{strongClose}.'
       },
       section3: {
         title: '3. Content',
@@ -589,7 +589,7 @@ export default {
       },
       section9: {
         title: '9. Account and Data Deletion',
-        paragraph1: 'You may request deletion of your account and personal data stored by FitCertify365, in accordance with applicable data protection laws such as <strong>LGPD</strong>, <strong>GDPR</strong>, and others.',
+        paragraph1: 'You may request deletion of your account and personal data stored by FitCertify365, in accordance with applicable data protection laws such as {strongOpen}LGPD{strongClose}, {strongOpen}GDPR{strongClose}, and others.',
         paragraph2: 'Once approved, your account will be deactivated, and you will have 30 days to download your data before permanent deletion.'
       },
       section10: {
@@ -598,7 +598,7 @@ export default {
       },
       section11: {
         title: '11. Copyright',
-        paragraph1: 'We respect copyright law and will respond to any infringement notice sent to <strong>atendimento@fitcertify365.com</strong>.'
+        paragraph1: 'We respect copyright law and will respond to any infringement notice sent to {strongOpen}atendimento{at}fitcertify365.com{strongClose}.'
       },
       section12: {
         title: '12. Limitation of Liability',
@@ -622,7 +622,7 @@ export default {
       },
       section17: {
         title: '17. Contact',
-        paragraph1: 'Questions, comments, or requests may be directed to: 📧 <strong>atendimento@fitcertify365.com</strong>'
+        paragraph1: 'Questions, comments, or requests may be directed to: 📧 {strongOpen}atendimento{at}fitcertify365.com{strongClose}'
       }
     },
     modalParabens: {
