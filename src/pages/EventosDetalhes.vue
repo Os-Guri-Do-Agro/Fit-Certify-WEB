@@ -30,14 +30,14 @@
         <!-- Botões reais -->
         <template v-else>
           <div class="" v-if="evento?.linkEnviarCertificado">
-          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" :to="evento?.linkEnviarCertificado" >
+          <a class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" target="_blank" :href="evento?.linkEnviarCertificado" >
             {{ t('eventosDetalhes.button1') }}
-          </RouterLink>            
+          </a>            
           </div>
           <div class="" v-if="evento?.linkSiteProva">
-          <RouterLink class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-lime-500 hover:text-white border-2 border-lime-500 hover:bg-lime-500 duration-300" :to="evento?.linkSiteProva" target="_blank" >
+          <a class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-lime-500 hover:text-white border-2 border-lime-500 hover:bg-lime-500 duration-300"  :href="evento?.linkSiteProva" target="_blank" >
             {{ t('eventosDetalhes.button2') }}
-          </RouterLink>            
+          </a>            
           </div>
         </template>
       </div>
