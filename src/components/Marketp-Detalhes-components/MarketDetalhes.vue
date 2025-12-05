@@ -30,13 +30,13 @@
 
           <div>
             <h1 class="text-[1.125em] lg:text-[1.25em] font-[700] text-cyan-400 max-w-[327.25px]">
-              {{ item.titulo }}
+              {{ getLocalizedField(item, 'titulo') }}
             </h1>
           </div>
 
           <div>
             <p class="text-[0.75em] lg:text-[0.875em] w-full max-w-[551px] text-gray-500">
-              {{ item.descricao }}
+              {{ getLocalizedField(item, 'descricao') }}
             </p>
           </div>
 
@@ -85,7 +85,11 @@ import { useI18n } from '../../composables/useI18n'
 
 const Produtos = ref<{ data: any[] }>({ data: [] })
 const loadingProdutos = ref(true)
-const { t } = useI18n() 
+const { t, currentLocale } = useI18n() 
+
+function getLocalizedField(item: any, field: any) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 const emit = defineEmits<{
   'refresh-page': [id: string]

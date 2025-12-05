@@ -41,7 +41,7 @@
         <div class="flex gap-5 flex-col md:flex-row w-full md:justify-center items-center">
           <div class="w-full md:max-w-[200px]">
             <el-select clearable v-model="categoriaSelecionada" :placeholder="t('marketplace.categoria')" style="width: 100%;" filterable>
-              <el-option v-for="item in categoriasProduto" :key="item.id" :label="item.nome" :value="item.id" />
+              <el-option v-for="item in categoriasProduto" :key="item.id" :label="getLocalizedField(item, 'nome')" :value="item.id" />
             </el-select>
           </div>
           <div class="w-full md:max-w-[200px]">
@@ -93,7 +93,12 @@ const categoriaSelecionada = ref()
 const precoSelecionado = ref()
 const condicaoSelecionada = ref()
 const categoriasProduto = ref([])
-const { t } = useI18n();
+const { t, currentLocale } = useI18n();
+
+function getLocalizedField(item, field) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
+
 const opcaoCondicaoEspecial = [
   {
     value: true,
