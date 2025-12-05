@@ -1,21 +1,6 @@
 <template>
   <div class="w-full md:max-w-[200px]">
-    <el-select
-      v-model="selected"
-      :options="tipos"
-      placeholder="Tipo de Evento"
-      style="width: 100%;"
-      filterable
-      @change="(e) => onChange(e)"
-    
-  >
-    <el-option
-      v-for="item in tipos"
-      :key="item.id"
-      :label="item.nome"
-      :value="item.id"
-    />
-    </el-select>
+
   </div>  
 </template>
 
@@ -31,8 +16,15 @@ import {
 } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import EventosService from '../../services/Eventos/eventos-services'
+import { useI18n } from '../../composables/useI18n'
 
 const emit = defineEmits(['update:tipoEventoId'])
+
+const {t, currentLocale} = useI18n()
+
+function getLocalizedField(item, field) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 let selected = ref(0)
 let query = ref('')

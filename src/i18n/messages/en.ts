@@ -340,6 +340,9 @@ export default {
     eventos: {
       title: 'Partner Events',
       subtitle: 'Races and events that recognize your health today',
+      card: {
+        title: 'item.en_titulo'
+      },
       section1: {
         text: 'Our physical fitness certificate is accepted in any race or event that requires a medical certificate. Here you will find partner events with direct integration, a complete calendar of races accepted and, in connected events, the team of the organization can, with your authorization, access their data in case of need during the race.'
       },

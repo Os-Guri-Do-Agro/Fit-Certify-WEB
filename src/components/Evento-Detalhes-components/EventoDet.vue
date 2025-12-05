@@ -11,7 +11,7 @@
     >
 
       <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
-        {{ item.titulo }}
+        {{ getLocalizedField(item, 'titulo') }}
       </h1>
 
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">
@@ -70,7 +70,7 @@
       :key="item.id"
     >
       <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
-        {{ item.titulo }}
+        {{ getLocalizedField(item, 'titulo') }}
       </h1>
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">📍 {{ item.local }}</span>
       <span class="text-[0.8em] lg:text-[0.9em] flex items-center gap-1">📅 {{ formatDate(item.data) }}</span>
@@ -124,7 +124,11 @@ const Eventos = ref<{ data: any[] }>({ data: [] })
 const emit = defineEmits<{
   'refresh-page': [id: string]
 }>()
-const { t } = useI18n()
+const { t, currentLocale } = useI18n()
+
+function getLocalizedField(item: any, field: any) {
+  return currentLocale.value === 'en' ? item[`en_${field}`] : item[field]
+}
 
 onMounted(async () => {
   Eventos.value = await EventosService.getAllEventos()
@@ -133,7 +137,11 @@ onMounted(async () => {
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
   const date = new Date(dateStr)
-  return date.toLocaleDateString('pt-BR')
+  if (currentLocale.value === 'pt') {
+      return date.toLocaleDateString('pt-BR')
+  } else {
+    return date.toLocaleDateString('en-US')
+  }
 }
 
 
@@ -141,7 +149,13 @@ function formatDistancias(distancias: any[]) {
   if (!distancias || !distancias.length) return ''
   return distancias
     .sort((a, b) => a.distancia - b.distancia)
-    .map(d => `${d.distancia}K`)
+    .map(d => {
+      if (currentLocale.value === 'en') {
+        const miles = (d.distancia * 0.621371).toFixed(1)
+        return `${miles}mi`
+      }
+      return `${d.distancia}K`
+    })
     .join(' | ')
 }
 </script>
