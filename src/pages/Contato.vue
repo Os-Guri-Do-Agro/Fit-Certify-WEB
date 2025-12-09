@@ -181,13 +181,10 @@ const enviarEmail = async() => {
 
             <div class="flex w-full text-center items-center justify-center gap-10 flex-col lg:flex-row">
             <span class="text-[1.1em] md:text-[1.65em] text-cyan-400 font-[600] text-center">
-                SAC: 0800-44954994095    
-            </span>
-            <span class="text-[1.1em] md:text-[1.65em] text-cyan-400 font-[600] text-center">
                 E-mail: atendimento@fitcertify365.com
             </span>
             <span class="text-[1.1em] md:text-[1.65em] text-cyan-400 font-[600] text-center">
-                Whatsapp: (21) 400495694
+                Whatsapp:  +55 (41) 99185-8019  5541991858019  
             </span>                
             </div>
         </div>
