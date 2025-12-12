@@ -124,13 +124,6 @@ const precoSelected = ref()
 async function buscarProdutos() {
   try {
     isLoading.value = true
-    console.log('Filtros:', {
-      categoria: categoriaProdutoId.value,
-      empresa: empresaId.value,
-      preco: precoSelected.value,
-      condicao: condicaoEspecial.value
-    })
-    console.log('URL da requisição:', `/produto/findAllPagined?page=${currentPage.value}&pageSize=${itemsPerPage}&categoriaProdutoId=${categoriaProdutoId.value}&empresa=${empresaId.value}&preco=${precoSelected.value}&condicaoEspecial=${condicaoEspecial.value}`)
     const response = await ProdutosServices.getAllPaginated(
       currentPage.value,
       itemsPerPage,
