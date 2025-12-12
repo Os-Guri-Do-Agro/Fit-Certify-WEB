@@ -45,7 +45,7 @@
             </el-select>
           </div>
           <div class="w-full md:max-w-[200px]">
-            <el-select clearable v-model="empresaSelecionada" :placeholder="t('empresa.nome')" style="width: 100%;" filterable>
+            <el-select clearable v-model="empresaSelecionada" :placeholder="t('empresa.title')" style="width: 100%;" filterable>
               <el-option v-for="item in empresa" :key="item.id" :label="item?.nome" :value="item.id" />
             </el-select>
           </div>

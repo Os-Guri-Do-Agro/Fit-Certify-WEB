@@ -648,6 +648,9 @@ export default {
         error: 'Error sending registration',
         attention: 'Attention'
       }
+    },
+    empresa: {
+      title: 'Company name'
     }
   }
 

@@ -22,7 +22,7 @@
       <!-- Cards de Produtos -->
       <template v-else>
         <!-- Mensagem quando lista está vazia -->
-        <div v-if="Produtos.data.length === 0" class="col-span-full flex flex-col items-center justify-center py-20">
+        <div v-if="Produtos.data.length === 0" class="col-span-full flex flex-col items-center justify-center py-20 text-center">
           <div class="text-6xl text-gray-300 mb-4">📦</div>
           <h3 class="text-xl font-semibold text-gray-600 mb-2">Nenhum produto encontrado</h3>
           <p class="text-gray-500">Tente ajustar os filtros para encontrar produtos</p>
@@ -124,6 +124,7 @@ const precoSelected = ref()
 async function buscarProdutos() {
   try {
     isLoading.value = true
+    
     const response = await ProdutosServices.getAllPaginated(
       currentPage.value,
       itemsPerPage,

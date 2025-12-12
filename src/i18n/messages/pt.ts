@@ -648,5 +648,8 @@ export default {
       error: 'Erro ao enviar o cadastro',
       attention: 'Atenção'
     }
+  },
+  empresa: {
+    title: 'Nome da empresa'
   }
 }
