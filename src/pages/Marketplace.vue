@@ -45,6 +45,11 @@
             </el-select>
           </div>
           <div class="w-full md:max-w-[200px]">
+            <el-select clearable v-model="empresaSelecionada" :placeholder="t('empresa.nome')" style="width: 100%;" filterable>
+              <el-option v-for="item in empresa" :key="item.id" :label="item?.nome" :value="item.id" />
+            </el-select>
+          </div>
+          <div class="w-full md:max-w-[200px]">
             <el-select clearable v-model="precoSelecionado" :placeholder="t('marketplace.price')" style="width: 100%;" filterable>
               <el-option v-for="item in opcaoPreco" :key="item.value" :label="item.nome" :value="item.value" />
             </el-select>
@@ -60,7 +65,7 @@
 
         <div class="w-full mt-5">
 
-          <Produtos :categoria="categoriaSelecionada" :preco="precoSelecionado" :condicaoEspecial="condicaoSelecionada" />
+          <Produtos :categoria="categoriaSelecionada" :empresa="empresaSelecionada" :preco="precoSelecionado" :condicaoEspecial="condicaoSelecionada" />
         </div>
       </div>
     </div>
@@ -87,12 +92,15 @@ import Preço from '../components/marketplace-components/market-preco-select.vue
 import Condicao from '../components/marketplace-components/market-condicao-select.vue'
 import Carousel from '../components/marketplace-components/marketplace-carousel.vue'
 import marketplaceServices from '../services/marketplace/marketplace-services'
+import empresaService from '../services/empresa/empresa-service'
 import { useI18n } from '../composables/useI18n'
 // refs dos selects
 const categoriaSelecionada = ref()
 const precoSelecionado = ref()
+const empresaSelecionada = ref()
 const condicaoSelecionada = ref()
 const categoriasProduto = ref([])
+const empresa = ref([])
 const { t, currentLocale } = useI18n();
 
 function getLocalizedField(item, field) {
@@ -127,6 +135,8 @@ const opcaoPreco = [
 onMounted(async () => {
   const response = await marketplaceServices.getAllCategoria()
   categoriasProduto.value = response.data || []
+  const resp = await empresaService.getAllEmpresas()
+  empresa.value = resp.data || []
 })
 
 </script>

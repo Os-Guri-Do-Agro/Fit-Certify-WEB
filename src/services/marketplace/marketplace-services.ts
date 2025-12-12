@@ -42,7 +42,8 @@ getAllPaginated(
   pageSize: number,
   categoriaProdutoId?: string,
   condicaoEspecial?: boolean | null,
-  preco?: number
+  preco?: number,
+  empresaId?: string,
 ): Promise<any> {
   const params: Record<string, any> = {
     page,
@@ -50,6 +51,7 @@ getAllPaginated(
   };
 
   if (categoriaProdutoId) params.categoriaProdutoId = categoriaProdutoId;
+  if (empresaId) params.empresaId = empresaId;
   if (condicaoEspecial !== null && condicaoEspecial !== undefined) {
     params.condicaoEspecial = condicaoEspecial;
   }

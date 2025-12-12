@@ -21,7 +21,14 @@
 
       <!-- Cards de Produtos -->
       <template v-else>
-        <div class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
+        <!-- Mensagem quando lista está vazia -->
+        <div v-if="Produtos.data.length === 0" class="col-span-full flex flex-col items-center justify-center py-20">
+          <div class="text-6xl text-gray-300 mb-4">📦</div>
+          <h3 class="text-xl font-semibold text-gray-600 mb-2">Nenhum produto encontrado</h3>
+          <p class="text-gray-500">Tente ajustar os filtros para encontrar produtos</p>
+        </div>
+        
+        <div v-else class="w-full lg:min-h-[600px] max-w-md bg-white shadow-lg rounded-[12px] flex flex-col"
           v-for="item in Produtos.data" :key="item.id">
           <!-- Imagem -->
           <div class="w-full h-[250px] md:max-h-[300px] lg:h-[400px] overflow-hidden">
@@ -81,6 +88,7 @@ function getLocalizedField(item: any, field: any) {
 
 const props = defineProps<{
   categoria?: any
+  empresa?: any
   preco?: any
   condicaoEspecial?: any
 }>()
@@ -90,7 +98,8 @@ interface Produto {
   id: string
   titulo: string
   descricao: string
-  preco: number
+  preco: number,
+  empresa: string,
   imagemUrl: string
   nomeImagem?: string
   exclusivoParaCertificado?: boolean
@@ -106,6 +115,7 @@ const isLoading = ref(false)
 const currentPage = ref(1)
 const itemsPerPage = 9
 const categoriaProdutoId = ref('')
+const empresaId = ref('')
 const totalPages = ref(1)
 const totalItens = ref(0)
 const condicaoEspecial = ref()
@@ -114,18 +124,25 @@ const precoSelected = ref()
 async function buscarProdutos() {
   try {
     isLoading.value = true
+    console.log('Filtros:', {
+      categoria: categoriaProdutoId.value,
+      empresa: empresaId.value,
+      preco: precoSelected.value,
+      condicao: condicaoEspecial.value
+    })
+    console.log('URL da requisição:', `/produto/findAllPagined?page=${currentPage.value}&pageSize=${itemsPerPage}&categoriaProdutoId=${categoriaProdutoId.value}&empresa=${empresaId.value}&preco=${precoSelected.value}&condicaoEspecial=${condicaoEspecial.value}`)
     const response = await ProdutosServices.getAllPaginated(
       currentPage.value,
       itemsPerPage,
       categoriaProdutoId.value,
       condicaoEspecial.value,
-      precoSelected.value
+      precoSelected.value,
+      empresaId.value
     )
 
     const data = response.data
     totalItens.value = data.total
 
-    // Ordena do mais recente para o mais antigo
     Produtos.value.data = (data.itens || data.items || []).sort((a: Produto, b: Produto) => {
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     })
@@ -141,18 +158,20 @@ onMounted(async () => {
 })
 
 watch(
-  () => [props.categoria, props.preco, props.condicaoEspecial],
+  () => [props.categoria, props.empresa, props.preco, props.condicaoEspecial],
   (
-    [novaCategoria, novoPreco, novaCondicaoEspecial],
-    [antigaCategoria, antigoPreco, antigaCondicaoEspecial]
+    [novaCategoria, novaEmpresa, novoPreco, novaCondicaoEspecial],
+    [antigaCategoria, antigaEmpresa, antigoPreco, antigaCondicaoEspecial]
   ) => {
     if (
       novaCategoria !== antigaCategoria ||
+      novaEmpresa !== antigaEmpresa ||
       novoPreco !== antigoPreco ||
       novaCondicaoEspecial !== antigaCondicaoEspecial
     ) {
       condicaoEspecial.value = props.condicaoEspecial || null
       categoriaProdutoId.value = props.categoria || ''
+      empresaId.value = props.empresa || ''
       precoSelected.value = props.preco || ''
       currentPage.value = 1
       buscarProdutos();
