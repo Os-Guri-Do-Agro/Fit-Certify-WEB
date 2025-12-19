@@ -209,9 +209,9 @@ const enviarEmail = async() => {
         </p>
 
         <div class="w-full flex  justify-center">
-        <RouterLink class="flex w-[284px] lg:-[203px] h-[41px] lg:h-[52px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-cyan-400 font-[500] hover:bg-cyan-400 hover:text-white duration-300" to="/">
+        <a class="flex w-[284px] lg:-[203px] h-[41px] lg:h-[52px] border-1 border-cyan-400 items-center justify-center rounded-[30px] text-cyan-400 font-[500] hover:bg-cyan-400 hover:text-white duration-300" href="mailto:atendimento@fitcertify365.com">
           {{ t('contact.lastSection.button')  }}
-        </RouterLink>
+        </a>
         </div>
       </div>
 

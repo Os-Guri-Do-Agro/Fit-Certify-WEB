@@ -30,7 +30,7 @@
         <!-- Botões reais -->
         <template v-else>
           <div class="" v-if="evento?.linkEnviarCertificado">
-          <a class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" target="_blank" :href="evento?.linkEnviarCertificado" >
+          <a class="flex text-[0.9em] md:text-[1em] lg:text-[1.43em] bg-lime-500 w-[170px] h-[45px] md:w-[200px] md:lg:w-[270px] md:h-[55px] lg:h-[55px] items-center justify-center rounded-[30px] font-bold text-white hover:bg-lime-600 duration-300" :href="`mailto:${evento?.linkEnviarCertificado}`" >
             {{ t('eventosDetalhes.button1') }}
           </a>            
           </div>
