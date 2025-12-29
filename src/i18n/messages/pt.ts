@@ -376,7 +376,7 @@ export default {
       title: 'Descrição'
     },
     section3: {
-      title: 'Organizações'
+      title: 'Organização'
     },
     section4: {
       title: 'Próximos eventos'
