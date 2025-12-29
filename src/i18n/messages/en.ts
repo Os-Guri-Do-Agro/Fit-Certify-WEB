@@ -376,7 +376,7 @@ export default {
         title: 'Description'
       },
       section3: {
-        title: 'Organizations'
+        title: 'Organization'
       },
       section4: {
         title: 'Upcoming events'

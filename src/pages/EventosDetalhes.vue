@@ -126,20 +126,21 @@
 
 
 <section class="w-full flex justify-center">
-  <div class="container flex-col md:flex-row flex gap-5 p-5 md:p-10 text-center md:text-start">
+  <div class="container flex-col flex gap-5 p-5 md:p-10 text-center md:text-start">
 
-    <span class="font-bold text-base md:text-lg lg:text-xl opacity-80 ">{{ t('eventosDetalhes.section3.title') }}</span>
+    <span class="font-bold text-center md:text-lg lg:text-xl opacity-80">{{ t('eventosDetalhes.section3.title') }}</span>      
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+
+    <div class="flex items-center justify-center">
       <!-- Skeleton enquanto não carrega -->
-      <div v-if="carregando" v-for="n in 5" :key="n" class="flex flex-col items-center justify-center bg-gray-300 rounded-lg shadow-md animate-pulse">
-        <div class="w-full h-full md:w-32 md:h-32 lg:w-36 lg:h-36 bg-gray-400 rounded-md"></div>
+      <div v-if="carregando" v-for="n in 1" :key="n" class="flex flex-col items-center justify-center bg-gray-300 rounded-lg shadow-md animate-pulse">
+        <div class="w-full h-full md:w-[20em] md:h-[15em] bg-gray-400 rounded-md"></div>
       </div>
 
       <!-- Logos reais -->
       <div v-else v-for="org in organizacao" :key="org.id" class="flex flex-col items-center justify-center bg-white rounded-lg shadow-md">
         <img
-          class="object-cover w-full h-full md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-md"
+          class="w-full h-full max-w-[10em] max-h-[10em] md:max-w-[15em] md:max-h-[15em] rounded-md"
           :src="org.logoUrl"
           :alt="org.nome"
         />
