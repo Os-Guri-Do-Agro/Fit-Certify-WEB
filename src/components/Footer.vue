@@ -23,13 +23,10 @@ const { t } = useI18n()
             </div> -->
 
         <section class="w-full container flex items-end justify-center p-5 md:p-10 mb-[32px] md:mb-[52px]">
-            <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-start md:items-center justify-center">
+            <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] md:gap-[10px] lg:gap-[20px] items-start md:items-center justify-center">
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/quemsomos'>{{ t('footer.navegacao.quemSomos') }}</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados'>{{ t('footer.navegacao.certificados') }}</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>{{ t('footer.navegacao.contato') }}</RouterLink>
-                <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
-                    <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
-                </RouterLink>                 -->
             </div>
 
             <div class="flex flex-1 w-[99px] h-[140px] lg:h-[128px] items-center justify-center">
@@ -38,13 +35,10 @@ const { t } = useI18n()
                 </RouterLink>
             </div>
 
-            <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] lg:gap-[91px] items-end md:items-center justify-center">
+            <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] md:gap-[10px] lg:gap-[20px] items-end md:items-center justify-center">
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>{{ t('footer.navegacao.sac') }}</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados#faq'>{{ t('footer.navegacao.faq') }}</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>{{ t('footer.navegacao.paceiros') }}</RouterLink>
-                <!-- <RouterLink class="lg:hidden mt-[10px]" to="#">
-                    <img class="w-full max-w-[108px] h-[38px]" src="../assets/footer-imgs/app-store-01.jpg" alt="image">
-                </RouterLink> -->
             </div>
         </section>
 

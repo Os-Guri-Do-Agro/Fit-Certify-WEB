@@ -184,7 +184,7 @@ const enviarEmail = async() => {
                 E-mail: atendimento@fitcertify365.com
             </span>
             <span class="text-[1.1em] md:text-[1.65em] text-cyan-400 font-[600] text-center">
-                Whatsapp:  +55 (41) 99185-8019  5541991858019  
+                Whatsapp:  +55 (41) 99185-8019  
             </span>                
             </div>
         </div>

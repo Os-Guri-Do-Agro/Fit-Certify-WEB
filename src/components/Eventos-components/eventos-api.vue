@@ -106,10 +106,17 @@ async function buscarEventos() {
     totalItens.value = response.data?.total || 0
 
     Eventos.value.data = data
+      .filter((evento: Evento) => {
+        const dataEvento = new Date(evento.createdAt)
+        const agora = new Date()
+        const diasAtras = 30 
+        const dataLimite = new Date(agora.getTime() - (diasAtras * 24 * 60 * 60 * 1000))
+        return dataEvento >= dataLimite
+      })
       .sort(
         (a: Evento, b: Evento) =>
-          new Date(b.createdAt).getTime() -
-          new Date(a.createdAt).getTime()
+          new Date(a.data || 0).getTime() -
+          new Date(b.data || 0).getTime()
       )
 
   } catch (error) {

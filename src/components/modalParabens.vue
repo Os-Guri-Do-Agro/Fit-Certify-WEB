@@ -1,9 +1,9 @@
 <template>
   <Dialog :open="dialogFormVisible" class="relative z-50">
     <div class="fixed inset-0 overflow-hidden" style="background-color: rgba(0, 0, 0, 0.7);" aria-hidden="true" />
-    <div class="fixed inset-0 flex items-center justify-center p-4 rounded-2xl">
-      <DialogPanel class="w-full max-w-md bg-gray-200 rounded-2xl shadow-lg border-2 border-cyan-400 relative"
-        style="width: min(600px, 100vw)">
+    <div class="fixed inset-0 flex items-center justify-center p-4 rounded-2xl overflow-y-auto">
+      <DialogPanel class="w-full max-w-md bg-gray-200 rounded-2xl shadow-lg border-2 border-cyan-400 relative my-8"
+        style="width: min(600px, 100vw); max-height: calc(100vh - 4rem);">
         <div class="flex justify-end align-center w-full">
                   <button @click="dialogFormVisible = false"
           class="hover:text-gray-700 text-xl font-bold p-[5px] rounded-[12px] cursor-pointer border-0 focus:outline-none">
@@ -22,6 +22,7 @@
         </div>
 
 
+        <div class="overflow-y-auto max-h-96">
         <form @submit.prevent="cadastrar" class="p-8  flex flex-col gap-5">
           <div>
             <span class="font-bold text-sm text-gray-700">{{ t('modalParabens.form.name') }}</span>
@@ -48,6 +49,7 @@
             {{ loading ? t('modalParabens.form.submittingButton') : t('modalParabens.form.submitButton') }}
           </button>
         </form>
+        </div>
 
 
       </DialogPanel>
