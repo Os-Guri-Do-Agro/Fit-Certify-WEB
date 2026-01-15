@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8SRQVA7578.com.nicolascastela.fitcertify",
+        "paths": [
+          "/payment-success",
+          "/payment-cancel"
+        ]
+      }
+    ]
+  }
+}

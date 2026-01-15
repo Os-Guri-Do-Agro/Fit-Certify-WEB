@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.nicolascastela.fitcertify",
+      "sha256_cert_fingerprints": [
+        "40:82:45:10:3F:E4:12:9D:2A:70:28:2D:8D:C0:5F:7A:CA:D0:03:A6:6D:54:3E:DE:EA:27:9D:C4:2E:A6:7D:D5"
+      ]
+    }
+  }
+]
