@@ -75,7 +75,56 @@
                   alt="">
               </div>
               <div class="w-full block justify-center lg:mt-5">
-                <Eventos :cidade="cidadeSelecionada" :mes="mesSelecionado" :tipoEventoId="tipoEventoIdSelecionado" />
+                <!-- 🔹 Grid de Eventos -->
+                <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-5 justify-center">
+                  <!-- Skeletons -->
+                  <template v-if="isLoading">
+                    <div v-for="n in itemsPerPage" :key="'skeleton-' + n"
+                      class="bg-white w-full h-[252px] p-3 rounded-[12px] shadow-lg animate-pulse flex flex-col gap-3">
+                      <div class="h-6 w-3/4 bg-gray-300 rounded"></div>
+                      <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
+                      <div class="h-4 w-2/3 bg-gray-300 rounded"></div>
+                      <div class="h-4 w-1/3 bg-gray-300 rounded"></div>
+                      <div class="h-6 w-2/3 bg-gray-200 rounded mt-3"></div>
+                      <div class="h-10 w-[150px] bg-gray-300 rounded-full mt-3"></div>
+                    </div>
+                  </template>
+
+                  <!-- Eventos -->
+                  <template v-else>
+                    <div v-for="item in eventosData" :key="item.id"
+                      class="bg-white w-full h-[252px] p-3 text-start gap-1 flex flex-col rounded-[12px] shadow-lg">
+                      <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
+                        {{ getLocalizedField(item, 'titulo') }}
+                      </h1>
+                      <span class="text-[0.85em] flex items-center gap-1">
+                        📍 {{ item.local }}
+                      </span>
+                      <span class="text-[0.85em] flex items-center gap-1">
+                        📅 {{ formatDate(item.data) }}
+                      </span>
+                      <span class="text-[0.85em] flex items-center gap-1">
+                        🏃 {{ formatDistancias(item.distanciaEventos) }}
+                      </span>
+
+                      <div
+                        class="bg-cyan-50 text-cyan-400 text-[0.7em] rounded-[8px] w-full max-w-[241px] flex items-center px-2 mt-3 mb-3">
+                        {{ t('eventos.listEventos.subtitle') }}
+                      </div>
+
+                      <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
+                        class="w-full max-w-[178.4px] h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center">
+                        {{ t('eventos.listEventos.button') }}
+                      </RouterLink>
+                    </div>
+                  </template>
+                </div>
+
+                <!-- 🔹 Paginação -->
+                <div class="flex justify-center mt-15 md:mt-20">
+                  <el-pagination v-model:current-page="currentPage" v-model:page-size="itemsPerPage" :total="totalItens"
+                    :pager-count="5" layout="prev, pager, next" background @current-change="buscarEventosPaginados" />
+                </div>
               </div>
             </div>
 
@@ -127,21 +176,23 @@
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, watch } from 'vue'
 import { RouterLink } from 'vue-router'
-import Eventos from '../components/Eventos-components/eventos-api.vue'
-import SelectProva from '../components/Eventos-components/eventos-prova-select.vue'
-import Localidade from '../components/Eventos-components/eventos-local-select.vue'
-import Mes from '../components/Eventos-components/eventos-mes-select.vue'
 import EventoService from '../services/Eventos/eventos-services'
 import { useI18n } from '../composables/useI18n'
 
 const tipoEventos = ref([])
-const eventos = ref([])
+const eventosData = ref([])
 const { t, currentLocale } = useI18n();
 const cidadeSelecionada = ref('')
 const mesSelecionado = ref('')
 const tipoEventoIdSelecionado = ref('')
+const isLoading = ref(false)
+
+// Paginação
+const currentPage = ref(1)
+const itemsPerPage = 6
+const totalItens = ref(0)
 
 function getLocalizedField(tipoEventos, field) {
   return currentLocale.value === 'en' ? tipoEventos[`en_${field}`] : tipoEventos[field]
@@ -186,12 +237,12 @@ const mesesEn = [
 ];
 
 onMounted(async () => {
-  await buscarEventos()
   await buscarTipoEventos()
+  await buscarEventosPaginados()
 })
 
 const cidades = computed(() => {
-  const locais = eventos?.value.map(e => e.local).filter(Boolean)
+  const locais = eventosData?.value.map(e => e.local).filter(Boolean)
   const unicos = [...new Set(locais)]
 
   return [
@@ -199,24 +250,80 @@ const cidades = computed(() => {
   ]
 })
 
+async function buscarEventosPaginados() {
+  try {
+    isLoading.value = true
+
+    const response = await EventoService.getAllPaginated(
+      currentPage.value,
+      itemsPerPage,
+      tipoEventoIdSelecionado.value || undefined,
+      cidadeSelecionada.value !== '' ? cidadeSelecionada.value : undefined,
+      mesSelecionado.value?.nome !== '' ? mesSelecionado.value?.value?.toString() : undefined
+    )
+
+    eventosData.value = response.data?.itens || []
+    totalItens.value = response.data?.total || 0
+
+  } catch (error) {
+    console.error('Erro ao buscar eventos:', error)
+    eventosData.value = []
+    totalItens.value = 0
+  } finally {
+    isLoading.value = false
+  }
+}
+
 const buscarTipoEventos = async () => {
   try {
     const res = await EventoService.getAllTipoEventos()
 
-    tipoEventos.value = res?.data
-  } catch (e) {
-    console.error('Erro ao carregar tipos de evento', e)
+    tipoEventos.value = res.data || []
+  } catch (error) {
+    console.error('Erro ao buscar tipos de eventos:', error)
   }
 }
 
-const buscarEventos = async () => {
-  try {
-    const res = await EventoService.getAllPaginated()
-    eventos.value = res.data?.itens
-  } catch (e) {
-    console.error('Erro ao carregar eventos', e)
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  if (currentLocale.value === 'pt') {
+      return date.toLocaleDateString('pt-BR')
+  } else {
+      return date.toLocaleDateString('en-US')
   }
 }
+
+function formatDistancias(distancias) {
+  if (!distancias || !distancias.length) return ''
+  return distancias
+    .sort((a, b) => a.distancia - b.distancia)
+    .map((d) => {
+      if (currentLocale.value === 'en') {
+        const miles = (d.distancia * 0.621371).toFixed(1)
+        return `${miles}mi`
+      }
+      return `${d.distancia}K`
+    })
+    .join(' | ')
+}
+
+watch(
+  () => [tipoEventoIdSelecionado.value, cidadeSelecionada.value, mesSelecionado.value],
+  async (
+    [novoTipoEventoId, novoCidade, novoMes],
+    [antigoTipoEventoId, antigoCidade, antigoMes]
+  ) => {
+    if (
+      novoTipoEventoId !== antigoTipoEventoId ||
+      novoCidade !== antigoCidade ||
+      novoMes !== antigoMes
+    ) {
+      currentPage.value = 1
+      await buscarEventosPaginados()
+    }
+  }
+)
 
 const onChangeTipoEventoId = (e) => {
   tipoEventoIdSelecionado.value = e
@@ -229,5 +336,4 @@ const onChangeLocalidade = (e) => {
 const onChangeMes = (e) => {
   mesSelecionado.value = e
 }
-
 </script>
