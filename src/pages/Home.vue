@@ -378,11 +378,11 @@
     </li>
   </ul>
 </div>
-            <router-link
+            <!-- <router-link
             class="text-[0.93em] font-[500] w-[224px] h-[42px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mt-5"
             to="/marketplace"
             >{{ t('home.viewMore') }}</router-link
-          >
+          > -->
       </div>
     </div>
   </section>
