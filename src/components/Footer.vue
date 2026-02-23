@@ -38,7 +38,7 @@ const { t } = useI18n()
             <div class="w-full h-full flex flex-1 flex-col lg:flex-row gap-[10px] md:gap-[10px] lg:gap-[20px] items-end md:items-center justify-center">
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/contato'>{{ t('footer.navegacao.sac') }}</RouterLink>
                 <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/certificados#faq'>{{ t('footer.navegacao.faq') }}</RouterLink>
-                <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>{{ t('footer.navegacao.paceiros') }}</RouterLink>
+                <!-- <RouterLink class="text-[0.875em] md:text-[0.9375em] text-zinc-500 font-[700] hover:text-cyan-400" to='/marketplace'>{{ t('footer.navegacao.paceiros') }}</RouterLink> -->
             </div>
         </section>
 

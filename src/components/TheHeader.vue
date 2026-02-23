@@ -29,7 +29,7 @@
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>{{ t('nav.events') }}</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marcadores'>{{ t('nav.marcadores') }}</router-link></li> 
             <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>{{ t('nav.articles') }}</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li> 
+            <!-- <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li>  -->
           </ul>
 
           
@@ -51,7 +51,7 @@
               <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>{{ t('nav.events') }}</router-link></li>
               <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marcadores'>{{ t('nav.marcadores') }}</router-link></li>
               <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/artigos'>{{ t('nav.articles') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li>
+              <!-- <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li> -->
               <LanguageSelector />
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
