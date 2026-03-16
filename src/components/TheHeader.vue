@@ -35,8 +35,8 @@
           
           <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[16px] md:flex-col lg:flex-row items-center">
             <div class="hidden lg:flex"><LanguageSelector /></div>
-            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">{{ t('auth.login') }}</a>
-            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://fit-certify-admin.vercel.app/registers">{{ t('auth.register') }}</a>
+            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
+            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/register">{{ t('auth.register') }}</a>
           </div>
 
           <!-- Menu Mobile/Tablet Dropdown -->
@@ -55,8 +55,8 @@
               <LanguageSelector />
 
               <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <a @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://fit-certify-admin.vercel.app/login">{{ t('auth.login') }}</a>
-                <a @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://fit-certify-admin.vercel.app/login?tipo-cadastro">{{ t('auth.register') }}</a>
+                <a @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
+                <a @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/login?tipo-cadastro">{{ t('auth.register') }}</a>
               </div>
             </div>
           </transition>

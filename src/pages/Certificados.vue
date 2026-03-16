@@ -93,7 +93,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/registers"
+              href="https://admin.fitcert365.com/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               >{{ t('certificados.section2.streetRunning.button') }}</a
@@ -113,7 +113,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/registers"
+              href="https://admin.fitcert365.com/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               >{{ t('certificados.section2.gymsTraining.button') }}</a
@@ -134,7 +134,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/registers"
+              href="https://admin.fitcert365.com/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               >{{ t('certificados.section2.cyclingTriathlon.button') }}</a
@@ -155,7 +155,7 @@
 
           <div class="">
             <a
-              href="https://fit-certify-admin.vercel.app/registers"
+              href="https://admin.fitcert365.com/register"
               target="_blank"
               class="text-[0.83em] font-[700] w-[85.7px] h-[39.5px] rounded-[30px] border-1 border-cyan-400 text-center text-white bg-cyan-400 hover:bg-cyan-500 duration-300 flex items-center justify-center"
               >{{ t('certificados.section2.corporatePrograms.button') }}</a
@@ -388,7 +388,7 @@
 
         <div class="hidden md:flex w-full lg:max-w-[658px] md:ml-[24px]">
           <a
-            href="https://fit-certify-admin.vercel.app/registers"
+            href="https://admin.fitcert365.com/register"
             target="_blank"
             class="text-[0.93em] w-full font-[500] max-w-[359px] h-[41px] lg:h-[53px] rounded-[30px] border-1 border-cyan-400 text-center text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 flex items-center justify-center mb-[32px] md:mb-0"
             to="/cadastro"
