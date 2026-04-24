@@ -80,42 +80,61 @@
                   <!-- Skeletons -->
                   <template v-if="isLoading">
                     <div v-for="n in itemsPerPage" :key="'skeleton-' + n"
-                      class="bg-white w-full h-[252px] p-3 rounded-[12px] shadow-lg animate-pulse flex flex-col gap-3">
-                      <div class="h-6 w-3/4 bg-gray-300 rounded"></div>
-                      <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
-                      <div class="h-4 w-2/3 bg-gray-300 rounded"></div>
-                      <div class="h-4 w-1/3 bg-gray-300 rounded"></div>
-                      <div class="h-6 w-2/3 bg-gray-200 rounded mt-3"></div>
-                      <div class="h-10 w-[150px] bg-gray-300 rounded-full mt-3"></div>
+                      class="bg-white w-full rounded-[12px] shadow-lg animate-pulse flex flex-col overflow-hidden">
+                      <div class="aspect-[16/9] w-full bg-gray-300 flex-shrink-0"></div>
+                      <div class="p-4 flex flex-col gap-3">
+                        <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
+                        <div class="h-4 w-2/3 bg-gray-200 rounded"></div>
+                        <div class="h-4 w-1/3 bg-gray-200 rounded"></div>
+                        <div class="h-4 w-3/4 bg-gray-200 rounded mt-2"></div>
+                        <div class="h-[42px] w-full bg-gray-300 rounded-full mt-2"></div>
+                      </div>
                     </div>
                   </template>
 
                   <!-- Eventos -->
                   <template v-else>
                     <div v-for="item in eventosData" :key="item.id"
-                      class="bg-white w-full h-[252px] p-3 text-start gap-1 flex flex-col rounded-[12px] shadow-lg">
-                      <h1 class="md:text-[1em] lg:text-[1.17em] font-[700] text-lime-500">
-                        {{ getLocalizedField(item, 'titulo') }}
-                      </h1>
-                      <span class="text-[0.85em] flex items-center gap-1">
-                        📍 {{ item.local }}
-                      </span>
-                      <span class="text-[0.85em] flex items-center gap-1">
-                        📅 {{ formatDate(item.data) }}
-                      </span>
-                      <span class="text-[0.85em] flex items-center gap-1">
-                        🏃 {{ formatDistancias(item.distanciaEventos) }}
-                      </span>
-
-                      <div
-                        class="bg-cyan-50 text-cyan-400 text-[0.7em] rounded-[8px] w-full max-w-[241px] flex items-center px-2 mt-3 mb-3">
-                        {{ t('eventos.listEventos.subtitle') }}
+                      class="group bg-white w-full text-start flex flex-col rounded-[12px] shadow-lg hover:shadow-xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
+                      <div class="relative w-full aspect-[16/9] overflow-hidden flex-shrink-0 bg-gray-100">
+                        <img v-if="item.imagemUrl" :src="item.imagemUrl" :alt="getLocalizedField(item, 'titulo')"
+                          class="absolute inset-0 w-full h-full object-cover block transition-transform duration-500 group-hover:scale-105" />
+                        <div v-else class="absolute inset-0 w-full h-full bg-gradient-to-br from-cyan-400 to-lime-400"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <h1 class="absolute bottom-0 left-0 right-0 p-3 text-white font-[700] text-[1.05em] lg:text-[1.17em] leading-tight drop-shadow-md line-clamp-2">
+                          {{ getLocalizedField(item, 'titulo') }}
+                        </h1>
                       </div>
 
-                      <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
-                        class="w-full max-w-[178.4px] h-[40px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-medium duration-300 cursor-pointer flex items-center justify-center">
-                        {{ t('eventos.listEventos.button') }}
-                      </RouterLink>
+                      <div class="p-4 flex flex-col flex-1">
+                        <div class="flex flex-col gap-2 pb-3 border-b border-gray-100">
+                          <span class="text-[0.85em] flex items-center gap-2 text-gray-700">
+                            <MapPinIcon class="w-4 h-4 text-cyan-400 shrink-0" />
+                            <span class="truncate">{{ item.local }}</span>
+                          </span>
+                          <span class="text-[0.85em] flex items-center gap-2 text-gray-700">
+                            <CalendarDaysIcon class="w-4 h-4 text-cyan-400 shrink-0" />
+                            {{ formatDate(item.data) }}
+                          </span>
+                          <span class="text-[0.85em] flex items-center gap-2 text-gray-700">
+                            <FlagIcon class="w-4 h-4 text-cyan-400 shrink-0" />
+                            <span class="truncate">{{ formatDistancias(item.distanciaEventos) }}</span>
+                          </span>
+                        </div>
+
+                        <div class="flex items-center gap-1.5 mt-3 mb-4">
+                          <ShieldCheckIcon class="w-4 h-4 text-cyan-500 shrink-0" />
+                          <span class="text-[0.75em] font-medium text-cyan-600">
+                            {{ t('eventos.listEventos.subtitle') }}
+                          </span>
+                        </div>
+
+                        <RouterLink :to="{ name: 'EventoDetalhe', params: { id: item.id } }"
+                          class="mt-auto w-full h-[42px] bg-cyan-400 hover:bg-cyan-500 text-white rounded-full text-[0.9em] font-semibold duration-300 cursor-pointer flex items-center justify-center gap-2 group/btn shadow-sm hover:shadow-md">
+                          {{ t('eventos.listEventos.button') }}
+                          <ArrowRightIcon class="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </RouterLink>
+                      </div>
                     </div>
                   </template>
                 </div>
@@ -180,6 +199,7 @@ import { onMounted, ref, computed, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import EventoService from '../services/Eventos/eventos-services'
 import { useI18n } from '../composables/useI18n'
+import { MapPinIcon, CalendarDaysIcon, FlagIcon, ShieldCheckIcon, ArrowRightIcon } from '@heroicons/vue/24/outline'
 
 const tipoEventos = ref([])
 const eventosData = ref([])
