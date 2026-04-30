@@ -93,7 +93,99 @@ export default {
       description: 'Empresas que apoiam a medicina esportiva e o bem-estar dos atletas'
     },
     learnMore: 'Saiba Mais',
-    viewMore: 'Ver mais'
+    viewMore: 'Ver mais',
+    landing: {
+      dash: '—',
+      articleFallback: 'Artigo',
+      hero: {
+        bannerAlt: 'FitCertify365 — saúde esportiva',
+        eyebrow: 'Plataforma oficial de saúde esportiva',
+        titleLine1: 'Saúde em dia',
+        titleLine2: 'para o ',
+        titleEm: 'esporte.',
+        lead:
+          'A FitCertify365 conecta atletas, médicos e eventos em uma única plataforma para que a sua performance seja sempre validada com segurança e agilidade.',
+        ctaStart: 'Comece agora',
+        ctaLearnMore: 'Saiba mais',
+      },
+      marquee: {
+        m1: 'Agilidade',
+        m2: 'Segurança',
+        m3: 'Tecnologia',
+        m4: 'Saúde validada',
+        m5: 'Esporte garantido',
+        m6: 'Indicadores em tempo real',
+      },
+      features: {
+        f1: { kicker: 'Tempo', title: 'Agilidade', desc: 'Resultado do seu atestado em minutos, onde estiver.' },
+        f2: { kicker: 'Dados', title: 'Segurança', desc: 'Informações médicas protegidas e validadas por profissionais.' },
+        f3: {
+          kicker: 'Integração',
+          title: 'Tecnologia',
+          desc: 'Plataforma digital conectada a wearables e apps de saúde.',
+        },
+      },
+      health: {
+        tag: 'Certificação médica',
+        titleLine1: 'Sua saúde validada.',
+        titleHighlight: 'Seu esporte garantido.',
+        desc:
+          'Conectamos você a médicos especializados em saúde esportiva para emissão de atestados reconhecidos por eventos em todo o Brasil. Simples, rápido e 100% digital.',
+        check1: 'Atestados válidos para corridas e eventos esportivos',
+        check2: 'Médicos credenciados e especializados',
+        check3: 'Processo 100% online e sem filas',
+        more: 'Saiba mais →',
+        imageAlt: 'Atleta e saúde esportiva',
+      },
+      events: {
+        tag: 'Rede de eventos',
+        titleLine1: 'Vai correr?',
+        titleHighlight: 'Confira eventos parceiros.',
+        desc:
+          'Descubra corridas, provas de triatlo e outros eventos esportivos que aceitam o atestado FitCertify365. Inscreva-se com um clique.',
+        viewAll: 'Ver todos os eventos →',
+        imageAlt: 'Corredores em evento esportivo',
+      },
+      metrics: {
+        tag: 'Dashboard pessoal',
+        titleLine1: 'Acompanhe seus indicadores em',
+        titleHighlight: 'tempo real.',
+        desc:
+          'Visualize frequência cardíaca, VO₂ máximo, histórico de treinos e exames em um único painel — integrado aos seus dispositivos favoritos.',
+        viewPanel: 'Ver meu painel →',
+        hr: { label: 'Freq. cardíaca', unit: 'bpm' },
+        vo2: { label: 'VO₂ máx.', unit: 'ml/kg' },
+        today: { label: 'Hoje', unit: 'km' },
+        spo2: { label: 'SpO₂', unit: '%' },
+      },
+      content: {
+        tag: 'Conteúdos e artigos',
+        titleLine1: 'Saúde e performance',
+        titleLine2: 'para atletas de verdade.',
+        viewAll: 'Ver todos →',
+      },
+      cta: {
+        titleBefore: 'Pronto para correr com',
+        titleHighlight: 'segurança?',
+        subtitle: 'Obtenha seu atestado médico digital em menos de 24 horas.',
+        login: 'Entrar',
+        register: 'Criar conta grátis',
+      },
+      support: {
+        tag: 'Apoio institucional',
+        titleLine1: 'Reconhecido pelas principais',
+        titleLine2: 'entidades esportivas do Brasil.',
+        subtitle: 'Parceiros que tornam a FitCertify365 possível.',
+        cta: 'Seja um parceiro →',
+        empty: 'Nenhum apoiador cadastrado no momento.',
+        altLogo: 'Apoiador',
+      },
+      sponsors: {
+        title: 'Conheça os patrocinadores da FitCertify365',
+        empty: 'Nenhum patrocinador cadastrado no momento.',
+        altLogo: 'Patrocinador',
+      },
+    },
   },
   events: {
     title: 'Eventos',
@@ -183,6 +275,13 @@ export default {
       button: 'Falar sobre parcerias'
     }
   },
+  header: {
+    login: 'Entrar',
+    ctaRegister: 'Comece agora',
+    menuOpen: 'Abrir menu',
+    menuClose: 'Fechar menu',
+    navSaude: 'Saúde',
+  },
   footer: {
     navegacao: {
       quemSomos: 'Quem Somos',
@@ -190,7 +289,21 @@ export default {
       contato: 'Contato',
       sac: 'SAC',
       faq: 'FAQ',
-      paceiros: 'Parceiros'
+      paceiros: 'Parceiros',
+      todosDireitos: 'Todos os direitos reservados.',
+    },
+    columns: {
+      pages: 'Páginas',
+      help: 'Ajuda',
+    },
+    tagline:
+      'A plataforma que conecta atletas, médicos e eventos para uma prática esportiva mais segura e acessível.',
+    termsPrivacyLink: 'Termos e privacidade',
+    social: {
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      youtube: 'YouTube',
+      instagram: 'Instagram',
     },
     privacy: 'Termos de Serviço / Política de Privacidade',
     terms: 'Termos de Uso'

@@ -5,7 +5,9 @@ export default {
     extend: {
       colors: {
         primary: '#00C6FE',
-        lime: '#88CE0D',
+        lime: {
+          DEFAULT: '#88CE0D',
+        },
         dark: '#060606',
         'dark-2': '#0e0e0e',
         'dark-3': '#1a1a1a',

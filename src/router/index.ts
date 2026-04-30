@@ -8,7 +8,7 @@ declare global {
     gtag: (...args: any[]) => void;
   }
 }
-import Home from "../pages/Home.vue";
+import Home from "../pages/Home .vue";
 import QuemSomos from "../pages/QuemSomos.vue";
 import Certificados from "../pages/Certificados.vue";
 import Marcadores from "../pages/Marcadores.vue";

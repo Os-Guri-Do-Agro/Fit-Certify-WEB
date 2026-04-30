@@ -1,44 +1,13 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useI18n } from '../composables/useI18n'
-
-const { t } = useI18n()
-
-const footerColumns = computed(() => [
-  {
-    id: 'pages',
-    title: t('footer.columns.pages'),
-    links: [
-      { label: t('footer.navegacao.quemSomos'), to: '/quemsomos' },
-      { label: t('footer.navegacao.certificados'), to: '/certificados' },
-      { label: t('nav.marcadores'), to: '/marcadores' },
-      { label: t('nav.events'), to: '/eventos' },
-      { label: t('nav.articles'), to: '/artigos' },
-    ],
-  },
-  {
-    id: 'help',
-    title: t('footer.columns.help'),
-    links: [
-      { label: t('nav.contact'), to: '/contato' },
-      { label: t('footer.navegacao.faq'), to: '/certificados#faq' },
-      { label: t('footer.termsPrivacyLink'), to: '/termosprivacidade' },
-    ],
-  },
-])
-</script>
-
 <template>
   <footer class="border-t border-white/[0.06] bg-[#060606] px-4 pb-8 pt-16 md:px-12">
     <div class="mx-auto max-w-[1200px]">
       <div class="mb-14 grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
         <div>
-          <RouterLink to="/" class="mb-4 inline-flex no-underline">
+          <a href="/" class="mb-4 inline-flex no-underline">
             <img src="/Logo-Grande.png" alt="FitCertify365" class="h-10 w-auto md:h-12" />
-          </RouterLink>
+          </a>
           <p class="mb-6 mt-4 max-w-[280px] text-sm leading-[1.7] text-white/45">
-            {{ t('footer.tagline') }}
+            A plataforma que conecta atletas, medicos e eventos para uma pratica esportiva mais segura e acessivel.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
@@ -46,7 +15,7 @@ const footerColumns = computed(() => [
               target="_blank"
               rel="noopener noreferrer"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
-              :aria-label="t('footer.social.linkedin')"
+              aria-label="LinkedIn"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
@@ -55,7 +24,7 @@ const footerColumns = computed(() => [
               target="_blank"
               rel="noopener noreferrer"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
-              :aria-label="t('footer.social.facebook')"
+              aria-label="Facebook"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
@@ -64,7 +33,7 @@ const footerColumns = computed(() => [
               target="_blank"
               rel="noopener noreferrer"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
-              :aria-label="t('footer.social.youtube')"
+              aria-label="YouTube"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 010-10 2 2 0 011.4-1.4 49.56 49.56 0 0116.2 0A2 2 0 0121.5 7a24.12 24.12 0 010 10 2 2 0 01-1.4 1.4 49.55 49.55 0 01-16.2 0A2 2 0 012.5 17"/><path d="M10 15l5-3-5-3z"/></svg>
             </a>
@@ -73,33 +42,48 @@ const footerColumns = computed(() => [
               target="_blank"
               rel="noopener noreferrer"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
-              :aria-label="t('footer.social.instagram')"
+              aria-label="Instagram"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
           </div>
         </div>
-        <div v-for="col in footerColumns" :key="col.id">
+        <div v-for="col in footerColumns" :key="col.title">
           <p class="mb-5 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-white/35">{{ col.title }}</p>
           <ul class="flex flex-col gap-[10px] list-none p-0">
             <li v-for="link in col.links" :key="link.to">
-              <RouterLink
-                :to="link.to"
-                class="text-sm text-white/55 no-underline transition-colors hover:text-white"
-              >{{ link.label }}</RouterLink>
+              <a :href="link.to" class="text-sm text-white/55 no-underline transition-colors hover:text-white">{{ link.label }}</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.06] pt-7">
-        <p class="text-[13px] text-white/25">
-          © 2026 FitCertify365. {{ t('footer.navegacao.todosDireitos') }}
-        </p>
-        <RouterLink
-          to="/termosprivacidade"
-          class="text-[13px] text-white/25 no-underline transition-colors hover:text-white/55"
-        >{{ t('footer.termsPrivacyLink') }}</RouterLink>
+        <p class="text-[13px] text-white/25">© 2026 FitCertify365. Todos os direitos reservados.</p>
+        <a href="/termosprivacidade" class="text-[13px] text-white/25 no-underline transition-colors hover:text-white/55">Termos e privacidade</a>
       </div>
     </div>
   </footer>
 </template>
+
+<script setup>
+const footerColumns = [
+  {
+    title: 'Paginas',
+    links: [
+      { label: 'Quem somos', to: '/quemsomos' },
+      { label: 'Certificados', to: '/certificados' },
+      { label: 'Marcadores', to: '/marcadores' },
+      { label: 'Eventos', to: '/eventos' },
+      { label: 'Artigos', to: '/artigos' },
+    ],
+  },
+  {
+    title: 'Ajuda',
+    links: [
+      { label: 'Contato', to: '/contato' },
+      { label: 'FAQ', to: '/certificados#faq' },
+      { label: 'Termos e privacidade', to: '/termosprivacidade' },
+    ],
+  },
+]
+</script>

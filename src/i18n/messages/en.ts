@@ -93,7 +93,99 @@ export default {
       description: 'Companies that support sports medicine and athlete well-being'
     },
     learnMore: 'Learn More',
-    viewMore: 'View more'
+    viewMore: 'View more',
+    landing: {
+      dash: '—',
+      articleFallback: 'Article',
+      hero: {
+        bannerAlt: 'FitCertify365 — sports health',
+        eyebrow: 'Official sports health platform',
+        titleLine1: 'Health on track',
+        titleLine2: 'for ',
+        titleEm: 'sports.',
+        lead:
+          'FitCertify365 connects athletes, doctors, and events on one platform so your performance is always validated safely and quickly.',
+        ctaStart: 'Get started',
+        ctaLearnMore: 'Learn more',
+      },
+      marquee: {
+        m1: 'Agility',
+        m2: 'Security',
+        m3: 'Technology',
+        m4: 'Validated health',
+        m5: 'Sport guaranteed',
+        m6: 'Live metrics',
+      },
+      features: {
+        f1: { kicker: 'Time', title: 'Agility', desc: 'Your certificate result in minutes, wherever you are.' },
+        f2: { kicker: 'Data', title: 'Security', desc: 'Medical information protected and validated by professionals.' },
+        f3: {
+          kicker: 'Integration',
+          title: 'Technology',
+          desc: 'Digital platform connected to wearables and health apps.',
+        },
+      },
+      health: {
+        tag: 'Medical certification',
+        titleLine1: 'Your health validated.',
+        titleHighlight: 'Your sport guaranteed.',
+        desc:
+          'We connect you with doctors specialized in sports health for certificates recognized at events across Brazil. Simple, fast, and 100% digital.',
+        check1: 'Certificates valid for races and sports events',
+        check2: 'Accredited, specialized doctors',
+        check3: '100% online process with no queues',
+        more: 'Learn more →',
+        imageAlt: 'Athlete and sports health',
+      },
+      events: {
+        tag: 'Event network',
+        titleLine1: 'Going for a run?',
+        titleHighlight: 'See partner events.',
+        desc:
+          'Discover races, triathlons, and sports events that accept the FitCertify365 certificate. Sign up in one click.',
+        viewAll: 'View all events →',
+        imageAlt: 'Runners at a sports event',
+      },
+      metrics: {
+        tag: 'Personal dashboard',
+        titleLine1: 'Track your metrics in',
+        titleHighlight: 'real time.',
+        desc:
+          'See heart rate, VO₂ max, training history, and exams in one panel — integrated with your favorite devices.',
+        viewPanel: 'View my dashboard →',
+        hr: { label: 'Heart rate', unit: 'bpm' },
+        vo2: { label: 'VO₂ max', unit: 'ml/kg' },
+        today: { label: 'Today', unit: 'km' },
+        spo2: { label: 'SpO₂', unit: '%' },
+      },
+      content: {
+        tag: 'Content and articles',
+        titleLine1: 'Health and performance',
+        titleLine2: 'for real athletes.',
+        viewAll: 'View all →',
+      },
+      cta: {
+        titleBefore: 'Ready to run with',
+        titleHighlight: 'confidence?',
+        subtitle: 'Get your digital medical certificate in under 24 hours.',
+        login: 'Log in',
+        register: 'Create free account',
+      },
+      support: {
+        tag: 'Institutional support',
+        titleLine1: 'Recognized by leading',
+        titleLine2: 'sports organizations in Brazil.',
+        subtitle: 'Partners who make FitCertify365 possible.',
+        cta: 'Become a partner →',
+        empty: 'No supporters listed at the moment.',
+        altLogo: 'Supporter',
+      },
+      sponsors: {
+        title: 'Meet FitCertify365 sponsors',
+        empty: 'No sponsors listed at the moment.',
+        altLogo: 'Sponsor',
+      },
+    },
   },
   events: {
     title: 'Events',
@@ -183,6 +275,13 @@ export default {
       button: 'Talk about partnerships'
     } 
   },
+  header: {
+    login: 'Log in',
+    ctaRegister: 'Get started',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    navSaude: 'Health',
+  },
   footer: {
     navegacao: {
       quemSomos: 'About Us',
@@ -190,7 +289,21 @@ export default {
       contato: 'Contact',
       sac: 'SAC',
       faq: 'FAQ',
-      paceiros: 'Partners'
+      paceiros: 'Partners',
+      todosDireitos: 'All rights reserved.',
+    },
+    columns: {
+      pages: 'Pages',
+      help: 'Help',
+    },
+    tagline:
+      'The platform that connects athletes, doctors, and events for safer, more accessible sports.',
+    termsPrivacyLink: 'Terms & privacy',
+    social: {
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      youtube: 'YouTube',
+      instagram: 'Instagram',
     },
     privacy: 'Terms of Service / Privacy Policy',
     terms: 'Terms of Use'

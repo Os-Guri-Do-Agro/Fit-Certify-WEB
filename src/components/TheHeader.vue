@@ -1,87 +1,191 @@
 <template>
-  <div class="w-full min-h-[97px] md:min-h-[130px] flex items-center justify-center bg-white relative">
-    <div class="container h-auto flex items-center justify-between lg:flex-wrap xl:flex-nowrap xl:justify-between px-5 lg:px-10">
-      
-      <div class="lg:w-1/4">
-        <router-link to="/">
-          <img class="w-[176px] md:w-[247px] lg:w-[283px]" src="/public/fit-logo.jpg" alt="logo" />
+  <Disclosure
+    v-slot="{ open }"
+    as="nav"
+    class="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl transition-colors duration-300"
+    :class="scrolled ? 'bg-[#060606]/97' : 'bg-[#060606]/88'"
+  >
+    <span class="hidden" aria-hidden="true">{{ syncMenuOpen(open) }}</span>
+    <div ref="headerBarRef" class="mx-auto flex h-[68px] w-full items-center justify-between px-4 md:px-12">
+      <router-link to="/" class="header-brand no-underline">
+        <img src="/Logo-Grande.png" alt="FitCertify365" class="h-10 w-auto md:h-12" />
+      </router-link>
+
+      <div class="hidden items-center gap-8 lg:flex">
+        <router-link
+          v-for="link in navLinks"
+          :key="link.to"
+          :to="link.to"
+          class="header-nav-link font-body text-[13px] font-medium uppercase tracking-[0.06em] text-white/60 transition hover:text-white no-underline"
+        >
+          {{ link.label }}
         </router-link>
       </div>
 
-
-      <div class="lg:w-1/1 flex justify-end">
-        <nav class="flex gap-[32px] lg:gap-[44px] items-center justify-center relative">
-          
-          <div
-            class="flex flex-col gap-[8px] cursor-pointer w-[48px] h-[48px] lg:hidden items-center justify-center"
-            @click="menuOpen = !menuOpen"
-          >
-            <div class="w-[33.75px] h-[4px] md:w-[36px] rounded-[4px] bg-cyan-400"></div>
-            <div class="w-[36px] h-[4px] rounded-[4px] bg-cyan-400"></div>
-            <div class="w-[36px] h-[4px] rounded-[4px] bg-cyan-400"></div>
-          </div>
-
-          
-          <ul class="hidden lg:flex gap-[18px] items-center justify-center flex-wrap">
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/'>{{ t('nav.home') }}</router-link></li>
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/quemsomos'>{{ t('nav.about') }}</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/certificados'>{{ t('nav.certificates') }}</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/eventos'>{{ t('nav.events') }}</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marcadores'>{{ t('nav.marcadores') }}</router-link></li> 
-            <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/artigos'>{{ t('nav.articles') }}</router-link></li> 
-            <!-- <li><router-link class="text-[0.8rem] xl:text-[0.9em] font-[500] text-neutral-500 hover:text-cyan-400 duration-300 cursor-pointer" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li>  -->
-          </ul>
-
-          
-          <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[16px] md:flex-col lg:flex-row items-center">
-            <div class="hidden lg:flex"><LanguageSelector /></div>
-            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
-            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/register">{{ t('auth.register') }}</a>
-          </div>
-
-          <!-- Menu Mobile/Tablet Dropdown -->
-          <transition name="fade">
-            <div
-              v-if="menuOpen"
-              class="absolute top-[60px] right-0 w-[250px] bg-white shadow-xl rounded-md p-6 flex flex-col gap-4 lg:hidden z-50 "
-            >
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/'>{{ t('nav.home') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/quemsomos'>{{ t('nav.about') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/certificados'>{{ t('nav.certificates') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/eventos'>{{ t('nav.events') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marcadores'>{{ t('nav.marcadores') }}</router-link></li>
-              <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/artigos'>{{ t('nav.articles') }}</router-link></li>
-              <!-- <li class="list-none"><router-link @click="menuOpen = false" class="text-neutral-700 text-[0.95rem] font-[500] hover:text-cyan-400 duration-300" to='/marketplace'>{{ t('nav.marketplace') }}</router-link></li> -->
-              <LanguageSelector />
-
-              <div class="flex flex-col gap-3 mt-2 md:hidden">
-                <a @click="menuOpen = false" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
-                <a @click="menuOpen = false" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/login?tipo-cadastro">{{ t('auth.register') }}</a>
-              </div>
-            </div>
-          </transition>
-        </nav>
+      <div class="header-actions hidden items-center gap-3 lg:flex">
+        <LanguageSelector variant="dark" />
+        <a
+          href="https://admin.fitcert365.com/login" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-5 py-[10px] bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE]"
+        >
+          {{ t('header.login') }}
+        </a>
+        <a
+          href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-5 py-[10px] bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff] hover:-translate-y-px"
+        >
+          {{ t('header.ctaRegister') }}
+        </a>
       </div>
+      <DisclosureButton
+        class="header-burger lg:hidden inline-flex h-10 w-10 items-center justify-center rounded border border-white/20 text-white transition-colors hover:border-[#00C6FE] hover:text-[#00C6FE]"
+        :aria-label="open ? t('header.menuClose') : t('header.menuOpen')"
+      >
+        <span class="sr-only">{{ open ? t('header.menuClose') : t('header.menuOpen') }}</span>
+        <span class="relative h-4 w-5">
+          <span
+            class="absolute left-0 top-0 h-0.5 w-5 rounded bg-current transition-transform duration-300"
+            :class="open ? 'translate-y-[7px] rotate-45' : ''"
+          />
+          <span
+            class="absolute left-0 top-[7px] h-0.5 w-5 rounded bg-current transition-opacity duration-200"
+            :class="open ? 'opacity-0' : 'opacity-100'"
+          />
+          <span
+            class="absolute left-0 top-[14px] h-0.5 w-5 rounded bg-current transition-transform duration-300"
+            :class="open ? '-translate-y-[7px] -rotate-45' : ''"
+          />
+        </span>
+      </DisclosureButton>
     </div>
-  </div>
+    <DisclosurePanel class="border-t border-white/10 bg-[#060606] lg:hidden">
+      <div ref="mobilePanelInnerRef" class="mobile-panel-inner space-y-1 px-4 py-3">
+        <router-link
+          v-for="link in navLinks"
+          :key="`m-${link.to}`"
+          :to="link.to"
+          class="header-mobile-link block rounded px-2 py-2 text-sm text-white/80 hover:bg-white/5 no-underline"
+        >
+          {{ link.label }}
+        </router-link>
+        <div class="header-mobile-lang flex justify-center py-2 border-t border-white/10">
+          <LanguageSelector variant="dark" />
+        </div>
+        <div class="header-mobile-ctas mt-3 grid grid-cols-1 gap-2 pt-3 border-t border-white/10">
+          <a
+            href="https://admin.fitcert365.com/login" target="_blank" rel="noopener noreferrer"
+            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-[10px] bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE]"
+          >
+            {{ t('header.login') }}
+          </a>
+          <a
+            href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-[10px] bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff]"
+          >
+            {{ t('header.ctaRegister') }}
+          </a>
+        </div>
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useI18n } from '../composables/useI18n'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import gsap from 'gsap'
 import LanguageSelector from './LanguageSelector.vue'
+import { useI18n } from '../composables/useI18n'
 
-const menuOpen = ref(false)
 const { t } = useI18n()
+
+const headerBarRef = ref(null)
+const mobilePanelInnerRef = ref(null)
+let headerCtx = null
+let mobileMenuCtx = null
+
+const scrolled = ref(false)
+const mobileMenuOpen = ref(false)
+
+const onScroll = () => { scrolled.value = window.scrollY > 60 }
+
+/** Sincroniza slot `open` do Headless UI com ref para GSAP do menu mobile */
+function syncMenuOpen(open) {
+  if (mobileMenuOpen.value !== open) mobileMenuOpen.value = open
+  return ''
+}
+
+function runHeaderEntrance() {
+  const root = headerBarRef.value
+  if (!root) return
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  headerCtx?.revert()
+  headerCtx = gsap.context(() => {
+    if (reduce) return
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    tl.from('.header-brand', { opacity: 0, x: -18, duration: 0.55 }, 0)
+      .from(
+        '.header-nav-link',
+        { opacity: 0, y: -12, duration: 0.42, stagger: 0.055 },
+        0.08
+      )
+      .from(
+        '.header-actions > *',
+        { opacity: 0, y: -10, duration: 0.38, stagger: 0.07 },
+        0.2
+      )
+      .from(
+        '.header-burger',
+        { opacity: 0, scale: 0.88, duration: 0.45, ease: 'back.out(1.6)' },
+        0.12
+      )
+  }, root)
+}
+
+function animateMobilePanelOpen(open) {
+  mobileMenuCtx?.revert()
+  if (!open) return
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
+  nextTick(() => {
+    const root = mobilePanelInnerRef.value
+    if (!root) return
+    mobileMenuCtx = gsap.context(() => {
+      gsap.fromTo(
+        '.header-mobile-link',
+        { opacity: 0, x: -12 },
+        { opacity: 1, x: 0, duration: 0.34, stagger: 0.055, ease: 'power2.out' }
+      )
+      gsap.from('.header-mobile-lang', { opacity: 0, y: 8, duration: 0.32, ease: 'power2.out', delay: 0.1 })
+      gsap.from('.header-mobile-ctas', { opacity: 0, y: 10, duration: 0.36, ease: 'power2.out', delay: 0.16 })
+    }, root)
+  })
+}
+
+watch(mobileMenuOpen, (open) => {
+  if (open) animateMobilePanelOpen(true)
+  else mobileMenuCtx?.revert()
+})
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll)
+  nextTick(() => runHeaderEntrance())
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  headerCtx?.revert()
+  mobileMenuCtx?.revert()
+})
+
+const navLinks = computed(() => [
+  { label: t('nav.home'), to: '/' },
+  { label: t('header.navSaude'), to: '/quemsomos' },
+  { label: t('nav.events'), to: '/eventos' },
+  { label: t('nav.marcadores'), to: '/marcadores' },
+  { label: t('nav.articles'), to: '/artigos' },
+])
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>
