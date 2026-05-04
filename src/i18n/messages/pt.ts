@@ -158,6 +158,26 @@ export default {
         today: { label: 'Hoje', unit: 'km' },
         spo2: { label: 'SpO₂', unit: '%' },
       },
+      plans: {
+        kicker: 'Planos para atletas',
+        titleLine1: 'Escolha o plano ideal para',
+        titleHighlight: 'a sua jornada',
+        subtitle: 'Do acesso essencial ao acompanhamento completo: encontre o plano certo para sua rotina esportiva.',
+        popular: 'Mais popular',
+        guarantee: '30 dias de garantia',
+        includes: 'Benefícios inclusos',
+        emptyBenefits: 'Benefícios em atualização.',
+        ctaDefault: 'Quero meu certificado sempre comigo',
+        ctaFeatured: 'Chegar na prova sem preocupação',
+        perYear: '/ano',
+        perMonth: '/mês',
+        month: 'mês',
+        equivalent: 'equivale a',
+        noCommitment: 'assinatura flexível sem fidelidade',
+        empty: 'Nenhum plano disponível no momento.',
+        fallbackName: 'Plano FitCertify',
+        fallbackDescription: 'Cobertura para manter sua certificação em dia.',
+      },
       content: {
         tag: 'Conteúdos e artigos',
         titleLine1: 'Saúde e performance',
@@ -280,7 +300,8 @@ export default {
     ctaRegister: 'Comece agora',
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
-    navSaude: 'Saúde',
+    navSaude: 'Quem Somos',
+    more: 'Mais',
   },
   footer: {
     navegacao: {
@@ -739,8 +760,10 @@ export default {
     }
   },
   modalParabens: {
-    title: 'Nosso <span class="text-cyan-400">aplicativo</span> está pronto!',
-    description: 'Como você chegou primeiro por aqui, vamos te presentear com <strong class="text-cyan-400">3 meses</strong> de aplicativo grátis! <br />Basta preencher o formulário e entraremos em contato.',
+    kicker: 'Oferta exclusiva',
+    closeAria: 'Fechar janela',
+    title: 'Nosso <span class="text-[#00C6FE]">aplicativo</span> está pronto!',
+    description: 'Como você chegou primeiro por aqui, vamos te presentear com <strong class="text-[#88CE0D]">3 meses</strong> de aplicativo grátis! <br />Basta preencher o formulário e entraremos em contato.',
     form: {
       name: 'Nome:',
       namePlaceholder: 'Nome completo *',

@@ -173,6 +173,81 @@
       </div>
     </div>
 
+    <!-- ── PLANOS ───────────────────────────────────────── -->
+    <section class="bg-[#f4f6fb] px-4 py-20 md:px-12">
+      <div class="reveal-item mx-auto flex w-full max-w-[1200px] flex-col items-center">
+        <p class="plans-kicker">{{ t('home.landing.plans.kicker') }}</p>
+        <h2 class="plans-title text-center">
+          {{ t('home.landing.plans.titleLine1') }}
+          <span>{{ t('home.landing.plans.titleHighlight') }}</span>
+        </h2>
+        <p class="plans-subtitle text-center">{{ t('home.landing.plans.subtitle') }}</p>
+
+        <div class="mt-12 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <template v-if="isLoadingPlanos">
+            <div
+              v-for="n in 3" :key="'plan-sk-' + n"
+              class="h-[560px] animate-pulse rounded-[24px] border border-[#d6dbe7] bg-white"
+            />
+          </template>
+          <template v-else-if="planosPreview.length">
+            <article
+              v-for="plano in planosPreview" :key="plano.id"
+              class="plan-card"
+              :class="{ 'plan-card--featured': plano.maisPopular }"
+            >
+              <span v-if="plano.maisPopular" class="plan-popular-badge">{{ t('home.landing.plans.popular') }}</span>
+
+              <div class="plan-card__header">
+                <h3 class="plan-card__name">{{ plano.nome || t('home.landing.plans.fallbackName') }}</h3>
+                <p class="plan-card__desc">{{ plano.descricao || t('home.landing.plans.fallbackDescription') }}</p>
+
+                <div class="mt-8 flex items-end gap-1">
+                  <span class="plan-card__currency">R$</span>
+                  <span class="plan-card__price">{{ formatPlanMainPrice(plano) }}</span>
+                  <span class="plan-card__period">{{ planPeriodLabel(plano) }}</span>
+                </div>
+                <p class="plan-card__hint">{{ planHintLabel(plano) }}</p>
+              </div>
+
+              <div class="plan-card__body">
+                <div class="plan-card__guarantee">
+                  <svg viewBox="0 0 24 24" fill="none" class="h-[17px] w-[17px]">
+                    <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M8.6 11.5l2.3 2.3 4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span>{{ t('home.landing.plans.guarantee') }}</span>
+                </div>
+
+                <div class="plan-card__divider"></div>
+                <p class="plan-card__benefits-title">{{ t('home.landing.plans.includes') }}</p>
+
+                <ul class="plan-card__benefits">
+                  <li v-for="beneficio in includedBenefits(plano)" :key="`${plano.id}-${beneficio}`">
+                    <span class="plan-card__check">✓</span>
+                    <span>{{ beneficio }}</span>
+                  </li>
+                  <li v-if="!includedBenefits(plano).length">
+                    <span class="plan-card__check">✓</span>
+                    <span>{{ t('home.landing.plans.emptyBenefits') }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a
+                href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+                class="plan-card__cta"
+                :class="{ 'plan-card__cta--featured': plano.maisPopular }"
+              >
+                {{ plano.maisPopular ? t('home.landing.plans.ctaFeatured') : t('home.landing.plans.ctaDefault') }}
+              </a>
+            </article>
+          </template>
+          <p v-else class="col-span-full text-center text-sm text-[#4b5565]">{{ t('home.landing.plans.empty') }}</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ── INDICADORES ─────────────────────────────────── -->
     <div class="bg-[#1a1a1a]">
       <div class="reveal-item mx-auto grid max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
@@ -380,6 +455,7 @@
       </div>
     </div>
 
+    <ModalParabens />
   </div>
 </template>
 
@@ -389,8 +465,10 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventoService from '../services/Eventos/eventos-services'
 import ArtigoService from '../services/Artigos/artigos-service'
+import PlanosService from '../services/planos/planos-service'
 import { useI18n } from '../composables/useI18n'
 import AfiliadoService from '../services/Afiliados/afiliado-service'
+import ModalParabens from '../components/modalParabens.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -504,6 +582,67 @@ async function loadEventosPreview() {
   }
 }
 
+// ── Planos (API) ──────────────────────────────────────────
+const planosPreview = ref([])
+const isLoadingPlanos = ref(false)
+
+function normalizePlanosResponse(raw) {
+  if (!raw) return []
+  if (Array.isArray(raw)) return raw
+  if (Array.isArray(raw.data)) return raw.data
+  if (Array.isArray(raw?.data?.data)) return raw.data.data
+  return []
+}
+
+function formatCurrencyWithoutSymbol(value) {
+  const locale = currentLocale.value === 'en' ? 'en-US' : 'pt-BR'
+  return new Intl.NumberFormat(locale, {
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(Number(value || 0))
+}
+
+function formatPlanMainPrice(plano) {
+  if (Number(plano?.precoAno) > 0) return formatCurrencyWithoutSymbol(Number(plano.precoAno))
+  return formatCurrencyWithoutSymbol(Number(plano?.precoMes || 0))
+}
+
+function planPeriodLabel(plano) {
+  return Number(plano?.precoAno) > 0 ? t('home.landing.plans.perYear') : t('home.landing.plans.perMonth')
+}
+
+function planHintLabel(plano) {
+  if (Number(plano?.precoAno) > 0 && Number(plano?.precoMes) > 0) {
+    return `${t('home.landing.plans.equivalent')} R$ ${formatCurrencyWithoutSymbol(Number(plano.precoMes))}/${t('home.landing.plans.month')}`
+  }
+  return t('home.landing.plans.noCommitment')
+}
+
+function includedBenefits(plano) {
+  return (plano?.planoBeneficio || [])
+    .filter((item) => item?.incluso)
+    .map((item) => item?.beneficio?.descricao)
+    .filter(Boolean)
+}
+
+async function loadPlanosPreview() {
+  try {
+    isLoadingPlanos.value = true
+    const response = await PlanosService.getAllPlanos()
+    const planos = normalizePlanosResponse(response)
+    planosPreview.value = planos.sort((a, b) => {
+      if (a.maisPopular && !b.maisPopular) return -1
+      if (!a.maisPopular && b.maisPopular) return 1
+      return Number(a.precoAno || a.precoMes || 0) - Number(b.precoAno || b.precoMes || 0)
+    })
+  } catch (e) {
+    console.error('Erro ao buscar planos na home:', e)
+    planosPreview.value = []
+  } finally {
+    isLoadingPlanos.value = false
+  }
+}
+
 // ── Indicadores / métricas ───────────────────────────────
 const metricsRef = ref(null)
 const counterRefs = ref({})
@@ -556,6 +695,7 @@ onMounted(() => {
   loadEventosPreview()
   loadArtigosPreview()
   loadingAfiliadosPreview()
+  loadPlanosPreview()
 
   // Hero timeline
   gsap.from('.hero-item', {
@@ -594,6 +734,7 @@ onMounted(() => {
 watch(currentLocale, () => {
   loadArtigosPreview()
   loadEventosPreview()
+  loadPlanosPreview()
 })
 </script>
 
@@ -747,5 +888,231 @@ watch(currentLocale, () => {
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* Plans */
+.plans-kicker {
+  margin-bottom: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7f8ba3;
+}
+
+.plans-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.plans-title > span {
+  color: #88ce0d;
+}
+
+.plans-subtitle {
+  margin-top: 14px;
+  max-width: 700px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4b5565;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  border-radius: 24px;
+  border: 1px solid #d6dbe7;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 18px 54px -36px rgba(17, 24, 39, 0.22);
+}
+
+.plan-card--featured {
+  border-color: #0e2c61;
+  background:
+    radial-gradient(130% 85% at 55% 120%, rgba(136, 206, 13, 0.24), transparent 52%),
+    linear-gradient(180deg, #132240 0%, #0e1730 100%);
+  color: #ffffff;
+  box-shadow: 0 24px 58px -30px rgba(8, 12, 26, 0.62);
+}
+
+.plan-popular-badge {
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #88ce0d;
+  padding: 5px 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0d1b36;
+}
+
+.plan-card__header {
+  padding: 30px 28px 20px;
+}
+
+.plan-card__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.plan-card__desc {
+  margin-top: 10px;
+  min-height: 42px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(17, 24, 39, 0.72);
+}
+
+.plan-card--featured .plan-card__desc {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.plan-card__currency {
+  margin-bottom: 7px;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.plan-card__price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.plan-card__period {
+  margin-bottom: 6px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.84;
+}
+
+.plan-card__hint {
+  margin-top: 6px;
+  font-size: 14px;
+  color: rgba(17, 24, 39, 0.62);
+}
+
+.plan-card--featured .plan-card__hint {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.plan-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 28px;
+}
+
+.plan-card__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(17, 24, 39, 0.74);
+}
+
+.plan-card--featured .plan-card__guarantee {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.plan-card__divider {
+  margin: 18px 0 16px;
+  height: 1px;
+  width: 100%;
+  background: rgba(17, 24, 39, 0.1);
+}
+
+.plan-card--featured .plan-card__divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.plan-card__benefits-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.86);
+}
+
+.plan-card--featured .plan-card__benefits-title {
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.plan-card__benefits {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-card__benefits li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(17, 24, 39, 0.78);
+}
+
+.plan-card--featured .plan-card__benefits li {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.plan-card__check {
+  margin-top: 1px;
+  font-weight: 700;
+  color: #88ce0d;
+}
+
+.plan-card__cta {
+  margin: 24px 28px 28px;
+  border-radius: 999px;
+  border: 1px solid #d1d7e4;
+  padding: 12px 16px;
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f2937;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.plan-card__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -20px rgba(17, 24, 39, 0.46);
+  background: #f8fafc;
+}
+
+.plan-card__cta--featured {
+  border-color: rgba(136, 206, 13, 0.34);
+  background: linear-gradient(90deg, #88ce0d 0%, #9de316 100%);
+  color: #102122;
+}
+
+.plan-card__cta--featured:hover {
+  background: linear-gradient(90deg, #95dd10 0%, #abf423 100%);
 }
 </style>

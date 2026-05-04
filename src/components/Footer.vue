@@ -30,8 +30,14 @@ const footerColumns = computed(() => [
 </script>
 
 <template>
-  <footer class="border-t border-white/[0.06] bg-[#060606] px-4 pb-8 pt-16 md:px-12">
-    <div class="mx-auto max-w-[1200px]">
+  <footer class="relative overflow-hidden border-t border-white/[0.06] bg-[#060606] px-4 pb-8 pt-16 md:px-12">
+    <img
+      src="/Logo-pequena.png"
+      alt=""
+      aria-hidden="true"
+      class="pointer-events-none absolute -bottom-8 right-0 h-64 w-auto select-none opacity-[0.04] md:h-80"
+    />
+    <div class="relative mx-auto max-w-[1200px]">
       <div class="mb-14 grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <RouterLink to="/" class="mb-4 inline-flex no-underline">

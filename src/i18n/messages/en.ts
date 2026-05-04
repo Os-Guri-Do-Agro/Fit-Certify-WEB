@@ -158,6 +158,26 @@ export default {
         today: { label: 'Today', unit: 'km' },
         spo2: { label: 'SpO₂', unit: '%' },
       },
+      plans: {
+        kicker: 'Plans for athletes',
+        titleLine1: 'Choose the ideal plan for',
+        titleHighlight: 'your journey',
+        subtitle: 'From essential access to full monitoring: find the right plan for your sports routine.',
+        popular: 'Most popular',
+        guarantee: '30-day guarantee',
+        includes: 'Included benefits',
+        emptyBenefits: 'Benefits are being updated.',
+        ctaDefault: 'Keep my certificate always with me',
+        ctaFeatured: 'Race day with total confidence',
+        perYear: '/year',
+        perMonth: '/month',
+        month: 'month',
+        equivalent: 'equivalent to',
+        noCommitment: 'flexible plan with no long-term commitment',
+        empty: 'No plans available at the moment.',
+        fallbackName: 'FitCertify Plan',
+        fallbackDescription: 'Coverage to keep your certification up to date.',
+      },
       content: {
         tag: 'Content and articles',
         titleLine1: 'Health and performance',
@@ -280,7 +300,8 @@ export default {
     ctaRegister: 'Get started',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
-    navSaude: 'Health',
+    navSaude: 'About Us',
+    more: 'More',
   },
   footer: {
     navegacao: {
@@ -739,8 +760,10 @@ export default {
       }
     },
     modalParabens: {
-      title: 'Our app is ready!',
-      description: 'Since you got here first, were going to give you 3 months of free app! Just fill out the form and well get in touch.',
+      kicker: 'Exclusive offer',
+      closeAria: 'Close dialog',
+      title: 'Our <span class="text-[#00C6FE]">app</span> is ready!',
+      description: 'Since you got here first, we are giving you <strong class="text-[#88CE0D]">3 months</strong> of the app for free! <br />Just fill out the form and we will get in touch.',
       form: {
         name: 'Name:',
         namePlaceholder: 'Full name *',
