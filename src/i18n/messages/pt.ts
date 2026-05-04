@@ -573,6 +573,8 @@ export default {
     }
   },
   eventosDetalhes: {
+    back: 'Voltar às provas',
+    heroEyebrow: 'Detalhe da prova',
     button1: 'Enviar certificado',
     button2: 'Site da prova',
     section1: {

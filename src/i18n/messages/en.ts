@@ -573,6 +573,8 @@ export default {
       }
     },
     eventosDetalhes: {
+      back: 'Back to races',
+      heroEyebrow: 'Race details',
       button1: 'Send certificate',
       button2: 'Event website',
       section1: {
