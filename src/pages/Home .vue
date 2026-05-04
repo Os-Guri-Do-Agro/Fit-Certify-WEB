@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-[#060606] text-white font-body">
+  <div class="home-landing bg-[#060606] text-white font-body">
 
     <!-- ── HERO ───────────────────────────────────────── -->
-    <section class="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-22 md:min-h-[90vh] md:pt-14">
+    <section class="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-22 md:min-h-[95vh] md:pt-14">
       <img
         src="/src/assets/home-imgs/banner-home.jpg"
         :alt="t('home.landing.hero.bannerAlt')"
-        class="absolute inset-0 h-full w-full object-cover"
+        class="hero-bg absolute inset-0 h-full w-full object-cover will-change-transform"
       />
       <div class="absolute inset-0 z-[1]"
         style="background: linear-gradient(to right,rgba(6,6,6,0.92) 45%,rgba(6,6,6,0.3) 100%),linear-gradient(to top,rgba(6,6,6,0.8) 0%,transparent 50%)">
@@ -17,11 +17,11 @@
         <div class="flex items-center justify-between gap-10">
           <div class="hero-copy max-w-[760px]">
             <p class="hero-item eyebrow">{{ t('home.landing.hero.eyebrow') }}</p>
-            <h1 class="hero-item mb-7 max-w-[697px] font-head text-[clamp(34px,4.76vw,60px)] font-bold leading-[0.98] tracking-[-0.03em] lg:text-[clamp(41px,5.1vw,70px)] 2xl:text-[clamp(49px,4.6vw,83px)]">
+            <h1 class="hero-item mb-7 max-w-[697px] font-head text-[clamp(26px,5.2vw,60px)] font-bold leading-[0.98] tracking-[-0.03em] md:text-[clamp(32px,4.76vw,60px)] lg:text-[clamp(41px,5.1vw,70px)] 2xl:text-[clamp(49px,4.6vw,83px)]">
               {{ t('home.landing.hero.titleLine1') }}<br>{{ t('home.landing.hero.titleLine2') }}
               <em class="not-italic text-[#00C6FE]">{{ t('home.landing.hero.titleEm') }}</em>
             </h1>
-            <p class="hero-item mb-11 text-[12px] leading-[1.65] max-w-[450px] text-white/60 lg:text-[14px] 2xl:text-[15px]">
+            <p class="hero-item mb-11 text-[13px] leading-[1.65] max-w-[450px] text-white/60 sm:text-[14px] lg:text-[14px] 2xl:text-[15px]">
               {{ t('home.landing.hero.lead') }}
             </p>
             <div class="hero-item flex flex-wrap gap-4">
@@ -36,50 +36,85 @@
       </div>
     </section>
 
-    <!-- ── MARQUEE ─────────────────────────────────────── -->
+    <!-- ── MARQUEE (2 segmentos iguais; GSAP move o track −largura de 1 segmento) ── -->
     <div class="overflow-hidden bg-[#88CE0D] py-3">
-      <div class="marquee-track flex w-max">
-        <template v-for="x in 2" :key="x">
-          <template v-for="item in marqueeItems" :key="`${x}-${item}`">
-            <span class="whitespace-nowrap px-8 font-head text-[12px] font-bold uppercase tracking-[0.12em] text-[#060606]">{{ item }}</span>
+      <div ref="marqueeTrackRef" class="marquee-track flex w-max flex-nowrap">
+        <div ref="marqueeSegmentRef" class="marquee-segment inline-flex shrink-0 flex-nowrap items-center">
+          <template v-for="(item, i) in marqueeItems" :key="`m-a-${MARQUEE_KEYS[i]}`">
+            <span class="whitespace-nowrap px-6 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[#060606] sm:px-8 sm:text-[12px]">{{ item }}</span>
             <span class="text-[#060606]/30">✦</span>
           </template>
-        </template>
+        </div>
+        <div class="marquee-segment inline-flex shrink-0 flex-nowrap items-center" aria-hidden="true">
+          <template v-for="(item, i) in marqueeItems" :key="`m-b-${MARQUEE_KEYS[i]}`">
+            <span class="whitespace-nowrap px-6 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[#060606] sm:px-8 sm:text-[12px]">{{ item }}</span>
+            <span class="text-[#060606]/30">✦</span>
+          </template>
+        </div>
       </div>
     </div>
 
     <!-- ── FEATURES BAR ────────────────────────────────── -->
-    <div class="relative overflow-hidden bg-[#00C6FE] py-10 md:py-12">
-      <div
-        class="pointer-events-none absolute inset-0 opacity-50"
-        style="background: radial-gradient(ellipse 130% 90% at 50% -35%, #fff, transparent 58%)"
-      />
-      <div class="reveal-item relative mx-auto grid max-w-[1200px] gap-4 px-4 md:grid-cols-3 md:gap-5 md:px-12">
-        <div
-          v-for="f in featureItems" :key="f.titleKey"
-          class="feature-bar-card group flex gap-5 rounded-2xl border border-white/90 bg-white/95 p-5 shadow-[0_16px_48px_-18px_rgba(6,6,6,0.22)] backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:shadow-[0_20px_56px_-16px_rgba(6,6,6,0.28)] md:flex-col md:p-6 lg:flex-row lg:items-start lg:gap-6"
-        >
-          <div
-            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-black/[0.06] bg-white shadow-[inset_0_1px_0_rgba(255,255,255,1),0_4px_14px_-4px_rgba(6,6,6,0.12)] transition-transform duration-300 group-hover:scale-[1.03] md:h-16 md:w-16 md:rounded-2xl"
+    <div class="features-bar relative overflow-x-clip overflow-y-visible bg-[#00C6FE] py-14 md:py-16">
+      <div class="features-bar-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="features-bar-deco features-bar-deco--1 pointer-events-none absolute" aria-hidden="true"></div>
+      <div class="features-bar-deco features-bar-deco--2 pointer-events-none absolute" aria-hidden="true"></div>
+
+      <div class="home-features-stage reveal-item relative mx-auto max-w-[1200px] px-4 md:px-12">
+        <div v-if="isMobileHomeLayout" class="home-features-carousel-wrap">
+          <Carousel
+            v-model:page="featuresCarouselPage"
+            class="home-features-carousel"
+            :value="featureItems"
+            :numVisible="1"
+            :numScroll="1"
+            circular
+            :autoplayInterval="homeCarouselAutoplayMs"
+            :showNavigators="false"
+            :showIndicators="true"
+            :pt="{ root: { 'aria-label': t('home.landing.features.carouselLabel') } }"
           >
-            <svg
-              class="h-7 w-7 stroke-[#00C6FE] transition-colors duration-200 group-hover:stroke-[#88CE0D] md:h-8 md:w-8"
-              viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="f.icon"
-            />
-          </div>
-          <div class="min-w-0 flex-1 pt-0.5 md:pt-0">
-            <p
-              class="font-head text-[11px] font-bold uppercase tracking-[0.14em] text-[#00C6FE]/85 transition-colors duration-200 group-hover:text-[#88CE0D] md:text-[12px]"
-            >{{ f.kicker }}</p>
-            <h3
-              class="font-head mt-1 text-[15px] font-bold leading-tight tracking-[-0.02em] text-[#00C6FE] transition-colors duration-200 group-hover:text-[#88CE0D] md:text-[16px]"
-            >
-              {{ f.title }}
-            </h3>
-            <p class="mt-2 text-[13px] leading-[1.55] text-[#060606]/65 md:text-[14px] md:leading-[1.5]">
-              {{ f.desc }}
-            </p>
-          </div>
+            <template #item="{ data: f, index: i }">
+              <article class="feature-bar-card h-full mx-1">
+                <span class="feature-bar-card__accent" aria-hidden="true"></span>
+                <span class="feature-bar-card__number">{{ String(i + 1).padStart(2, '0') }}</span>
+
+                <div class="feature-bar-card__icon-wrap">
+                  <svg
+                    class="feature-bar-card__icon"
+                    viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="f.icon"
+                  />
+                </div>
+
+                <p class="feature-bar-card__kicker">{{ f.kicker }}</p>
+                <h3 class="feature-bar-card__title">{{ f.title }}</h3>
+                <p class="feature-bar-card__desc">{{ f.desc }}</p>
+              </article>
+            </template>
+          </Carousel>
+        </div>
+        <div
+          v-else
+          class="home-features-desktop grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3"
+        >
+          <article
+            v-for="(f, i) in featureItems" :key="f.titleKey"
+            class="feature-bar-card"
+          >
+            <span class="feature-bar-card__accent" aria-hidden="true"></span>
+            <span class="feature-bar-card__number">{{ String(i + 1).padStart(2, '0') }}</span>
+
+            <div class="feature-bar-card__icon-wrap">
+              <svg
+                class="feature-bar-card__icon"
+                viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="f.icon"
+              />
+            </div>
+
+            <p class="feature-bar-card__kicker">{{ f.kicker }}</p>
+            <h3 class="feature-bar-card__title">{{ f.title }}</h3>
+            <p class="feature-bar-card__desc">{{ f.desc }}</p>
+          </article>
         </div>
       </div>
     </div>
@@ -91,10 +126,10 @@
           class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-16 md:max-w-none md:px-12 md:py-16 lg:max-w-[600px] lg:pr-16"
         >
           <p class="section-tag">{{ t('home.landing.health.tag') }}</p>
-          <h2 class="font-head text-[clamp(32px,4vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 break-words">
+          <h2 class="font-head text-[clamp(22px,5.5vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 break-words md:text-[clamp(28px,4vw,54px)]">
             {{ t('home.landing.health.titleLine1') }}<br><span class="text-[#88CE0D]">{{ t('home.landing.health.titleHighlight') }}</span>
           </h2>
-          <p class="text-base leading-[1.75] text-white/60 max-w-[480px] mb-6">
+          <p class="text-[15px] leading-[1.7] text-white/60 max-w-[480px] mb-6 md:text-base md:leading-[1.75]">
             {{ t('home.landing.health.desc') }}
           </p>
           <ul class="mb-8 flex flex-col gap-3 list-none p-0">
@@ -183,24 +218,95 @@
         </h2>
         <p class="plans-subtitle text-center">{{ t('home.landing.plans.subtitle') }}</p>
 
-        <div class="mt-12 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <template v-if="isLoadingPlanos">
-            <div
-              v-for="n in 3" :key="'plan-sk-' + n"
-              class="h-[560px] animate-pulse rounded-[24px] border border-[#d6dbe7] bg-white"
-            />
-          </template>
-          <template v-else-if="planosPreview.length">
+        <div
+          v-if="isLoadingPlanos"
+          class="mt-12 grid w-full gap-6 md:grid-cols-2"
+        >
+          <div
+            v-for="n in 2" :key="'plan-sk-' + n"
+            class="plan-card-skeleton h-[560px] animate-pulse rounded-[24px] border border-[#d6dbe7] bg-white"
+          />
+        </div>
+        <div v-else-if="planosHomeDisplay.length" class="home-plans-stage mt-12 w-full">
+          <Carousel
+            v-if="isMobileHomeLayout"
+            v-model:page="plansCarouselPage"
+            class="home-plans-carousel w-full"
+            :value="planosHomeDisplay"
+            :numVisible="1"
+            :numScroll="1"
+            circular
+            :autoplayInterval="homeCarouselAutoplayMs"
+            :showNavigators="true"
+            :showIndicators="true"
+          >
+            <template #item="{ data: plano }">
+              <article
+                class="plan-card h-full mx-1"
+                :class="{ 'plan-card--featured': plano.maisPopular }"
+              >
+                <span v-if="plano.maisPopular" class="plan-popular-badge">{{ t('home.landing.plans.popular') }}</span>
+
+                <div class="plan-card__header">
+                  <h3 class="plan-card__name">{{ planTranslatedName(plano) }}</h3>
+                  <p class="plan-card__desc">{{ planTranslatedDescription(plano) }}</p>
+
+                  <div class="mt-8 flex items-end gap-1">
+                    <span class="plan-card__currency">R$</span>
+                    <span class="plan-card__price">{{ formatPlanMainPrice(plano) }}</span>
+                    <span class="plan-card__period">{{ planPeriodLabel(plano) }}</span>
+                  </div>
+                  <p class="plan-card__hint">{{ planHintLabel(plano) }}</p>
+                </div>
+
+                <div class="plan-card__body">
+                  <div class="plan-card__guarantee">
+                    <svg viewBox="0 0 24 24" fill="none" class="h-[17px] w-[17px]">
+                      <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" />
+                      <path d="M8.6 11.5l2.3 2.3 4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>{{ t('home.landing.plans.guarantee') }}</span>
+                  </div>
+
+                  <div class="plan-card__divider"></div>
+                  <p class="plan-card__benefits-title">{{ t('home.landing.plans.includes') }}</p>
+
+                  <ul class="plan-card__benefits">
+                    <li v-for="b in includedBenefits(plano)" :key="`${plano.id}-${b.key}`">
+                      <span class="plan-card__check">✓</span>
+                      <span>{{ b.label }}</span>
+                    </li>
+                    <li v-if="!includedBenefits(plano).length">
+                      <span class="plan-card__check">✓</span>
+                      <span>{{ t('home.landing.plans.emptyBenefits') }}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+                  class="plan-card__cta btn"
+                  :class="plano.maisPopular ? 'btn-lime' : 'btn-surface'"
+                >
+                  <span class="plan-card__cta-label">{{ plano.maisPopular ? t('home.landing.plans.ctaFeatured') : t('home.landing.plans.ctaDefault') }}</span>
+                </a>
+              </article>
+            </template>
+          </Carousel>
+          <div
+            v-else
+            class="home-plans-desktop grid w-full grid-cols-1 gap-6 lg:grid-cols-2"
+          >
             <article
-              v-for="plano in planosPreview" :key="plano.id"
+              v-for="plano in planosHomeDisplay" :key="plano.id"
               class="plan-card"
               :class="{ 'plan-card--featured': plano.maisPopular }"
             >
               <span v-if="plano.maisPopular" class="plan-popular-badge">{{ t('home.landing.plans.popular') }}</span>
 
               <div class="plan-card__header">
-                <h3 class="plan-card__name">{{ plano.nome || t('home.landing.plans.fallbackName') }}</h3>
-                <p class="plan-card__desc">{{ plano.descricao || t('home.landing.plans.fallbackDescription') }}</p>
+                <h3 class="plan-card__name">{{ planTranslatedName(plano) }}</h3>
+                <p class="plan-card__desc">{{ planTranslatedDescription(plano) }}</p>
 
                 <div class="mt-8 flex items-end gap-1">
                   <span class="plan-card__currency">R$</span>
@@ -223,9 +329,9 @@
                 <p class="plan-card__benefits-title">{{ t('home.landing.plans.includes') }}</p>
 
                 <ul class="plan-card__benefits">
-                  <li v-for="beneficio in includedBenefits(plano)" :key="`${plano.id}-${beneficio}`">
+                  <li v-for="b in includedBenefits(plano)" :key="`${plano.id}-${b.key}`">
                     <span class="plan-card__check">✓</span>
-                    <span>{{ beneficio }}</span>
+                    <span>{{ b.label }}</span>
                   </li>
                   <li v-if="!includedBenefits(plano).length">
                     <span class="plan-card__check">✓</span>
@@ -236,43 +342,172 @@
 
               <a
                 href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
-                class="plan-card__cta"
-                :class="{ 'plan-card__cta--featured': plano.maisPopular }"
+                class="plan-card__cta btn"
+                :class="plano.maisPopular ? 'btn-lime' : 'btn-surface'"
               >
-                {{ plano.maisPopular ? t('home.landing.plans.ctaFeatured') : t('home.landing.plans.ctaDefault') }}
+                <span class="plan-card__cta-label">{{ plano.maisPopular ? t('home.landing.plans.ctaFeatured') : t('home.landing.plans.ctaDefault') }}</span>
               </a>
             </article>
-          </template>
-          <p v-else class="col-span-full text-center text-sm text-[#4b5565]">{{ t('home.landing.plans.empty') }}</p>
+          </div>
+        </div>
+        <p v-else class="mt-12 w-full text-center text-sm text-[#4b5565]">{{ t('home.landing.plans.empty') }}</p>
+      </div>
+    </section>
+
+    <!-- ── FREEMIUM (3 MESES GRÁTIS) ───────────────────── -->
+    <section class="freemium-section relative overflow-hidden bg-[#060606] px-4 py-24 md:px-12 md:py-32">
+      <div class="freemium-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="freemium-orb freemium-orb--lime pointer-events-none absolute -left-24 top-1/4 h-[420px] w-[420px] rounded-full bg-[#88CE0D]/[0.10] blur-[110px]" aria-hidden="true"></div>
+      <div class="freemium-orb freemium-orb--cyan pointer-events-none absolute -right-32 bottom-0 h-[460px] w-[460px] rounded-full bg-[#00C6FE]/[0.08] blur-[120px]" aria-hidden="true"></div>
+
+      <div class="reveal-item relative mx-auto max-w-[1200px]">
+        <div class="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
+          <!-- LEFT -->
+          <div>
+            <p class="freemium-kicker">{{ t('home.landing.freemium.kicker') }}</p>
+
+
+            <h2 class="freemium-title font-head text-[clamp(24px,6vw,58px)] font-bold leading-[1.02] tracking-[-0.025em] text-white md:text-[clamp(30px,5vw,58px)]">
+              {{ t('home.landing.freemium.titleBefore') }}
+              <span class="freemium-highlight relative inline-block text-[#88CE0D]">
+                {{ t('home.landing.freemium.titleHighlight') }}
+                <span class="freemium-underline" aria-hidden="true"></span>
+              </span>
+              <br/>{{ t('home.landing.freemium.titleAfter') }}
+            </h2>
+
+            <p class="mt-6 max-w-[540px] text-[14px] leading-[1.68] text-white/55 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
+              {{ t('home.landing.freemium.desc') }}
+            </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+                class="btn btn-lime inline-flex items-center gap-2.5 no-underline"
+              >
+                <span class="relative">{{ t('home.landing.freemium.cta') }}</span>
+                <svg class="btn-chevron-end relative h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <p class="text-[12px] leading-[1.6] text-white/40 md:text-[13px]">
+                {{ t('home.landing.freemium.note') }}
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT (bullets) -->
+          <ul class="freemium-bullets grid gap-4 sm:grid-cols-2 list-none p-0">
+            <li
+              v-for="(b, i) in freemiumBullets" :key="b.titleKey"
+              class="freemium-bullet"
+            >
+              <span class="freemium-bullet-shine" aria-hidden="true"></span>
+              <div class="relative">
+                <div class="freemium-bullet-icon">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="b.icon" aria-hidden="true"></svg>
+                </div>
+                <p class="font-head text-[10px] font-bold uppercase tracking-[0.14em] text-[#88CE0D]/65">
+                  {{ String(i + 1).padStart(2, '0') }}
+                </p>
+                <h3 class="mt-1 font-head text-[15px] font-bold leading-tight text-white md:text-[16px]">
+                  {{ t(b.titleKey) }}
+                </h3>
+                <p class="mt-2 text-[13px] leading-[1.6] text-white/50">
+                  {{ t(b.descKey) }}
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- ── INDICADORES ─────────────────────────────────── -->
     <div class="bg-[#1a1a1a]">
-      <div class="reveal-item mx-auto grid max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
-        <div class="px-6 py-16 md:px-12 md:pr-16">
+      <div class="reveal-item mx-auto grid min-w-0 max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
+        <div class="min-w-0 px-6 py-16 md:px-12 md:pr-16">
           <p class="section-tag">{{ t('home.landing.metrics.tag') }}</p>
-          <h2 class="font-head text-[clamp(32px,4vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5">
+          <h2 class="font-head text-[clamp(22px,5.5vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 md:text-[clamp(28px,4vw,54px)]">
             {{ t('home.landing.metrics.titleLine1') }}<br><span class="text-[#00C6FE]">{{ t('home.landing.metrics.titleHighlight') }}</span>
           </h2>
-          <p class="text-base leading-[1.75] text-white/60 max-w-[480px] mb-8">
+          <p class="text-[15px] leading-[1.7] text-white/60 max-w-[480px] mb-8 md:text-base md:leading-[1.75]">
             {{ t('home.landing.metrics.desc') }}
           </p>
           <router-link to="/marcadores" class="btn-ghost w-fit">{{ t('home.landing.metrics.viewPanel') }}</router-link>
         </div>
-        <div ref="metricsRef" class="flex justify-center px-6 py-12 md:px-12">
-          <div class="grid w-full max-w-[340px] grid-cols-2 gap-4">
-            <div v-for="m in metricsRows" :key="m.key"
-              class="rounded-xl border p-5 text-center"
-              :class="m.accent === 'lime' ? 'border-[#88CE0D]/20 bg-[#88CE0D]/[0.06]' : 'border-[#00C6FE]/20 bg-[#00C6FE]/[0.06]'"
-            >
-              <div :ref="el => { if (el) counterRefs[m.key] = el }"
-                class="font-head text-[32px] font-bold leading-none mb-1"
-                :class="m.accent === 'lime' ? 'text-[#88CE0D]' : 'text-[#00C6FE]'"
-              >{{ m.display }}</div>
-              <div class="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/45">{{ m.unit }}</div>
-              <div class="mt-[6px] text-xs text-white/50">{{ m.label }}</div>
+        <div ref="metricsRef" class="relative flex min-w-0 w-full max-w-full justify-center overflow-x-clip px-4 py-16 sm:px-6 md:px-12">
+          <!-- decor floating dots -->
+          <span class="metrics-decor metrics-decor--1 pointer-events-none absolute h-2 w-2 rounded-full bg-[#88CE0D]" aria-hidden="true"></span>
+          <span class="metrics-decor metrics-decor--2 pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-[#00C6FE]" aria-hidden="true"></span>
+          <span class="metrics-decor metrics-decor--3 pointer-events-none absolute h-1 w-1 rounded-full bg-white/40" aria-hidden="true"></span>
+
+          <!-- Phone mockup: largura fluida até 280px para não estourar em viewports estreitas -->
+          <div class="phone-mockup group">
+            <div class="phone-glow" aria-hidden="true"></div>
+            <div class="phone-frame">
+              <span class="phone-island" aria-hidden="true"></span>
+              <div class="phone-screen">
+                <!-- Status -->
+                <div class="phone-status">
+                  <span class="font-head text-[10px] font-bold tracking-wider text-white">9:41</span>
+                  <div class="flex items-center gap-1 text-white/70">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="currentColor"><rect x="0" y="6" width="2" height="2" rx="0.5"/><rect x="3" y="4" width="2" height="4" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg>
+                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5"/><rect x="2" y="2" width="8" height="4" rx="0.5" fill="currentColor"/><rect x="12" y="2.5" width="1" height="3" fill="currentColor"/></svg>
+                  </div>
+                </div>
+
+                <!-- App header -->
+                <div class="phone-app-header">
+                  <div class="min-w-0 flex-1 pr-2">
+                    <img
+                      src="/Logo-Grande.png"
+                      :alt="t('home.landing.metrics.brandLogoAlt')"
+                      width="160"
+                      height="24"
+                      class="phone-brand-logo md:hidden"
+                    />
+                    <p class="font-head text-[9px] font-bold uppercase tracking-[0.16em] text-[#88CE0D] hidden md:block">FitCertify365</p>
+                    <p class="mt-0.5 min-w-0 font-head text-[clamp(11px,3.4vw,15px)] font-bold leading-tight text-white">Olá, atleta 👋</p>
+                  </div>
+                  <div class="phone-avatar shrink-0"></div>
+                </div>
+
+                <!-- Hero metric: heart rate -->
+                <div class="phone-hero-metric">
+                  <div class="phone-hero-pulse" aria-hidden="true"></div>
+                  <div class="phone-hero-pulse phone-hero-pulse--delay" aria-hidden="true"></div>
+                  <p class="font-head text-[9px] font-bold uppercase tracking-[0.14em] text-white/50">{{ metricsRows[0].label }}</p>
+                  <div class="mt-1 flex min-w-0 flex-wrap items-baseline gap-1">
+                    <span :ref="el => { if (el) counterRefs[metricsRows[0].key] = el }" class="font-head text-[clamp(26px,9vw,44px)] font-bold leading-none tabular-nums text-[#00C6FE]">{{ metricsRows[0].display }}</span>
+                    <span class="font-head text-[clamp(10px,2.8vw,12px)] font-bold text-white/55">{{ metricsRows[0].unit }}</span>
+                  </div>
+                  <!-- mini chart -->
+                  <div class="phone-chart">
+                    <span v-for="(h, i) in chartBars" :key="i" :style="{ height: h + '%', animationDelay: (i * 0.08) + 's' }" class="phone-chart-bar"></span>
+                  </div>
+                </div>
+
+                <!-- 2x mini metrics -->
+                <div class="phone-metrics-grid">
+                  <div v-for="m in metricsRows.slice(1)" :key="m.key"
+                    class="phone-metric-tile"
+                    :class="m.accent === 'lime' ? 'phone-metric-tile--lime' : 'phone-metric-tile--cyan'"
+                  >
+                    <p class="phone-metric-label">{{ m.label }}</p>
+                    <div class="mt-1.5 flex min-w-0 items-baseline gap-0.5">
+                      <span :ref="el => { if (el) counterRefs[m.key] = el }"
+                        class="font-head text-[clamp(14px,4.2vw,20px)] font-bold leading-none tabular-nums"
+                        :class="m.accent === 'lime' ? 'text-[#88CE0D]' : 'text-[#00C6FE]'"
+                      >{{ m.display }}</span>
+                      <span class="shrink-0 font-head text-[clamp(8px,2.2vw,9px)] font-bold text-white/45">{{ m.unit }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- bottom nav -->
+                <div class="phone-nav">
+                  <span v-for="(d, i) in 4" :key="i" class="phone-nav-dot" :class="i === 1 ? 'phone-nav-dot--active' : ''"></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -285,7 +520,7 @@
         <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p class="section-tag">{{ t('home.landing.content.tag') }}</p>
-            <h2 class="font-head text-[clamp(28px,3vw,42px)] font-bold leading-[1.1] tracking-[-0.02em]">
+            <h2 class="font-head text-[clamp(20px,4.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] md:text-[clamp(26px,3vw,42px)]">
               {{ t('home.landing.content.titleLine1') }}<br>{{ t('home.landing.content.titleLine2') }}
             </h2>
           </div>
@@ -309,7 +544,7 @@
             v-else
             v-for="post in artigosPreview" :key="post.id"
             :to="{ name: 'ArtigoDetalhe', params: { id: post.id } }"
-            class="block cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] no-underline transition-all duration-200 hover:-translate-y-1 hover:border-[#00C6FE]/30"
+            class="home-article-card block cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#00C6FE]/30 hover:shadow-[0_18px_40px_-20px_rgba(0,198,254,0.45)]"
           >
             <article class="h-full">
               <div class="relative h-[180px] overflow-hidden bg-white/5">
@@ -332,36 +567,14 @@
       </div>
     </div>
 
-    <!-- ── CTA BANNER ─────────────────────────────────── -->
-    <div class="px-4 py-20 md:px-12" style="background: linear-gradient(135deg,#00C6FE 0%,#007DB8 100%)">
-      <div class="reveal-item mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-8">
-        <div>
-          <h2 class="font-head text-[clamp(28px,3vw,42px)] font-bold leading-[1.2] tracking-[-0.02em] text-[#060606]">
-            {{ t('home.landing.cta.titleBefore') }} <span class="text-[#88CE0D]">{{ t('home.landing.cta.titleHighlight') }}</span>
-          </h2>
-          <p class="mt-2 text-base text-[#060606]/70">{{ t('home.landing.cta.subtitle') }}</p>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="https://admin.fitcert365.com/login" target="_blank" rel="noopener noreferrer"
-            class="btn btn-dark"
-          >{{ t('home.landing.cta.login') }}</a>
-          <a
-            href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
-            class="btn btn-white"
-          >{{ t('home.landing.cta.register') }}</a>
-        </div>
-      </div>
-    </div>
-
     <!-- ── APOIO INSTITUCIONAL ────────────────────────── -->
     <div class="bg-[#0e0e0e] px-4 py-24 text-center md:px-12">
       <div class="reveal-item mx-auto max-w-[1100px]">
         <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.support.tag') }}</p>
-        <h2 class="font-head text-[clamp(28px,3.5vw,44px)] font-bold leading-[1.2] tracking-[-0.02em] mb-4">
+        <h2 class="font-head text-[clamp(20px,4.8vw,44px)] font-bold leading-[1.2] tracking-[-0.02em] mb-4 md:text-[clamp(26px,3.5vw,44px)]">
           {{ t('home.landing.support.titleLine1') }}<br>{{ t('home.landing.support.titleLine2') }}
         </h2>
-        <p class="mb-10 text-base text-white/55">{{ t('home.landing.support.subtitle') }}</p>
+        <p class="mb-10 text-[15px] leading-relaxed text-white/55 md:text-base">{{ t('home.landing.support.subtitle') }}</p>
         <router-link to="/contato" class="btn-ghost mx-auto mb-12 inline-flex">{{ t('home.landing.support.cta') }}</router-link>
         <div class="flex flex-wrap justify-center gap-8 md:gap-10">
           <template v-if="isLoadingAfiliados">
@@ -455,12 +668,70 @@
       </div>
     </div>
 
+    <!-- ── FINAL CTA ────────────────────────────────────── -->
+    <section
+      class="final-cta relative overflow-hidden bg-[#060606] px-4 py-28 md:px-12 md:py-36"
+      role="region"
+      aria-labelledby="final-cta-heading"
+    >
+      <div class="final-cta-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="final-cta-orb final-cta-orb--lime pointer-events-none absolute" aria-hidden="true"></div>
+      <div class="final-cta-orb final-cta-orb--cyan pointer-events-none absolute" aria-hidden="true"></div>
+      <div class="final-cta-line final-cta-line--top pointer-events-none absolute inset-x-0 top-0" aria-hidden="true"></div>
+      <div class="final-cta-line final-cta-line--bottom pointer-events-none absolute inset-x-0 bottom-0" aria-hidden="true"></div>
+
+      <div class="reveal-item relative mx-auto max-w-[820px] text-center">
+
+
+        <h2
+          id="final-cta-heading"
+          class="final-cta-title mt-9 font-head text-[clamp(24px,6.5vw,68px)] font-bold leading-[0.98] tracking-[-0.025em] text-white md:text-[clamp(32px,5.5vw,68px)]"
+        >
+          {{ t('home.landing.cta.titleBefore') }}<br/>
+          <span class="final-cta-highlight relative inline-block">
+            {{ t('home.landing.cta.titleHighlight') }}
+            <span class="final-cta-underline" aria-hidden="true"></span>
+          </span>
+        </h2>
+
+        <p class="mx-auto mt-7 max-w-[560px] text-[14px] leading-[1.68] text-white/55 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
+          {{ t('home.landing.cta.subtitle') }}
+        </p>
+
+        <div class="final-cta-actions mx-auto mt-10 flex w-full max-w-[420px] flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
+          <a
+            href="https://admin.fitcert365.com/register" target="_blank" rel="noopener noreferrer"
+            class="final-cta-primary btn btn-lime inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 no-underline sm:w-auto"
+          >
+            <span class="relative">{{ t('home.landing.cta.register') }}</span>
+            <svg class="btn-chevron-end relative h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a
+            href="https://admin.fitcert365.com/login" target="_blank" rel="noopener noreferrer"
+            class="final-cta-secondary btn btn-outline-inverted inline-flex min-h-[52px] w-full items-center justify-center gap-2 no-underline sm:w-auto"
+          >
+            <svg class="final-cta-secondary-icon h-4 w-4 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+            {{ t('home.landing.cta.login') }}
+          </a>
+        </div>
+
+        <p class="mt-7 font-head text-[11px] font-bold uppercase tracking-[0.16em] text-white/35">
+          {{ t('home.landing.cta.note') }}
+        </p>
+      </div>
+    </section>
+
     <ModalParabens />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import Carousel from 'primevue/carousel'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventoService from '../services/Eventos/eventos-services'
@@ -506,6 +777,66 @@ function categoriaTag(item) {
 const MARQUEE_KEYS = ['m1', 'm2', 'm3', 'm4', 'm5', 'm6']
 const marqueeItems = computed(() => MARQUEE_KEYS.map((k) => t(`home.landing.marquee.${k}`)))
 
+const marqueeTrackRef = ref(null)
+const marqueeSegmentRef = ref(null)
+let marqueeGsapTween = null
+let marqueeResizeObserver = null
+let marqueeDebounceTimer = 0
+
+function debouncedSetupMarqueeGsap() {
+  if (marqueeDebounceTimer) window.clearTimeout(marqueeDebounceTimer)
+  marqueeDebounceTimer = window.setTimeout(() => {
+    marqueeDebounceTimer = 0
+    setupMarqueeGsap()
+  }, 100)
+}
+
+/** Marquee infinito: anima o track em x = −largura do 1.º segmento (cópia idêntica em seguida). */
+function setupMarqueeGsap() {
+  if (typeof window === 'undefined') return
+  marqueeGsapTween?.kill()
+  marqueeGsapTween = null
+  const track = marqueeTrackRef.value
+  const segment = marqueeSegmentRef.value
+  if (!track || !segment) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.set(track, { clearProps: 'transform' })
+    return
+  }
+  gsap.set(track, { x: 0, force3D: true })
+  const w = segment.getBoundingClientRect().width
+  if (!Number.isFinite(w) || w < 4) return
+  const pxPerSecond = 42
+  const duration = Math.max(12, Math.min(48, w / pxPerSecond))
+  marqueeGsapTween = gsap.to(track, {
+    x: -w,
+    duration,
+    ease: 'none',
+    repeat: -1,
+  })
+}
+
+function initMarqueeLayoutWatchers() {
+  if (typeof window === 'undefined') return
+  marqueeResizeObserver?.disconnect()
+  marqueeResizeObserver = null
+  const seg = marqueeSegmentRef.value
+  if (!seg || typeof ResizeObserver === 'undefined') return
+  marqueeResizeObserver = new ResizeObserver(() => debouncedSetupMarqueeGsap())
+  marqueeResizeObserver.observe(seg)
+}
+
+function runMarqueeAfterLayout() {
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setupMarqueeGsap()
+        initMarqueeLayoutWatchers()
+      })
+    })
+  })
+}
+
 const FEATURE_ICONS = [
   '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
   '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
@@ -522,6 +853,53 @@ const featureItems = computed(() =>
     icon: FEATURE_ICONS[i],
   }))
 )
+
+/** Carrosséis em mobile + tablet (abaixo de lg / 1024px); grid só em lg+. */
+const HOME_LAYOUT_MOBILE_MQ = '(max-width: 1023px)'
+const isMobileHomeLayout = ref(
+  typeof window !== 'undefined' && window.matchMedia(HOME_LAYOUT_MOBILE_MQ).matches
+)
+/** Autoplay 3s nos carrosséis compactos; 0 se prefers-reduced-motion. */
+const homeCarouselAutoplayMs = ref(3000)
+/** Sincroniza indicadores PrimeVue (página ativa) com autoplay e toque. */
+const featuresCarouselPage = ref(0)
+const plansCarouselPage = ref(0)
+
+let homeLayoutMediaQuery = null
+function syncHomeLayoutFromMq() {
+  if (!homeLayoutMediaQuery) return
+  isMobileHomeLayout.value = homeLayoutMediaQuery.matches
+}
+
+watch(isMobileHomeLayout, () => {
+  featuresCarouselPage.value = 0
+  plansCarouselPage.value = 0
+  nextTick(() => ScrollTrigger.refresh())
+})
+
+// ── Freemium bullets ─────────────────────────────────────
+const freemiumBullets = [
+  {
+    titleKey: 'home.landing.freemium.bullet1Title',
+    descKey: 'home.landing.freemium.bullet1Desc',
+    icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>',
+  },
+  {
+    titleKey: 'home.landing.freemium.bullet2Title',
+    descKey: 'home.landing.freemium.bullet2Desc',
+    icon: '<path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  },
+  {
+    titleKey: 'home.landing.freemium.bullet3Title',
+    descKey: 'home.landing.freemium.bullet3Desc',
+    icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+  },
+  {
+    titleKey: 'home.landing.freemium.bullet4Title',
+    descKey: 'home.landing.freemium.bullet4Desc',
+    icon: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+  },
+]
 
 // ── Saude checks ─────────────────────────────────────────
 const saudeChecks = computed(() => [
@@ -618,12 +996,52 @@ function planHintLabel(plano) {
   return t('home.landing.plans.noCommitment')
 }
 
+function translatePlanoApiField(plano, field) {
+  const id = plano?.id
+  if (!id) return field === 'nome' ? plano?.nome : plano?.descricao
+  const key = `home.landing.plans.api.planos.${id}.${field}`
+  const out = t(key)
+  return out === key ? (field === 'nome' ? plano?.nome : plano?.descricao) : out
+}
+
+function planTranslatedName(plano) {
+  return translatePlanoApiField(plano, 'nome')?.trim() || t('home.landing.plans.fallbackName')
+}
+
+function planTranslatedDescription(plano) {
+  return translatePlanoApiField(plano, 'descricao')?.trim() || t('home.landing.plans.fallbackDescription')
+}
+
+function translateBeneficioDescricao(row) {
+  const bid = row?.beneficio?.id
+  const fallback = String(row?.beneficio?.descricao ?? '').trim()
+  if (!bid) return fallback
+  const key = `home.landing.plans.api.beneficios.${bid}`
+  const out = t(key)
+  return out === key ? fallback : out
+}
+
+/** Lista de benefícios incluídos com texto traduzido e chave estável para o v-for. */
 function includedBenefits(plano) {
   return (plano?.planoBeneficio || [])
     .filter((item) => item?.incluso)
-    .map((item) => item?.beneficio?.descricao)
-    .filter(Boolean)
+    .map((item) => ({
+      key: item.beneficio?.id || item.beneficioId || item.id,
+      label: translateBeneficioDescricao(item),
+    }))
+    .filter((x) => x.label)
 }
+
+/** Plano Freemium: já tem secção dedicada na home — não listar nos cards. */
+function isFreemiumPlano(plano) {
+  if (!plano) return false
+  if (plano.gratuito === true || plano.isFreemium === true) return true
+  const s = (v) => String(v ?? '').toLowerCase()
+  const blob = [s(plano.nome), s(plano.en_nome), s(plano.slug), s(plano.codigo), s(plano.tipo), s(plano.descricao)].join(' ')
+  return blob.includes('freemium')
+}
+
+const planosHomeDisplay = computed(() => planosPreview.value.filter((p) => !isFreemiumPlano(p)))
 
 async function loadPlanosPreview() {
   try {
@@ -643,6 +1061,43 @@ async function loadPlanosPreview() {
   }
 }
 
+/** Entrada dos cards de plano após a API (o DOM não existe no primeiro paint do mount). */
+const planosEntranceAnimated = ref(false)
+watch(
+  planosHomeDisplay,
+  async (list) => {
+    if (!list?.length || planosEntranceAnimated.value) return
+    planosEntranceAnimated.value = true
+    await nextTick()
+    ScrollTrigger.refresh()
+    gsap.from('.home-plans-stage .plan-card', {
+      opacity: 0,
+      y: 32,
+      scale: 0.97,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power3.out',
+      clearProps: 'opacity,transform',
+      scrollTrigger: { trigger: '.home-plans-stage', start: 'top 88%', once: true },
+    })
+    const reduceMotionPlans = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!reduceMotionPlans && document.querySelector('.plan-card--featured')) {
+      ScrollTrigger.create({
+        trigger: '.plan-card--featured',
+        start: 'top 85%',
+        once: true,
+        onEnter() {
+          gsap.to('.plan-card--featured', {
+            y: -8, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.9,
+          })
+        },
+      })
+    }
+    requestAnimationFrame(() => ScrollTrigger.refresh())
+  },
+  { flush: 'post' }
+)
+
 // ── Indicadores / métricas ───────────────────────────────
 const metricsRef = ref(null)
 const counterRefs = ref({})
@@ -653,6 +1108,8 @@ const METRIC_DEFS = [
   { key: 'today', target: 5.4, decimals: 1, accent: 'lime', display: '0' },
   { key: 'spo2', target: 98, decimals: 0, accent: 'cyan', display: '0' },
 ]
+
+const chartBars = [40, 65, 50, 78, 62, 88, 72, 95, 80, 68, 90, 75]
 
 const metricsRows = computed(() =>
   METRIC_DEFS.map((m) => ({
@@ -692,23 +1149,105 @@ async function loadArtigosPreview() {
 
 // ── GSAP Animations ──────────────────────────────────────
 onMounted(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    homeCarouselAutoplayMs.value = 0
+  }
+
+  homeLayoutMediaQuery = window.matchMedia(HOME_LAYOUT_MOBILE_MQ)
+  syncHomeLayoutFromMq()
+  homeLayoutMediaQuery.addEventListener('change', syncHomeLayoutFromMq)
+
   loadEventosPreview()
   loadArtigosPreview()
   loadingAfiliadosPreview()
   loadPlanosPreview()
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   // Hero timeline
-  gsap.from('.hero-item', {
-    opacity: 0, y: 26, duration: 0.8, stagger: 0.14, ease: 'power3.out',
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+  heroTl.from('.hero-item', {
+    opacity: 0, y: 30, duration: 0.85, stagger: 0.14,
   })
+
+  // Hero parallax (background image)
+  if (!reduceMotion) {
+    gsap.to('.hero-bg', {
+      yPercent: 14,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-bg',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  }
 
   // Scroll reveal
   gsap.utils.toArray('.reveal-item').forEach(el => {
     gsap.from(el, {
-      opacity: 0, y: 28, duration: 0.7, ease: 'power2.out',
+      opacity: 0, y: 32, duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 88%', once: true },
     })
   })
+
+  // Stagger inside feature bar (grid desktop ou slides mobile)
+  gsap.from('.home-features-stage .feature-bar-card', {
+    opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+    clearProps: 'opacity,transform',
+    scrollTrigger: { trigger: '.home-features-stage', start: 'top 90%', once: true },
+  })
+
+  // Article cards stagger
+  gsap.from('.home-article-card', {
+    opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+    scrollTrigger: { trigger: '.home-article-card', start: 'top 92%', once: true },
+  })
+
+  // Article image zoom on hover
+  document.querySelectorAll('.home-article-card img').forEach((img) => {
+    img.style.transition = 'transform 0.6s ease'
+    const card = img.closest('.home-article-card')
+    if (!card) return
+    card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)' })
+    card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)' })
+  })
+
+  // Freemium bullets stagger
+  gsap.from('.freemium-bullet', {
+    opacity: 0, y: 24, duration: 0.65, stagger: 0.1, ease: 'power3.out',
+    clearProps: 'opacity,transform',
+    scrollTrigger: { trigger: '.freemium-bullets', start: 'top 92%', once: true },
+  })
+
+  // Floating orbs (freemium decor)
+  if (!reduceMotion) {
+    gsap.to('.freemium-orb--lime', {
+      x: 40, y: -30, duration: 9, ease: 'sine.inOut', yoyo: true, repeat: -1,
+    })
+    gsap.to('.freemium-orb--cyan', {
+      x: -50, y: 25, duration: 11, ease: 'sine.inOut', yoyo: true, repeat: -1,
+    })
+
+    // Phone mockup floating + tilt loop
+    gsap.to('.phone-mockup', {
+      y: -14, duration: 3.4, ease: 'sine.inOut', yoyo: true, repeat: -1,
+    })
+    gsap.to('.phone-frame', {
+      rotate: 1.4, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1,
+    })
+
+    // Final CTA orbs floating
+    gsap.to('.final-cta-orb--lime', { x: 30, y: -40, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+    gsap.to('.final-cta-orb--cyan', { x: -40, y: 30, duration: 10, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+
+    // Decor floating dots around phone
+    gsap.to('.metrics-decor--1', { y: -22, x: 14, duration: 3.8, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+    gsap.to('.metrics-decor--2', { y: 18, x: -12, duration: 4.6, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+    gsap.to('.metrics-decor--3', { y: -14, x: -16, duration: 5.2, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+
+  }
 
   // Metric counters
   ScrollTrigger.create({
@@ -729,17 +1268,56 @@ onMounted(() => {
       })
     },
   })
+
+  runMarqueeAfterLayout()
+  document.fonts?.ready?.then(() => runMarqueeAfterLayout())
+  window.addEventListener('resize', debouncedSetupMarqueeGsap)
+})
+
+onUnmounted(() => {
+  homeLayoutMediaQuery?.removeEventListener('change', syncHomeLayoutFromMq)
+  window.removeEventListener('resize', debouncedSetupMarqueeGsap)
+  if (marqueeDebounceTimer) window.clearTimeout(marqueeDebounceTimer)
+  marqueeDebounceTimer = 0
+  marqueeResizeObserver?.disconnect()
+  marqueeResizeObserver = null
+  marqueeGsapTween?.kill()
+  marqueeGsapTween = null
+})
+
+watch(marqueeItems, () => {
+  runMarqueeAfterLayout()
 })
 
 watch(currentLocale, () => {
+  featuresCarouselPage.value = 0
+  plansCarouselPage.value = 0
   loadArtigosPreview()
   loadEventosPreview()
   loadPlanosPreview()
+  runMarqueeAfterLayout()
 })
 </script>
 
 <style scoped lang="postcss">
 @reference "../style.css";
+
+/* ── Home: tokens de botão (efeito / animação unificados) ── */
+.home-landing {
+  --home-btn-radius: 8px;
+  --home-btn-duration: 0.22s;
+  --home-btn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --home-btn-lift: translateY(-1px);
+  --home-btn-press: scale(0.98);
+}
+
+/* Marquee: animação em GSAP — evitar encolher segmentos no flex */
+.marquee-track {
+  will-change: transform;
+}
+.marquee-segment {
+  min-width: min-content;
+}
 
 /* Fonts */
 .font-head { font-family: 'Space Grotesk', sans-serif; }
@@ -775,12 +1353,13 @@ watch(currentLocale, () => {
   background: #88ce0d;
 }
 
-/* Buttons */
+/* Buttons — base + variantes (mesma curva, lift, foco, brilho nos preenchidos) */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  min-height: 44px;
+  border-radius: var(--home-btn-radius);
   border: 1px solid transparent;
   padding: 10px 20px;
   font-family: 'Space Grotesk', sans-serif;
@@ -790,35 +1369,52 @@ watch(currentLocale, () => {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-decoration: none;
-  transition: all 0.2s ease;
   cursor: pointer;
+  transition:
+    transform var(--home-btn-duration) var(--home-btn-ease),
+    box-shadow var(--home-btn-duration) var(--home-btn-ease),
+    border-color var(--home-btn-duration) var(--home-btn-ease),
+    background-color var(--home-btn-duration) var(--home-btn-ease),
+    color var(--home-btn-duration) var(--home-btn-ease);
+}
+.btn:focus-visible {
+  outline: 2px solid #00c6fe;
+  outline-offset: 3px;
+}
+.btn:active:not(:disabled) {
+  transform: var(--home-btn-press);
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.22);
   color: #fff;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
   color: #00c6fe;
+  transform: var(--home-btn-lift);
+  box-shadow: 0 10px 28px -14px rgba(0, 198, 254, 0.35);
 }
 .btn-primary {
   background: #00c6fe;
   color: #060606;
 }
 .btn-primary:hover {
-  transform: translateY(-1px);
+  transform: var(--home-btn-lift);
   background: #22d4ff;
+  box-shadow: 0 12px 32px -16px rgba(0, 198, 254, 0.45);
 }
 .btn-lime {
   padding: 14px 28px;
   font-size: 14px;
+  letter-spacing: 0.06em;
   background: #88ce0d;
   color: #060606;
 }
 .btn-lime:hover {
-  transform: translateY(-1px);
+  transform: var(--home-btn-lift);
   background: #9dea0f;
+  box-shadow: 0 18px 40px -12px rgba(136, 206, 13, 0.55);
 }
 .btn-dark {
   padding: 14px 28px;
@@ -826,18 +1422,25 @@ watch(currentLocale, () => {
   background: #88ce0d;
   color: #fff;
 }
-.btn-dark:hover { background: #1a1a1a; }
+.btn-dark:hover {
+  transform: var(--home-btn-lift);
+  background: #1a1a1a;
+}
 .btn-white {
   padding: 14px 28px;
   font-size: 14px;
   background: #fff;
   color: #88ce0d;
 }
-.btn-white:hover { background: #f3f4f6; }
+.btn-white:hover {
+  transform: var(--home-btn-lift);
+  background: #f3f4f6;
+  box-shadow: 0 14px 36px -18px rgba(255, 255, 255, 0.2);
+}
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  border-radius: 8px;
+  border-radius: var(--home-btn-radius);
   border: 1px solid #00c6fe;
   background: transparent;
   padding: 8px 18px;
@@ -848,11 +1451,83 @@ watch(currentLocale, () => {
   letter-spacing: 0.05em;
   color: #00c6fe;
   text-decoration: none;
-  transition: all 0.2s ease;
 }
 .btn-ghost:hover {
   background: #00c6fe;
   color: #060606;
+  transform: var(--home-btn-lift);
+  box-shadow: 0 12px 32px -18px rgba(0, 198, 254, 0.4);
+}
+.btn-ghost:focus-visible {
+  outline-color: #88ce0d;
+}
+
+/* Contorno claro em fundo branco / cards de plano */
+.btn-surface {
+  border-color: #d1d7e4;
+  background: #fff;
+  color: #1f2937;
+}
+.btn-surface:hover {
+  transform: var(--home-btn-lift);
+  border-color: #b8c0d4;
+  background: #f8fafc;
+  box-shadow: 0 12px 30px -20px rgba(17, 24, 39, 0.35);
+}
+.btn-surface:focus-visible {
+  outline-color: #88ce0d;
+}
+
+/* Secundário em fundo escuro (ex.: CTA final) */
+.btn-outline-inverted {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: #fff;
+}
+.btn-outline-inverted:hover {
+  border-color: #00c6fe;
+  color: #00c6fe;
+  background: rgba(0, 198, 254, 0.05);
+  transform: var(--home-btn-lift);
+  box-shadow: 0 12px 32px -20px rgba(0, 198, 254, 0.25);
+}
+.btn-outline-inverted:focus-visible {
+  outline-color: #88ce0d;
+}
+
+/* Mobile: botões da landing menores (exc. CTAs dos cards de plano) */
+@media (max-width: 767px) {
+  .home-landing .btn:not(.plan-card__cta) {
+    font-size: 11px;
+    padding: 9px 16px;
+    min-height: 42px;
+    letter-spacing: 0.05em;
+  }
+  .home-landing .btn-lime:not(.plan-card__cta),
+  .home-landing .btn-dark:not(.plan-card__cta),
+  .home-landing .btn-white:not(.plan-card__cta) {
+    font-size: 11px;
+    padding: 10px 18px;
+    letter-spacing: 0.05em;
+  }
+  .home-landing .btn-ghost:not(.plan-card__cta) {
+    font-size: 11px;
+    padding: 7px 14px;
+  }
+  .home-landing .final-cta-primary.btn,
+  .home-landing .final-cta-secondary.btn {
+    min-height: 46px;
+    font-size: 11px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.btn-chevron-end {
+  transition: transform 0.25s var(--home-btn-ease);
+}
+.btn-lime:hover .btn-chevron-end {
+  transform: translateX(4px);
 }
 
 /* Check dot */
@@ -883,13 +1558,6 @@ watch(currentLocale, () => {
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
 }
 
-/* Marquee */
-.marquee-track { animation: marquee 22s linear infinite; }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 /* Plans */
 .plans-kicker {
   margin-bottom: 14px;
@@ -903,11 +1571,16 @@ watch(currentLocale, () => {
 
 .plans-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(30px, 4vw, 46px);
+  font-size: clamp(22px, 5vw, 46px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: #111827;
+}
+@media (min-width: 768px) {
+  .plans-title {
+    font-size: clamp(28px, 4vw, 46px);
+  }
 }
 
 .plans-title > span {
@@ -917,9 +1590,19 @@ watch(currentLocale, () => {
 .plans-subtitle {
   margin-top: 14px;
   max-width: 700px;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.58;
   color: #4b5565;
+}
+@media (min-width: 640px) {
+  .plans-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+.plan-card-skeleton {
+  width: 100%;
 }
 
 .plan-card {
@@ -927,6 +1610,7 @@ watch(currentLocale, () => {
   display: flex;
   flex-direction: column;
   min-height: 560px;
+  overflow: visible;
   border-radius: 24px;
   border: 1px solid #d6dbe7;
   background: #ffffff;
@@ -948,6 +1632,7 @@ watch(currentLocale, () => {
   left: 50%;
   top: -12px;
   transform: translateX(-50%);
+  z-index: 5;
   border-radius: 999px;
   background: #88ce0d;
   padding: 5px 14px;
@@ -965,10 +1650,15 @@ watch(currentLocale, () => {
 
 .plan-card__name {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 37px;
+  font-size: clamp(26px, 6vw, 37px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
+}
+@media (min-width: 1024px) {
+  .plan-card__name {
+    font-size: 37px;
+  }
 }
 
 .plan-card__desc {
@@ -985,25 +1675,50 @@ watch(currentLocale, () => {
 
 .plan-card__currency {
   margin-bottom: 7px;
-  font-size: 33px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1;
+}
+@media (min-width: 640px) {
+  .plan-card__currency {
+    font-size: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .plan-card__currency {
+    font-size: 33px;
+  }
 }
 
 .plan-card__price {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 62px;
+  font-size: clamp(40px, 11vw, 62px);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: -0.03em;
 }
+@media (min-width: 1024px) {
+  .plan-card__price {
+    font-size: 62px;
+  }
+}
 
 .plan-card__period {
   margin-bottom: 6px;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1;
   opacity: 0.84;
+}
+@media (min-width: 640px) {
+  .plan-card__period {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .plan-card__period {
+    font-size: 22px;
+  }
 }
 
 .plan-card__hint {
@@ -1084,35 +1799,776 @@ watch(currentLocale, () => {
   color: #88ce0d;
 }
 
-.plan-card__cta {
+/* CTA dos cards de plano: texto menor; bloco centrado, linhas quebradas alinhadas à esquerda */
+.plan-card__cta.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 24px 28px 28px;
-  border-radius: 999px;
-  border: 1px solid #d1d7e4;
-  padding: 12px 16px;
+  align-self: stretch;
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
   text-align: center;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #1f2937;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
-.plan-card__cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px -20px rgba(17, 24, 39, 0.46);
-  background: #f8fafc;
+.plan-card__cta-label {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+  font-size: inherit;
+  letter-spacing: inherit;
+  vertical-align: middle;
 }
-
-.plan-card__cta--featured {
+.plan-card__cta.btn-surface {
+  font-size: 10px;
+  letter-spacing: 0.07em;
+}
+.plan-card__cta.btn-lime {
+  font-size: 11px;
+  letter-spacing: 0.05em;
   border-color: rgba(136, 206, 13, 0.34);
-  background: linear-gradient(90deg, #88ce0d 0%, #9de316 100%);
-  color: #102122;
 }
 
-.plan-card__cta--featured:hover {
-  background: linear-gradient(90deg, #95dd10 0%, #abf423 100%);
+/* ── Freemium Section ────────────────────────────── */
+.freemium-kicker {
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #88ce0d;
+}
+.freemium-kicker::before {
+  content: '';
+  width: 22px;
+  height: 1.5px;
+  background: #88ce0d;
+}
+
+.freemium-grid {
+  background-image:
+    linear-gradient(rgba(136, 206, 13, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(136, 206, 13, 0.05) 1px, transparent 1px);
+  background-size: 90px 90px;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 75%);
+}
+
+.freemium-badge {
+  position: relative;
+  padding: 8px 16px 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(136, 206, 13, 0.28);
+  background: rgba(136, 206, 13, 0.08);
+}
+.freemium-badge-pulse {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #88ce0d;
+  box-shadow: 0 0 0 0 rgba(136, 206, 13, 0.55);
+  animation: freemium-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes freemium-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(136, 206, 13, 0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(136, 206, 13, 0); }
+}
+
+.freemium-highlight {
+  white-space: nowrap;
+}
+.freemium-underline {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(136, 206, 13, 0.55), rgba(0, 198, 254, 0.45));
+  border-radius: 4px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: freemium-underline-grow 1.4s cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s forwards;
+  filter: blur(2px);
+  opacity: 0.7;
+}
+@keyframes freemium-underline-grow {
+  to { transform: scaleX(1); }
+}
+
+/* Freemium bullet card (no Tailwind transition-all to avoid GSAP fight) */
+.freemium-bullet {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 24px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.freemium-bullet:hover {
+  transform: translateY(-4px);
+  border-color: rgba(136, 206, 13, 0.32);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 14px 36px -18px rgba(136, 206, 13, 0.35);
+}
+.freemium-bullet-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.freemium-bullet:hover .freemium-bullet-shine {
+  transform: translateX(100%);
+}
+.freemium-bullet-icon {
+  margin-bottom: 16px;
+  display: flex;
+  height: 44px;
+  width: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(136, 206, 13, 0.25);
+  background: rgba(136, 206, 13, 0.1);
+  color: #88ce0d;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.freemium-bullet:hover .freemium-bullet-icon {
+  transform: scale(1.1);
+  border-color: rgba(136, 206, 13, 0.5);
+  background: rgba(136, 206, 13, 0.18);
+}
+
+/* ── Brilho periódico (apenas botões preenchidos lime / white) ── */
+.btn-lime,
+.btn-white {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-lime::before,
+.btn-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 48%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.55) 52%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: cta-shine 3.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+.btn-lime > *,
+.btn-white > * {
+  position: relative;
+  z-index: 2;
+}
+@keyframes cta-shine {
+  0%   { transform: translateX(-120%); }
+  55%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+/* ── Featured plan card glow pulse + animated border ─ */
+.plan-card--featured {
+  position: relative;
+  overflow: visible;
+}
+.plan-card--featured::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(136, 206, 13, 0.55) 0%,
+    rgba(0, 198, 254, 0.35) 50%,
+    rgba(136, 206, 13, 0.55) 100%
+  );
+  background-size: 200% 200%;
+  z-index: -1;
+  animation:
+    plan-glow 3.2s ease-in-out infinite,
+    plan-border-shift 6s linear infinite;
+  filter: blur(2px);
+}
+@keyframes plan-glow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.95; }
+}
+@keyframes plan-border-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Phone Mockup ────────────────────────────────── */
+.phone-mockup {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  perspective: 1200px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.phone-mockup:hover {
+  transform: scale(1.025);
+}
+.phone-mockup:hover .phone-frame {
+  transform: rotateY(-6deg) rotateX(4deg);
+}
+
+.phone-glow {
+  position: absolute;
+  inset: clamp(-18px, -6vw, -40px);
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 198, 254, 0.22), transparent 60%);
+  filter: blur(clamp(16px, 5vw, 30px));
+  z-index: 0;
+  animation: phone-glow-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes phone-glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.06); }
+}
+
+.phone-frame {
+  position: relative;
+  width: 100%;
+  border-radius: clamp(28px, 8vw, 42px);
+  padding: clamp(5px, 1.8vw, 8px);
+  background: linear-gradient(160deg, #1c1d22 0%, #0a0b0e 60%, #1a1b1f 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.phone-island {
+  position: absolute;
+  top: clamp(14px, 4vw, 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(64px, 28%, 88px);
+  height: clamp(18px, 5vw, 22px);
+  background: #060606;
+  border-radius: 999px;
+  z-index: 5;
+}
+
+.phone-screen {
+  position: relative;
+  border-radius: clamp(24px, 7vw, 36px);
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.18), transparent 60%),
+    linear-gradient(180deg, #0e0f14 0%, #0a0b0e 100%);
+  padding: clamp(38px, 11vw, 48px) clamp(10px, 3.2vw, 16px) clamp(12px, 3.5vw, 16px);
+  min-height: clamp(420px, 120vw, 540px);
+  overflow: hidden;
+}
+
+.phone-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 14px;
+}
+
+.phone-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px 18px;
+}
+/* Logo no mockup (viewport < md): escala com a largura do ecrã do telefone */
+.phone-brand-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: clamp(10px, 3.2vw, 14px);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+.phone-avatar {
+  width: clamp(26px, 8vw, 32px);
+  height: clamp(26px, 8vw, 32px);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00C6FE 0%, #88CE0D 100%);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+
+.phone-hero-metric {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 198, 254, 0.2);
+  background: linear-gradient(150deg, rgba(0, 198, 254, 0.12) 0%, rgba(0, 198, 254, 0.02) 100%);
+  padding: 14px 14px 12px;
+  overflow: hidden;
+}
+.phone-hero-pulse {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 198, 254, 0.4);
+  animation: phone-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+.phone-hero-pulse--delay {
+  animation-delay: 1.2s;
+}
+@keyframes phone-ring {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.phone-chart {
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 38px;
+}
+.phone-chart-bar {
+  flex: 1;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #00C6FE 0%, rgba(0, 198, 254, 0.3) 100%);
+  animation: phone-chart-pulse 2.6s ease-in-out infinite;
+  transform-origin: bottom;
+}
+@keyframes phone-chart-pulse {
+  0%, 100% { transform: scaleY(0.85); opacity: 0.7; }
+  50%      { transform: scaleY(1);    opacity: 1;   }
+}
+
+.phone-metrics-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(5px, 1.8vw, 8px);
+}
+.phone-metric-tile {
+  border-radius: 14px;
+  border: 1px solid;
+  padding: clamp(7px, 2.2vw, 10px) clamp(8px, 2.6vw, 12px);
+  min-width: 0;
+}
+.phone-metric-tile--lime {
+  border-color: rgba(136, 206, 13, 0.22);
+  background: rgba(136, 206, 13, 0.06);
+}
+.phone-metric-tile--cyan {
+  border-color: rgba(0, 198, 254, 0.22);
+  background: rgba(0, 198, 254, 0.06);
+}
+.phone-metric-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.phone-nav {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.phone-nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.phone-nav-dot--active {
+  background: #00C6FE;
+  box-shadow: 0 0 10px rgba(0, 198, 254, 0.7);
+  width: 18px;
+}
+
+/* Decor positioning */
+.metrics-decor--1 { top: 14%;  left: 18%; }
+.metrics-decor--2 { top: 28%;  right: 14%; }
+.metrics-decor--3 { bottom: 22%; left: 14%; }
+
+/* ── Carrosséis: indicadores dentro do PrimeVue (clicáveis + slide ativo) ── */
+.home-features-carousel-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.home-features-carousel :deep(.p-carousel-indicator-list),
+.home-plans-carousel :deep(.p-carousel-indicator-list) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  padding-bottom: 6px;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  z-index: 6;
+}
+
+.home-features-carousel :deep(.p-carousel-indicator),
+.home-plans-carousel :deep(.p-carousel-indicator) {
+  display: flex;
+}
+
+.home-features-carousel :deep(.p-carousel-indicator-button),
+.home-plans-carousel :deep(.p-carousel-indicator-button) {
+  display: block;
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  min-height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    width 0.25s ease,
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.home-features-carousel :deep(.p-carousel-indicator-button) {
+  background: rgba(6, 6, 6, 0.3);
+  opacity: 1;
+}
+
+.home-features-carousel :deep(.p-carousel-indicator-active .p-carousel-indicator-button) {
+  width: 28px;
+  background: #060606;
+}
+
+.home-plans-carousel :deep(.p-carousel-prev-button),
+.home-plans-carousel :deep(.p-carousel-next-button) {
+  color: #111827;
+}
+
+.home-plans-carousel :deep(.p-carousel-indicator-button) {
+  background: rgba(17, 24, 39, 0.28);
+}
+
+.home-plans-carousel :deep(.p-carousel-indicator-active .p-carousel-indicator-button) {
+  width: 28px;
+  background: #111827;
+}
+
+/*
+ * Badge “Mais popular” (top: -12px) não entra na altura do fluxo — o viewport do
+ * Carousel corta. Reserva padding no item + na stage; overflow visible só no item.
+ */
+.home-plans-stage {
+  padding-top: 32px;
+}
+
+.home-plans-desktop {
+  padding-top: 20px;
+}
+
+.home-plans-carousel :deep(.p-carousel-item) {
+  overflow: visible;
+  padding-top: 22px;
+  box-sizing: border-box;
+}
+
+.home-plans-carousel :deep(.p-carousel-item-list) {
+  overflow: visible;
+}
+
+/* Viewport: só liberta o eixo vertical para o badge; horizontal continua contido no carrossel */
+.home-plans-carousel {
+  max-width: 100%;
+}
+.home-plans-carousel :deep(.p-carousel-viewport) {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.features-bar-spotlight {
+  background: radial-gradient(ellipse 130% 90% at 50% -35%, rgba(255, 255, 255, 0.55), transparent 60%);
+}
+.features-bar-deco {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(80px);
+}
+.features-bar-deco--1 {
+  top: -120px; left: -80px; width: 320px; height: 320px;
+}
+.features-bar-deco--2 {
+  bottom: -140px; right: -80px; width: 360px; height: 360px;
+  background: rgba(136, 206, 13, 0.22);
+}
+
+.feature-bar-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px 24px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow:
+    0 16px 48px -18px rgba(6, 6, 6, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+.feature-bar-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffffff;
+  box-shadow:
+    0 26px 64px -22px rgba(6, 6, 6, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.feature-bar-card__accent {
+  position: absolute;
+  top: 0; left: 24px; right: 24px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, #00C6FE, #88CE0D);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.feature-bar-card:hover .feature-bar-card__accent {
+  transform: scaleX(1);
+}
+
+.feature-bar-card__number {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(0, 198, 254, 0.4);
+  transition: color 0.3s ease;
+}
+.feature-bar-card:hover .feature-bar-card__number {
+  color: rgba(136, 206, 13, 0.7);
+}
+
+.feature-bar-card__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(140deg, rgba(0, 198, 254, 0.12), rgba(0, 198, 254, 0.04));
+  border: 1px solid rgba(0, 198, 254, 0.2);
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.3s ease;
+}
+.feature-bar-card:hover .feature-bar-card__icon-wrap {
+  transform: scale(1.06) rotate(-3deg);
+  background: linear-gradient(140deg, rgba(136, 206, 13, 0.18), rgba(136, 206, 13, 0.05));
+  border-color: rgba(136, 206, 13, 0.32);
+}
+.feature-bar-card__icon {
+  width: 28px;
+  height: 28px;
+  stroke: #00c6fe;
+  transition: stroke 0.3s ease;
+}
+.feature-bar-card:hover .feature-bar-card__icon {
+  stroke: #88ce0d;
+}
+
+.feature-bar-card__kicker {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0, 198, 254, 0.85);
+  transition: color 0.3s ease;
+}
+.feature-bar-card:hover .feature-bar-card__kicker {
+  color: #88ce0d;
+}
+.feature-bar-card__title {
+  margin-top: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #00c6fe;
+  transition: color 0.3s ease;
+}
+@media (min-width: 768px) {
+  .feature-bar-card__title {
+    font-size: 18px;
+  }
+}
+.feature-bar-card:hover .feature-bar-card__title {
+  color: #060606;
+}
+.feature-bar-card__desc {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.62;
+  color: rgba(6, 6, 6, 0.68);
+}
+
+/* ── Final CTA ─────────────────────────────────────── */
+.final-cta-grid {
+  background-image:
+    linear-gradient(rgba(136, 206, 13, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.04) 1px, transparent 1px);
+  background-size: 100px 100px;
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, #000 25%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, #000 25%, transparent 80%);
+}
+.final-cta-orb {
+  border-radius: 999px;
+  filter: blur(110px);
+}
+.final-cta-orb--lime {
+  width: 480px; height: 480px;
+  top: 10%; left: -120px;
+  background: rgba(136, 206, 13, 0.14);
+}
+.final-cta-orb--cyan {
+  width: 520px; height: 520px;
+  bottom: 5%; right: -140px;
+  background: rgba(0, 198, 254, 0.10);
+}
+.final-cta-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(136, 206, 13, 0.35), rgba(0, 198, 254, 0.35), transparent);
+}
+.final-cta-line--top {
+  top: 0;
+}
+.final-cta-line--bottom {
+  bottom: 0;
+  opacity: 0.65;
+}
+
+.final-cta-badge {
+  padding: 9px 18px 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(136, 206, 13, 0.32);
+  background: rgba(136, 206, 13, 0.08);
+  box-shadow: 0 0 32px -8px rgba(136, 206, 13, 0.4);
+}
+
+.final-cta-highlight {
+  background: linear-gradient(110deg, #88CE0D 20%, #00C6FE 70%, #88CE0D 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: final-cta-text-shift 6s linear infinite;
+}
+@keyframes final-cta-text-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.final-cta-underline {
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(136, 206, 13, 0.4), rgba(0, 198, 254, 0.4));
+  border-radius: 6px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: freemium-underline-grow 1.4s cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s forwards;
+  filter: blur(3px);
+  opacity: 0.6;
+}
+
+.final-cta-secondary-icon {
+  transition: transform 0.25s var(--home-btn-ease), opacity 0.25s ease;
+}
+.final-cta-secondary:hover .final-cta-secondary-icon {
+  transform: translateX(-3px);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .freemium-badge-pulse,
+  .freemium-underline,
+  .btn-lime::before,
+  .btn-white::before,
+  .plan-card--featured::after,
+  .phone-glow,
+  .phone-hero-pulse,
+  .phone-chart-bar {
+    animation: none;
+  }
+  .final-cta-highlight {
+    animation: none;
+    background: linear-gradient(110deg, #88ce0d 0%, #00c6fe 100%);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .final-cta-underline {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .home-landing .btn:hover {
+    transform: none;
+  }
+  .home-landing .btn:active {
+    transform: none;
+  }
+  .btn-lime:hover .btn-chevron-end,
+  .final-cta-secondary:hover .final-cta-secondary-icon {
+    transform: none;
+  }
 }
 </style>

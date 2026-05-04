@@ -117,12 +117,26 @@ export default {
         m6: 'Live metrics',
       },
       features: {
-        f1: { kicker: 'Time', title: 'Agility', desc: 'Your certificate result in minutes, wherever you are.' },
-        f2: { kicker: 'Data', title: 'Security', desc: 'Medical information protected and validated by professionals.' },
+        swipeHint: 'Swipe to explore the pillars',
+        carouselLabel: 'Platform highlights',
+        dotsLabel: 'Carousel navigation',
+        f1: {
+          kicker: 'Time',
+          title: 'Agility',
+          desc:
+            'Issue and validate your certificate faster: a guided flow, less paperwork, and predictable turnaround so training and race prep never stall.',
+        },
+        f2: {
+          kicker: 'Data',
+          title: 'Security',
+          desc:
+            'Sensitive health data with layered protection, auditability, and medical validation — clarity for athletes and trust for organizers and partners.',
+        },
         f3: {
           kicker: 'Integration',
           title: 'Technology',
-          desc: 'Digital platform connected to wearables and health apps.',
+          desc:
+            'Bring exams, wearables, and health apps into one panel: a single view of what matters for performance, recovery, and event compliance.',
         },
       },
       health: {
@@ -148,6 +162,7 @@ export default {
       },
       metrics: {
         tag: 'Personal dashboard',
+        brandLogoAlt: 'FitCertify365 — logo',
         titleLine1: 'Track your metrics in',
         titleHighlight: 'real time.',
         desc:
@@ -158,6 +173,24 @@ export default {
         today: { label: 'Today', unit: 'km' },
         spo2: { label: 'SpO₂', unit: '%' },
       },
+      freemium: {
+        kicker: 'Freemium plan',
+        badge: '3 months free',
+        titleBefore: 'Try everything,',
+        titleHighlight: 'pay nothing',
+        titleAfter: 'for 3 months.',
+        desc: 'Start with the Freemium plan and get full access to FitCertify365 — certificates, biomarker dashboard, partner events and support. No card. No catch. You only pay if you decide to keep going.',
+        bullet1Title: 'No credit card',
+        bullet1Desc: 'Create your account and start in seconds.',
+        bullet2Title: 'Core features',
+        bullet2Desc: 'Everything you need to issue your certificate and explore the panel.',
+        bullet3Title: 'Cancel anytime',
+        bullet3Desc: 'No lock-in, no fees, no paperwork.',
+        bullet4Title: 'Human support',
+        bullet4Desc: 'A dedicated team to help you unlock everything.',
+        cta: 'Start 3 months free',
+        note: 'No credit card • Cancel anytime',
+      },
       plans: {
         kicker: 'Plans for athletes',
         titleLine1: 'Choose the ideal plan for',
@@ -167,8 +200,8 @@ export default {
         guarantee: '30-day guarantee',
         includes: 'Included benefits',
         emptyBenefits: 'Benefits are being updated.',
-        ctaDefault: 'Keep my certificate always with me',
-        ctaFeatured: 'Race day with total confidence',
+        ctaDefault: 'Get my certificate',
+        ctaFeatured: 'Get my certificate',
         perYear: '/year',
         perMonth: '/month',
         month: 'month',
@@ -177,6 +210,37 @@ export default {
         empty: 'No plans available at the moment.',
         fallbackName: 'FitCertify Plan',
         fallbackDescription: 'Coverage to keep your certification up to date.',
+        /** `/plano` API copy by stable ids (names, descriptions, benefits). */
+        api: {
+          planos: {
+            cmeufl7oo0000uwo8epjljy9u: {
+              nome: 'Certified Health',
+              descricao: 'Essential certification coverage for your sports health.',
+            },
+            cmeuflkwb0001uwo8o0pdglrh: {
+              nome: 'Active Health',
+              descricao: 'Full monitoring and integrations for active athletes.',
+            },
+            cmeufwouekkkwi8832smgh9: {
+              nome: 'Freemium plan',
+              descricao: 'Starter plan for new users.',
+            },
+          },
+          beneficios: {
+            cmeufvygo0000uwfgpzvsn70s: 'Connection with partner events',
+            cmeufw7va0001uwfg926j99zr: 'Automatic issuance of the official template',
+            cmeufwggn0002uwfg7p2q10hj:
+              'Unlimited use across different events for the whole validity period',
+            cmeufwp5p0003uwfg713pwzc6: 'Digital signature + QR code',
+            cmeufwy600004uwfguq8r96y1: 'Marketplace discounts',
+            cmeufx6bw0005uwfgwi340qv9: 'Full health dashboard access',
+            cmeufxcmp0006uwfg1flvraso: 'Health dashboard access',
+            cmeufxisj0007uwfg6les2ix0: 'Continuous monitoring',
+            cmeufxpcw0008uwfgxgg5vhxe: 'Smart alerts and history',
+            cmeufxvf40009uwfgs0h8mls6: 'Wearable integrations',
+            cmeufy0nk000auwfgb8fgocy7: 'Integration with apps and devices',
+          },
+        },
       },
       content: {
         tag: 'Content and articles',
@@ -185,11 +249,13 @@ export default {
         viewAll: 'View all →',
       },
       cta: {
-        titleBefore: 'Ready to run with',
-        titleHighlight: 'confidence?',
-        subtitle: 'Get your digital medical certificate in under 24 hours.',
-        login: 'Log in',
+        badge: '3 months free',
+        titleBefore: 'Your next start line',
+        titleHighlight: 'begins here.',
+        subtitle: 'Create your account, unlock your dashboard and have your sports health validated in minutes. No credit card, no strings attached.',
+        login: 'I already have an account',
         register: 'Create free account',
+        note: 'Activate in seconds • Cancel anytime',
       },
       support: {
         tag: 'Institutional support',

@@ -117,12 +117,26 @@ export default {
         m6: 'Indicadores em tempo real',
       },
       features: {
-        f1: { kicker: 'Tempo', title: 'Agilidade', desc: 'Resultado do seu atestado em minutos, onde estiver.' },
-        f2: { kicker: 'Dados', title: 'Segurança', desc: 'Informações médicas protegidas e validadas por profissionais.' },
+        swipeHint: 'Deslize para ver os pilares',
+        carouselLabel: 'Destaques da plataforma',
+        dotsLabel: 'Navegação do carrossel',
+        f1: {
+          kicker: 'Tempo',
+          title: 'Agilidade',
+          desc:
+            'Emita e valide seu atestado com rapidez: fluxo guiado, menos burocracia e resposta em tempo hábil para você seguir com treinos e provas sem travar a rotina.',
+        },
+        f2: {
+          kicker: 'Dados',
+          title: 'Segurança',
+          desc:
+            'Dados sensíveis com camadas de proteção, trilha de auditoria e validação médica — transparência para o atleta e confiança para organizadores e parceiros.',
+        },
         f3: {
           kicker: 'Integração',
           title: 'Tecnologia',
-          desc: 'Plataforma digital conectada a wearables e apps de saúde.',
+          desc:
+            'Conecte exames, wearables e apps de saúde ao seu painel: visão única do que importa para performance, recuperação e conformidade em eventos.',
         },
       },
       health: {
@@ -148,6 +162,7 @@ export default {
       },
       metrics: {
         tag: 'Dashboard pessoal',
+        brandLogoAlt: 'FitCertify365 — logotipo',
         titleLine1: 'Acompanhe seus indicadores em',
         titleHighlight: 'tempo real.',
         desc:
@@ -158,6 +173,24 @@ export default {
         today: { label: 'Hoje', unit: 'km' },
         spo2: { label: 'SpO₂', unit: '%' },
       },
+      freemium: {
+        kicker: 'Plano Freemium',
+        badge: '3 meses grátis',
+        titleBefore: 'Experimente tudo,',
+        titleHighlight: 'sem pagar nada',
+        titleAfter: 'por 3 meses.',
+        desc: 'Comece com o plano Freemium e tenha acesso completo à FitCertify365 — certificados, painel de marcadores, eventos parceiros e suporte. Sem cartão. Sem pegadinha. Você só paga se quiser continuar.',
+        bullet1Title: 'Sem cartão de crédito',
+        bullet1Desc: 'Você cria sua conta e começa em segundos.',
+        bullet2Title: 'Recursos essenciais',
+        bullet2Desc: 'Tudo que você precisa pra emitir seu certificado e explorar o painel.',
+        bullet3Title: 'Cancele quando quiser',
+        bullet3Desc: 'Sem fidelidade, sem multa, sem burocracia.',
+        bullet4Title: 'Suporte humano',
+        bullet4Desc: 'Equipe dedicada para te ajudar a destravar tudo.',
+        cta: 'Começar 3 meses grátis',
+        note: 'Sem cartão de crédito • Cancele quando quiser',
+      },
       plans: {
         kicker: 'Planos para atletas',
         titleLine1: 'Escolha o plano ideal para',
@@ -167,8 +200,8 @@ export default {
         guarantee: '30 dias de garantia',
         includes: 'Benefícios inclusos',
         emptyBenefits: 'Benefícios em atualização.',
-        ctaDefault: 'Quero meu certificado sempre comigo',
-        ctaFeatured: 'Chegar na prova sem preocupação',
+        ctaDefault: 'Quero meu certificado',
+        ctaFeatured: 'Quero meu certificado',
         perYear: '/ano',
         perMonth: '/mês',
         month: 'mês',
@@ -177,6 +210,37 @@ export default {
         empty: 'Nenhum plano disponível no momento.',
         fallbackName: 'Plano FitCertify',
         fallbackDescription: 'Cobertura para manter sua certificação em dia.',
+        /** Textos da API `/plano` por id estável (nome/descricao/beneficios). */
+        api: {
+          planos: {
+            cmeufl7oo0000uwo8epjljy9u: {
+              nome: 'Saúde Certificada',
+              descricao: 'Saúde Certificada',
+            },
+            cmeuflkwb0001uwo8o0pdglrh: {
+              nome: 'Saúde Ativa',
+              descricao: 'Saúde Ativa',
+            },
+            cmeufwouekkkwi8832smgh9: {
+              nome: 'Plano Freemium',
+              descricao: 'Plano de entrada para novos usuários',
+            },
+          },
+          beneficios: {
+            cmeufvygo0000uwfgpzvsn70s: 'Conexão com provas parceiras',
+            cmeufw7va0001uwfg926j99zr: 'Emissão automática de modelo oficial',
+            cmeufwggn0002uwfg7p2q10hj:
+              'Aplicação ilimitada em diferentes provas durante a validade',
+            cmeufwp5p0003uwfg713pwzc6: 'Assinatura digital + QR Code',
+            cmeufwy600004uwfguq8r96y1: 'Descontos no Marketplace',
+            cmeufx6bw0005uwfgwi340qv9: 'Acesso ao painel de saúde completo',
+            cmeufxcmp0006uwfg1flvraso: 'Acesso ao painel de saúde',
+            cmeufxisj0007uwfg6les2ix0: 'Monitoramento contínuo',
+            cmeufxpcw0008uwfgxgg5vhxe: 'Alertas inteligentes e histórico',
+            cmeufxvf40009uwfgs0h8mls6: 'Integração com wearables',
+            cmeufy0nk000auwfgb8fgocy7: 'Integração com apps e dispositivos',
+          },
+        },
       },
       content: {
         tag: 'Conteúdos e artigos',
@@ -185,11 +249,13 @@ export default {
         viewAll: 'Ver todos →',
       },
       cta: {
-        titleBefore: 'Pronto para correr com',
-        titleHighlight: 'segurança?',
-        subtitle: 'Obtenha seu atestado médico digital em menos de 24 horas.',
-        login: 'Entrar',
+        badge: '3 meses grátis',
+        titleBefore: 'Sua próxima largada',
+        titleHighlight: 'começa aqui.',
+        subtitle: 'Crie sua conta, libere seu painel e tenha sua saúde esportiva validada em minutos. Sem cartão de crédito, sem amarras.',
+        login: 'Já tenho conta',
         register: 'Criar conta grátis',
+        note: 'Ative em segundos • Cancele quando quiser',
       },
       support: {
         tag: 'Apoio institucional',
