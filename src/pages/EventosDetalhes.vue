@@ -96,8 +96,10 @@
       <div class="det-reveal relative z-[1] mx-auto max-w-[1100px] px-4 md:px-8">
         <div class="det-facts-rail">
           <article v-for="(fact, i) in factItems" :key="fact.key" class="det-fact">
-            <span class="det-fact__index font-head" aria-hidden="true">{{ String(i + 1).padStart(2, '0') }}</span>
-            <p class="det-fact__label font-head">{{ fact.label }}</p>
+            <div class="det-fact__top">
+              <span class="det-fact__index font-head" aria-hidden="true">{{ String(i + 1).padStart(2, '0') }}</span>
+              <p class="det-fact__label font-head">{{ fact.label }}</p>
+            </div>
             <div v-if="carregando" class="det-skel det-skel--fact-val" aria-hidden="true" />
             <p v-else class="det-fact__val font-head">{{ fact.value }}</p>
           </article>
@@ -641,26 +643,28 @@ onUnmounted(() => {
   border-radius: 8px;
 }
 .det-skel--fact-val {
-  height: 28px;
+  min-height: 36px;
+  height: 36px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 .det-skel--prose {
   min-height: 140px;
   width: 100%;
 }
 
-/* Painel de dados — trilho horizontal em desktop */
+/* Painel de dados — cartões (sem barra lateral) */
 .det-facts-rail {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 @media (min-width: 900px) {
   .det-facts-rail {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 14px;
+    align-items: stretch;
+    gap: 18px;
   }
   .det-fact {
     flex: 1 1 0;
@@ -670,42 +674,81 @@ onUnmounted(() => {
 
 .det-fact {
   position: relative;
+  display: flex;
   overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  padding: 18px 16px 20px;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    linear-gradient(125deg, rgba(0, 198, 254, 0.07) 0%, transparent 55%),
+    linear-gradient(168deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(6, 6, 6, 0.35) 100%);
+  padding: 20px 18px 22px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 22px 48px -34px rgba(0, 0, 0, 0.75);
   transition:
     border-color 0.28s ease,
     box-shadow 0.32s ease;
 }
 .det-fact:hover {
-  border-color: rgba(0, 198, 254, 0.4);
-  box-shadow: 0 18px 44px -28px rgba(0, 198, 254, 0.12);
+  border-color: rgba(0, 198, 254, 0.38);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 26px 52px -30px rgba(0, 198, 254, 0.14);
+}
+.det-fact__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 14px;
 }
 .det-fact__index {
-  display: block;
-  margin-bottom: 10px;
+  flex-shrink: 0;
+  padding: 4px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 198, 254, 0.28);
+  background: rgba(0, 198, 254, 0.08);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  color: rgba(0, 198, 254, 0.75);
+  letter-spacing: 0.16em;
+  color: #5ddbfe;
 }
 .det-fact__label {
-  margin: 0 0 8px;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  text-align: right;
+  color: rgba(255, 255, 255, 0.42);
+}
+@media (max-width: 899px) {
+  .det-fact__label {
+    text-align: left;
+    flex-basis: 100%;
+  }
+  .det-fact__top {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
 }
 .det-fact__val {
   margin: 0;
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  margin-top: auto;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: clamp(0.95rem, 2vw, 1.22rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.25;
-  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
   word-break: break-word;
 }
 
