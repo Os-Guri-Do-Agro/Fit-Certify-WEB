@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path \"d:\\\\Usuário\\\\Dark\\\\PROJETOS\\\\Fit-Certify-FRONT\\\\src\\\\assets\\\\marcad-imgs\\\\\" -File)",
-      "Read(//d/Usu�rio/Dark/PROJETOS/Fit-Certify-FRONT/src/assets/**)"
+      "Read(//d/Usu�rio/Dark/PROJETOS/Fit-Certify-FRONT/src/assets/**)",
+      "Bash(npm run *)",
+      "Bash(npx vite *)"
     ]
   }
 }

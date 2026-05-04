@@ -445,7 +445,7 @@
             <div class="phone-glow" aria-hidden="true"></div>
             <div class="phone-frame">
               <span class="phone-island" aria-hidden="true"></span>
-              <div class="phone-screen">
+              <div class="phone-screen">@
                 <!-- Status -->
                 <div class="phone-status">
                   <span class="font-head text-[10px] font-bold tracking-wider text-white">9:41</span>

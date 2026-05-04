@@ -455,6 +455,7 @@ export default {
   },
   certificados: {
     title: 'Certificates',
+    heroEyebrow: 'Fitness medical clearance',
     subtitle: 'Digital certificates for your security and performance',
       section1: {
         text: 'After the medical consultation, your certificate can be included in the platform in two ways: directly by one of the partner doctors of FitCertify365 or by upload, if it has been issued by your own doctor. After validated, it becomes available on your account to be downloaded, adapted to the race templates and used while within the validity period.',
@@ -483,7 +484,8 @@ export default {
           description: 'For employees participating in sports activities',
           button: 'Start'
         },
-        validityNote: 'The certificate is valid for the period defined by the doctor (up to 12 months). During this time, you can use it for as many races as you want.'
+        validityNote: 'The certificate is valid for the period defined by the doctor (up to 12 months). During this time, you can use it for as many races as you want.',
+        carouselLabel: 'Certificate types — carousel',
       },
       section3: {
         title: 'How does it work?',
@@ -540,8 +542,12 @@ export default {
     eventos: {
       title: 'Partner Events',
       subtitle: 'Races and events that recognize your health today',
+      heroEyebrow: 'FitCertify365 integration',
+      heroCtaEventos: 'View events',
+      empty: 'No events found for the selected filters.',
       card: {
-        title: '{{ item.en_titulo }}'
+        title: '{{ item.en_titulo }}',
+        distancesLabel: 'Distances',
       },
       section1: {
         text: 'Our physical fitness certificate is accepted in any race or event that requires a medical certificate. Here you will find partner events with direct integration, a complete calendar of races accepted and, in connected events, the team of the organization can, with your authorization, access their data in case of need during the race.'
@@ -556,7 +562,10 @@ export default {
       section3: {
         title: 'Want your race here?',
         text: 'Sports event organizers can integrate their race with FitCertify365 and offer athletes even more convenience — with digital certificates, centralized management, and legal security.',
-        button: 'Make my race a partner'
+        button: 'Make my race a partner',
+        point1: 'Digital certificates and a simple journey for athletes',
+        point2: 'Centralized management and integration with the race calendar',
+        point3: 'Legal security and support for event organizers',
       },
       listEventos: {
         subtitle: 'Event connected with FitCertify365',

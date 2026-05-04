@@ -455,6 +455,7 @@ export default {
   },
   certificados: {
     title: 'Certificados',
+    heroEyebrow: 'Atestado de aptidão',
     subtitle: 'Certificados digitais para sua segurança e performance',
     section1: {
       text: 'Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.',
@@ -483,7 +484,8 @@ export default {
         description: 'Para funcionários que participam de ações esportivas',
         button: 'Iniciar'
       },
-      validityNote: 'O certificado é válido pelo período definido pelo médico (até 12 meses). Durante esse tempo, você pode usá-lo para quantas provas quiser.'
+      validityNote: 'O certificado é válido pelo período definido pelo médico (até 12 meses). Durante esse tempo, você pode usá-lo para quantas provas quiser.',
+      carouselLabel: 'Tipos de certificado — carrossel',
     },
     section3: {
       title: 'Como funciona?',
@@ -540,8 +542,12 @@ export default {
   eventos: {
     title: 'Provas Parceiras',
     subtitle: 'Corridas e provas que reconhecem sua saúde em dia',
+    heroEyebrow: 'Integração FitCertify365',
+    heroCtaEventos: 'Ver provas',
+    empty: 'Nenhum evento encontrado para os filtros selecionados.',
     card: {
-      title: 'item.titulo'
+      title: 'item.titulo',
+      distancesLabel: 'Percursos',
     },
     section1: {
       text: 'Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você encontra eventos parceiros com integração direta, um calendário completo de provas aceitas e, nos eventos conectados, a equipe médica da organização pode, com sua autorização, acessar seus dados de saúde em caso de necessidade durante a prova.'
@@ -556,7 +562,10 @@ export default {
     section3: {
       title: 'Quer sua prova aqui?',
       text: 'Organizadores de eventos esportivos podem integrar sua corrida com a FitCertify365 e oferecer ainda mais praticidade aos atletas — com certificados digitais, gestão centralizada e segurança jurídica.',
-      button: 'Tornar minha prova parceira'
+      button: 'Tornar minha prova parceira',
+      point1: 'Certificados digitais e jornada simples para o atleta',
+      point2: 'Gestão centralizada e integração com o calendário de provas',
+      point3: 'Segurança jurídica e suporte à organização do evento',
     },
     listEventos: {
       subtitle: 'Prova conectada com a FitCertify365',
