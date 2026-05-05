@@ -298,9 +298,10 @@
           </div>
         </div>
 
-        <div class="tp-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
+        <div ref="ctaLogoWrapRef" class="tp-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
           <span class="tp-cta__logo-glow pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true" />
           <img
+            ref="ctaLogoRef"
             src="/logoFit-column.png"
             alt="FitCertify365"
             class="tp-cta__logo h-auto w-[160px] max-w-full object-contain md:w-[200px] lg:w-[240px]"
@@ -323,6 +324,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
 import { useI18n } from '../composables/useI18n'
 
 const { t } = useI18n()
@@ -335,6 +337,51 @@ const sections = Array.from({ length: 17 }, (_, i) => ({
 const activeId = ref('termos-1')
 const showBackToTop = ref(false)
 let observer = null
+
+const ctaLogoWrapRef = ref(null)
+const ctaLogoRef = ref(null)
+let ctaLogoCleanup = null
+
+function setupCtaLogoTilt() {
+  const wrap = ctaLogoWrapRef.value
+  const img = ctaLogoRef.value
+  if (!wrap || !img) return
+
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
+
+  gsap.set(img, { transformPerspective: 800, transformOrigin: 'center center' })
+
+  const xTo = gsap.quickTo(img, 'rotationY', { duration: 0.45, ease: 'power2.out' })
+  const yTo = gsap.quickTo(img, 'rotationX', { duration: 0.45, ease: 'power2.out' })
+  const sTo = gsap.quickTo(img, 'scale', { duration: 0.45, ease: 'power2.out' })
+
+  const onMove = (e) => {
+    const r = wrap.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width
+    const y = (e.clientY - r.top) / r.height
+    xTo((x - 0.5) * 18)
+    yTo(-(y - 0.5) * 12)
+  }
+  const onEnter = () => { sTo(1.05) }
+  const onLeave = () => {
+    gsap.to(img, {
+      rotationY: 0, rotationX: 0, scale: 1,
+      duration: 0.6, ease: 'power3.out',
+    })
+  }
+
+  wrap.addEventListener('mousemove', onMove)
+  wrap.addEventListener('mouseenter', onEnter)
+  wrap.addEventListener('mouseleave', onLeave)
+
+  ctaLogoCleanup = () => {
+    wrap.removeEventListener('mousemove', onMove)
+    wrap.removeEventListener('mouseenter', onEnter)
+    wrap.removeEventListener('mouseleave', onLeave)
+    gsap.killTweensOf(img)
+  }
+}
 
 const formatText = (text) => {
   return (text || '')
@@ -373,6 +420,8 @@ onMounted(() => {
 
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
+
+  setupCtaLogoTilt()
 })
 
 onUnmounted(() => {
@@ -380,6 +429,8 @@ onUnmounted(() => {
   if (typeof window !== 'undefined') {
     window.removeEventListener('scroll', onScroll)
   }
+  ctaLogoCleanup?.()
+  ctaLogoCleanup = null
 })
 </script>
 
@@ -763,9 +814,17 @@ onUnmounted(() => {
 }
 .tp-cta__logo-wrap {
   min-height: 200px;
+  perspective: 800px;
 }
 .tp-cta__logo {
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  transition: filter 0.4s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.tp-cta__logo-wrap:hover .tp-cta__logo {
+  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
+          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
 }
 .tp-cta__logo-glow {
   background: radial-gradient(

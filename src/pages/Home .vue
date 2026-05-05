@@ -1160,34 +1160,6 @@ const metricsRows = computed(() =>
 const artigosPreview = ref([])
 const isLoadingArtigos = ref(false)
 const HOME_ARTIGOS_LIMIT = 3
-let articleAnimsDone = false
-
-/** Anima os cards de artigos só depois que entram no DOM (loadArtigosPreview é async). */
-function setupArticleCardsAnim() {
-  if (articleAnimsDone) return
-  const cards = document.querySelectorAll('.home-article-card')
-  if (!cards.length) return
-  articleAnimsDone = true
-
-  cards.forEach((c) => c.classList.add('is-entering'))
-
-  gsap.from(cards, {
-    opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-    clearProps: 'opacity,transform',
-    scrollTrigger: { trigger: cards[0], start: 'top 92%', once: true },
-    onComplete() {
-      cards.forEach((c) => c.classList.remove('is-entering'))
-    },
-  })
-
-  cards.forEach((card) => {
-    const img = card.querySelector('img')
-    if (!img) return
-    img.style.transition = 'transform 0.6s ease'
-    card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)' })
-    card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)' })
-  })
-}
 
 async function loadArtigosPreview() {
   try {
@@ -1209,12 +1181,6 @@ async function loadArtigosPreview() {
     artigosPreview.value = []
   } finally {
     isLoadingArtigos.value = false
-    nextTick(() => {
-      // #region agent log
-      fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'A-postfix',location:'Home.vue:loadArtigosPreview:after',message:'Artigos loaded - setting up anims',data:{cardCount:document.querySelectorAll('.home-article-card').length,artigosLen:artigosPreview.value.length,articleAnimsDone},timestamp:Date.now()})}).catch(()=>{});
-      // #endregion
-      setupArticleCardsAnim()
-    })
   }
 }
 
@@ -2625,15 +2591,18 @@ watch(currentLocale, () => {
   }
 }
 
-/* ── Cards de artigo: transição estável (não conflita com gsap.from) ── */
+/* ── Cards de artigo: transi\u00e7\u00e3o por CSS puro ── */
 .home-article-card {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   will-change: transform;
 }
-.home-article-card.is-entering {
-  transition: none;
-}
-.home-article-card:not(.is-entering):hover {
+.home-article-card:hover {
   transform: translateY(-4px);
+}
+.home-article-card img {
+  transition: transform 0.6s ease;
+}
+.home-article-card:hover img {
+  transform: scale(1.06);
 }
 </style>

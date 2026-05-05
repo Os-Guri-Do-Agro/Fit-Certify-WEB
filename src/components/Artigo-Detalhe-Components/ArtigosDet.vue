@@ -65,14 +65,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ArtigoService from '../../services/Artigos/artigos-service'
 import { useI18n } from '../../composables/useI18n'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const { t, currentLocale } = useI18n()
 const route = useRoute()
@@ -88,7 +84,6 @@ const emit = defineEmits<{
 const Artigos = ref<{ data: any[] }>({ data: [] })
 const isLoading = ref(false)
 const rootRef = ref<HTMLElement | null>(null)
-let gsapCtx: gsap.Context | null = null
 
 const artigosFiltrados = computed(() => {
   const currentId = String(route.params.id ?? '')
@@ -98,92 +93,14 @@ const artigosFiltrados = computed(() => {
     .slice(0, 3)
 })
 
-function animateSkeletons() {
-  if (!rootRef.value) return
-  gsapCtx?.revert()
-  gsapCtx = gsap.context(() => {
-    gsap.from('.art-rel-card--skeleton', {
-      opacity: 0,
-      y: 18,
-      duration: 0.5,
-      stagger: 0.08,
-      ease: 'power2.out',
-      clearProps: 'opacity,transform',
-    })
-  }, rootRef.value)
-}
-
-function animateCards() {
-  if (!rootRef.value) return
-  gsapCtx?.revert()
-  const cards = rootRef.value.querySelectorAll<HTMLElement>('.art-rel-card:not(.art-rel-card--skeleton)')
-  if (!cards.length) return
-  gsapCtx = gsap.context(() => {
-    gsap.from(cards, {
-      opacity: 0,
-      y: 28,
-      scale: 0.97,
-      duration: 0.65,
-      stagger: 0.12,
-      ease: 'power3.out',
-      clearProps: 'opacity,transform',
-      scrollTrigger: { trigger: cards[0], start: 'top 92%', once: true },
-    })
-
-    cards.forEach((card) => {
-      const body = card.querySelector<HTMLElement>('.art-rel-card__body')
-      if (!body) return
-      const items = body.querySelectorAll<HTMLElement>(':scope > *')
-      if (!items.length) return
-      gsap.from(items, {
-        opacity: 0,
-        y: 12,
-        duration: 0.45,
-        stagger: 0.06,
-        ease: 'power2.out',
-        clearProps: 'opacity,transform',
-        scrollTrigger: { trigger: card, start: 'top 92%', once: true },
-        delay: 0.15,
-      })
-    })
-
-    requestAnimationFrame(() => ScrollTrigger.refresh())
-  }, rootRef.value)
-}
-
-watch(isLoading, async (loading) => {
-  await nextTick()
-  if (loading) {
-    animateSkeletons()
-  } else if (artigosFiltrados.value.length) {
-    animateCards()
-  }
-})
-
-watch(
-  () => artigosFiltrados.value.map((a) => a.id).join('|'),
-  async (key) => {
-    if (!key || isLoading.value) return
-    await nextTick()
-    animateCards()
-  }
-)
-
 onMounted(async () => {
   try {
     isLoading.value = true
-    await nextTick()
-    animateSkeletons()
     const response: any = await ArtigoService.getAllArtigos()
     Artigos.value = response?.data ? { data: response.data } : { data: [] }
   } finally {
     isLoading.value = false
   }
-})
-
-onUnmounted(() => {
-  gsapCtx?.revert()
-  gsapCtx = null
 })
 </script>
 

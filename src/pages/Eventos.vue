@@ -349,7 +349,6 @@ const currentPage = ref(1)
 const itemsPerPage = 6
 const totalItens = ref(0)
 
-let cardEnterTween = null
 let evtGsapAlive = true
 let evtStPostNavTimer = 0
 
@@ -484,57 +483,11 @@ watch(
   { flush: 'post' }
 )
 
-function killCardEnterTween() {
-  if (!cardEnterTween) return
-  const st = cardEnterTween.scrollTrigger
-  if (st) st.kill()
-  cardEnterTween.kill()
-  cardEnterTween = null
-}
-
-function setupCardScrollAnims() {
-  if (!evtGsapAlive || typeof window === 'undefined') return
-  killCardEnterTween()
-
-  const gridStage = evtGridStageRef.value
-  if (!gridStage) return
-
-  const cards = gridStage.querySelectorAll('.evt-card-reveal')
-  const reduceMotion = false
-
-  if (!cards.length) {
-    ScrollTrigger.refresh()
-    return
-  }
-
-  if (reduceMotion) {
-    gsap.set(cards, { opacity: 1, y: 0, clearProps: 'opacity,transform' })
-    ScrollTrigger.refresh()
-    return
-  }
-
-  cardEnterTween = gsap.from(cards, {
-    opacity: 0,
-    y: 28,
-    duration: 0.58,
-    stagger: 0.08,
-    ease: 'power3.out',
-    clearProps: 'opacity,transform',
-    scrollTrigger: {
-      trigger: gridStage,
-      start: 'top 90%',
-      once: true,
-    },
-  })
-  ScrollTrigger.refresh()
-}
-
 watch([eventosData, isLoading], () => {
   nextTick(() => {
     if (!evtGsapAlive || typeof window === 'undefined') return
     requestAnimationFrame(() => {
-      if (!isLoading.value) setupCardScrollAnims()
-      else if (evtGsapAlive) ScrollTrigger.refresh()
+      if (evtGsapAlive) ScrollTrigger.refresh()
     })
   })
 })
@@ -614,9 +567,6 @@ onMounted(async () => {
 
   await buscarTipoEventos()
   await buscarEventosPaginados()
-  nextTick(() => {
-    setupCardScrollAnims()
-  })
 
   evtStPostNavTimer = window.setTimeout(() => {
     evtStPostNavTimer = 0
@@ -626,7 +576,6 @@ onMounted(async () => {
 
 onUnmounted(() => {
   evtGsapAlive = false
-  killCardEnterTween()
   if (evtStPostNavTimer) {
     window.clearTimeout(evtStPostNavTimer)
     evtStPostNavTimer = 0
