@@ -1,120 +1,111 @@
 <template>
-  <swiper :pagination="true" :modules="modules" class="mySwiper w-full">
-    <swiper-slide class="w-full h-full flex items-center justify-center mb-10">
-
-                <div class="w-full h-[295px] flex items-center justify-center flex-col text-center gap-[18px]">
-                    <div class="max-w-[268px] h-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-check-big-icon lucide-square-check-big"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"/><path d="m9 11 3 3L22 4"/></svg>
-                    </div>
-                    
-                    <div class="w-full max-w-[224px] h-1/2">
-                        <p class="text-[1em] leading-[40px]">
-                            {{ t('quemSomos.section2.card1') }}
-                        </p>
-                    </div>
-                </div>    
-
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[295px] flex items-center justify-center flex-col text-center gap-[18px]">
-                    <div class="max-w-[268px] h-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor-icon lucide-monitor"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-                    </div>
-                    
-                    <div class="w-full max-w-[224px] h-1/2">
-                        <p class="text-[1em] leading-[40px]">
-                            {{ t('quemSomos.section2.card2') }}
-                        </p>
-                    </div>
-                </div>    
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[295px] flex items-center justify-center flex-col text-center gap-[18px]">
-                    <div class="max-w-[268px] h-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-column-icon lucide-chart-no-axes-column"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
-                    </div>
-                    
-                    <div class="w-full max-w-[224px] h-1/2">
-                        <p class="text-[1em] leading-[40px]">
-                            {{ t('quemSomos.section2.card3') }}
-                        </p>
-                    </div>
-                </div>    
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[295px] flex items-center justify-center flex-col text-center gap-[18px]">
-                    <div class="max-w-[268px] h-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                    </div>
-                    
-                    <div class="w-full max-w-[224px] h-1/2">
-                        <p class="text-[1em] leading-[40px]">
-                            {{ t('quemSomos.section2.card4') }}
-                        </p>
-                    </div>
-                </div>    
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[295px] flex items-center justify-center flex-col text-center gap-[18px]">
-                    <div class="max-w-[268px] h-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 24 24" fill="none" stroke="#88CE0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
-                    </div>
-                    
-                    <div class="w-full max-w-[224px] h-1/2">
-                        <p class="text-[1em] leading-[40px]">
-                            {{ t('quemSomos.section2.card5') }}
-                        </p>
-                    </div>
-                </div>    
-    </swiper-slide>
-  </swiper>
+  <Swiper
+    :modules="modules"
+    :pagination="{ clickable: true }"
+    :space-between="14"
+    class="qs-pillars-swiper w-full pb-11"
+  >
+    <SwiperSlide v-for="(p, i) in pillars" :key="p.id">
+      <article class="qs-pm-card">
+        <div class="qs-pm-card__surface">
+          <div class="qs-pm-card__top">
+            <span class="qs-pm-card__tag font-head">{{ String(i + 1).padStart(2, '0') }}</span>
+            <component :is="p.icon" class="qs-pm-card__ico" aria-hidden="true" />
+          </div>
+          <p class="qs-pm-card__text">{{ t(`quemSomos.section2.card${i + 1}`) }}</p>
+        </div>
+      </article>
+    </SwiperSlide>
+  </Swiper>
 </template>
-<script>
-  // Import Swiper Vue.js components
-  import { Swiper, SwiperSlide } from 'swiper/vue';
 
-  // Import Swiper styles
-  import 'swiper/css';
-
-  import 'swiper/css/pagination';
-
-  // import required modules
-  import { Pagination } from 'swiper/modules';
-
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
+import {
+  ClipboardDocumentCheckIcon,
+  ComputerDesktopIcon,
+  ChartBarSquareIcon,
+  CalendarDaysIcon,
+  LinkIcon,
+  LockClosedIcon,
+} from '@heroicons/vue/24/outline'
 import { useI18n } from '../../composables/useI18n'
 
-  export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      const { t } = useI18n();
-      
-      return {
-        modules: [Pagination],
-        t,
-      };
-    },
-  };
+const modules = [Pagination]
+const { t } = useI18n()
+
+const pillars = [
+  { id: 'p1', icon: ClipboardDocumentCheckIcon },
+  { id: 'p2', icon: ComputerDesktopIcon },
+  { id: 'p3', icon: ChartBarSquareIcon },
+  { id: 'p4', icon: CalendarDaysIcon },
+  { id: 'p5', icon: LinkIcon },
+  { id: 'p6', icon: LockClosedIcon },
+]
 </script>
 
-
 <style scoped>
-
-:deep(.swiper-pagination-bullet) {
-  background-color: #d1d5db; 
-  opacity: 1;
-  width: 10px;
-  height: 10px;
-  margin: 0 6px;
-  transition: all 0.3s ease;
-  border-radius: 9999px; 
+.qs-pm-card {
+  min-width: 0;
+  height: 100%;
+}
+.qs-pm-card__surface {
+  display: flex;
+  height: 100%;
+  min-height: 220px;
+  flex-direction: column;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  padding: 22px 20px 24px;
+  box-shadow: 0 22px 56px -40px rgba(0, 0, 0, 0.85);
+}
+.qs-pm-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.qs-pm-card__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(136, 206, 13, 0.95);
+}
+.qs-pm-card__ico {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  color: #00c6fe;
+}
+.qs-pm-card__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.74);
+  text-align: left;
 }
 
-
+:deep(.swiper-pagination) {
+  bottom: 0 !important;
+}
+:deep(.swiper-pagination-bullet) {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px !important;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  opacity: 1;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
 :deep(.swiper-pagination-bullet-active) {
-  background-color: #88CE0D; 
-  transform: scale(1.2);
+  background: #00c6fe;
+  transform: scale(1.15);
 }
 </style>

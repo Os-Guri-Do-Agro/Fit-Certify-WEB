@@ -397,6 +397,15 @@ export default {
   },
   quemSomos: {
     title: 'Quem somos',
+    heroEyebrow: 'Institucional',
+    heroCtaCert: 'Certificados',
+    heroCtaEvents: 'Eventos',
+    manifestoKicker: 'Na prática',
+    pillarsKicker: 'O que fazemos',
+    humanizationKicker: 'Cultura',
+    mvvKicker: 'Propósito',
+    teamKicker: 'Pessoas',
+    closerKicker: 'Para quem é',
     subtitle: 'Tecnologia a favor da saúde esportiva',
     section1: {
       text1: 'FitCertify365 nasceu para facilitar a vida de quem pratica esportes e precisa manter seus certificados médicos organizados e válidos. Conectamos médicos parceiros, atletas e eventos em uma única plataforma, oferecendo praticidade na gestão de documentos, sem abrir mão da responsabilidade médica e da segurança dos dados.',
@@ -409,7 +418,8 @@ export default {
       card2: 'Monitoramos marcadores de saúde ao longo do tempo',
       card3: 'Integramos dados de exanes e dispositivos inteligentes',
       card4: 'Facilitamos a jornada do atleta e do organizador de eventos',
-      card5: 'Criamos conexões com corridas e provas que valorizam a saúde'
+      card5: 'Criamos conexões com corridas e provas que valorizam a saúde',
+      card6: 'Protegemos dados de saúde com criptografia, assinatura digital e práticas alinhadas à LGPD'
     },
     section3: {
       title: 'Humanização, inovação e responsabilidade',
