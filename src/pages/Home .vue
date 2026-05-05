@@ -36,17 +36,17 @@
       </div>
     </section>
 
-    <!-- ── MARQUEE (2 segmentos iguais; GSAP move o track −largura de 1 segmento) ── -->
+    <!-- ── MARQUEE (N segmentos iguais; GSAP move o track −largura de 1 segmento) ── -->
     <div class="overflow-hidden bg-[#88CE0D] py-3">
       <div ref="marqueeTrackRef" class="marquee-track flex w-max flex-nowrap">
-        <div ref="marqueeSegmentRef" class="marquee-segment inline-flex shrink-0 flex-nowrap items-center">
-          <template v-for="(item, i) in marqueeItems" :key="`m-a-${MARQUEE_KEYS[i]}`">
-            <span class="whitespace-nowrap px-6 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[#060606] sm:px-8 sm:text-[12px]">{{ item }}</span>
-            <span class="text-[#060606]/30">✦</span>
-          </template>
-        </div>
-        <div class="marquee-segment inline-flex shrink-0 flex-nowrap items-center" aria-hidden="true">
-          <template v-for="(item, i) in marqueeItems" :key="`m-b-${MARQUEE_KEYS[i]}`">
+        <div
+          v-for="copyIdx in marqueeCopyCount"
+          :key="`m-copy-${copyIdx}`"
+          :ref="(el) => bindMarqueeSegment(el, copyIdx)"
+          class="marquee-segment inline-flex shrink-0 flex-nowrap items-center"
+          :aria-hidden="copyIdx !== 1 ? 'true' : null"
+        >
+          <template v-for="(item, i) in marqueeItems" :key="`m-${copyIdx}-${MARQUEE_KEYS[i]}`">
             <span class="whitespace-nowrap px-6 font-head text-[11px] font-bold uppercase tracking-[0.12em] text-[#060606] sm:px-8 sm:text-[12px]">{{ item }}</span>
             <span class="text-[#060606]/30">✦</span>
           </template>
@@ -55,7 +55,8 @@
     </div>
 
     <!-- ── FEATURES BAR ────────────────────────────────── -->
-    <div class="features-bar relative overflow-x-clip overflow-y-visible bg-[#00C6FE] py-14 md:py-16">
+    <div class="features-bar relative overflow-x-clip overflow-y-visible py-14 md:py-16">
+      <div class="features-bar-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="features-bar-spotlight pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="features-bar-deco features-bar-deco--1 pointer-events-none absolute" aria-hidden="true"></div>
       <div class="features-bar-deco features-bar-deco--2 pointer-events-none absolute" aria-hidden="true"></div>
@@ -133,7 +134,7 @@
             {{ t('home.landing.health.desc') }}
           </p>
           <ul class="mb-8 flex flex-col gap-3 list-none p-0">
-            <li v-for="(item, idx) in saudeChecks" :key="'hc-' + idx" class="flex items-start gap-3 text-[15px] text-white/75">
+            <li v-for="(item, idx) in saudeChecks" :key="'hc-' + idx" class="flex items-center justify-start gap-3 text-[15px] text-white/75">
               <span class="check-dot mt-1.5 shrink-0"></span><span class="min-w-0 break-words">{{ item }}</span>
             </li>
           </ul>
@@ -778,9 +779,20 @@ const marqueeItems = computed(() => MARQUEE_KEYS.map((k) => t(`home.landing.marq
 
 const marqueeTrackRef = ref(null)
 const marqueeSegmentRef = ref(null)
+// Quantas cópias do segmento renderizar. Inicia em 4 (seguro p/ desktop comum)
+// e é recalculado dinamicamente no setup com base em viewport / largura do segmento,
+// garantindo que o track tenha sempre pelo menos 2x a viewport — sem isso, em telas
+// largas o final do último segmento entra em viewport e causa espaço vazio antes do reset.
+const marqueeCopyCount = ref(4)
 let marqueeGsapTween = null
 let marqueeResizeObserver = null
 let marqueeDebounceTimer = 0
+
+// Function ref para o primeiro segmento — precisamos atribuir em `.value`
+// porque atribuição direta no template do Vue 3 não funciona em refs reactive.
+function bindMarqueeSegment(el, copyIdx) {
+  if (copyIdx === 1) marqueeSegmentRef.value = el
+}
 
 function debouncedSetupMarqueeGsap() {
   if (marqueeDebounceTimer) window.clearTimeout(marqueeDebounceTimer)
@@ -793,29 +805,60 @@ function debouncedSetupMarqueeGsap() {
 /** Marquee infinito: anima o track em x = −largura do 1.º segmento (cópia idêntica em seguida). */
 function setupMarqueeGsap() {
   if (typeof window === 'undefined') return
-  marqueeGsapTween?.kill()
-  marqueeGsapTween = null
   const track = marqueeTrackRef.value
   const segment = marqueeSegmentRef.value
   // #region agent log
   fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap',message:'Marquee setup attempt',data:{trackExists:!!track,segmentExists:!!segment,trackInDOM:track?document.contains(track):false,segmentWidth:segment?segment.getBoundingClientRect().width:null,segmentVisible:segment?window.getComputedStyle(segment).display:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
   // #endregion
   if (!track || !segment) return
-  if (false) {
-    gsap.set(track, { clearProps: 'transform' })
+  const rawW = segment.getBoundingClientRect().width
+  if (!Number.isFinite(rawW) || rawW < 4) return
+  // Largura arredondada para evitar drift sub-pixel entre o segmento real
+  // e a sua cópia "fantasma" (que causa o salto visível ao reiniciar).
+  const w = Math.round(rawW)
+
+  // Garante cópias suficientes: precisamos que o track tenha pelo menos
+  // 2x a largura da viewport, para que durante todo o ciclo (incluindo o
+  // final, em x = -w) NUNCA exista espaço vazio à direita visível.
+  const viewportW = window.innerWidth || document.documentElement.clientWidth || 0
+  const desiredCopies = Math.max(3, Math.ceil((viewportW * 2) / w) + 1)
+  if (desiredCopies !== marqueeCopyCount.value) {
+    marqueeCopyCount.value = desiredCopies
+    // Aguarda o re-render antes de criar o tween para que o track tenha a largura nova.
+    nextTick(() => requestAnimationFrame(() => setupMarqueeGsap()))
     return
   }
-  gsap.set(track, { x: 0, force3D: true })
-  const w = segment.getBoundingClientRect().width
-  if (!Number.isFinite(w) || w < 4) return
+
+  // Preserva progresso atual ao recriar (resize, troca de idioma, fontes
+  // terminando de carregar) — evita pulo visível ao re-medir.
+  const prevProgress = marqueeGsapTween?.progress?.() ?? 0
+  marqueeGsapTween?.kill()
+  marqueeGsapTween = null
+
   const pxPerSecond = 42
   const duration = Math.max(12, Math.min(48, w / pxPerSecond))
-  marqueeGsapTween = gsap.to(track, {
-    x: -w,
-    duration,
-    ease: 'none',
-    repeat: -1,
-  })
+
+  // Wrap matemático puro: garante x sempre dentro de [-w, 0), eliminando
+  // qualquer salto no momento do repeat. Mantém o loop verdadeiramente seamless.
+  const wrap = gsap.utils.wrap(-w, 0)
+
+  marqueeGsapTween = gsap.fromTo(
+    track,
+    { x: 0, force3D: true },
+    {
+      x: -w,
+      duration,
+      ease: 'none',
+      repeat: -1,
+      modifiers: {
+        x: (val) => wrap(parseFloat(val)) + 'px',
+      },
+    }
+  )
+
+  if (prevProgress > 0 && prevProgress < 1) {
+    marqueeGsapTween.progress(prevProgress)
+  }
   // #region agent log
   fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap:after',message:'Marquee tween created',data:{tweenCreated:!!marqueeGsapTween,distance:-w,duration,trackTransform:track?window.getComputedStyle(track).transform:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
   // #endregion
@@ -829,6 +872,8 @@ function initMarqueeLayoutWatchers() {
   if (!seg || typeof ResizeObserver === 'undefined') return
   marqueeResizeObserver = new ResizeObserver(() => debouncedSetupMarqueeGsap())
   marqueeResizeObserver.observe(seg)
+  // Resize de janela já é tratado pelo `window.addEventListener('resize', ...)`
+  // registrado em onMounted, que também reentra em setupMarqueeGsap → recalcula cópias.
 }
 
 function runMarqueeAfterLayout() {
@@ -1317,9 +1362,15 @@ watch(currentLocale, () => {
 /* Marquee: animação em GSAP — evitar encolher segmentos no flex */
 .marquee-track {
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .marquee-segment {
   min-width: min-content;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Fonts */
@@ -2314,20 +2365,34 @@ watch(currentLocale, () => {
   overflow-y: visible;
 }
 
+.features-bar {
+  background:
+    linear-gradient(180deg, #0a0d12 0%, #07090d 55%, #060606 100%);
+  border-top: 1px solid rgba(0, 198, 254, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.features-bar-grid {
+  background-image:
+    linear-gradient(rgba(0, 198, 254, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(136, 206, 13, 0.05) 1px, transparent 1px);
+  background-size: 90px 90px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 85%);
+}
 .features-bar-spotlight {
-  background: radial-gradient(ellipse 130% 90% at 50% -35%, rgba(255, 255, 255, 0.55), transparent 60%);
+  background: radial-gradient(ellipse 120% 80% at 50% -30%, rgba(0, 198, 254, 0.18), transparent 60%);
 }
 .features-bar-deco {
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-  filter: blur(80px);
+  filter: blur(110px);
 }
 .features-bar-deco--1 {
-  top: -120px; left: -80px; width: 320px; height: 320px;
+  top: -140px; left: -120px; width: 380px; height: 380px;
+  background: rgba(0, 198, 254, 0.16);
 }
 .features-bar-deco--2 {
-  bottom: -140px; right: -80px; width: 360px; height: 360px;
-  background: rgba(136, 206, 13, 0.22);
+  bottom: -160px; right: -120px; width: 420px; height: 420px;
+  background: rgba(136, 206, 13, 0.14);
 }
 
 .feature-bar-card {
