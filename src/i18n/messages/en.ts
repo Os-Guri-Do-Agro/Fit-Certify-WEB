@@ -426,6 +426,11 @@ export default {
       youtube: 'YouTube',
       instagram: 'Instagram',
     },
+    apps: {
+      heading: 'Download our app',
+      appStore: 'Download on the App Store',
+      playStore: 'Get it on Google Play',
+    },
     privacy: 'Terms of Service / Privacy Policy',
     terms: 'Terms of Use'
   },

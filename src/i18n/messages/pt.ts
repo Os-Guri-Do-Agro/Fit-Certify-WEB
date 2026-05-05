@@ -426,6 +426,11 @@ export default {
       youtube: 'YouTube',
       instagram: 'Instagram',
     },
+    apps: {
+      heading: 'Baixe nosso app',
+      appStore: 'Baixar na App Store',
+      playStore: 'Disponível no Google Play',
+    },
     privacy: 'Termos de Serviço / Política de Privacidade',
     terms: 'Termos de Uso'
   },

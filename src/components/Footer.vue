@@ -78,6 +78,41 @@ const footerColumns = computed(() => [
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
           </div>
+          <div class="mt-7">
+            <p class="mb-3 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-white/35">
+              {{ t('footer.apps.heading') }}
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="https://apps.apple.com/br/app/fitcertify365/id6752969790"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="store-badge"
+                :aria-label="t('footer.apps.appStore')"
+              >
+                <img
+                  src="/app-store-white.png"
+                  :alt="t('footer.apps.appStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nicolascastela.fitcertify&hl=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="store-badge"
+                :aria-label="t('footer.apps.playStore')"
+              >
+                <img
+                  src="/play-store-white.png"
+                  :alt="t('footer.apps.playStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
         </div>
         <div v-for="col in footerColumns" :key="col.id">
           <p class="mb-5 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-white/35">{{ col.title }}</p>
@@ -103,3 +138,26 @@ const footerColumns = computed(() => [
     </div>
   </footer>
 </template>
+
+<style scoped>
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  opacity: 0.85;
+}
+.store-badge:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 14px rgba(0, 198, 254, 0.18));
+}
+.store-badge:focus-visible {
+  outline: 2px solid #00c6fe;
+  outline-offset: 3px;
+}
+.store-badge img {
+  display: block;
+}
+</style>

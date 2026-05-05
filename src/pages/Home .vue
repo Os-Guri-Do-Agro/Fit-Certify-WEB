@@ -2355,38 +2355,63 @@ watch(currentLocale, () => {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 26px 24px 24px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.97);
+  gap: 16px;
+  padding: 28px 24px 26px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%),
+    rgba(14, 14, 14, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow:
-    0 16px 48px -18px rgba(6, 6, 6, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
-  backdrop-filter: blur(8px);
+    0 14px 40px -20px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
   overflow: hidden;
+  isolation: isolate;
   transition:
-    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.35s ease,
-    border-color 0.3s ease;
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+.feature-bar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.16), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+.feature-bar-card > * {
+  position: relative;
+  z-index: 1;
 }
 .feature-bar-card:hover {
   transform: translateY(-6px);
-  border-color: #ffffff;
+  border-color: rgba(0, 198, 254, 0.35);
   box-shadow:
-    0 26px 64px -22px rgba(6, 6, 6, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    0 24px 60px -22px rgba(0, 198, 254, 0.22),
+    0 0 0 1px rgba(0, 198, 254, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.feature-bar-card:hover::before {
+  opacity: 1;
 }
 
 .feature-bar-card__accent {
   position: absolute;
   top: 0; left: 24px; right: 24px;
-  height: 3px;
+  height: 2px;
   border-radius: 0 0 4px 4px;
   background: linear-gradient(90deg, #00C6FE, #88CE0D);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 2;
 }
 .feature-bar-card:hover .feature-bar-card__accent {
   transform: scaleX(1);
@@ -2400,32 +2425,34 @@ watch(currentLocale, () => {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: rgba(0, 198, 254, 0.4);
+  color: rgba(255, 255, 255, 0.18);
   transition: color 0.3s ease;
+  z-index: 2;
 }
 .feature-bar-card:hover .feature-bar-card__number {
-  color: rgba(136, 206, 13, 0.7);
+  color: rgba(136, 206, 13, 0.85);
 }
 
 .feature-bar-card__icon-wrap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: linear-gradient(140deg, rgba(0, 198, 254, 0.12), rgba(0, 198, 254, 0.04));
-  border: 1px solid rgba(0, 198, 254, 0.2);
-  transition: transform 0.35s ease, background 0.35s ease, border-color 0.3s ease;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, rgba(0, 198, 254, 0.18), rgba(0, 198, 254, 0.04));
+  border: 1px solid rgba(0, 198, 254, 0.25);
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.3s ease, box-shadow 0.4s ease;
 }
 .feature-bar-card:hover .feature-bar-card__icon-wrap {
   transform: scale(1.06) rotate(-3deg);
-  background: linear-gradient(140deg, rgba(136, 206, 13, 0.18), rgba(136, 206, 13, 0.05));
-  border-color: rgba(136, 206, 13, 0.32);
+  background: linear-gradient(140deg, rgba(136, 206, 13, 0.22), rgba(136, 206, 13, 0.05));
+  border-color: rgba(136, 206, 13, 0.4);
+  box-shadow: 0 0 0 4px rgba(136, 206, 13, 0.06);
 }
 .feature-bar-card__icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   stroke: #00c6fe;
   transition: stroke 0.3s ease;
 }
@@ -2446,28 +2473,25 @@ watch(currentLocale, () => {
   color: #88ce0d;
 }
 .feature-bar-card__title {
-  margin-top: 4px;
+  margin-top: 2px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #00c6fe;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 @media (min-width: 768px) {
   .feature-bar-card__title {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
-.feature-bar-card:hover .feature-bar-card__title {
-  color: #060606;
-}
 .feature-bar-card__desc {
-  margin-top: 8px;
+  margin-top: 2px;
   font-size: 14px;
-  line-height: 1.62;
-  color: rgba(6, 6, 6, 0.68);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ── Final CTA ─────────────────────────────────────── */
