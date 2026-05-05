@@ -1,7 +1,7 @@
 <template>
-  <div class="art-det-page bg-[#060606] text-white font-body">
+  <div ref="adPageRef" class="art-det-page bg-[#060606] text-white font-body">
     <section
-      class="art-det-hero relative isolate overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20"
+      class="art-det-hero art-det-hero-shell relative isolate overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20"
     >
       <div class="art-det-hero__media pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div
@@ -19,37 +19,37 @@
       <div class="art-det-hero__grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto w-full max-w-[1200px] px-4 md:px-12">
-        <RouterLink :to="{ name: 'Artigos' }" class="art-det-back inline-flex items-center gap-2">
+        <RouterLink :to="{ name: 'Artigos' }" class="ad-hero-item art-det-back inline-flex items-center gap-2">
           <span class="art-det-back__arrow" aria-hidden="true">←</span>
           <span>{{ t('artigos.detalhe.backToList') }}</span>
         </RouterLink>
 
         <div class="mt-8 max-w-[820px]">
-          <p class="eyebrow">
+          <p class="ad-hero-item eyebrow">
             {{ t('artigos.heroEyebrow') }}
           </p>
 
           <template v-if="loading">
-            <div class="art-det-skeleton h-12 w-4/5 max-w-[600px] rounded bg-white/10 md:h-16" />
-            <div class="mt-6 art-det-skeleton h-5 w-full max-w-[520px] rounded bg-white/[0.08]" />
-            <div class="mt-2 art-det-skeleton h-5 w-2/3 max-w-[420px] rounded bg-white/[0.08]" />
+            <div class="ad-hero-item art-det-skeleton h-12 w-4/5 max-w-[600px] rounded bg-white/10 md:h-16" />
+            <div class="ad-hero-item mt-6 art-det-skeleton h-5 w-full max-w-[520px] rounded bg-white/[0.08]" />
+            <div class="ad-hero-item mt-2 art-det-skeleton h-5 w-2/3 max-w-[420px] rounded bg-white/[0.08]" />
           </template>
 
           <template v-else>
             <h1
-              class="font-head text-[clamp(28px,5.6vw,60px)] font-bold leading-[1.05] tracking-[-0.03em] text-white"
+              class="ad-hero-item font-head text-[clamp(28px,5.6vw,60px)] font-bold leading-[1.05] tracking-[-0.03em] text-white"
             >
               {{ getLocalizedField(item, 'titulo') }}
               <span class="art-det-hero__dot" aria-hidden="true" />
             </h1>
             <p
               v-if="getLocalizedField(item, 'subTitulo')"
-              class="art-det-hero__sub mt-7 max-w-[640px] border-l-2 border-[#00C6FE] pl-5 text-[15px] leading-[1.7] text-white/70 md:text-[17px]"
+              class="ad-hero-item art-det-hero__sub mt-7 max-w-[640px] border-l-2 border-[#00C6FE] pl-5 text-[15px] leading-[1.7] text-white/70 md:text-[17px]"
             >
               {{ getLocalizedField(item, 'subTitulo') }}
             </p>
 
-            <ul class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
+            <ul class="ad-hero-item mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12.5px] text-white/55">
               <li v-if="authorName" class="flex items-center gap-2">
                 <span class="art-det-meta__dot art-det-meta__dot--cyan" aria-hidden="true" />
                 <span class="font-head font-semibold uppercase tracking-[0.08em] text-white/75">
@@ -76,7 +76,7 @@
     <section class="art-det-body relative border-t border-white/[0.06] bg-[#060606] py-14 md:py-20">
       <div class="mx-auto w-full max-w-[920px] px-4 md:px-8">
         <article class="art-prose">
-          <div class="art-prose__block">
+          <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionIntro') }}</p>
             <template v-if="loading">
               <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
@@ -90,7 +90,7 @@
 
           <div class="art-prose__divider" aria-hidden="true" />
 
-          <div class="art-prose__block">
+          <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionContent') }}</p>
             <template v-if="loading">
               <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
@@ -103,7 +103,7 @@
             </p>
           </div>
 
-          <figure v-if="!loading && getLocalizedField(item, 'citacao')" class="art-quote">
+          <figure v-if="!loading && getLocalizedField(item, 'citacao')" class="ad-reveal art-quote">
             <p class="art-quote__kicker font-head">{{ t('artigos.detalhe.sectionQuote') }}</p>
             <span class="art-quote__mark" aria-hidden="true">&ldquo;</span>
             <blockquote class="art-quote__text">
@@ -119,7 +119,7 @@
 
     <section v-if="loading || bannerImage" class="bg-[#060606] py-12 md:py-14">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
-        <div class="art-det-banner relative overflow-hidden rounded-[20px] border border-white/10 shadow-[0_36px_96px_-50px_rgba(0,0,0,0.95)]">
+        <div class="ad-reveal art-det-banner relative overflow-hidden rounded-[20px] border border-white/10 shadow-[0_36px_96px_-50px_rgba(0,0,0,0.95)]">
           <div v-if="loading" class="art-det-skeleton aspect-[16/8] w-full bg-white/[0.06]" />
           <img v-else :src="bannerImage" alt="" class="aspect-[16/8] w-full object-cover" />
           <div
@@ -137,7 +137,7 @@
     >
       <div class="mx-auto w-full max-w-[920px] px-4 md:px-8">
         <article class="art-prose">
-          <div class="art-prose__block">
+          <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionConclusion') }}</p>
             <template v-if="loading">
               <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
@@ -227,7 +227,7 @@
 
     <section class="border-t border-white/[0.06] bg-[#080808] py-14 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
-        <header class="mb-10 md:mb-12 md:flex md:items-end md:justify-between md:gap-10">
+        <header class="ad-reveal mb-10 md:mb-12 md:flex md:items-end md:justify-between md:gap-10">
           <div>
             <p class="art-related-eyebrow font-head">{{ t('artigos.detalhe.related.eyebrow') }}</p>
             <h2
@@ -249,7 +249,7 @@
       <div
         class="relative z-[2] mx-auto flex w-full max-w-[1200px] flex-col items-stretch gap-10 px-4 md:px-12 lg:flex-row lg:items-center lg:justify-between"
       >
-        <div class="art-det-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
+        <div class="ad-reveal art-det-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="art-det-cta__kicker font-head">{{ t('artigos.detalhe.cta.eyebrow') }}</p>
           <h2
             class="mt-4 font-head text-[clamp(22px,4vw,36px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
@@ -268,9 +268,10 @@
           </div>
         </div>
 
-        <div class="art-det-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
+        <div ref="ctaLogoWrapRef" class="ad-reveal art-det-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
           <span class="art-det-cta__logo-glow pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true" />
           <img
+            ref="ctaLogoRef"
             src="/logoFit-column.png"
             alt="FitCertify365"
             class="art-det-cta__logo h-auto w-[160px] max-w-full object-contain md:w-[200px] lg:w-[240px]"
@@ -283,11 +284,15 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ArtigoService from '../services/Artigos/artigos-service'
 import ArtigoDetalhe from '../components/Artigo-Detalhe-Components/ArtigosDet.vue'
 import medicoService from '../services/Medico/medico-service'
 import { useI18n } from '../composables/useI18n'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const route = useRoute()
 const item = ref(null)
@@ -296,6 +301,8 @@ const loading = ref(false)
 const error = ref(null)
 const medico = ref(null)
 const { t, currentLocale } = useI18n()
+
+const adPageRef = ref(null)
 
 function getLocalizedField(it, field) {
   if (!it) return ''
@@ -388,6 +395,210 @@ watch(
   },
   { immediate: true }
 )
+
+// ── Tilt 3D na logo do CTA ─────────────────────────
+const ctaLogoWrapRef = ref(null)
+const ctaLogoRef = ref(null)
+let ctaLogoCleanup = null
+
+function setupCtaLogoTilt() {
+  const wrap = ctaLogoWrapRef.value
+  const img = ctaLogoRef.value
+  if (!wrap || !img) return
+
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
+
+  gsap.set(img, { transformPerspective: 800, transformOrigin: 'center center' })
+
+  const xTo = gsap.quickTo(img, 'rotationY', { duration: 0.45, ease: 'power2.out' })
+  const yTo = gsap.quickTo(img, 'rotationX', { duration: 0.45, ease: 'power2.out' })
+  const sTo = gsap.quickTo(img, 'scale', { duration: 0.45, ease: 'power2.out' })
+
+  const onMove = (e) => {
+    const r = wrap.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width
+    const y = (e.clientY - r.top) / r.height
+    xTo((x - 0.5) * 18)
+    yTo(-(y - 0.5) * 12)
+  }
+  const onEnter = () => { sTo(1.05) }
+  const onLeave = () => {
+    gsap.to(img, {
+      rotationY: 0, rotationX: 0, scale: 1,
+      duration: 0.6, ease: 'power3.out',
+    })
+  }
+
+  wrap.addEventListener('mousemove', onMove)
+  wrap.addEventListener('mouseenter', onEnter)
+  wrap.addEventListener('mouseleave', onLeave)
+
+  ctaLogoCleanup = () => {
+    wrap.removeEventListener('mousemove', onMove)
+    wrap.removeEventListener('mouseenter', onEnter)
+    wrap.removeEventListener('mouseleave', onLeave)
+    gsap.killTweensOf(img)
+  }
+}
+
+// ── Animações de montagem (hero) e scroll (reveal) ──
+let adGsapCtx = null
+let adHeroDone = false
+let adGsapAlive = true
+let adStPostNavTimer = 0
+
+function killAdCtx() {
+  adGsapCtx?.revert()
+  adGsapCtx = null
+}
+
+function runAdGsap(attempt = 0) {
+  if (!adGsapAlive) return
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!adGsapAlive) return
+        const root = adPageRef.value
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+        if (!root && attempt < 10) {
+          window.setTimeout(() => runAdGsap(attempt + 1), 40)
+          return
+        }
+        if (!root) {
+          ScrollTrigger.refresh()
+          return
+        }
+
+        if (reduceMotion) {
+          killAdCtx()
+          gsap.set(root.querySelectorAll('.ad-hero-item, .ad-reveal'), {
+            opacity: 1,
+            y: 0,
+            clearProps: 'opacity,transform',
+          })
+          ScrollTrigger.refresh()
+          return
+        }
+
+        killAdCtx()
+        const ease = 'power3.out'
+
+        adGsapCtx = gsap.context(() => {
+          const heroItems = root.querySelectorAll('.ad-hero-item')
+          if (heroItems.length && !adHeroDone) {
+            gsap.from(heroItems, {
+              opacity: 0,
+              y: 26,
+              duration: 0.78,
+              stagger: 0.1,
+              ease,
+            })
+            adHeroDone = true
+          }
+
+          const heroBg = root.querySelector('.art-det-hero__bg')
+          const heroShell = root.querySelector('.art-det-hero-shell')
+          if (heroBg && heroShell) {
+            gsap.to(heroBg, {
+              yPercent: 8,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: heroShell,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+              },
+            })
+          }
+
+          root.querySelectorAll('.ad-reveal').forEach((el) => {
+            gsap.from(el, {
+              opacity: 0,
+              y: 32,
+              duration: 0.72,
+              ease,
+              scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+            })
+          })
+        }, root)
+
+        ScrollTrigger.refresh()
+        document.fonts?.ready?.then(() => {
+          if (adGsapAlive) ScrollTrigger.refresh()
+        })
+      })
+    })
+  })
+}
+
+watch(currentLocale, () => {
+  nextTick(() => ScrollTrigger.refresh())
+})
+
+watch(loading, (isLoading) => {
+  if (isLoading) {
+    adHeroDone = false
+    return
+  }
+  adHeroDone = false
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      if (adGsapAlive) runAdGsap(0)
+    })
+  })
+})
+
+watch(
+  () => route.params.id,
+  () => {
+    adHeroDone = false
+  }
+)
+
+watch(
+  () => route.name,
+  (name) => {
+    if (name !== 'ArtigoDetalhe') return
+    nextTick(() => {
+      requestAnimationFrame(() => ScrollTrigger.refresh())
+      if (adStPostNavTimer) window.clearTimeout(adStPostNavTimer)
+      adStPostNavTimer = window.setTimeout(() => {
+        adStPostNavTimer = 0
+        if (adGsapAlive) ScrollTrigger.refresh()
+      }, 520)
+    })
+  },
+  { flush: 'post' }
+)
+
+onMounted(() => {
+  adGsapAlive = true
+  nextTick(() => {
+    setupCtaLogoTilt()
+    // Se a página já não estiver carregando (ex.: cache), dispara as animações de imediato.
+    // Caso contrário, o watcher de `loading` cuida disso quando o conteúdo real chegar.
+    if (!loading.value) runAdGsap(0)
+  })
+  if (typeof window !== 'undefined') {
+    adStPostNavTimer = window.setTimeout(() => {
+      adStPostNavTimer = 0
+      if (adGsapAlive) ScrollTrigger.refresh()
+    }, 520)
+  }
+})
+
+onUnmounted(() => {
+  adGsapAlive = false
+  ctaLogoCleanup?.()
+  ctaLogoCleanup = null
+  killAdCtx()
+  if (adStPostNavTimer) {
+    window.clearTimeout(adStPostNavTimer)
+    adStPostNavTimer = 0
+  }
+})
 </script>
 
 <style scoped lang="postcss">
@@ -750,9 +961,17 @@ watch(
 }
 .art-det-cta__logo-wrap {
   min-height: 200px;
+  perspective: 800px;
 }
 .art-det-cta__logo {
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  transition: filter 0.4s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.art-det-cta__logo-wrap:hover .art-det-cta__logo {
+  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
+          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
 }
 .art-det-cta__logo-glow {
   background: radial-gradient(

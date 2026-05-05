@@ -398,7 +398,7 @@ onMounted(() => {
 
   if (typeof window === 'undefined') return
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduceMotion = false
   if (reduceMotion) {
     typesCarouselAutoplayMs.value = 0
     return

@@ -310,7 +310,7 @@ function runDetGsap(attempt = 0) {
         if (!detGsapAlive) return
         const root = detPageRef.value
         const reduceMotion =
-          typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          false
 
         if (!root && attempt < 8) {
           window.setTimeout(() => runDetGsap(attempt + 1), 40)

@@ -500,7 +500,7 @@ function setupCardScrollAnims() {
   if (!gridStage) return
 
   const cards = gridStage.querySelectorAll('.evt-card-reveal')
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduceMotion = false
 
   if (!cards.length) {
     ScrollTrigger.refresh()
@@ -578,7 +578,7 @@ onMounted(async () => {
     return
   }
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduceMotion = false
   const heroEase = 'power3.out'
 
   if (!reduceMotion) {
@@ -1324,6 +1324,7 @@ onUnmounted(() => {
   }
 }
 .evt-cta-org__li-mark {
+  position: relative;
   flex-shrink: 0;
   margin-top: 6px;
   width: 8px;
@@ -1331,6 +1332,46 @@ onUnmounted(() => {
   border-radius: 50%;
   background: linear-gradient(135deg, #88ce0d, #00c6fe);
   box-shadow: 0 0 0 3px rgba(136, 206, 13, 0.2);
+  animation: evt-cta-mark-glow 2.4s ease-in-out infinite;
+}
+.evt-cta-org__li-mark::before,
+.evt-cta-org__li-mark::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(136, 206, 13, 0.55);
+  pointer-events: none;
+  animation: evt-cta-mark-pulse 2.4s ease-out infinite;
+  transform-origin: center;
+}
+.evt-cta-org__li-mark::after {
+  border-color: rgba(0, 198, 254, 0.5);
+  animation-delay: 1.2s;
+}
+.evt-cta-org__li:nth-child(2) .evt-cta-org__li-mark { animation-delay: 0.4s; }
+.evt-cta-org__li:nth-child(2) .evt-cta-org__li-mark::before { animation-delay: 0.4s; }
+.evt-cta-org__li:nth-child(2) .evt-cta-org__li-mark::after  { animation-delay: 1.6s; }
+.evt-cta-org__li:nth-child(3) .evt-cta-org__li-mark { animation-delay: 0.8s; }
+.evt-cta-org__li:nth-child(3) .evt-cta-org__li-mark::before { animation-delay: 0.8s; }
+.evt-cta-org__li:nth-child(3) .evt-cta-org__li-mark::after  { animation-delay: 2s; }
+
+@keyframes evt-cta-mark-pulse {
+  0%   { transform: scale(0.85); opacity: 0.85; }
+  70%  { transform: scale(2.4);  opacity: 0; }
+  100% { transform: scale(2.4);  opacity: 0; }
+}
+@keyframes evt-cta-mark-glow {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(136, 206, 13, 0.18); }
+  50%      { box-shadow: 0 0 0 4px rgba(136, 206, 13, 0.32); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evt-cta-org__li-mark,
+  .evt-cta-org__li-mark::before,
+  .evt-cta-org__li-mark::after {
+    animation: none;
+  }
 }
 
 .evt-cta-org__actions {

@@ -2,31 +2,31 @@
   <Disclosure
     v-slot="{ open }"
     as="nav"
-    class="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] backdrop-blur-xl transition-colors duration-300"
-    :class="scrolled ? 'bg-[#060606]/97' : 'bg-[#060606]/88'"
+    :data-scrolled="scrolled || mobileMenuOpen"
+    class="header-root fixed inset-x-0 top-0 z-50"
   >
     <span class="hidden" aria-hidden="true">{{ syncMenuOpen(open) }}</span>
-    <div ref="headerBarRef" class="mx-auto flex h-[68px] w-full items-center justify-between px-4 md:px-8 xl:px-12">
+    <div ref="headerBarRef" class="header-bar mx-auto flex w-full items-center justify-between px-4 md:px-8 xl:px-12">
 
       <router-link to="/" class="header-brand no-underline shrink-0">
-        <img src="/Logo-Grande.png" alt="FitCertify365" class="h-10 w-auto" />
+        <img src="/Logo-Grande.png" alt="FitCertify365" class="header-brand__logo w-auto" />
       </router-link>
 
       <!-- Desktop nav -->
       <div class="hidden items-center gap-6 lg:flex xl:gap-8">
         <router-link
-          v-for="link in primaryLinks"
+          v-for="link in startLinks"
           :key="link.to"
           :to="link.to"
-          class="header-nav-link font-body text-[13px] font-medium uppercase tracking-[0.06em] text-white/60 transition hover:text-white no-underline whitespace-nowrap"
+          class="header-nav-link font-body font-medium uppercase tracking-[0.06em] text-white/60 transition-colors duration-200 hover:text-white no-underline whitespace-nowrap"
         >
           {{ link.label }}
         </router-link>
 
-        <!-- Dropdown "Mais" -->
+        <!-- Dropdown "A FitCertify365" -->
         <Menu as="div" class="relative">
-          <MenuButton class="header-nav-link flex items-center gap-1 font-body text-[13px] font-medium uppercase tracking-[0.06em] text-white/60 transition hover:text-white whitespace-nowrap cursor-pointer select-none outline-none">
-            {{ t('header.more') }}
+          <MenuButton class="header-nav-link header-nav-link--brand flex items-center gap-1 font-body font-medium tracking-[0.01em] text-white/60 transition-colors duration-200 hover:text-white whitespace-nowrap cursor-pointer select-none outline-none">
+            A FitCertify365
             <svg class="mt-px h-3.5 w-3.5 transition-transform duration-200 ui-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </MenuButton>
           <transition
@@ -37,7 +37,7 @@
             leave-from-class="opacity-100 scale-100 translate-y-0"
             leave-to-class="opacity-0 scale-[0.97] -translate-y-1"
           >
-            <MenuItems class="absolute left-0 top-[calc(100%+10px)] z-50 min-w-[176px] origin-top-left rounded-xl border border-white/[0.1] bg-[#111114] py-1.5 shadow-[0_20px_48px_-8px_rgba(0,0,0,0.75)] outline-none">
+            <MenuItems class="absolute left-0 top-[calc(100%+10px)] z-50 min-w-[200px] origin-top-left rounded-xl border border-white/[0.1] bg-[#111114] py-1.5 shadow-[0_20px_48px_-8px_rgba(0,0,0,0.75)] outline-none">
               <MenuItem v-for="link in moreLinks" :key="link.to" v-slot="{ active }">
                 <router-link
                   :to="link.to"
@@ -50,6 +50,15 @@
             </MenuItems>
           </transition>
         </Menu>
+
+        <router-link
+          v-for="link in endLinks"
+          :key="link.to"
+          :to="link.to"
+          class="header-nav-link font-body font-medium uppercase tracking-[0.06em] text-white/60 transition-colors duration-200 hover:text-white no-underline whitespace-nowrap"
+        >
+          {{ link.label }}
+        </router-link>
       </div>
 
       <!-- Desktop actions -->
@@ -59,7 +68,7 @@
           href="https://admin.fitcert365.com/login"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center font-head font-semibold text-[12px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-2 bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE] whitespace-nowrap xl:px-5 xl:py-[10px] xl:text-[13px]"
+          class="header-cta-btn header-cta-btn--ghost inline-flex items-center font-head font-semibold uppercase tracking-[0.05em] rounded cursor-pointer no-underline bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE] whitespace-nowrap"
         >
           {{ t('header.login') }}
         </a>
@@ -67,7 +76,7 @@
           href="https://admin.fitcert365.com/register"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center font-head font-semibold text-[12px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-2 bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff] hover:-translate-y-px whitespace-nowrap xl:px-5 xl:py-[10px] xl:text-[13px]"
+          class="header-cta-btn header-cta-btn--solid inline-flex items-center font-head font-semibold uppercase tracking-[0.05em] rounded cursor-pointer no-underline bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff] whitespace-nowrap"
         >
           {{ t('header.ctaRegister') }}
         </a>
@@ -115,7 +124,7 @@
             href="https://admin.fitcert365.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-[10px] bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE]"
+            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-colors duration-200 px-4 py-[10px] bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE]"
           >
             {{ t('header.login') }}
           </a>
@@ -123,7 +132,7 @@
             href="https://admin.fitcert365.com/register"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-all duration-200 px-4 py-[10px] bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff]"
+            class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-colors duration-200 px-4 py-[10px] bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff]"
           >
             {{ t('header.ctaRegister') }}
           </a>
@@ -160,34 +169,43 @@ function syncMenuOpen(open) {
 function runHeaderEntrance() {
   const root = headerBarRef.value
   if (!root) return
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduce = false
   headerCtx?.revert()
+  if (reduce) return
+  root.classList.add('header-is-entering')
   headerCtx = gsap.context(() => {
-    if (reduce) return
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.from('.header-brand', { opacity: 0, x: -18, duration: 0.55 }, 0)
-      .from('.header-nav-link', { opacity: 0, y: -12, duration: 0.42, stagger: 0.055 }, 0.08)
-      .from('.header-actions > *', { opacity: 0, y: -10, duration: 0.38, stagger: 0.07 }, 0.2)
-      .from('.header-burger', { opacity: 0, scale: 0.88, duration: 0.45, ease: 'back.out(1.6)' }, 0.12)
+    const tl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      onComplete() { root.classList.remove('header-is-entering') },
+    })
+    tl.from('.header-brand', { opacity: 0, x: -18, duration: 0.55, clearProps: 'opacity,transform' }, 0)
+      .from('.header-nav-link', { opacity: 0, y: -12, duration: 0.42, stagger: 0.055, clearProps: 'opacity,transform' }, 0.08)
+      .from('.header-actions > *', { opacity: 0, y: -10, duration: 0.38, stagger: 0.07, clearProps: 'opacity,transform' }, 0.2)
+      .from('.header-burger', { opacity: 0, scale: 0.88, duration: 0.45, ease: 'back.out(1.6)', clearProps: 'opacity,transform' }, 0.12)
   }, root)
 }
 
 function animateMobilePanelOpen(open) {
   mobileMenuCtx?.revert()
   if (!open) return
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduce = false
   if (reduce) return
   nextTick(() => {
     const root = mobilePanelInnerRef.value
     if (!root) return
+    root.classList.add('mobile-panel-is-entering')
     mobileMenuCtx = gsap.context(() => {
-      gsap.fromTo(
+      const tl = gsap.timeline({
+        onComplete() { root.classList.remove('mobile-panel-is-entering') },
+      })
+      tl.fromTo(
         '.header-mobile-link',
         { opacity: 0, x: -12 },
-        { opacity: 1, x: 0, duration: 0.34, stagger: 0.055, ease: 'power2.out' }
+        { opacity: 1, x: 0, duration: 0.34, stagger: 0.055, ease: 'power2.out', clearProps: 'opacity,transform' },
+        0
       )
-      gsap.from('.header-mobile-lang', { opacity: 0, y: 8, duration: 0.32, ease: 'power2.out', delay: 0.1 })
-      gsap.from('.header-mobile-ctas', { opacity: 0, y: 10, duration: 0.36, ease: 'power2.out', delay: 0.16 })
+        .from('.header-mobile-lang', { opacity: 0, y: 8, duration: 0.32, ease: 'power2.out', clearProps: 'opacity,transform' }, 0.1)
+        .from('.header-mobile-ctas', { opacity: 0, y: 10, duration: 0.36, ease: 'power2.out', clearProps: 'opacity,transform' }, 0.16)
     }, root)
   })
 }
@@ -198,7 +216,8 @@ watch(mobileMenuOpen, (open) => {
 })
 
 onMounted(() => {
-  window.addEventListener('scroll', onScroll)
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
   nextTick(() => runHeaderEntrance())
 })
 
@@ -208,20 +227,113 @@ onUnmounted(() => {
   mobileMenuCtx?.revert()
 })
 
-const primaryLinks = computed(() => [
+const startLinks = computed(() => [
   { label: t('nav.home'), to: '/' },
-  { label: t('footer.navegacao.certificados'), to: '/certificados' },
+])
+
+const endLinks = computed(() => [
   { label: t('nav.events'), to: '/eventos' },
+  { label: t('nav.articles'), to: '/artigos' },
 ])
 
 const moreLinks = computed(() => [
   { label: t('header.navSaude'), to: '/quemsomos' },
+  { label: t('footer.navegacao.certificados'), to: '/certificados' },
   { label: t('nav.marcadores'), to: '/marcadores' },
-  { label: t('nav.articles'), to: '/artigos' },
 ])
 
-const allLinks = computed(() => [...primaryLinks.value, ...moreLinks.value])
+const allLinks = computed(() => [
+  ...startLinks.value,
+  { label: 'A FitCertify365', to: '/quemsomos' },
+  ...moreLinks.value.filter((l) => l.to !== '/quemsomos'),
+  ...endLinks.value,
+])
 </script>
 
 <style scoped>
+/* ── Background do header (transparente no top, sólido após scroll) ── */
+.header-root {
+  border-bottom: 1px solid transparent;
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease,
+    border-color 0.3s ease;
+}
+.header-root[data-scrolled='false'] {
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.header-root[data-scrolled='true'] {
+  background-color: rgba(6, 6, 6, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Tamanhos com transição (encolhem ao scrollar) ── */
+.header-bar {
+  transition: height 0.3s ease-out;
+}
+.header-root[data-scrolled='false'] .header-bar { height: 76px; }
+.header-root[data-scrolled='true']  .header-bar { height: 56px; }
+
+.header-brand__logo {
+  transition: height 0.3s ease-out;
+}
+.header-root[data-scrolled='false'] .header-brand__logo { height: 40px; }
+.header-root[data-scrolled='true']  .header-brand__logo { height: 30px; }
+
+.header-nav-link {
+  transition: color 0.2s ease, font-size 0.3s ease-out, letter-spacing 0.3s ease-out;
+}
+.header-root[data-scrolled='false'] .header-nav-link { font-size: 13px; }
+.header-root[data-scrolled='true']  .header-nav-link { font-size: 12px; }
+.header-root[data-scrolled='false'] .header-nav-link--brand { font-size: 14px; }
+.header-root[data-scrolled='true']  .header-nav-link--brand { font-size: 13px; }
+
+.header-cta-btn {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+              padding 0.3s ease-out, font-size 0.3s ease-out;
+}
+.header-root[data-scrolled='false'] .header-cta-btn {
+  padding: 9px 18px;
+  font-size: 12px;
+}
+.header-root[data-scrolled='true'] .header-cta-btn {
+  padding: 7px 14px;
+  font-size: 11px;
+}
+@media (min-width: 1280px) {
+  .header-root[data-scrolled='false'] .header-cta-btn { padding: 10px 20px; font-size: 13px; }
+  .header-root[data-scrolled='true']  .header-cta-btn { padding: 8px 16px;  font-size: 12px; }
+}
+
+/* ── Neutraliza CSS transitions durante a entrada GSAP ── */
+.header-is-entering .header-brand,
+.header-is-entering .header-brand__logo,
+.header-is-entering .header-nav-link,
+.header-is-entering .header-actions > *,
+.header-is-entering .header-cta-btn,
+.header-is-entering .header-burger {
+  transition: none !important;
+}
+.mobile-panel-is-entering .header-mobile-link,
+.mobile-panel-is-entering .header-mobile-lang,
+.mobile-panel-is-entering .header-mobile-ctas,
+.mobile-panel-is-entering .header-mobile-ctas > * {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-bar,
+  .header-brand__logo,
+  .header-nav-link,
+  .header-cta-btn {
+    transition: none;
+  }
+}
 </style>

@@ -158,9 +158,10 @@
           </div>
         </div>
 
-        <div class="art-cta-logo-wrap relative flex shrink-0 items-center justify-center lg:w-[340px]">
+        <div ref="ctaLogoWrapRef" class="art-cta-logo-wrap relative flex shrink-0 items-center justify-center lg:w-[340px]">
           <span class="art-cta-logo-glow pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true" />
           <img
+            ref="ctaLogoRef"
             src="/logoFit-column.png"
             alt="FitCertify365"
             class="art-cta-logo h-auto w-[180px] max-w-full object-contain md:w-[220px] lg:w-[260px]"
@@ -174,7 +175,8 @@
 <script setup>
 import Pages from '../components/Artigos-components/Artigos-pages.vue'
 import artigoService from '../services/Artigos/artigos-service.ts'
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, onUnmounted, ref, computed } from 'vue'
+import gsap from 'gsap'
 import { useI18n } from '../composables/useI18n.ts'
 
 const { t, currentLocale } = useI18n()
@@ -200,10 +202,62 @@ function onChangeCategoria(value) {
   categoriaIdSelecionada.value = value ?? null
 }
 
+// ── Tilt 3D na logo do CTA ─────────────────────────
+const ctaLogoWrapRef = ref(null)
+const ctaLogoRef = ref(null)
+let ctaLogoCleanup = null
+
+function setupCtaLogoTilt() {
+  const wrap = ctaLogoWrapRef.value
+  const img = ctaLogoRef.value
+  if (!wrap || !img) return
+
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
+
+  gsap.set(img, { transformPerspective: 800, transformOrigin: 'center center' })
+
+  const xTo = gsap.quickTo(img, 'rotationY', { duration: 0.45, ease: 'power2.out' })
+  const yTo = gsap.quickTo(img, 'rotationX', { duration: 0.45, ease: 'power2.out' })
+  const sTo = gsap.quickTo(img, 'scale', { duration: 0.45, ease: 'power2.out' })
+
+  const onMove = (e) => {
+    const r = wrap.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width
+    const y = (e.clientY - r.top) / r.height
+    xTo((x - 0.5) * 18)
+    yTo(-(y - 0.5) * 12)
+  }
+  const onEnter = () => { sTo(1.05) }
+  const onLeave = () => {
+    gsap.to(img, {
+      rotationY: 0, rotationX: 0, scale: 1,
+      duration: 0.6, ease: 'power3.out',
+    })
+  }
+
+  wrap.addEventListener('mousemove', onMove)
+  wrap.addEventListener('mouseenter', onEnter)
+  wrap.addEventListener('mouseleave', onLeave)
+
+  ctaLogoCleanup = () => {
+    wrap.removeEventListener('mousemove', onMove)
+    wrap.removeEventListener('mouseenter', onEnter)
+    wrap.removeEventListener('mouseleave', onLeave)
+    gsap.killTweensOf(img)
+  }
+}
+
 onMounted(async () => {
   const response = await artigoService.getAllCategoriaArtigos()
   const lista = response.data || []
   CategoriasArtigos.value = [{ id: null, nome: '', en_nome: '' }, ...lista]
+  setupCtaLogoTilt()
+})
+
+onUnmounted(() => {
+  ctaLogoCleanup?.()
+  ctaLogoCleanup = null
 })
 </script>
 
@@ -314,16 +368,65 @@ onMounted(async () => {
   backdrop-filter: blur(8px);
 }
 .art-intro-meta__dot {
+  --dot-rgb: 0, 198, 254;
+  position: relative;
   height: 8px;
   width: 8px;
   flex-shrink: 0;
   border-radius: 999px;
-  background: #00c6fe;
-  box-shadow: 0 0 0 4px rgba(0, 198, 254, 0.14);
+  background: rgb(var(--dot-rgb));
+  box-shadow: 0 0 0 4px rgba(var(--dot-rgb), 0.14);
+  animation: art-intro-dot-glow 2.4s ease-in-out infinite;
 }
 .art-intro-meta__dot--lime {
-  background: #88ce0d;
-  box-shadow: 0 0 0 4px rgba(136, 206, 13, 0.14);
+  --dot-rgb: 136, 206, 13;
+}
+.art-intro-meta__dot::before,
+.art-intro-meta__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--dot-rgb), 0.55);
+  pointer-events: none;
+  animation: art-intro-dot-pulse 2.4s ease-out infinite;
+  transform-origin: center;
+}
+.art-intro-meta__dot::after {
+  border-color: rgba(var(--dot-rgb), 0.4);
+  animation-delay: 1.2s;
+}
+.art-intro-meta__item:nth-child(2) .art-intro-meta__dot,
+.art-intro-meta__item:nth-child(2) .art-intro-meta__dot::before {
+  animation-delay: 0.4s;
+}
+.art-intro-meta__item:nth-child(2) .art-intro-meta__dot::after {
+  animation-delay: 1.6s;
+}
+.art-intro-meta__item:nth-child(3) .art-intro-meta__dot,
+.art-intro-meta__item:nth-child(3) .art-intro-meta__dot::before {
+  animation-delay: 0.8s;
+}
+.art-intro-meta__item:nth-child(3) .art-intro-meta__dot::after {
+  animation-delay: 2s;
+}
+
+@keyframes art-intro-dot-pulse {
+  0%   { transform: scale(0.85); opacity: 0.85; }
+  70%  { transform: scale(2.4);  opacity: 0; }
+  100% { transform: scale(2.4);  opacity: 0; }
+}
+@keyframes art-intro-dot-glow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(var(--dot-rgb), 0.14); }
+  50%      { box-shadow: 0 0 0 5px rgba(var(--dot-rgb), 0.26); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-intro-meta__dot,
+  .art-intro-meta__dot::before,
+  .art-intro-meta__dot::after {
+    animation: none;
+  }
 }
 .art-intro-meta__text {
   font-family: 'Space Grotesk', sans-serif;
@@ -541,9 +644,17 @@ onMounted(async () => {
 
 .art-cta-logo-wrap {
   min-height: 220px;
+  perspective: 800px;
 }
 .art-cta-logo {
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  transition: filter 0.4s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.art-cta-logo-wrap:hover .art-cta-logo {
+  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
+          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
 }
 .art-cta-logo-glow {
   background: radial-gradient(

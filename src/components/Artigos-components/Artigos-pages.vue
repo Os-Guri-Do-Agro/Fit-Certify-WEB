@@ -120,9 +120,11 @@ async function buscarArtigos() {
     const data = response.data
     totalItens.value = data.total
 
-    Artigos.value.data = data.itens.sort((a: Artigo, b: Artigo) => {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    })
+    Artigos.value.data = (data.itens || [])
+      .filter((a: Artigo) => (a as any)?.ativo === true)
+      .sort((a: Artigo, b: Artigo) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      })
 
     totalPages.value = data.totalPages
   } finally {

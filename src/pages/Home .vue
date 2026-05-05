@@ -445,7 +445,7 @@
             <div class="phone-glow" aria-hidden="true"></div>
             <div class="phone-frame">
               <span class="phone-island" aria-hidden="true"></span>
-              <div class="phone-screen">@
+              <div class="phone-screen">
                 <!-- Status -->
                 <div class="phone-status">
                   <span class="font-head text-[10px] font-bold tracking-wider text-white">9:41</span>
@@ -461,11 +461,10 @@
                     <img
                       src="/Logo-Grande.png"
                       :alt="t('home.landing.metrics.brandLogoAlt')"
-                      width="160"
+                      width="180"
                       height="24"
                       class="phone-brand-logo md:hidden"
                     />
-                    <p class="font-head text-[9px] font-bold uppercase tracking-[0.16em] text-[#88CE0D] hidden md:block">FitCertify365</p>
                     <p class="mt-0.5 min-w-0 font-head text-[clamp(11px,3.4vw,15px)] font-bold leading-tight text-white">Olá, atleta 👋</p>
                   </div>
                   <div class="phone-avatar shrink-0"></div>
@@ -544,7 +543,7 @@
             v-else
             v-for="post in artigosPreview" :key="post.id"
             :to="{ name: 'ArtigoDetalhe', params: { id: post.id } }"
-            class="home-article-card block cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#00C6FE]/30 hover:shadow-[0_18px_40px_-20px_rgba(0,198,254,0.45)]"
+            class="home-article-card block cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] no-underline hover:border-[#00C6FE]/30 hover:shadow-[0_18px_40px_-20px_rgba(0,198,254,0.45)]"
           >
             <article class="h-full">
               <div class="relative h-[180px] overflow-hidden bg-white/5">
@@ -798,8 +797,11 @@ function setupMarqueeGsap() {
   marqueeGsapTween = null
   const track = marqueeTrackRef.value
   const segment = marqueeSegmentRef.value
+  // #region agent log
+  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap',message:'Marquee setup attempt',data:{trackExists:!!track,segmentExists:!!segment,trackInDOM:track?document.contains(track):false,segmentWidth:segment?segment.getBoundingClientRect().width:null,segmentVisible:segment?window.getComputedStyle(segment).display:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
   if (!track || !segment) return
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (false) {
     gsap.set(track, { clearProps: 'transform' })
     return
   }
@@ -814,6 +816,9 @@ function setupMarqueeGsap() {
     ease: 'none',
     repeat: -1,
   })
+  // #region agent log
+  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap:after',message:'Marquee tween created',data:{tweenCreated:!!marqueeGsapTween,distance:-w,duration,trackTransform:track?window.getComputedStyle(track).transform:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 }
 
 function initMarqueeLayoutWatchers() {
@@ -1080,19 +1085,6 @@ watch(
       clearProps: 'opacity,transform',
       scrollTrigger: { trigger: '.home-plans-stage', start: 'top 88%', once: true },
     })
-    const reduceMotionPlans = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!reduceMotionPlans && document.querySelector('.plan-card--featured')) {
-      ScrollTrigger.create({
-        trigger: '.plan-card--featured',
-        start: 'top 85%',
-        once: true,
-        onEnter() {
-          gsap.to('.plan-card--featured', {
-            y: -8, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.9,
-          })
-        },
-      })
-    }
     requestAnimationFrame(() => ScrollTrigger.refresh())
   },
   { flush: 'post' }
@@ -1123,6 +1115,34 @@ const metricsRows = computed(() =>
 const artigosPreview = ref([])
 const isLoadingArtigos = ref(false)
 const HOME_ARTIGOS_LIMIT = 3
+let articleAnimsDone = false
+
+/** Anima os cards de artigos só depois que entram no DOM (loadArtigosPreview é async). */
+function setupArticleCardsAnim() {
+  if (articleAnimsDone) return
+  const cards = document.querySelectorAll('.home-article-card')
+  if (!cards.length) return
+  articleAnimsDone = true
+
+  cards.forEach((c) => c.classList.add('is-entering'))
+
+  gsap.from(cards, {
+    opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+    clearProps: 'opacity,transform',
+    scrollTrigger: { trigger: cards[0], start: 'top 92%', once: true },
+    onComplete() {
+      cards.forEach((c) => c.classList.remove('is-entering'))
+    },
+  })
+
+  cards.forEach((card) => {
+    const img = card.querySelector('img')
+    if (!img) return
+    img.style.transition = 'transform 0.6s ease'
+    card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)' })
+    card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)' })
+  })
+}
 
 async function loadArtigosPreview() {
   try {
@@ -1144,12 +1164,18 @@ async function loadArtigosPreview() {
     artigosPreview.value = []
   } finally {
     isLoadingArtigos.value = false
+    nextTick(() => {
+      // #region agent log
+      fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'A-postfix',location:'Home.vue:loadArtigosPreview:after',message:'Artigos loaded - setting up anims',data:{cardCount:document.querySelectorAll('.home-article-card').length,artigosLen:artigosPreview.value.length,articleAnimsDone},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+      setupArticleCardsAnim()
+    })
   }
 }
 
 // ── GSAP Animations ──────────────────────────────────────
 onMounted(() => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (false) {
     homeCarouselAutoplayMs.value = 0
   }
 
@@ -1162,7 +1188,11 @@ onMounted(() => {
   loadingAfiliadosPreview()
   loadPlanosPreview()
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reduceMotion = false
+
+  // #region agent log
+  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:onMounted',message:'Home GSAP setup - element counts',data:{gsapDefined:typeof gsap!=='undefined',scrollTriggerDefined:typeof ScrollTrigger!=='undefined',gsapVersion:gsap?.version,reduceMotionVar:reduceMotion,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches,heroItemCount:document.querySelectorAll('.hero-item').length,revealItemCount:document.querySelectorAll('.reveal-item').length,featureBarCardCount:document.querySelectorAll('.home-features-stage .feature-bar-card').length,homeArticleCardCount:document.querySelectorAll('.home-article-card').length,freemiumBulletCount:document.querySelectorAll('.freemium-bullet').length,heroBgExists:!!document.querySelector('.hero-bg'),scrollY:window.scrollY,viewportH:window.innerHeight},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   // Hero timeline
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -1199,21 +1229,6 @@ onMounted(() => {
     scrollTrigger: { trigger: '.home-features-stage', start: 'top 90%', once: true },
   })
 
-  // Article cards stagger
-  gsap.from('.home-article-card', {
-    opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-    scrollTrigger: { trigger: '.home-article-card', start: 'top 92%', once: true },
-  })
-
-  // Article image zoom on hover
-  document.querySelectorAll('.home-article-card img').forEach((img) => {
-    img.style.transition = 'transform 0.6s ease'
-    const card = img.closest('.home-article-card')
-    if (!card) return
-    card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)' })
-    card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)' })
-  })
-
   // Freemium bullets stagger
   gsap.from('.freemium-bullet', {
     opacity: 0, y: 24, duration: 0.65, stagger: 0.1, ease: 'power3.out',
@@ -1221,15 +1236,7 @@ onMounted(() => {
     scrollTrigger: { trigger: '.freemium-bullets', start: 'top 92%', once: true },
   })
 
-  // Floating orbs (freemium decor)
   if (!reduceMotion) {
-    gsap.to('.freemium-orb--lime', {
-      x: 40, y: -30, duration: 9, ease: 'sine.inOut', yoyo: true, repeat: -1,
-    })
-    gsap.to('.freemium-orb--cyan', {
-      x: -50, y: 25, duration: 11, ease: 'sine.inOut', yoyo: true, repeat: -1,
-    })
-
     // Phone mockup floating + tilt loop
     gsap.to('.phone-mockup', {
       y: -14, duration: 3.4, ease: 'sine.inOut', yoyo: true, repeat: -1,
@@ -1237,10 +1244,6 @@ onMounted(() => {
     gsap.to('.phone-frame', {
       rotate: 1.4, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1,
     })
-
-    // Final CTA orbs floating
-    gsap.to('.final-cta-orb--lime', { x: 30, y: -40, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1 })
-    gsap.to('.final-cta-orb--cyan', { x: -40, y: 30, duration: 10, ease: 'sine.inOut', yoyo: true, repeat: -1 })
 
     // Decor floating dots around phone
     gsap.to('.metrics-decor--1', { y: -22, x: 14, duration: 3.8, ease: 'sine.inOut', yoyo: true, repeat: -1 })
@@ -1992,36 +1995,22 @@ watch(currentLocale, () => {
   55%  { transform: translateX(120%); }
   100% { transform: translateX(120%); }
 }
-/* ── Featured plan card glow pulse + animated border ─ */
+/* ── Featured plan card: destaque estático (sem animações infinitas) ─ */
 .plan-card--featured {
   position: relative;
   overflow: visible;
+  border-color: rgba(136, 206, 13, 0.55);
+  border-width: 1.5px;
+  transform: translateZ(0);
+  box-shadow:
+    0 0 0 1px rgba(136, 206, 13, 0.25),
+    0 22px 48px -22px rgba(136, 206, 13, 0.32),
+    0 28px 64px -28px rgba(8, 12, 26, 0.55);
 }
-.plan-card--featured::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 26px;
-  background: linear-gradient(
-    135deg,
-    rgba(136, 206, 13, 0.55) 0%,
-    rgba(0, 198, 254, 0.35) 50%,
-    rgba(136, 206, 13, 0.55) 100%
-  );
-  background-size: 200% 200%;
-  z-index: -1;
-  animation:
-    plan-glow 3.2s ease-in-out infinite,
-    plan-border-shift 6s linear infinite;
-  filter: blur(2px);
-}
-@keyframes plan-glow {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 0.95; }
-}
-@keyframes plan-border-shift {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@media (min-width: 1024px) {
+  .plan-card--featured {
+    transform: translateY(-6px);
+  }
 }
 
 /* ── Phone Mockup ────────────────────────────────── */
@@ -2542,7 +2531,6 @@ watch(currentLocale, () => {
   .freemium-underline,
   .btn-lime::before,
   .btn-white::before,
-  .plan-card--featured::after,
   .phone-glow,
   .phone-hero-pulse,
   .phone-chart-bar {
@@ -2570,5 +2558,17 @@ watch(currentLocale, () => {
   .final-cta-secondary:hover .final-cta-secondary-icon {
     transform: none;
   }
+}
+
+/* ── Cards de artigo: transição estável (não conflita com gsap.from) ── */
+.home-article-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+}
+.home-article-card.is-entering {
+  transition: none;
+}
+.home-article-card:not(.is-entering):hover {
+  transform: translateY(-4px);
 }
 </style>

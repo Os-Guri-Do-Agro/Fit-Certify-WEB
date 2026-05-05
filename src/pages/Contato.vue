@@ -1,7 +1,7 @@
 <template>
-  <div class="ct-page bg-[#060606] text-white font-body">
+  <div ref="ctPageRef" class="ct-page bg-[#060606] text-white font-body">
     <section
-      class="ct-hero relative isolate flex min-h-[min(60vh,520px)] overflow-hidden pb-14 pt-24 md:min-h-[min(70vh,580px)] md:pb-16 md:pt-20"
+      class="ct-hero ct-hero-shell relative isolate flex min-h-[min(60vh,520px)] overflow-hidden pb-14 pt-24 md:min-h-[min(70vh,580px)] md:pb-16 md:pt-20"
     >
       <div class="ct-hero__media pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img
@@ -15,20 +15,20 @@
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
         <div class="ct-hero__copy w-full max-w-[min(640px,100%)]">
-          <p class="eyebrow">{{ t('contact.heroEyebrow') }}</p>
+          <p class="ct-hero-item eyebrow">{{ t('contact.heroEyebrow') }}</p>
           <h1
-            class="font-head text-[clamp(30px,6vw,60px)] font-bold leading-[0.98] tracking-[-0.04em]"
+            class="ct-hero-item font-head text-[clamp(30px,6vw,60px)] font-bold leading-[0.98] tracking-[-0.04em]"
           >
             {{ t('contact.title') }}
             <span class="ct-hero__dot" aria-hidden="true" />
           </h1>
           <p
-            class="mt-6 max-w-[520px] border-l-2 border-[#00C6FE] pl-5 text-[14px] leading-[1.7] text-white/65 sm:text-[15px]"
+            class="ct-hero-item mt-6 max-w-[520px] border-l-2 border-[#00C6FE] pl-5 text-[14px] leading-[1.7] text-white/65 sm:text-[15px]"
           >
             {{ t('contact.heroLead') }}
           </p>
 
-          <ul class="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2.5">
+          <ul class="ct-hero-item mt-9 flex flex-wrap items-center gap-x-3 gap-y-2.5">
             <li>
               <a
                 href="mailto:atendimento@fitcertify365.com"
@@ -69,7 +69,7 @@
     <section class="border-t border-white/[0.06] bg-[#080808] py-14 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <div class="grid gap-8 lg:grid-cols-[1.2fr_0.85fr] lg:gap-10">
-          <div ref="ctFormPanelRef" class="ct-glass ct-form-panel min-w-0">
+          <div ref="ctFormPanelRef" class="ct-reveal ct-glass ct-form-panel min-w-0">
             <p class="ct-section-eyebrow font-head">{{ t('contact.formEyebrow') }}</p>
             <h2
               class="mt-3 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
@@ -162,7 +162,7 @@
           </div>
 
           <aside class="ct-channels flex flex-col gap-4">
-            <div>
+            <div class="ct-reveal">
               <p class="ct-section-eyebrow font-head">{{ t('contact.channels.eyebrow') }}</p>
               <h3
                 class="mt-3 font-head text-[clamp(20px,2.8vw,28px)] font-bold leading-[1.15] tracking-[-0.03em] text-white"
@@ -176,7 +176,7 @@
 
             <a
               href="mailto:atendimento@fitcertify365.com"
-              class="ct-channel ct-channel--cyan"
+              class="ct-channel-card ct-channel ct-channel--cyan"
             >
               <span class="ct-channel__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -195,7 +195,7 @@
               href="https://wa.me/5541991858019"
               target="_blank"
               rel="noopener noreferrer"
-              class="ct-channel ct-channel--lime"
+              class="ct-channel-card ct-channel ct-channel--lime"
             >
               <span class="ct-channel__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor">
@@ -222,7 +222,7 @@
       <div
         class="relative z-[2] mx-auto flex w-full max-w-[1200px] flex-col items-stretch gap-10 px-4 md:px-12 lg:flex-row lg:items-center lg:justify-between"
       >
-        <div class="ct-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
+        <div class="ct-reveal ct-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="ct-cta__kicker font-head">{{ t('contact.lastSection.eyebrow') }}</p>
           <h2
             class="mt-4 font-head text-[clamp(22px,4vw,38px)] font-bold leading-[1.08] tracking-[-0.03em] text-white"
@@ -241,9 +241,10 @@
           </div>
         </div>
 
-        <div class="ct-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
+        <div ref="ctaLogoWrapRef" class="ct-reveal ct-cta__logo-wrap relative flex shrink-0 items-center justify-center lg:w-[320px]">
           <span class="ct-cta__logo-glow pointer-events-none absolute inset-0 -z-[1]" aria-hidden="true" />
           <img
+            ref="ctaLogoRef"
             src="/logoFit-column.png"
             alt="FitCertify365"
             class="ct-cta__logo h-auto w-[160px] max-w-full object-contain md:w-[200px] lg:w-[240px]"
@@ -260,12 +261,19 @@
 import { useI18n } from '../composables/useI18n'
 import contatoService from '../services/contato/contato-service'
 import { useToast } from 'primevue/usetoast'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const { t } = useI18n()
+gsap.registerPlugin(ScrollTrigger)
+
+const { t, currentLocale } = useI18n()
+const route = useRoute()
 const toast = useToast()
 const loading = ref(false)
 
+const ctPageRef = ref(null)
 const ctFormPanelRef = ref(null)
 const ctMensagemRef = ref(null)
 
@@ -370,6 +378,203 @@ const enviarEmail = async () => {
     loading.value = false
   }
 }
+
+// ── Tilt 3D na logo do CTA ─────────────────────────
+const ctaLogoWrapRef = ref(null)
+const ctaLogoRef = ref(null)
+let ctaLogoCleanup = null
+
+function setupCtaLogoTilt() {
+  const wrap = ctaLogoWrapRef.value
+  const img = ctaLogoRef.value
+  if (!wrap || !img) return
+
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
+
+  gsap.set(img, { transformPerspective: 800, transformOrigin: 'center center' })
+
+  const xTo = gsap.quickTo(img, 'rotationY', { duration: 0.45, ease: 'power2.out' })
+  const yTo = gsap.quickTo(img, 'rotationX', { duration: 0.45, ease: 'power2.out' })
+  const sTo = gsap.quickTo(img, 'scale', { duration: 0.45, ease: 'power2.out' })
+
+  const onMove = (e) => {
+    const r = wrap.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width
+    const y = (e.clientY - r.top) / r.height
+    xTo((x - 0.5) * 18)
+    yTo(-(y - 0.5) * 12)
+  }
+  const onEnter = () => { sTo(1.05) }
+  const onLeave = () => {
+    gsap.to(img, {
+      rotationY: 0, rotationX: 0, scale: 1,
+      duration: 0.6, ease: 'power3.out',
+    })
+  }
+
+  wrap.addEventListener('mousemove', onMove)
+  wrap.addEventListener('mouseenter', onEnter)
+  wrap.addEventListener('mouseleave', onLeave)
+
+  ctaLogoCleanup = () => {
+    wrap.removeEventListener('mousemove', onMove)
+    wrap.removeEventListener('mouseenter', onEnter)
+    wrap.removeEventListener('mouseleave', onLeave)
+    gsap.killTweensOf(img)
+  }
+}
+
+// ── Animações de montagem (hero) e scroll (reveal) ──
+let ctGsapCtx = null
+let ctGsapAlive = true
+let ctStPostNavTimer = 0
+
+function killCtCtx() {
+  ctGsapCtx?.revert()
+  ctGsapCtx = null
+}
+
+function runCtGsap(attempt = 0) {
+  if (!ctGsapAlive) return
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!ctGsapAlive) return
+        const root = ctPageRef.value
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+        if (!root && attempt < 10) {
+          window.setTimeout(() => runCtGsap(attempt + 1), 40)
+          return
+        }
+        if (!root) {
+          ScrollTrigger.refresh()
+          return
+        }
+
+        if (reduceMotion) {
+          killCtCtx()
+          gsap.set(root.querySelectorAll('.ct-hero-item, .ct-reveal, .ct-channel-card'), {
+            opacity: 1,
+            y: 0,
+            clearProps: 'opacity,transform',
+          })
+          ScrollTrigger.refresh()
+          return
+        }
+
+        killCtCtx()
+        const ease = 'power3.out'
+
+        ctGsapCtx = gsap.context(() => {
+          const heroItems = root.querySelectorAll('.ct-hero-item')
+          if (heroItems.length) {
+            gsap.from(heroItems, {
+              opacity: 0,
+              y: 26,
+              duration: 0.78,
+              stagger: 0.11,
+              ease,
+            })
+          }
+
+          const heroBg = root.querySelector('.ct-hero__bg')
+          const heroShell = root.querySelector('.ct-hero-shell')
+          if (heroBg && heroShell) {
+            gsap.to(heroBg, {
+              yPercent: 8,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: heroShell,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+              },
+            })
+          }
+
+          root.querySelectorAll('.ct-reveal').forEach((el) => {
+            gsap.from(el, {
+              opacity: 0,
+              y: 32,
+              duration: 0.75,
+              ease,
+              scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+            })
+          })
+
+          const channels = root.querySelectorAll('.ct-channel-card')
+          if (channels.length) {
+            gsap.from(channels, {
+              opacity: 0,
+              y: 22,
+              duration: 0.62,
+              stagger: 0.12,
+              ease,
+              clearProps: 'opacity,transform',
+              scrollTrigger: {
+                trigger: channels[0],
+                start: 'top 90%',
+                once: true,
+              },
+            })
+          }
+        }, root)
+
+        ScrollTrigger.refresh()
+        document.fonts?.ready?.then(() => {
+          if (ctGsapAlive) ScrollTrigger.refresh()
+        })
+      })
+    })
+  })
+}
+
+watch(currentLocale, () => {
+  nextTick(() => ScrollTrigger.refresh())
+})
+
+watch(
+  () => route.name,
+  (name) => {
+    if (name !== 'Contato') return
+    nextTick(() => {
+      requestAnimationFrame(() => ScrollTrigger.refresh())
+      if (ctStPostNavTimer) window.clearTimeout(ctStPostNavTimer)
+      ctStPostNavTimer = window.setTimeout(() => {
+        ctStPostNavTimer = 0
+        if (ctGsapAlive) ScrollTrigger.refresh()
+      }, 520)
+    })
+  },
+  { flush: 'post' }
+)
+
+onMounted(() => {
+  ctGsapAlive = true
+  nextTick(() => {
+    setupCtaLogoTilt()
+    runCtGsap(0)
+  })
+  if (typeof window !== 'undefined') {
+    ctStPostNavTimer = window.setTimeout(() => {
+      ctStPostNavTimer = 0
+      if (ctGsapAlive) ScrollTrigger.refresh()
+    }, 520)
+  }
+})
+
+onUnmounted(() => {
+  ctGsapAlive = false
+  ctaLogoCleanup?.()
+  ctaLogoCleanup = null
+  killCtCtx()
+  if (ctStPostNavTimer) {
+    window.clearTimeout(ctStPostNavTimer)
+    ctStPostNavTimer = 0
+  }
+})
 </script>
 
 <style scoped lang="postcss">
@@ -418,6 +623,7 @@ const enviarEmail = async () => {
 }
 .ct-hero__bg {
   will-change: transform;
+  transform-origin: center center;
 }
 .ct-hero__overlay {
   background:
@@ -725,9 +931,17 @@ a.ct-channel--lime:hover .ct-channel__arrow {
 }
 .ct-cta__logo-wrap {
   min-height: 200px;
+  perspective: 800px;
 }
 .ct-cta__logo {
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  transition: filter 0.4s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.ct-cta__logo-wrap:hover .ct-cta__logo {
+  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
+          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
 }
 .ct-cta__logo-glow {
   background: radial-gradient(

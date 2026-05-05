@@ -339,7 +339,7 @@ function runMarcadoresGsap(attempt = 0) {
         if (!mGsapAlive) return
         const root = mPageRef.value
         const reduceMotion =
-          typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          false
 
         if (!root && attempt < 10) {
           window.setTimeout(() => runMarcadoresGsap(attempt + 1), 40)
