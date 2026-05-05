@@ -143,6 +143,7 @@ onMounted(async () => {
 
 .det-rel-root {
   width: 100%;
+  background: #f8fafc;
 }
 
 /* Grade de cards verticais (diferente do layout em lista horizontal anterior) */
@@ -171,11 +172,11 @@ onMounted(async () => {
   flex-direction: column;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 20px 52px -34px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 20px 52px -34px rgba(15, 23, 42, 0.22);
   /* Sem transform no card — compatível com GSAP no ancestral */
   transition:
     border-color 0.28s ease,
@@ -190,15 +191,15 @@ onMounted(async () => {
   pointer-events: none;
 }
 .det-rel-card--skel:hover {
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 52px -34px rgba(0, 0, 0, 0.65);
+  border-color: #dbe3ef;
+  box-shadow: 0 20px 52px -34px rgba(15, 23, 42, 0.22);
 }
 
 .det-rel-card__media {
   position: relative;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16 / 11;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #e2e8f0;
 }
 .det-rel-card__img {
   position: absolute;
@@ -214,32 +215,34 @@ onMounted(async () => {
 .det-rel-card__ph {
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, rgba(0, 198, 254, 0.22) 0%, rgba(6, 6, 6, 0.75) 50%, rgba(136, 206, 13, 0.14) 100%);
+  background: linear-gradient(155deg, rgba(0, 198, 254, 0.2) 0%, rgba(255, 255, 255, 0.92) 52%, rgba(136, 206, 13, 0.14) 100%);
 }
 .det-rel-card__grad {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(6, 6, 6, 0.9) 0%, rgba(6, 6, 6, 0.25) 45%, transparent 100%);
+  background: linear-gradient(to top, rgba(248, 250, 252, 0.92) 0%, rgba(248, 250, 252, 0.3) 42%, transparent 100%);
   pointer-events: none;
 }
 .det-rel-card__title {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
   margin: 0;
-  padding: 14px 14px 16px;
   font-size: clamp(0.95rem, 2vw, 1.12rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: -0.02em;
-  color: #fff;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+  color: #0f172a;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.55);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .det-rel-card__body {
@@ -248,7 +251,7 @@ onMounted(async () => {
   flex-direction: column;
   gap: 10px;
   padding: 14px 14px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #e2e8f0;
   background: linear-gradient(180deg, rgba(0, 198, 254, 0.05) 0%, transparent 42%);
 }
 
@@ -259,7 +262,7 @@ onMounted(async () => {
   gap: 6px 10px;
   font-size: 12px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.58);
+  color: #475569;
 }
 .det-rel-card__meta-line {
   display: inline-flex;
@@ -298,12 +301,12 @@ onMounted(async () => {
 .det-rel-card__chip {
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(136, 206, 13, 0.45);
-  background: rgba(136, 206, 13, 0.08);
+  border: 1px solid rgba(0, 198, 254, 0.45);
+  background: rgba(0, 198, 254, 0.1);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #d4f88a;
+  color: #0369a1;
 }
 
 .det-rel-card__trust {
@@ -317,7 +320,7 @@ onMounted(async () => {
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
+  color: #64748b;
   line-height: 1.35;
 }
 .det-rel-card__trust-ico {
@@ -351,13 +354,13 @@ onMounted(async () => {
     color 0.2s ease;
 }
 .det-rel-card:hover .det-rel-card__cta {
-  background: #060606;
-  border-color: #060606;
+  background: #0f172a;
+  border-color: #0f172a;
   color: #fff;
 }
 
 .det-rel-card__media--skel {
-  background: rgba(255, 255, 255, 0.06);
+  background: #e2e8f0;
   animation: det-rel-skel 1.25s ease-in-out infinite;
 }
 
@@ -366,7 +369,7 @@ onMounted(async () => {
   padding: 28px 12px;
   text-align: center;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.45);
+  color: #64748b;
 }
 
 @keyframes det-rel-skel {
@@ -380,7 +383,7 @@ onMounted(async () => {
 }
 .det-rel-skel {
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #e2e8f0;
   animation: det-rel-skel 1.25s ease-in-out infinite;
 }
 .det-rel-skel--meta {

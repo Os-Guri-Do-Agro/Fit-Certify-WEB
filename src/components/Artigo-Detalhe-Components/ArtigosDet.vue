@@ -5,20 +5,20 @@
         <div
           v-for="n in 3"
           :key="'rel-skel-' + n"
-          class="art-rel-card art-rel-card--skeleton flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10"
+          class="art-rel-card art-rel-card--skeleton flex w-full flex-col overflow-hidden rounded-[18px] border border-[#dbe3ef]"
         >
-          <div class="art-rel-card__media bg-white/10" />
+          <div class="art-rel-card__media bg-[#e2e8f0]" />
           <div class="art-rel-card__body">
-            <div class="h-7 w-4/5 max-w-[420px] rounded bg-white/10" />
-            <div class="mt-2 h-4 w-full rounded bg-white/[0.08]" />
-            <div class="h-4 w-5/6 rounded bg-white/[0.08]" />
-            <div class="mt-auto h-10 w-[140px] rounded-lg bg-white/[0.08]" />
+            <div class="h-7 w-4/5 max-w-[420px] rounded bg-[#e2e8f0]" />
+            <div class="mt-2 h-4 w-full rounded bg-[#e2e8f0]" />
+            <div class="h-4 w-5/6 rounded bg-[#e2e8f0]" />
+            <div class="mt-auto h-10 w-[140px] rounded-lg bg-[#e2e8f0]" />
           </div>
         </div>
       </template>
 
       <template v-else-if="artigosFiltrados.length === 0">
-        <p class="col-span-full text-center text-sm text-white/45">
+        <p class="col-span-full text-center text-sm text-[#64748b]">
           {{ t('artigos.detalhe.related.empty') }}
         </p>
       </template>
@@ -27,7 +27,7 @@
         <article
           v-for="item in artigosFiltrados"
           :key="item.id"
-          class="art-rel-card group flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent shadow-[0_28px_72px_-40px_rgba(0,0,0,0.85)]"
+          class="art-rel-card group flex w-full flex-col overflow-hidden rounded-[18px] border border-[#dbe3ef] bg-gradient-to-b from-white to-[#f8fafc] shadow-[0_24px_56px_-36px_rgba(15,23,42,0.22)]"
         >
           <div class="art-rel-card__media relative overflow-hidden">
             <img
@@ -36,7 +36,7 @@
               alt=""
             />
             <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060606]/80 via-transparent to-transparent opacity-90"
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f172a]/55 via-transparent to-transparent opacity-90"
               aria-hidden="true"
             />
           </div>
@@ -134,6 +134,15 @@ onMounted(async () => {
 
 .art-rel-card {
   max-height: 540px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.art-rel-card:not(.art-rel-card--skeleton):hover {
+  border-color: rgba(0, 198, 254, 0.45) !important;
+  box-shadow: 0 24px 56px -28px rgba(0, 198, 254, 0.12);
+  transform: translateY(-2px);
 }
 @media (min-width: 768px) {
   .art-rel-card {
@@ -160,6 +169,8 @@ onMounted(async () => {
   padding: 22px 20px 24px;
   min-height: 0;
   flex: 1 1 auto;
+  border-top: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, rgba(0, 198, 254, 0.04) 0%, transparent 42%);
 }
 @media (min-width: 768px) {
   .art-rel-card__body {
@@ -173,7 +184,7 @@ onMounted(async () => {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #0f172a;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -183,7 +194,7 @@ onMounted(async () => {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -237,6 +248,9 @@ onMounted(async () => {
 @media (prefers-reduced-motion: reduce) {
   .art-rel-card--skeleton {
     animation: none;
+  }
+  .art-rel-card:not(.art-rel-card--skeleton):hover {
+    transform: none;
   }
   .btn-ghost:hover {
     transform: none;

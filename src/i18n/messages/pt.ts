@@ -337,7 +337,7 @@ export default {
   contact: {
     title: 'Contato',
     heroEyebrow: 'FitCertify365 · Atendimento',
-    heroLead: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? A nossa equipa está aqui para te atender.',
+    heroLead: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? A nossa equipe está aqui para te atender.',
     partnershipPrefill: 'Olá! Gostaria de falar sobre parcerias com a FitCertify365.',
     text: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? Estamos aqui para te atender.',
     name: 'Nome',
@@ -355,7 +355,7 @@ export default {
     teamContact: 'Fale com a equipe FitCertify365',
     formEyebrow: 'Envie uma mensagem',
     formTitle: 'Conte-nos como podemos ajudar',
-    formLead: 'Preencha o formulário e a nossa equipa entra em contacto consigo o mais rápido possível.',
+    formLead: 'Preencha o formulário e a nossa equipe entra em contacto consigo o mais rápido possível.',
     description: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias?',
     weAreHere: 'Estamos aqui para te atender.',
     directChannels: 'Canais diretos',
@@ -401,6 +401,7 @@ export default {
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
     navSaude: 'Quem Somos',
+    brandDropdown: 'A FitCertify365',
     more: 'Mais',
   },
   footer: {
@@ -759,7 +760,7 @@ export default {
         readingTime: '{min} min de leitura',
         author: {
           eyebrow: 'Sobre o autor',
-          fallbackName: 'Equipa FitCertify365',
+          fallbackName: 'Equipe FitCertify365',
           fallbackRole: 'Editorial',
           contact: 'Falar no WhatsApp',
           whatsappMessage: 'Olá! Gostei muito do seu artigo no FitCertify365 e queria conversar.'
@@ -791,9 +792,9 @@ export default {
     },
     cta: {
       eyebrow: 'Ainda com dúvidas?',
-      title: 'Fale com a equipa FitCertify365',
+      title: 'Fale com a equipe FitCertify365',
       text: 'Se algum ponto não ficou claro, entre em contacto connosco. Respondemos a todas as solicitações relacionadas a privacidade e termos de uso.',
-      button: 'Falar com a equipa'
+      button: 'Falar com a equipe'
     },
     section1: {
       title: '1. Introdução',

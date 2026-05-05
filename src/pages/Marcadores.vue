@@ -1,5 +1,5 @@
 <template>
-  <div ref="mPageRef" class="m-page bg-[#060606] text-white font-body">
+  <div ref="mPageRef" class="m-page bg-[#f8fafc] text-[#0f172a] font-body">
     <!-- Hero: padrão Certificados (clip + overlay + grelha + CTAs) -->
     <section
       class="m-hero-shell relative isolate flex min-h-[min(72vh,620px)] overflow-hidden pb-16 pt-24 md:min-h-[min(78vh,700px)] md:pb-20 md:pt-20"
@@ -15,7 +15,7 @@
       <div class="m-hero-grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
-        <div class="m-hero-copy w-full max-w-[min(560px,100%)]">
+        <div class="m-hero-copy w-full max-w-[min(560px,100%)] text-white">
           <p class="m-hero-item eyebrow">{{ t('marcadores.heroEyebrow') }}</p>
           <h1
             class="m-hero-item m-hero-title font-head text-[clamp(30px,6vw,64px)] font-bold leading-[0.95] tracking-[-0.04em]"
@@ -48,17 +48,17 @@
     </section>
 
     <!-- Indicadores: cabeçalho editorial + grelha / carrossel -->
-    <section class="relative overflow-x-clip border-t border-white/[0.06] bg-[#080808] py-14 md:py-24">
+    <section class="relative overflow-x-clip border-t border-[#dbe3ef] bg-white py-14 md:py-24">
       <div class="m-features-gridlines pointer-events-none absolute inset-0 opacity-[0.055]" aria-hidden="true" />
       <div class="relative z-[1] mx-auto max-w-[1180px] px-4 md:px-10">
         <header class="m-reveal mb-12 md:mb-14 md:flex md:items-end md:justify-between md:gap-10">
           <div class="max-w-xl">
             <p class="qs-sec-kicker font-head">{{ t('marcadores.section1.subtitle') }}</p>
-            <h2 class="mt-3 font-head text-[clamp(22px,3.5vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+            <h2 class="mt-3 font-head text-[clamp(22px,3.5vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
               {{ t('marcadores.section1.title') }}
             </h2>
           </div>
-          <p class="mt-6 max-w-[520px] text-[15px] leading-[1.82] text-white/55 md:mt-0">
+          <p class="mt-6 max-w-[520px] text-[15px] leading-[1.82] text-[#475569] md:mt-0">
             {{ t('marcadores.text') }}
           </p>
         </header>
@@ -88,24 +88,21 @@
     </section>
 
     <!-- Como funciona: mesmo ritmo da Home (Saúde validada / Eventos) — max-w-[1200px] + imagem 50vw -->
-    <section class="border-t border-white/[0.06] bg-[#060606]">
+    <section class="border-t border-[#dbe3ef] bg-[#f8fafc]">
 
       <!-- Passo 01 — imagem à direita (padrão “Saúde validada”) -->
-      <div class="overflow-x-clip bg-[#0a0a0b]">
+      <div class="overflow-x-clip bg-white">
         <div class="m-reveal relative mx-auto flex max-w-[1200px] flex-col md:min-h-[480px] lg:min-h-[520px]">
           <div
             class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-14 md:max-w-none md:px-12 md:py-16 lg:max-w-[min(600px,calc(50%-2rem))] lg:pr-16"
           >
             <p class="section-tag">{{ t('marcadores.steps.step1Eyebrow') }}</p>
-            <h3 class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words md:text-[clamp(26px,3.5vw,42px)]">
+            <h3 class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words text-[#0f172a] md:text-[clamp(26px,3.5vw,42px)]">
               <span class="text-[#00C6FE]">{{ t('marcadores.section2.title') }}</span>
             </h3>
-            <p class="mb-8 max-w-[480px] text-[15px] leading-[1.75] text-white/60 md:text-base">
+            <p class="max-w-[480px] text-[15px] leading-[1.75] text-[#475569] md:text-base">
               {{ t('marcadores.section2.text') }}
             </p>
-            <RouterLink :to="{ name: 'QuemSomos' }" class="btn-ghost w-fit">
-              {{ t('marcadores.section2.button') }}
-            </RouterLink>
           </div>
           <div
             class="m-split-visual relative order-1 min-h-[300px] w-full overflow-hidden lg:absolute lg:inset-y-0 lg:left-1/2 lg:top-0 lg:min-h-0 lg:w-[50vw]"
@@ -117,7 +114,7 @@
             />
             <div
               class="pointer-events-none absolute inset-0"
-              style="background: linear-gradient(to right, #0a0a0b 0%, transparent 34%)"
+              style="background: linear-gradient(to right, #ffffff 0%, transparent 34%)"
               aria-hidden="true"
             />
           </div>
@@ -125,7 +122,7 @@
       </div>
 
       <!-- Passo 02 — imagem à esquerda (padrão “Eventos”) -->
-      <div class="overflow-x-clip bg-[#060606]">
+      <div class="overflow-x-clip bg-[#f8fafc]">
         <div
           class="m-reveal relative mx-auto flex max-w-[1200px] flex-col md:min-h-[480px] lg:min-h-[520px] lg:flex-row lg:justify-end"
         >
@@ -139,7 +136,7 @@
             />
             <div
               class="pointer-events-none absolute inset-0"
-              style="background: linear-gradient(to left, #060606 0%, transparent 34%)"
+              style="background: linear-gradient(to left, #f8fafc 0%, transparent 34%)"
               aria-hidden="true"
             />
           </div>
@@ -147,26 +144,26 @@
             class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-14 md:max-w-none md:px-12 md:py-16 lg:ml-auto lg:max-w-[min(600px,calc(50%-2rem))] lg:shrink-0 lg:px-16 lg:pl-20 lg:pr-12"
           >
             <p class="section-tag">{{ t('marcadores.steps.step2Eyebrow') }}</p>
-            <h3 class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words md:text-[clamp(26px,3.5vw,42px)]">
+            <h3 class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words text-[#0f172a] md:text-[clamp(26px,3.5vw,42px)]">
               <span class="text-[#88CE0D]">{{ t('marcadores.section3.title') }}</span>
             </h3>
-            <p class="max-w-[480px] text-[15px] leading-[1.75] text-white/60 md:text-base" v-html="t('marcadores.section3.text')" />
+            <p class="max-w-[480px] text-[15px] leading-[1.75] text-[#475569] md:text-base" v-html="t('marcadores.section3.text')" />
           </div>
         </div>
       </div>
 
       <!-- Passo 03 — imagem à direita -->
-      <div class="overflow-x-clip bg-[#080808]">
+      <div class="overflow-x-clip bg-white">
         <div class="m-reveal relative mx-auto flex max-w-[1200px] flex-col md:min-h-[480px] lg:min-h-[520px]">
           <div
             class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-14 md:max-w-none md:px-12 md:py-16 lg:max-w-[min(600px,calc(50%-2rem))] lg:pr-16"
           >
             <p class="section-tag">{{ t('marcadores.steps.step3Eyebrow') }}</p>
             <h3
-              class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words text-white md:text-[clamp(26px,3.5vw,42px)]"
+              class="mb-5 font-head text-[clamp(22px,5.5vw,42px)] font-bold leading-[1.1] tracking-[-0.02em] break-words text-[#0f172a] md:text-[clamp(26px,3.5vw,42px)]"
               v-html="t('marcadores.section4.title')"
             ></h3>
-            <p class="max-w-[480px] text-[15px] leading-[1.75] text-white/60 md:text-base">
+            <p class="max-w-[480px] text-[15px] leading-[1.75] text-[#475569] md:text-base">
               {{ t('marcadores.section4.text') }}
             </p>
           </div>
@@ -180,7 +177,7 @@
             />
             <div
               class="pointer-events-none absolute inset-0"
-              style="background: linear-gradient(to right, #080808 0%, transparent 34%)"
+              style="background: linear-gradient(to right, #ffffff 0%, transparent 34%)"
               aria-hidden="true"
             />
           </div>
@@ -189,7 +186,7 @@
     </section>
 
     <!-- CTA: fundo preto + grelha + painel e chips -->
-    <section class="m-cta-section relative isolate overflow-hidden border-t border-white/[0.08] bg-[#060606] py-16 md:py-20">
+    <section class="m-cta-section relative isolate overflow-hidden border-t border-[#dbe3ef] bg-white py-16 md:py-20">
       <div class="m-cta-gridlines pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <div class="m-cta-vignette pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
@@ -200,10 +197,10 @@
           <div class="m-cta-glass text-left">
             <p class="m-cta-kicker font-head">{{ t('marcadores.section5.ctaKicker') }}</p>
             <h2
-              class="mt-4 font-head text-[clamp(26px,4.2vw,44px)] font-bold leading-[1.06] tracking-[-0.035em] text-white"
+              class="mt-4 font-head text-[clamp(26px,4.2vw,44px)] font-bold leading-[1.06] tracking-[-0.035em] text-[#0f172a]"
               v-html="t('marcadores.section5.title')"
             ></h2>
-            <p class="m-cta-lead mt-6 border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-white/80 sm:text-[15px]">
+            <p class="m-cta-lead mt-6 border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-[#334155] sm:text-[15px]">
               {{ t('marcadores.text') }}
             </p>
             <ul class="m-cta-bullets mt-8 list-none p-0">
@@ -583,8 +580,8 @@ onUnmounted(() => {
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
@@ -629,6 +626,15 @@ onUnmounted(() => {
   color: #060606;
   transform: var(--m-btn-lift);
   box-shadow: 0 12px 32px -18px rgba(0, 198, 254, 0.4);
+}
+.m-hero-shell .btn-outline,
+.m-cta-section .btn-outline {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+.m-cta-section .btn-outline {
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 
 @media (max-width: 767px) {
@@ -679,8 +685,8 @@ onUnmounted(() => {
 
 .m-features-gridlines {
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.32) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.24) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, transparent 78%);
 }
@@ -694,10 +700,10 @@ onUnmounted(() => {
   min-height: 200px;
   flex-direction: column;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 24px 22px 26px;
-  box-shadow: 0 22px 56px -40px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 22px 56px -40px rgba(15, 23, 42, 0.25);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -729,11 +735,11 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(8, 10, 14, 0.92) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(155deg, #ffffff 0%, #f1f5f9 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 10px 28px -14px rgba(0, 0, 0, 0.65);
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 10px 28px -16px rgba(15, 23, 42, 0.22);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -748,14 +754,14 @@ onUnmounted(() => {
 }
 .m-feature-card__icon-wrap--cyan {
   border-color: rgba(0, 198, 254, 0.38);
-  background: linear-gradient(145deg, rgba(0, 198, 254, 0.28) 0%, rgba(0, 198, 254, 0.08) 42%, rgba(6, 8, 12, 0.92) 100%);
+  background: linear-gradient(145deg, rgba(0, 198, 254, 0.2) 0%, rgba(0, 198, 254, 0.06) 100%);
   box-shadow:
     inset 0 1px 0 rgba(0, 198, 254, 0.2),
     0 14px 36px -18px rgba(0, 198, 254, 0.38);
 }
 .m-feature-card__icon-wrap--lime {
   border-color: rgba(136, 206, 13, 0.38);
-  background: linear-gradient(145deg, rgba(136, 206, 13, 0.26) 0%, rgba(136, 206, 13, 0.07) 42%, rgba(6, 8, 12, 0.92) 100%);
+  background: linear-gradient(145deg, rgba(136, 206, 13, 0.18) 0%, rgba(136, 206, 13, 0.05) 100%);
   box-shadow:
     inset 0 1px 0 rgba(136, 206, 13, 0.14),
     0 14px 36px -18px rgba(136, 206, 13, 0.28);
@@ -764,10 +770,10 @@ onUnmounted(() => {
   transform: translateY(-3px);
 }
 .m-feature-card__icon-wrap--cyan .m-feature-card__ico {
-  color: #7ddbfe;
+  color: #00c6fe;
 }
 .m-feature-card__icon-wrap--lime .m-feature-card__ico {
-  color: #b8ef5a;
+  color: #7baf12;
 }
 .m-feature-card__ico {
   width: 24px;
@@ -784,14 +790,14 @@ onUnmounted(() => {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.35;
-  color: #fff;
+  color: #0f172a;
 }
 .m-feature-card__body {
   margin: 0;
   margin-top: auto;
   font-size: 14px;
   line-height: 1.62;
-  color: rgba(255, 255, 255, 0.58);
+  color: #475569;
 }
 
 .m-split-visual {
@@ -803,19 +809,19 @@ onUnmounted(() => {
 }
 
 .m-cta-section {
-  background: #060606;
+  background: #ffffff;
 }
 .m-cta-gridlines {
-  opacity: 0.5;
+  opacity: 1;
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.05) 1px, transparent 1px);
   background-size: 52px 52px;
-  mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
 }
 .m-cta-vignette {
-  background: radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.03) 0%, transparent 45%);
+  background: radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.025) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.02) 0%, transparent 45%);
 }
 .m-cta-kicker {
   margin: 0;
@@ -842,26 +848,58 @@ onUnmounted(() => {
   gap: 12px;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.78);
+  color: #334155;
 }
 .m-cta-bullets__dot {
+  position: relative;
   margin-top: 7px;
   height: 7px;
   width: 7px;
   flex-shrink: 0;
   border-radius: 999px;
   background: linear-gradient(135deg, #00c6fe, #88ce0d);
-  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.18);
+  box-shadow: 0 0 0 3px rgba(136, 206, 13, 0.2);
+  animation: evt-cta-mark-glow 2.4s ease-in-out infinite;
+}
+.m-cta-bullets__dot::before,
+.m-cta-bullets__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(136, 206, 13, 0.55);
+  pointer-events: none;
+  animation: evt-cta-mark-pulse 2.4s ease-out infinite;
+  transform-origin: center;
+}
+.m-cta-bullets__dot::after {
+  border-color: rgba(0, 198, 254, 0.5);
+  animation-delay: 1.2s;
+}
+.m-cta-bullets__item:nth-child(2) .m-cta-bullets__dot { animation-delay: 0.4s; }
+.m-cta-bullets__item:nth-child(2) .m-cta-bullets__dot::before { animation-delay: 0.4s; }
+.m-cta-bullets__item:nth-child(2) .m-cta-bullets__dot::after  { animation-delay: 1.6s; }
+.m-cta-bullets__item:nth-child(3) .m-cta-bullets__dot { animation-delay: 0.8s; }
+.m-cta-bullets__item:nth-child(3) .m-cta-bullets__dot::before { animation-delay: 0.8s; }
+.m-cta-bullets__item:nth-child(3) .m-cta-bullets__dot::after  { animation-delay: 2s; }
+@keyframes evt-cta-mark-pulse {
+  0%   { transform: scale(0.85); opacity: 0.85; }
+  70%  { transform: scale(2.4);  opacity: 0; }
+  100% { transform: scale(2.4);  opacity: 0; }
+}
+@keyframes evt-cta-mark-glow {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(136, 206, 13, 0.18); }
+  50%      { box-shadow: 0 0 0 4px rgba(136, 206, 13, 0.32); }
 }
 .m-cta-glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: linear-gradient(168deg, rgba(24, 24, 30, 0.98) 0%, rgba(10, 10, 12, 0.97) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(0, 198, 254, 0.1) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    0 28px 72px -40px rgba(15, 23, 42, 0.24),
+    0 0 0 1px rgba(0, 198, 254, 0.08) inset,
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
   backdrop-filter: blur(14px);
 }
 @media (min-width: 768px) {
@@ -875,13 +913,13 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
+  color: #64748b;
 }
 .m-cta-chip {
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #dbe3ef;
   padding: 16px 18px;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   backdrop-filter: blur(10px);
 }
 .m-cta-chip--cyan {
@@ -897,14 +935,14 @@ onUnmounted(() => {
     inset 0 1px 0 rgba(136, 206, 13, 0.1);
 }
 .m-cta-chip--neutral {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 36px -24px rgba(0, 0, 0, 0.55);
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 36px -26px rgba(15, 23, 42, 0.22);
 }
 .m-cta-chip__text {
   margin: 0;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.84);
+  color: #334155;
 }
 .m-cta-chip__text--pre {
   white-space: pre-line;
@@ -938,7 +976,7 @@ onUnmounted(() => {
 }
 
 .m-swiper-features :deep(.swiper-pagination-bullet) {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.22);
   opacity: 1;
 }
 .m-swiper-features :deep(.swiper-pagination-bullet-active) {
@@ -946,6 +984,11 @@ onUnmounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .m-cta-bullets__dot,
+  .m-cta-bullets__dot::before,
+  .m-cta-bullets__dot::after {
+    animation: none;
+  }
   .m-feature-card:hover .m-feature-card__surface {
     transform: none;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="evt-page bg-[#060606] text-white font-body">
+  <div class="evt-page bg-[#f8fafc] text-[#0f172a] font-body">
     <!-- HERO: mesmo padrão visual de Certificados (overlay + grid + copy à esquerda) -->
     <section
       class="evt-hero-shell relative flex min-h-[min(72vh,620px)] overflow-hidden pb-16 pt-24 md:min-h-[min(78vh,700px)] md:pb-20 md:pt-20"
@@ -15,7 +15,7 @@
       <div
         class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12"
       >
-        <div class="evt-hero-copy w-full max-w-[min(560px,100%)]">
+        <div class="evt-hero-copy w-full max-w-[min(560px,100%)] text-white">
           <p class="evt-hero-item eyebrow">{{ t('eventos.heroEyebrow') }}</p>
           <h1
             class="evt-hero-item evt-hero-title font-head text-[clamp(30px,6vw,68px)] font-bold leading-[0.95] tracking-[-0.04em]"
@@ -51,7 +51,7 @@
     </section>
 
     <!-- Faixa editorial: marca d’água + texto (layout diferente de Certificados) -->
-    <section class="relative overflow-hidden bg-[#0c0c0e] py-16 md:py-24">
+    <section class="relative overflow-hidden bg-white py-16 md:py-24">
       <div class="evt-reveal evt-kicker relative mx-auto max-w-[1100px] px-4 md:px-10">
         <div class="evt-kicker__grid">
           <div class="evt-kicker__aside font-head" aria-hidden="true">
@@ -60,7 +60,7 @@
           </div>
           <div class="evt-kicker__body">
             <p class="section-tag">{{ t('eventos.section2.title') }}</p>
-            <p class="evt-kicker__text mt-4 text-[15px] leading-[1.85] text-white/60 md:text-[16px]">
+            <p class="evt-kicker__text mt-4 text-[15px] leading-[1.85] text-[#475569] md:text-[16px]">
               {{ t('eventos.section1.text') }}
             </p>
           </div>
@@ -78,7 +78,7 @@
     </section>
 
     <!-- Calendário + filtros -->
-    <section id="calendario" class="relative scroll-mt-[88px] bg-[#080808] py-12 md:py-16">
+    <section id="calendario" class="relative scroll-mt-[88px] bg-[#f8fafc] py-12 md:py-16">
       <div class="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true">
         <div
           class="h-full w-full"
@@ -94,11 +94,11 @@
         <header class="mb-8 md:mb-10 md:flex md:items-end md:justify-between md:gap-8">
           <div>
             <p class="evt-filters-eyebrow font-head">{{ t('eventos.heroEyebrow') }}</p>
-            <h2 class="mt-2 font-head text-[clamp(24px,3.8vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
+            <h2 class="mt-2 font-head text-[clamp(24px,3.8vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-[#0f172a]">
               {{ t('eventos.section2.title') }}
             </h2>
           </div>
-          <p class="evt-filters-note mt-4 max-w-[360px] text-[13px] leading-relaxed text-white/45 md:mt-0 md:text-right">
+          <p class="evt-filters-note mt-4 max-w-[360px] text-[13px] leading-relaxed text-[#64748b] md:mt-0 md:text-right">
             {{ t('eventos.section2.subtitle') }}
           </p>
         </header>
@@ -156,7 +156,7 @@
     </section>
 
     <!-- Lista de provas (âncora #eventos — hero e CTA apontam aqui) -->
-    <section id="eventos" class="evt-list-shell relative scroll-mt-[88px] overflow-x-clip bg-[#080808] py-14 md:py-20">
+    <section id="eventos" class="evt-list-shell relative scroll-mt-[88px] overflow-x-clip bg-white py-14 md:py-20">
       <div class="evt-list-gridlines pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true"></div>
       <div class="relative z-[1] mx-auto max-w-[min(1200px,calc(100%-32px))] px-4 md:px-10">
         <div ref="evtGridStageRef" class="evt-grid-stage">
@@ -178,7 +178,7 @@
           </template>
 
           <template v-else-if="eventosData.length === 0">
-            <p class="evt-empty font-head col-span-full text-center text-[15px] text-white/55 md:text-[16px]">
+            <p class="evt-empty font-head col-span-full text-center text-[15px] text-[#64748b] md:text-[16px]">
               {{ t('eventos.empty') }}
             </p>
           </template>
@@ -252,7 +252,7 @@
     </section>
 
     <!-- CTA organizadores -->
-    <section class="evt-reveal evt-cta-org relative overflow-hidden bg-[#050508]">
+    <section class="evt-reveal evt-cta-org relative overflow-hidden bg-[#f8fafc]">
       <div class="evt-cta-org__bg-grid pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true" />
       <div class="evt-cta-org__glow pointer-events-none absolute -left-[20%] top-1/2 h-[min(90%,520px)] w-[55%] -translate-y-1/2 rounded-full blur-[100px]" aria-hidden="true" />
 
@@ -260,11 +260,11 @@
         <div class="evt-cta-org__layout">
           <div class="evt-cta-org__copy">
             <p class="evt-cta-org__eyebrow font-head">{{ t('eventos.heroEyebrow') }}</p>
-            <h2 class="evt-cta-org__title font-head text-[clamp(26px,4vw,42px)] font-bold leading-[1.08] tracking-[-0.035em] text-white">
+            <h2 class="evt-cta-org__title font-head text-[clamp(26px,4vw,42px)] font-bold leading-[1.08] tracking-[-0.035em] text-[#0f172a]">
               {{ t('eventos.section3.title') }}
             </h2>
             <span class="evt-cta-org__rule" aria-hidden="true" />
-            <p class="evt-cta-org__text mt-6 max-w-[52ch] text-[15px] leading-[1.82] text-white/65 md:text-[16px]">
+            <p class="evt-cta-org__text mt-6 max-w-[52ch] text-[15px] leading-[1.82] text-[#475569] md:text-[16px]">
               {{ t('eventos.section3.text') }}
             </p>
 
@@ -654,8 +654,8 @@ onUnmounted(() => {
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
@@ -674,6 +674,10 @@ onUnmounted(() => {
   transform: var(--evt-btn-lift);
   background: #9dea0f;
   box-shadow: 0 18px 40px -12px rgba(136, 206, 13, 0.55);
+}
+.evt-hero-shell .btn-outline {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
 }
 
 @media (max-width: 767px) {
@@ -795,10 +799,10 @@ onUnmounted(() => {
 }
 .evt-filters-panel {
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 22px 20px 24px;
-  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.22);
 }
 .evt-filters-fields {
   display: grid;
@@ -817,7 +821,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: #64748b;
 }
 
 .evt-filters-select {
@@ -826,16 +830,16 @@ onUnmounted(() => {
 .evt-filters-select :deep(.el-select__wrapper) {
   min-height: 46px;
   border-radius: 10px;
-  background: rgba(6, 6, 6, 0.45);
+  background: #ffffff;
   box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #dbe3ef;
 }
 .evt-filters-select :deep(.el-select__wrapper:hover) {
   border-color: rgba(0, 198, 254, 0.45);
 }
 .evt-filters-select :deep(.el-select__placeholder),
 .evt-filters-select :deep(.el-select__selected-item) {
-  color: rgba(255, 255, 255, 0.88);
+  color: #334155;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
 }
@@ -845,7 +849,7 @@ onUnmounted(() => {
 
 /* Lista de eventos — fundo e grade como Certificados (bento) */
 .evt-list-shell {
-  background: #080808;
+  background: #ffffff;
 }
 .evt-list-gridlines {
   background-image:
@@ -881,11 +885,11 @@ onUnmounted(() => {
   flex-direction: column;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 24px 56px -36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 24px 56px -36px rgba(15, 23, 42, 0.22);
   transition:
     border-color 0.3s ease,
     box-shadow 0.35s ease,
@@ -898,7 +902,8 @@ onUnmounted(() => {
 }
 .evt-card__media {
   position: relative;
-  aspect-ratio: 16/9;
+  /* Mais altura que 16/9 para duas linhas de título + gradiente sem cortar na borda do body */
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #0a0a0a;
 }
@@ -927,15 +932,15 @@ onUnmounted(() => {
 }
 .evt-card__title {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
   margin: 0;
-  padding: 12px 14px 14px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(0.94rem, 1.5vw, 1.08rem);
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.3;
   color: #fff;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
   display: -webkit-box;
@@ -943,6 +948,8 @@ onUnmounted(() => {
   line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .evt-card__body {
   display: flex;
@@ -950,7 +957,7 @@ onUnmounted(() => {
   flex-direction: column;
   padding: 18px 18px 20px;
   gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #e2e8f0;
   background: linear-gradient(180deg, rgba(0, 198, 254, 0.06) 0%, transparent 42%);
 }
 .evt-card__meta {
@@ -965,7 +972,7 @@ onUnmounted(() => {
   align-items: start;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.62);
+  color: #475569;
 }
 .evt-card__row-ico {
   width: 18px;
@@ -986,7 +993,7 @@ onUnmounted(() => {
 .evt-card__dist {
   margin-top: 4px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #e2e8f0;
 }
 .evt-card__dist-eyebrow {
   margin: 0 0 10px;
@@ -1006,12 +1013,12 @@ onUnmounted(() => {
   align-items: center;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(136, 206, 13, 0.5);
-  background: rgba(136, 206, 13, 0.08);
+  border: 1px solid rgba(0, 198, 254, 0.45);
+  background: rgba(0, 198, 254, 0.1);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #c8f07a;
+  color: #0369a1;
 }
 .evt-card__trust {
   margin: 18px 0 0;
@@ -1025,7 +1032,7 @@ onUnmounted(() => {
   line-height: 1.45;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
+  color: #64748b;
 }
 .evt-card__trust-ico {
   width: 16px;
@@ -1065,8 +1072,8 @@ onUnmounted(() => {
     color 0.2s ease;
 }
 .evt-card:hover .evt-card__cta {
-  background: #060606;
-  border-color: #060606;
+  background: #0f172a;
+  border-color: #0f172a;
   color: #fff;
 }
 
@@ -1082,9 +1089,9 @@ onUnmounted(() => {
 .evt-pagination-wrap :deep(.el-pagination.is-background .btn-prev),
 .evt-pagination-wrap :deep(.el-pagination.is-background .btn-next),
 .evt-pagination-wrap :deep(.el-pagination.is-background .el-pager li) {
-  background-color: rgba(255, 255, 255, 0.06) !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #ffffff !important;
+  color: #334155 !important;
+  border: 1px solid #dbe3ef;
 }
 .evt-pagination-wrap :deep(.el-pagination.is-background .btn-prev:hover),
 .evt-pagination-wrap :deep(.el-pagination.is-background .btn-next:hover),
@@ -1107,9 +1114,9 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-  box-shadow: 0 24px 56px -36px rgba(0, 0, 0, 0.65);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 24px 56px -36px rgba(15, 23, 42, 0.2);
 }
 .evt-skel-card__shine {
   position: absolute;
@@ -1119,21 +1126,21 @@ onUnmounted(() => {
   background: linear-gradient(
     105deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.08) 45%,
+    rgba(0, 198, 254, 0.1) 45%,
     transparent 90%
   );
   animation: evt-skel-shimmer 1.4s ease-in-out infinite;
 }
 .evt-skel-card__media {
-  aspect-ratio: 16/9;
-  background: #141416;
+  aspect-ratio: 16 / 10;
+  background: #e2e8f0;
 }
 .evt-skel-card__body {
   padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #e2e8f0;
   background: linear-gradient(180deg, rgba(0, 198, 254, 0.05) 0%, transparent 40%);
 }
 .evt-skel-chips {
@@ -1142,7 +1149,7 @@ onUnmounted(() => {
   gap: 8px;
   padding-top: 12px;
   margin-top: 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #e2e8f0;
 }
 .evt-skel-chip {
   width: 44px;
@@ -1158,14 +1165,14 @@ onUnmounted(() => {
   height: 12px;
   max-width: 180px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #e2e8f0;
   border-left: 2px solid rgba(136, 206, 13, 0.4);
   padding-left: 12px;
 }
 .evt-skel-line {
   height: 10px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #e2e8f0;
 }
 .evt-skel-line--w50 {
   width: 50%;
@@ -1265,7 +1272,7 @@ onUnmounted(() => {
   font-weight: 600;
   line-height: 1.45;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.82);
+  color: #334155;
 }
 @media (min-width: 768px) {
   .evt-cta-org__li {
@@ -1336,8 +1343,8 @@ onUnmounted(() => {
 }
 
 .evt-cta-org__btn-secondary {
-  border-color: rgba(255, 255, 255, 0.28);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .evt-cta-org__btn-secondary:hover {
   border-color: #00c6fe;
@@ -1352,7 +1359,7 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #dbe3ef;
   background: #0a0a0a;
   box-shadow: 0 28px 70px -36px rgba(0, 0, 0, 0.75);
   min-height: 240px;

@@ -1,5 +1,5 @@
 <template>
-  <div ref="ctPageRef" class="ct-page bg-[#060606] text-white font-body">
+  <div ref="ctPageRef" class="ct-page bg-[#f8fafc] text-[#0f172a] font-body">
     <section
       class="ct-hero ct-hero-shell relative isolate flex min-h-[min(60vh,520px)] overflow-hidden pb-14 pt-24 md:min-h-[min(70vh,580px)] md:pb-16 md:pt-20"
     >
@@ -14,7 +14,7 @@
       <div class="ct-hero__grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
-        <div class="ct-hero__copy w-full max-w-[min(640px,100%)]">
+        <div class="ct-hero__copy w-full max-w-[min(640px,100%)] text-white">
           <p class="ct-hero-item eyebrow">{{ t('contact.heroEyebrow') }}</p>
           <h1
             class="ct-hero-item font-head text-[clamp(30px,6vw,60px)] font-bold leading-[0.98] tracking-[-0.04em]"
@@ -66,17 +66,17 @@
       />
     </section>
 
-    <section class="border-t border-white/[0.06] bg-[#080808] py-14 md:py-20">
+    <section class="border-t border-[#dbe3ef] bg-white py-14 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <div class="grid gap-8 lg:grid-cols-[1.2fr_0.85fr] lg:gap-10">
           <div ref="ctFormPanelRef" class="ct-reveal ct-glass ct-form-panel min-w-0">
             <p class="ct-section-eyebrow font-head">{{ t('contact.formEyebrow') }}</p>
             <h2
-              class="mt-3 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
+              class="mt-3 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]"
             >
               {{ t('contact.formTitle') }}
             </h2>
-            <p class="mt-4 max-w-[460px] text-[14px] leading-[1.7] text-white/55">
+            <p class="mt-4 max-w-[460px] text-[14px] leading-[1.7] text-[#475569]">
               {{ t('contact.formLead') }}
             </p>
 
@@ -165,11 +165,11 @@
             <div class="ct-reveal">
               <p class="ct-section-eyebrow font-head">{{ t('contact.channels.eyebrow') }}</p>
               <h3
-                class="mt-3 font-head text-[clamp(20px,2.8vw,28px)] font-bold leading-[1.15] tracking-[-0.03em] text-white"
+                class="mt-3 font-head text-[clamp(20px,2.8vw,28px)] font-bold leading-[1.15] tracking-[-0.03em] text-[#0f172a]"
               >
                 {{ t('contact.channels.title') }}
               </h3>
-              <p class="mt-3 max-w-[360px] text-[13.5px] leading-[1.65] text-white/50">
+              <p class="mt-3 max-w-[360px] text-[13.5px] leading-[1.65] text-[#64748b]">
                 {{ t('contact.channels.lead') }}
               </p>
             </div>
@@ -215,7 +215,7 @@
       </div>
     </section>
 
-    <section class="ct-cta relative isolate overflow-hidden border-t border-white/[0.08] bg-[#060606] py-16 md:py-24">
+    <section class="ct-cta relative isolate overflow-hidden border-t border-[#dbe3ef] bg-[#f8fafc] py-16 md:py-24">
       <div class="ct-cta__grid pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <div class="ct-cta__veil pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
@@ -225,12 +225,12 @@
         <div class="ct-reveal ct-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="ct-cta__kicker font-head">{{ t('contact.lastSection.eyebrow') }}</p>
           <h2
-            class="mt-4 font-head text-[clamp(22px,4vw,38px)] font-bold leading-[1.08] tracking-[-0.03em] text-white"
+            class="mt-4 font-head text-[clamp(22px,4vw,38px)] font-bold leading-[1.08] tracking-[-0.03em] text-[#0f172a]"
           >
             {{ t('contact.lastSection.title') }}
           </h2>
           <p
-            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-white/80 sm:text-[15px]"
+            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-[#475569] sm:text-[15px]"
           >
             {{ t('contact.lastSection.text') }}
           </p>
@@ -687,14 +687,12 @@ onUnmounted(() => {
 
 .ct-glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(168deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 30px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.85),
-    0 0 0 1px rgba(0, 198, 254, 0.06) inset,
-    0 1px 0 rgba(255, 255, 255, 0.05) inset;
-  backdrop-filter: blur(14px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.16),
+    0 0 0 1px rgba(0, 198, 254, 0.06) inset;
 }
 @media (min-width: 768px) {
   .ct-glass {
@@ -718,34 +716,34 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
 }
 
 .ct-input {
   width: 100%;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(6, 6, 6, 0.5);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 12px 14px;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
   transition:
     border-color 0.22s ease,
     box-shadow 0.22s ease,
     background-color 0.22s ease;
 }
 .ct-input::placeholder {
-  color: rgba(255, 255, 255, 0.32);
+  color: #94a3b8;
 }
 .ct-input:hover {
   border-color: rgba(0, 198, 254, 0.35);
 }
 .ct-input:focus {
   outline: none;
-  border-color: rgba(0, 198, 254, 0.7);
-  background: rgba(6, 6, 6, 0.7);
-  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.18);
+  border-color: rgba(0, 198, 254, 0.65);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.15);
 }
 .ct-textarea {
   resize: vertical;
@@ -800,12 +798,11 @@ onUnmounted(() => {
   align-items: center;
   gap: 18px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 18px 18px;
   text-decoration: none;
   color: inherit;
-  backdrop-filter: blur(10px);
   transition:
     border-color 0.22s ease,
     background-color 0.22s ease,
@@ -815,7 +812,7 @@ onUnmounted(() => {
 a.ct-channel:hover {
   border-color: rgba(0, 198, 254, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 22px 52px -28px rgba(0, 198, 254, 0.28);
+  box-shadow: 0 22px 52px -28px rgba(0, 198, 254, 0.14);
 }
 .ct-channel__icon {
   display: inline-flex;
@@ -824,9 +821,9 @@ a.ct-channel:hover {
   height: 44px;
   width: 44px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
 }
 .ct-channel--cyan .ct-channel__icon {
   border-color: rgba(0, 198, 254, 0.45);
@@ -841,7 +838,7 @@ a.ct-channel:hover {
   box-shadow: inset 0 0 0 1px rgba(136, 206, 13, 0.18);
 }
 .ct-channel--neutral {
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  background: linear-gradient(165deg, #ffffff 0%, #f1f5f9 100%);
 }
 .ct-channel__body {
   display: flex;
@@ -854,24 +851,24 @@ a.ct-channel:hover {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 .ct-channel__value {
   font-family: 'DM Sans', sans-serif;
   font-size: 14.5px;
   font-weight: 600;
-  color: #fff;
+  color: #0f172a;
   word-break: break-word;
 }
 .ct-channel__hint {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 .ct-channel__arrow {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #94a3b8;
   transition:
     transform 0.22s ease,
     color 0.22s ease;
@@ -885,25 +882,25 @@ a.ct-channel--lime:hover .ct-channel__arrow {
 }
 
 .ct-cta {
-  background: #060606;
+  background: #f8fafc;
 }
 .ct-cta__grid {
-  opacity: 0.5;
+  opacity: 0.45;
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(
     ellipse 85% 70% at 50% 40%,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.2) 55%,
+    rgba(15, 23, 42, 0.08) 0%,
+    rgba(15, 23, 42, 0.03) 55%,
     transparent 100%
   );
 }
 .ct-cta__veil {
   background:
-    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.04) 0%, transparent 45%);
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.05) 0%, transparent 45%);
 }
 .ct-cta__kicker {
   margin: 0;
@@ -915,14 +912,12 @@ a.ct-channel--lime:hover .ct-channel__arrow {
 }
 .ct-cta__glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(168deg, rgba(24, 24, 30, 0.96) 0%, rgba(10, 10, 12, 0.96) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(0, 198, 254, 0.1) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter: blur(14px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(0, 198, 254, 0.08) inset;
 }
 @media (min-width: 768px) {
   .ct-cta__glass {
@@ -934,14 +929,13 @@ a.ct-channel--lime:hover .ct-channel__arrow {
   perspective: 800px;
 }
 .ct-cta__logo {
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 18px 36px rgba(15, 23, 42, 0.14));
   transition: filter 0.4s ease;
   will-change: transform;
   cursor: pointer;
 }
 .ct-cta__logo-wrap:hover .ct-cta__logo {
-  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
-          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
+  filter: drop-shadow(0 22px 44px rgba(0, 198, 254, 0.2)) drop-shadow(0 10px 24px rgba(136, 206, 13, 0.12));
 }
 .ct-cta__logo-glow {
   background: radial-gradient(

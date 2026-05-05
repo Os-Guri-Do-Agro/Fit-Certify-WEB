@@ -401,6 +401,7 @@ export default {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     navSaude: 'About Us',
+    brandDropdown: 'FitCertify365',
     more: 'More',
   },
   footer: {
