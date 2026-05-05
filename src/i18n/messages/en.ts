@@ -336,19 +336,52 @@ export default {
   },
   contact: {
     title: 'Contact',
+    heroEyebrow: 'FitCertify365 · Support',
+    heroLead: 'Questions about certificates, sports health, event integration or partnerships? Our team is here to help you.',
+    partnershipPrefill: 'Hi! I would like to talk about partnerships with FitCertify365.',
     text: 'Questions about certificates, sports health, event integration or partnerships? We are here to help you.',
     name: 'Name',
+    namePlaceholder: 'How should we call you?',
     email: 'E-mail',
+    emailPlaceholder: 'you@email.com',
     message: 'Message',
-    send: 'Send',
+    messagePlaceholder: 'Tell us briefly what you need.',
+    send: 'Send message',
     phone: 'Phone',
+    phonePlaceholder: '(11) 99999-9999',
     address: 'Address',
     subject: 'Subject',
     sending: 'Sending...',
     teamContact: 'Contact the FitCertify365 team',
+    formEyebrow: 'Send a message',
+    formTitle: 'Tell us how we can help',
+    formLead: 'Fill in the form and our team will get back to you as soon as possible.',
     description: 'Questions about certificates, sports health, event integration or partnerships?',
     weAreHere: 'We are here to help you.',
     directChannels: 'Direct channels',
+    channels: {
+      eyebrow: 'Direct channels',
+      title: 'Prefer something faster?',
+      lead: 'Pick the channel that best fits your urgency. We are online on all of them.',
+      email: {
+        label: 'E-mail',
+        value: 'atendimento@fitcertify365.com'
+      },
+      whatsapp: {
+        label: 'WhatsApp',
+        value: '+55 (41) 99185-8019'
+      }
+    },
+    toast: {
+      successTitle: 'Message sent',
+      successDetail: 'We received your message and will reply shortly.',
+      errorTitle: 'Could not send',
+      errorDetail: 'Please try again in a moment or use one of the direct channels.',
+      warnTitle: 'Heads up',
+      warnRequired: 'Please fill in all fields to continue.',
+      warnEmail: 'Enter a valid e-mail.',
+      warnPhone: 'Enter a valid phone.'
+    },
     partnership: {
       title: 'Want to be part of our ecosystem?',
       description: 'If you are an event organizer, doctor, clinic or sports brand and want to connect to FitCertify365, contact us.',
@@ -356,10 +389,11 @@ export default {
     },
     sectionContact: 'Direct channels',
     lastSection: {
+      eyebrow: 'Institutional partnerships',
       title: 'Want to be part of our ecosystem?',
       text: 'If you are an event organizer, doctor, clinic or sports brand and want to connect to FitCertify365, contact us.',
       button: 'Talk about partnerships'
-    } 
+    }
   },
   header: {
     login: 'Log in',
@@ -824,9 +858,25 @@ export default {
         termos: 'Privacy Policy | Terms of use'
       }
     },
-    termos: {
-      title: 'Privacy Policy, Terms and Conditions of Use and Data Protection',
-      section1: {
+  termos: {
+    title: 'Privacy Policy, Terms and Conditions of Use and Data Protection',
+    heroEyebrow: 'Legal documents · FitCertify365',
+    heroLead: 'Learn about the rules that govern your relationship with us — from the privacy of your health data to platform usage.',
+    lastUpdated: 'Last updated: 05/04/2026',
+    tocTitle: 'Table of contents',
+    backToTop: 'Top',
+    tags: {
+      lgpd: 'LGPD compliant',
+      gdpr: 'GDPR compliant',
+      hipaa: 'HIPAA compliant'
+    },
+    cta: {
+      eyebrow: 'Still have questions?',
+      title: 'Talk to the FitCertify365 team',
+      text: 'If something is not clear, get in touch with us. We respond to all requests related to privacy and terms of use.',
+      button: 'Talk to the team'
+    },
+    section1: {
         title: '1. Introduction',
         paragraph1: 'Welcome to <strong>FitCertify365</strong> ("Company", "we", "our", "us")!',
         paragraph2: 'These Terms of Service ("Terms", "Terms of Use") govern the use of our mobile applications and digital platform developed by FitCertify365.',

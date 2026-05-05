@@ -336,19 +336,52 @@ export default {
   },
   contact: {
     title: 'Contato',
+    heroEyebrow: 'FitCertify365 · Atendimento',
+    heroLead: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? A nossa equipa está aqui para te atender.',
+    partnershipPrefill: 'Olá! Gostaria de falar sobre parcerias com a FitCertify365.',
     text: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? Estamos aqui para te atender.',
     name: 'Nome',
+    namePlaceholder: 'Como devemos te chamar?',
     email: 'E-mail',
+    emailPlaceholder: 'voce@email.com',
     message: 'Mensagem',
-    send: 'Enviar',
+    messagePlaceholder: 'Conte-nos brevemente o que precisa.',
+    send: 'Enviar mensagem',
     phone: 'Telefone',
+    phonePlaceholder: '(11) 99999-9999',
     address: 'Endereço',
     subject: 'Assunto',
     sending: 'Enviando...',
     teamContact: 'Fale com a equipe FitCertify365',
+    formEyebrow: 'Envie uma mensagem',
+    formTitle: 'Conte-nos como podemos ajudar',
+    formLead: 'Preencha o formulário e a nossa equipa entra em contacto consigo o mais rápido possível.',
     description: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias?',
     weAreHere: 'Estamos aqui para te atender.',
     directChannels: 'Canais diretos',
+    channels: {
+      eyebrow: 'Canais diretos',
+      title: 'Prefere algo mais rápido?',
+      lead: 'Escolha o canal que melhor combina com a sua urgência. Estamos online em todos eles.',
+      email: {
+        label: 'E-mail',
+        value: 'atendimento@fitcertify365.com'
+      },
+      whatsapp: {
+        label: 'WhatsApp',
+        value: '+55 (41) 99185-8019'
+      }
+    },
+    toast: {
+      successTitle: 'Mensagem enviada',
+      successDetail: 'Recebemos a sua mensagem e respondemos em breve.',
+      errorTitle: 'Não foi possível enviar',
+      errorDetail: 'Tente novamente em instantes ou use um dos canais diretos.',
+      warnTitle: 'Atenção',
+      warnRequired: 'Preencha todos os campos para continuar.',
+      warnEmail: 'Insira um e-mail válido.',
+      warnPhone: 'Insira um telefone válido.'
+    },
     partnership: {
       title: 'Quer fazer parte do nosso ecossistema?',
       description: 'Se você é organizador de eventos, médico, clínica ou marca esportiva e quer se conectar à FitCertify365, entre em contato conosco.',
@@ -356,6 +389,7 @@ export default {
     },
     sectionContact: 'Canais diretos',
     lastSection: {
+      eyebrow: 'Parcerias institucionais',
       title: 'Quer fazer parte do nosso ecossistema?',
       text: 'Se você é organizador de eventos, médico, clínica ou marca esportiva e quer se conectar à FitCertify365, entre em contato conosco.',
       button: 'Falar sobre parcerias'
@@ -740,6 +774,22 @@ export default {
   },
   termos: {
     title: 'Política de Privacidade, Termos e Condições de Uso e Proteção de Dados',
+    heroEyebrow: 'Documentos legais · FitCertify365',
+    heroLead: 'Conheça as regras que orientam a sua relação connosco — desde a privacidade dos seus dados de saúde até o uso da plataforma.',
+    lastUpdated: 'Última atualização: 04/05/2026',
+    tocTitle: 'Sumário',
+    backToTop: 'Topo',
+    tags: {
+      lgpd: 'Conforme LGPD',
+      gdpr: 'Conforme GDPR',
+      hipaa: 'Conforme HIPAA'
+    },
+    cta: {
+      eyebrow: 'Ainda com dúvidas?',
+      title: 'Fale com a equipa FitCertify365',
+      text: 'Se algum ponto não ficou claro, entre em contacto connosco. Respondemos a todas as solicitações relacionadas a privacidade e termos de uso.',
+      button: 'Falar com a equipa'
+    },
     section1: {
       title: '1. Introdução',
       paragraph1: 'Bem-vindo(a) à <strong>FitCertify365</strong> ("Companhia", "nós", "nosso", "conosco")!',
