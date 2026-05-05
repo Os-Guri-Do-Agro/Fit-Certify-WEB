@@ -611,27 +611,27 @@ export default {
         title: 'Health Markers',
         subtitle: 'Monitor your main sports health indicators. Understand your body, train safely and track your progress.',
         card1: {
-          title: '💓 Resting Heart Rate',
+          title: 'Resting Heart Rate',
           text: 'Identify recovery and effort patterns based on your resting heart rate.'
         },
         card2: {
-          title: '⚖️ BMI and Body Composition',
+          title: 'BMI and Body Composition',
           text: 'Assessment of mass, weight and body proportion for continuous physical monitoring.'
         },
         card3: {
-          title: '🧪 Laboratory Tests',
+          title: 'Laboratory Tests',
           text: 'View results like cholesterol, blood glucose, ferritin and other clinical indicators.'
         },
         card4: {
-          title: '🫁 VO₂ Max',
+          title: 'VO₂ Max',
           text: 'Estimate of maximum oxygen consumption — essential for endurance sports.'
         },
         card5: {
-          title: '🩺 Blood Pressure',
+          title: 'Blood Pressure',
           text: 'Regular monitoring of your pressure levels, with manual or automatic records.'
         },
         card6: {
-          title: '📈 Certificate History',
+          title: 'Certificate History',
           text: 'Track your timeline of certificates, consultations and medical evaluations.'
         }
       },
@@ -651,13 +651,48 @@ export default {
       section5: {
         title: 'Your body speaks.<br />FitCertify365 helps you listen.',
         buttonMobile: 'See our partners',
-        buttonDesktop: 'Sign Up'
-      }
+        buttonDesktop: 'Sign Up',
+        ctaKicker: 'Start with the full dashboard',
+        ctaBullet1: 'Charts, history and trends in one place',
+        ctaBullet2: 'Alerts when something drifts outside your ideal range',
+        ctaBullet3: 'Connect Apple Health, Google Fit, Strava and more',
+        asideTitle: 'Same account',
+        asideLine1: 'Personalized workouts',
+        asideLine2: 'Digital certificates',
+        asideLine3: 'Live markers\nSmart alerts when your body needs attention.',
+        asideLine4: 'Partner events\nDates, venues and signup — same account, no app-hopping.',
+      },
+      steps: {
+        kicker: 'How it works',
+        title: 'From check-up to race day',
+        step1Eyebrow: 'Sports health',
+        step2Eyebrow: 'Performance',
+        step3Eyebrow: 'Integration'
+      },
+      heroEyebrow: 'FitCertify365'
     },
     artigos: {
       title: 'Articles',
+      heroEyebrow: 'FitCertify365',
       subtitle: 'Reliable content for those who take sports seriously',
       text: 'Tips, studies and updates on health, prevention, performance and everything that moves people who live the sport.',
+      intro: {
+        eyebrow: 'What you will find here',
+        title: 'Practical content to train with more health, safety and clarity.',
+        lead: 'Articles, guides and interviews with partner professionals on sports health, injury prevention, performance and recovery — always grounded on evidence and on the daily practice of people who live the sport.',
+        meta1: 'Editorial curation',
+        meta2: 'Regularly updated',
+        meta3: 'Plain language, no jargon',
+        topicsTitle: 'Featured topics',
+        topics: {
+          health: 'Sports health',
+          prevention: 'Injury prevention',
+          performance: 'Performance',
+          recovery: 'Recovery',
+          nutrition: 'Nutrition',
+          mindset: 'Mindset'
+        }
+      },
       categorias: 'Categories',
       todasCategorias: 'All categories',
       categoriaItems: 'categoria.en_nome',
@@ -669,6 +704,38 @@ export default {
         citacao: '{{ item.en_citacao }}',
         conteudo: '{{ item.en_conteudo }}',
         conclusao: '{{ item.en_conclusao }}'
+      },
+      cta: {
+        eyebrow: 'Talk to FitCertify365',
+        title: 'Want to see your content here?',
+        text: 'If you are an event organizer, doctor, clinic or sports brand and want to publish content or connect with our community, get in touch with us.',
+        button: 'Get in touch'
+      },
+      detalhe: {
+        backToList: 'Back to articles',
+        sectionIntro: 'Introduction',
+        sectionContent: 'Read',
+        sectionQuote: 'Highlight',
+        sectionConclusion: 'Conclusion',
+        readingTime: '{min} min read',
+        author: {
+          eyebrow: 'About the author',
+          fallbackName: 'FitCertify365 Team',
+          fallbackRole: 'Editorial',
+          contact: 'Talk on WhatsApp',
+          whatsappMessage: 'Hi! I really enjoyed your article on FitCertify365 and would like to chat.'
+        },
+        related: {
+          eyebrow: 'Keep reading',
+          title: 'More articles from FitCertify365',
+          empty: 'No more articles available right now.'
+        },
+        cta: {
+          eyebrow: 'Your story also deserves to be told',
+          title: 'Have a topic, event or clinical case to share?',
+          text: 'We are always open to editorial partnerships with health professionals, athletes, organizers and brands that share our values.',
+          button: 'Get in touch'
+        }
       }
     },
     obrigado: {
