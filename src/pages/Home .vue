@@ -807,9 +807,6 @@ function setupMarqueeGsap() {
   if (typeof window === 'undefined') return
   const track = marqueeTrackRef.value
   const segment = marqueeSegmentRef.value
-  // #region agent log
-  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap',message:'Marquee setup attempt',data:{trackExists:!!track,segmentExists:!!segment,trackInDOM:track?document.contains(track):false,segmentWidth:segment?segment.getBoundingClientRect().width:null,segmentVisible:segment?window.getComputedStyle(segment).display:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
   if (!track || !segment) return
   const rawW = segment.getBoundingClientRect().width
   if (!Number.isFinite(rawW) || rawW < 4) return
@@ -859,9 +856,6 @@ function setupMarqueeGsap() {
   if (prevProgress > 0 && prevProgress < 1) {
     marqueeGsapTween.progress(prevProgress)
   }
-  // #region agent log
-  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:setupMarqueeGsap:after',message:'Marquee tween created',data:{tweenCreated:!!marqueeGsapTween,distance:-w,duration,trackTransform:track?window.getComputedStyle(track).transform:null,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
 }
 
 function initMarqueeLayoutWatchers() {
@@ -1200,10 +1194,6 @@ onMounted(() => {
   loadPlanosPreview()
 
   const reduceMotion = false
-
-  // #region agent log
-  fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'Home.vue:onMounted',message:'Home GSAP setup - element counts',data:{gsapDefined:typeof gsap!=='undefined',scrollTriggerDefined:typeof ScrollTrigger!=='undefined',gsapVersion:gsap?.version,reduceMotionVar:reduceMotion,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches,heroItemCount:document.querySelectorAll('.hero-item').length,revealItemCount:document.querySelectorAll('.reveal-item').length,featureBarCardCount:document.querySelectorAll('.home-features-stage .feature-bar-card').length,homeArticleCardCount:document.querySelectorAll('.home-article-card').length,freemiumBulletCount:document.querySelectorAll('.freemium-bullet').length,heroBgExists:!!document.querySelector('.hero-bg'),scrollY:window.scrollY,viewportH:window.innerHeight},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
 
   // Hero timeline
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } })

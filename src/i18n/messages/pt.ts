@@ -343,7 +343,7 @@ export default {
     name: 'Nome',
     namePlaceholder: 'Como devemos te chamar?',
     email: 'E-mail',
-    emailPlaceholder: 'voce@email.com',
+    emailPlaceholder: "voce{'@'}email.com",
     message: 'Mensagem',
     messagePlaceholder: 'Conte-nos brevemente o que precisa.',
     send: 'Enviar mensagem',
@@ -365,7 +365,7 @@ export default {
       lead: 'Escolha o canal que melhor combina com a sua urgência. Estamos online em todos eles.',
       email: {
         label: 'E-mail',
-        value: 'atendimento@fitcertify365.com'
+        value: "atendimento{'@'}fitcertify365.com"
       },
       whatsapp: {
         label: 'WhatsApp',

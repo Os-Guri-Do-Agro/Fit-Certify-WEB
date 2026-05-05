@@ -353,12 +353,6 @@ function runQsGsap(attempt = 0) {
         const reduceMotion =
           false
 
-        // #region agent log
-        try {
-          fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'F-postfix',location:'QuemSomos.vue:runQsGsap',message:'QuemSomos GSAP setup attempt',data:{attempt,gsapAlive:qsGsapAlive,rootExists:!!root,reduceMotionVar:reduceMotion,osPrefersReducedMotionRaw:matchMedia('(prefers-reduced-motion: reduce)').matches,gsapDefined:typeof gsap!=='undefined',gsapVersion:gsap?.version,heroItemCount:root?root.querySelectorAll('.qs-hero-item').length:document.querySelectorAll('.qs-hero-item').length,revealCount:root?root.querySelectorAll('.qs-reveal').length:document.querySelectorAll('.qs-reveal').length,heroBgExists:!!(root?root.querySelector('.qs-hero-bg'):document.querySelector('.qs-hero-bg')),existingScrollTriggers:typeof ScrollTrigger!=='undefined'?ScrollTrigger.getAll().length:-1,scrollY:window.scrollY},timestamp:Date.now()})}).catch(()=>{});
-        } catch (e) { /* ignore */ }
-        // #endregion
-
         if (!root && attempt < 10) {
           window.setTimeout(() => runQsGsap(attempt + 1), 40)
           return
@@ -390,11 +384,6 @@ function runQsGsap(attempt = 0) {
         try {
         ctx = gsap.context(() => {
           const heroItems = root.querySelectorAll('.qs-hero-item')
-          // #region agent log
-          try {
-            fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'A,B',location:'QuemSomos.vue:gsap.context',message:'Inside gsap.context callback',data:{heroItemsLen:heroItems.length,firstHeroOpacity:heroItems[0]?window.getComputedStyle(heroItems[0]).opacity:null,firstHeroTransform:heroItems[0]?window.getComputedStyle(heroItems[0]).transform:null},timestamp:Date.now()})}).catch(()=>{});
-          } catch(e){}
-          // #endregion
           if (heroItems.length) {
             gsap.from(heroItems, {
               opacity: 0,
@@ -544,20 +533,8 @@ function runQsGsap(attempt = 0) {
 
         }, root)
         } catch (err) {
-          // #region agent log
-          try {
-            fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'B',location:'QuemSomos.vue:catch',message:'EXCEPTION caught in gsap.context',data:{errorName:err?.name,errorMsg:String(err?.message||err),stack:String(err?.stack||'').slice(0,500)},timestamp:Date.now()})}).catch(()=>{});
-          } catch(e){}
-          // #endregion
+          console.error('Erro no GSAP context (QuemSomos):', err)
         }
-
-        // #region agent log
-        try {
-          const heroItem0 = root.querySelector('.qs-hero-item')
-          const reveal0 = root.querySelector('.qs-reveal')
-          fetch('http://127.0.0.1:7569/ingest/8c4de9eb-ea0c-4fb2-9271-1fb4a51b02d7',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f947e8'},body:JSON.stringify({sessionId:'f947e8',hypothesisId:'A,E',location:'QuemSomos.vue:after-context',message:'Post gsap.context state',data:{ctxCreated:!!ctx,activeScrollTriggers:ScrollTrigger.getAll().length,heroItemOpacity:heroItem0?window.getComputedStyle(heroItem0).opacity:null,heroItemTransform:heroItem0?window.getComputedStyle(heroItem0).transform:null,revealOpacity:reveal0?window.getComputedStyle(reveal0).opacity:null,revealTransform:reveal0?window.getComputedStyle(reveal0).transform:null,scrollY:window.scrollY},timestamp:Date.now()})}).catch(()=>{});
-        } catch(e){}
-        // #endregion
 
         ScrollTrigger.refresh()
         document.fonts?.ready?.then(() => {
