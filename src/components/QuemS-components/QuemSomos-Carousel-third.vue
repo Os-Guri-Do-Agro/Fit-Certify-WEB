@@ -68,9 +68,17 @@ const teamMembers = [
   gap: 18px;
   overflow: hidden;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 20px 18px 22px;
+  box-shadow: 0 18px 48px -36px rgba(15, 23, 42, 0.2);
+  transition:
+    border-color 0.28s ease,
+    box-shadow 0.32s ease;
+}
+.qs-tm-card:hover .qs-tm-card__inner {
+  border-color: rgba(0, 198, 254, 0.28);
+  box-shadow: 0 22px 56px -36px rgba(0, 198, 254, 0.12);
 }
 .qs-tm-card__photo {
   width: 100%;
@@ -78,7 +86,7 @@ const teamMembers = [
   margin: 0 auto;
   overflow: hidden;
   border-radius: 16px;
-  background: #111;
+  background: #e2e8f0;
   aspect-ratio: 1;
 }
 .qs-tm-card__img {
@@ -100,7 +108,7 @@ const teamMembers = [
   font-size: 1.28rem;
   font-weight: 700;
   font-style: normal;
-  color: #fff;
+  color: #0f172a;
 }
 .qs-tm-card__role {
   margin: 0 0 12px;
@@ -114,7 +122,7 @@ const teamMembers = [
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.55);
+  color: #475569;
 }
 
 :deep(.swiper-pagination) {
@@ -125,7 +133,7 @@ const teamMembers = [
   height: 8px;
   margin: 0 5px !important;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
   transition:
     transform 0.25s ease,

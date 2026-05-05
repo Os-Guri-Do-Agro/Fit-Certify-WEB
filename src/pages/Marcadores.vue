@@ -976,7 +976,7 @@ onUnmounted(() => {
 }
 
 .m-swiper-features :deep(.swiper-pagination-bullet) {
-  background: rgba(15, 23, 42, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
 }
 .m-swiper-features :deep(.swiper-pagination-bullet-active) {

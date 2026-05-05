@@ -1191,7 +1191,7 @@ onUnmounted(() => {
 .qs-swiper-pillars :deep(.swiper-pagination-bullet),
 .qs-swiper-mvv :deep(.swiper-pagination-bullet),
 .qs-swiper-team :deep(.swiper-pagination-bullet) {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
 }
 
