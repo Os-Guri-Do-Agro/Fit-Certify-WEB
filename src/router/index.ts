@@ -1,14 +1,13 @@
 // src/router/index.ts
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
-import { nextTick } from "vue";
 
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
   }
 }
-import Home from "../pages/Home.vue";
+import Home from "../pages/Home .vue";
 import QuemSomos from "../pages/QuemSomos.vue";
 import Certificados from "../pages/Certificados.vue";
 import Marcadores from "../pages/Marcadores.vue";
@@ -62,19 +61,48 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 
-  scrollBehavior() {
-    nextTick(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+  scrollBehavior(to, _from, savedPosition) {
+    // Botão voltar/avançar do navegador: respeita a posição que estava
+    if (savedPosition) {
+      return savedPosition;
+    }
+    // Navegação para uma âncora (#faq, etc.): vai para o elemento
+    if (to.hash) {
+      return { el: to.hash, top: 0, behavior: "smooth" };
+    }
+    // Navegação normal entre páginas: garante que comece no topo.
+    // Usamos Promise com pequeno atraso para esperar o novo componente
+    // montar (e o ScrollTrigger/GSAP terminarem o setup) antes do scroll,
+    // evitando que animações de entrada cancelem o reposicionamento.
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      }, 0);
     });
-    return false;
   },
 });
 
 
-router.afterEach((to) => {
+router.beforeEach((to, from, next) => {
+  // Em troca de rota, força o topo imediatamente para que a nova página
+  // não apareça no meio/fim por causa da posição da página anterior.
+  if (typeof window !== "undefined" && to.path !== from.path && !to.hash) {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }
+  next();
+});
+
+router.afterEach((to, from) => {
+  // Fallback: depois que a navegação completou, garante novamente que
+  // estamos no topo (alguns ScrollTrigger.refresh em onMounted podem
+  // tentar reposicionar a página).
+  if (typeof window !== "undefined" && to.path !== from.path && !to.hash) {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    });
+  }
+
   if (typeof window.gtag !== 'undefined') {
     window.gtag('config', 'G-XTN2MCVPCG', {
       page_path: to.fullPath

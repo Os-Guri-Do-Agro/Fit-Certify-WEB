@@ -1,5 +1,5 @@
 <template>
-  <div class="language-selector">
+  <div class="language-selector" :class="{ 'language-selector--dark': variant === 'dark' }">
     <button 
       @click="toggleDropdown"
       class="locale-button"
@@ -29,6 +29,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from '../composables/useI18n'
+
+withDefaults(
+  defineProps<{ variant?: 'light' | 'dark' }>(),
+  { variant: 'light' }
+)
 
 const { currentLocale, changeLocale, initLocale } = useI18n()
 const isOpen = ref(false)
@@ -153,5 +158,37 @@ onUnmounted(() => {
 
 .dropdown-item:last-child {
   border-radius: 0 0 6px 6px;
+}
+
+/* Dark header (TheHeader) */
+.language-selector--dark .locale-button {
+  color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.language-selector--dark .locale-button:hover {
+  color: #00c6fe;
+  border-color: rgba(0, 198, 254, 0.45);
+}
+
+.language-selector--dark .dropdown {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.language-selector--dark .dropdown-item {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.language-selector--dark .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.language-selector--dark .dropdown-item.active {
+  background-color: rgba(0, 198, 254, 0.12);
+  color: #22d4ff;
 }
 </style>

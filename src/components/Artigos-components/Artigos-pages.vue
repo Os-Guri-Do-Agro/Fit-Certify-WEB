@@ -1,72 +1,64 @@
 <template>
-  <div>
-    <!-- Grid de Cards -->
-    <div class="grid md:grid-cols-2 md:grid-rows-1 place-items-center w-full gap-10 md:gap-3 lg:gap-7 justify-center">
-      
-      <!-- Skeletons quando está carregando -->
+  <div class="art-pages-root">
+    <div
+      class="grid w-full place-items-stretch justify-center gap-8 md:grid-cols-2 md:grid-rows-1 md:gap-6 lg:gap-8"
+    >
       <template v-if="isLoading">
-        <div 
-          v-for="n in itemsPerPage" 
+        <div
+          v-for="n in itemsPerPage"
           :key="'skeleton-' + n"
-          class="w-full md:max-w-[558px] shadow-xl md:shadow-none pb-5 md:pb-0 rounded-lg lg:max-w-full min-h-[680px] md:min-h-[700px] lg:min-h-[850px] xl:min-h-[750px] animate-pulse "
+          class="art-card art-card--skeleton flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10"
         >
-          <div class="flex">
-            <div class="w-full max-w-[558px] lg:max-w-full h-[433px] bg-gray-300 rounded"></div>
-          </div>
-
-          <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px] px-3 md:px-0">
-            <div class="h-7 lg:h-10 bg-gray-300 rounded md:w-3/4"></div>
-            <div class="h-5 lg:h-7 bg-gray-300 rounded w-full mt-3"></div>
-            <div class="h-5 lg:h-7 bg-gray-300 rounded md:w-5/6 mt-2"></div>
-            <div class="h-[36px] bg-gray-300 rounded-full w-[558px] lg:w-[212px] mt-4"></div>
+          <div class="art-card__media bg-white/10" />
+          <div class="art-card__body">
+            <div class="h-7 w-4/5 max-w-[420px] rounded bg-white/10" />
+            <div class="mt-2 h-4 w-full rounded bg-white/[0.08]" />
+            <div class="h-4 w-5/6 rounded bg-white/[0.08]" />
+            <div class="mt-auto h-10 w-[140px] rounded-lg bg-white/[0.08]" />
           </div>
         </div>
       </template>
 
-      <!-- Cards de Artigos -->
       <template v-else>
-        <div 
-          class="w-full md:max-w-[558px] shadow-xl md:shadow-none pb-5 md:pb-0 rounded-lg lg:max-w-full min-h-[680px] md:min-h-[700px] lg:min-h-[850px] xl:min-h-[750px]"
-          v-for="item in Artigos.data" 
+        <article
+          v-for="item in Artigos.data"
           :key="item.id"
+          class="art-card group flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent shadow-[0_28px_72px_-40px_rgba(0,0,0,0.85)]"
         >
-          <div class="flex">
-            <img 
-              class="w-full max-w-[558px] lg:max-w-full h-[433px] object-cover"
-              :src="item.imagensArtigo.find((i: any) => i.isBanner == false)?.imagemUrl" 
+          <div class="art-card__media relative overflow-hidden">
+            <img
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              :src="item.imagensArtigo.find((i: any) => i.isBanner == false)?.imagemUrl"
               alt=""
-            >
+            />
+            <div
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060606]/80 via-transparent to-transparent opacity-90"
+              aria-hidden="true"
+            />
           </div>
 
-          <div class="flex flex-col justify-between gap-3 h-full mt-5 lg:mt-7 min-h-[230px] md:min-h-[280px] lg:min-h-[320px] px-5 md:px-0">
-            <div>
-              <h1 class="text-[1.3em] lg:text-[2.125em] font-[600] italic text-cyan-400 max-w-[525px] lg:leading-[52px] md:leading-[30px] leading-[26px] line-clamp-3 overflow-hidden">
-                {{ getLocalizedField(item, 'titulo') }}
-              </h1>
-            </div>
-
-            <div>
-              <p class="text-[0.85em] lg:text-[1.25em] w-full max-w-[551px] leading-[26px] lg:leading-[36px] line-clamp-3 overflow-hidden">
-                {{ getLocalizedField(item, 'subTitulo') }}
-              </p>
-            </div>
-
-            <div>
-              <RouterLink 
+          <div class="art-card__body">
+            <h2 class="art-card__title font-head">
+              {{ getLocalizedField(item, 'titulo') }}
+            </h2>
+            <p class="art-card__excerpt">
+              {{ getLocalizedField(item, 'subTitulo') }}
+            </p>
+            <div class="mt-auto pt-2">
+              <RouterLink
                 :to="{ name: 'ArtigoDetalhe', params: { id: item.id } }"
-                class="w-full max-w-[150px] lg:max-w-[212.6px] h-[36.3px] rounded-[30px] flex items-center justify-center text-[0.9em] text-cyan-400 font-[500] border border-cyan-400 duration-300 hover:bg-cyan-400 hover:text-white cursor-pointer"
+                class="btn-ghost inline-flex"
                 @click="emit('refresh-page', item.id)"
               >
                 {{ t('artigos.button') }}
               </RouterLink>
             </div>
           </div>
-        </div>
+        </article>
       </template>
     </div>
 
-    <!-- Paginação -->
-    <div class="flex justify-center mt-20">
+    <div class="art-pagination mt-14 flex justify-center md:mt-16">
       <el-pagination
         v-model:current-page="currentPage"
         v-model:page-size="itemsPerPage"
@@ -95,22 +87,19 @@ const emit = defineEmits<{
 }>()
 
 const props = defineProps<{
-  categoriaId?: string 
+  categoriaId?: string
 }>()
 
-// Interface para tipar os artigos
 interface Artigo {
   id: string
   title?: string
   createdAt: string
-  [key: string]: any // outros campos opcionais
+  [key: string]: any
 }
 
-// Dados
 const Artigos = ref<{ data: Artigo[] }>({ data: [] })
 const isLoading = ref(false)
 
-// Paginação
 const currentPage = ref(1)
 const itemsPerPage = ref(4)
 const categoriaArtigoId = ref(props.categoriaId)
@@ -121,39 +110,206 @@ async function buscarArtigos() {
   try {
     isLoading.value = true
     const response = await ArtigoService.getAllPaginated(
-      currentPage.value,        
-      itemsPerPage.value,         
-      categoriaArtigoId.value,  
+      currentPage.value,
+      itemsPerPage.value,
+      categoriaArtigoId.value,
       false,
       true
     )
-    
+
     const data = response.data
     totalItens.value = data.total
 
-    // Ordena os artigos do mais recente para o mais antigo
-    Artigos.value.data = data.itens.sort((a: Artigo, b: Artigo) => {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    })
-    
+    Artigos.value.data = (data.itens || [])
+      .filter((a: Artigo) => (a as any)?.ativo === true)
+      .sort((a: Artigo, b: Artigo) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      })
+
     totalPages.value = data.totalPages
   } finally {
     isLoading.value = false
   }
 }
 
-onMounted(async() => {
-   await buscarArtigos()
+onMounted(async () => {
+  await buscarArtigos()
 })
 
 watch([currentPage, categoriaArtigoId], () => {
   buscarArtigos()
 })
 
-watch(() => props.categoriaId, (newValue) => {
-  categoriaArtigoId.value = newValue
-  currentPage.value = 1
-})
+watch(
+  () => props.categoriaId,
+  (newValue) => {
+    categoriaArtigoId.value = newValue
+    currentPage.value = 1
+  }
+)
 </script>
 
+<style scoped lang="postcss">
+@reference '../../style.css';
 
+.art-pages-root {
+  --ap-btn-radius: 8px;
+  --ap-btn-duration: 0.22s;
+  --ap-btn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ap-btn-lift: translateY(-1px);
+}
+
+.font-head {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.art-card {
+  max-height: 560px;
+}
+@media (min-width: 768px) {
+  .art-card {
+    max-height: 580px;
+  }
+}
+@media (min-width: 1024px) {
+  .art-card {
+    max-height: 600px;
+  }
+}
+
+.art-card__media {
+  width: 100%;
+  flex-shrink: 0;
+  aspect-ratio: 16 / 10;
+  max-height: 240px;
+}
+@media (min-width: 768px) {
+  .art-card__media {
+    max-height: 260px;
+  }
+}
+@media (min-width: 1024px) {
+  .art-card__media {
+    max-height: 280px;
+  }
+}
+
+.art-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 20px 24px;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+@media (min-width: 768px) {
+  .art-card__body {
+    padding: 24px 24px 26px;
+  }
+}
+
+.art-card__title {
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.art-card__excerpt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .art-card__excerpt {
+    font-size: 15px;
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: var(--ap-btn-radius);
+  border: 1px solid #00c6fe;
+  background: transparent;
+  padding: 8px 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #00c6fe;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--ap-btn-duration) var(--ap-btn-ease),
+    box-shadow var(--ap-btn-duration) var(--ap-btn-ease),
+    background-color var(--ap-btn-duration) var(--ap-btn-ease),
+    color var(--ap-btn-duration) var(--ap-btn-ease);
+}
+.btn-ghost:hover {
+  background: #00c6fe;
+  color: #060606;
+  transform: var(--ap-btn-lift);
+  box-shadow: 0 12px 32px -18px rgba(0, 198, 254, 0.4);
+}
+
+.art-card--skeleton {
+  animation: art-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes art-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+.art-pagination :deep(.el-pagination.is-background .btn-prev),
+.art-pagination :deep(.el-pagination.is-background .btn-next),
+.art-pagination :deep(.el-pagination.is-background .el-pager li) {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.art-pagination :deep(.el-pagination.is-background .btn-prev:hover),
+.art-pagination :deep(.el-pagination.is-background .btn-next:hover),
+.art-pagination :deep(.el-pagination.is-background .el-pager li:hover) {
+  color: #fff !important;
+  border-color: rgba(0, 198, 254, 0.45);
+}
+.art-pagination :deep(.el-pagination.is-background .el-pager li.is-active) {
+  background: linear-gradient(135deg, #00c6fe, #00a8d6) !important;
+  border-color: rgba(0, 198, 254, 0.5);
+  color: #060606 !important;
+  font-weight: 700;
+}
+.art-pagination :deep(.el-pagination.is-background .btn-prev:disabled),
+.art-pagination :deep(.el-pagination.is-background .btn-next:disabled) {
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-card--skeleton {
+    animation: none;
+  }
+  .btn-ghost:hover {
+    transform: none;
+  }
+}
+</style>

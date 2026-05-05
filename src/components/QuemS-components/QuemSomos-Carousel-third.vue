@@ -1,94 +1,142 @@
 <template>
-  <swiper :pagination="true" :modules="modules" class="mySwiper w-full">
-    <swiper-slide class="w-full h-full flex items-center justify-center mb-10">
-
-                <div class="w-full h-[600px] flex items-center  flex-col text-center gap-[18px] ">
-                    <div class="text-center w-full ">
-                    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../../assets/quems-imgs/emilio-perfil.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Emilio Machado</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Founder & CEO</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                      {{ t('quemSomos.section6.emilioDesc') }}
-                    </p>
-                </div>
-                </div>    
-
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[600px] flex items-center  flex-col text-center gap-[18px] ">
-                    <div class="text-center w-full ">
-                    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../../assets/quems-imgs/lucas-perfil.jpg" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Lucas Machado</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">Head of Business Development</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                      {{ t('quemSomos.section6.lucasDesc') }}
-                    </p>
-                </div>
-                </div>    
-    </swiper-slide>
-    <swiper-slide>
-                <div class="w-full h-[600px] flex items-center  flex-col text-center gap-[18px]">
-                <div class="text-center w-full ">
-                    <img class="w-full h-[349px] min-h-[300px] object-cover rounded-[12px]"
-                        src="../../assets/quems-imgs/marcelo-perfil.png" alt="">
-                    <h3 class="text-[1.4em] lg:text-[1.8em] font-[600] italic mt-7">Dr. Marcelo Leitão</h3>
-                    <span class="text-[1em] lg:text-[1.3em]">{{ t('quemSomos.section6.marceloTitle') }}</span>
-                    <p class="mt-4 leading-[20px] lg:leading-[30px] text-[0.85em] lg:text-[1em] mb-10">
-                      {{ t('quemSomos.section6.marceloDesc') }}
-                    </p>
-                </div>
-                </div>    
-    </swiper-slide>
-   
-  </swiper>
+  <Swiper
+    :modules="modules"
+    :pagination="{ clickable: true }"
+    :space-between="16"
+    class="qs-team-swiper w-full pb-11"
+  >
+    <SwiperSlide v-for="m in teamMembers" :key="m.name">
+      <article class="qs-tm-card">
+        <div class="qs-tm-card__inner">
+          <div class="qs-tm-card__photo">
+            <img :src="m.img" :alt="m.name" class="qs-tm-card__img" />
+          </div>
+          <div class="qs-tm-card__meta">
+            <h3 class="qs-tm-card__name font-head">{{ m.name }}</h3>
+            <p class="qs-tm-card__role font-head">{{ t(m.titleKey) }}</p>
+            <p class="qs-tm-card__bio">{{ t(m.descKey) }}</p>
+          </div>
+        </div>
+      </article>
+    </SwiperSlide>
+  </Swiper>
 </template>
-<script>
-  // Import Swiper Vue.js components
-  import { Swiper, SwiperSlide } from 'swiper/vue';
 
-  // Import Swiper styles
-  import 'swiper/css';
-
-  import 'swiper/css/pagination';
-
-  // import required modules
-  import { Pagination } from 'swiper/modules';
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
 import { useI18n } from '../../composables/useI18n'
 
-  export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      const { t } = useI18n();
-      
-      return {
-        modules: [Pagination],
-        t,
-      };
-    },
-  };
+const modules = [Pagination]
+const { t } = useI18n()
+
+const teamMembers = [
+  {
+    name: 'Emilio Machado',
+    img: '/src/assets/quems-imgs/emilio-perfil.jpg',
+    titleKey: 'quemSomos.section6.emilioTitle',
+    descKey: 'quemSomos.section6.emilioDesc',
+  },
+  {
+    name: 'Lucas Machado',
+    img: '/src/assets/quems-imgs/lucas-perfil.jpg',
+    titleKey: 'quemSomos.section6.lucasTitle',
+    descKey: 'quemSomos.section6.lucasDesc',
+  },
+  {
+    name: 'Dr. Marcelo Leitão',
+    img: '/src/assets/quems-imgs/marcelo-perfil.png',
+    titleKey: 'quemSomos.section6.marceloTitle',
+    descKey: 'quemSomos.section6.marceloDesc',
+  },
+]
 </script>
 
-
 <style scoped>
-
-:deep(.swiper-pagination-bullet) {
-  background-color: #d1d5db; 
-  opacity: 1;
-  width: 10px;
-  height: 10px;
-  margin: 0 6px;
-  transition: all 0.3s ease;
-  border-radius: 9999px; 
+.qs-tm-card {
+  min-width: 0;
+  height: 100%;
+}
+.qs-tm-card__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px 18px 22px;
+}
+.qs-tm-card__photo {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #111;
+  aspect-ratio: 1;
+}
+.qs-tm-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qs-tm-card__inner:active .qs-tm-card__img,
+.qs-tm-card__inner:hover .qs-tm-card__img {
+  transform: scale(1.03);
+}
+.qs-tm-card__meta {
+  min-width: 0;
+  text-align: center;
+}
+.qs-tm-card__name {
+  margin: 0 0 6px;
+  font-size: 1.28rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+}
+.qs-tm-card__role {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #88ce0d;
+}
+.qs-tm-card__bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-
+:deep(.swiper-pagination) {
+  bottom: 0 !important;
+}
+:deep(.swiper-pagination-bullet) {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px !important;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  opacity: 1;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
 :deep(.swiper-pagination-bullet-active) {
-  background-color: #88CE0D; 
-  transform: scale(1.2);
+  background: #00c6fe;
+  transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qs-tm-card__inner:hover .qs-tm-card__img,
+  .qs-tm-card__inner:active .qs-tm-card__img {
+    transform: none;
+  }
 }
 </style>

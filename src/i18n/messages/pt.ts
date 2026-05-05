@@ -93,7 +93,185 @@ export default {
       description: 'Empresas que apoiam a medicina esportiva e o bem-estar dos atletas'
     },
     learnMore: 'Saiba Mais',
-    viewMore: 'Ver mais'
+    viewMore: 'Ver mais',
+    landing: {
+      dash: '—',
+      articleFallback: 'Artigo',
+      hero: {
+        bannerAlt: 'FitCertify365 — saúde esportiva',
+        eyebrow: 'Plataforma oficial de saúde esportiva',
+        titleLine1: 'Saúde em dia',
+        titleLine2: 'para o ',
+        titleEm: 'esporte.',
+        lead:
+          'A FitCertify365 conecta atletas, médicos e eventos em uma única plataforma para que a sua performance seja sempre validada com segurança e agilidade.',
+        ctaStart: 'Comece agora',
+        ctaLearnMore: 'Saiba mais',
+      },
+      marquee: {
+        m1: 'Agilidade',
+        m2: 'Segurança',
+        m3: 'Tecnologia',
+        m4: 'Saúde validada',
+        m5: 'Esporte garantido',
+        m6: 'Indicadores em tempo real',
+      },
+      features: {
+        swipeHint: 'Deslize para ver os pilares',
+        carouselLabel: 'Destaques da plataforma',
+        dotsLabel: 'Navegação do carrossel',
+        f1: {
+          kicker: 'Tempo',
+          title: 'Agilidade',
+          desc:
+            'Emita e valide seu atestado com rapidez: fluxo guiado, menos burocracia e resposta em tempo hábil para você seguir com treinos e provas sem travar a rotina.',
+        },
+        f2: {
+          kicker: 'Dados',
+          title: 'Segurança',
+          desc:
+            'Dados sensíveis com camadas de proteção, trilha de auditoria e validação médica — transparência para o atleta e confiança para organizadores e parceiros.',
+        },
+        f3: {
+          kicker: 'Integração',
+          title: 'Tecnologia',
+          desc:
+            'Conecte exames, wearables e apps de saúde ao seu painel: visão única do que importa para performance, recuperação e conformidade em eventos.',
+        },
+      },
+      health: {
+        tag: 'Certificação médica',
+        titleLine1: 'Sua saúde validada.',
+        titleHighlight: 'Seu esporte garantido.',
+        desc:
+          'Conectamos você a médicos especializados em saúde esportiva para emissão de atestados reconhecidos por eventos em todo o Brasil. Simples, rápido e 100% digital.',
+        check1: 'Atestados válidos para corridas e eventos esportivos',
+        check2: 'Médicos credenciados e especializados',
+        check3: 'Processo 100% online e sem filas',
+        more: 'Saiba mais →',
+        imageAlt: 'Atleta e saúde esportiva',
+      },
+      events: {
+        tag: 'Rede de eventos',
+        titleLine1: 'Vai correr?',
+        titleHighlight: 'Confira eventos parceiros.',
+        desc:
+          'Descubra corridas, provas de triatlo e outros eventos esportivos que aceitam o atestado FitCertify365. Inscreva-se com um clique.',
+        viewAll: 'Ver todos os eventos →',
+        imageAlt: 'Corredores em evento esportivo',
+      },
+      metrics: {
+        tag: 'Dashboard pessoal',
+        brandLogoAlt: 'FitCertify365 — logotipo',
+        titleLine1: 'Acompanhe seus indicadores em',
+        titleHighlight: 'tempo real.',
+        desc:
+          'Visualize frequência cardíaca, VO₂ máximo, histórico de treinos e exames em um único painel — integrado aos seus dispositivos favoritos.',
+        viewPanel: 'Ver meu painel →',
+        hr: { label: 'Freq. cardíaca', unit: 'bpm' },
+        vo2: { label: 'VO₂ máx.', unit: 'ml/kg' },
+        today: { label: 'Hoje', unit: 'km' },
+        spo2: { label: 'SpO₂', unit: '%' },
+      },
+      freemium: {
+        kicker: 'Plano Freemium',
+        badge: '3 meses grátis',
+        titleBefore: 'Experimente tudo,',
+        titleHighlight: 'sem pagar nada',
+        titleAfter: 'por 3 meses.',
+        desc: 'Comece com o plano Freemium e tenha acesso completo à FitCertify365 — certificados, painel de marcadores, eventos parceiros e suporte. Sem cartão. Sem pegadinha. Você só paga se quiser continuar.',
+        bullet1Title: 'Sem cartão de crédito',
+        bullet1Desc: 'Você cria sua conta e começa em segundos.',
+        bullet2Title: 'Recursos essenciais',
+        bullet2Desc: 'Tudo que você precisa pra emitir seu certificado e explorar o painel.',
+        bullet3Title: 'Cancele quando quiser',
+        bullet3Desc: 'Sem fidelidade, sem multa, sem burocracia.',
+        bullet4Title: 'Suporte humano',
+        bullet4Desc: 'Equipe dedicada para te ajudar a destravar tudo.',
+        cta: 'Começar 3 meses grátis',
+        note: 'Sem cartão de crédito • Cancele quando quiser',
+      },
+      plans: {
+        kicker: 'Planos para atletas',
+        titleLine1: 'Escolha o plano ideal para',
+        titleHighlight: 'a sua jornada',
+        subtitle: 'Do acesso essencial ao acompanhamento completo: encontre o plano certo para sua rotina esportiva.',
+        popular: 'Mais popular',
+        guarantee: '30 dias de garantia',
+        includes: 'Benefícios inclusos',
+        emptyBenefits: 'Benefícios em atualização.',
+        ctaDefault: 'Quero meu certificado',
+        ctaFeatured: 'Quero meu certificado',
+        perYear: '/ano',
+        perMonth: '/mês',
+        month: 'mês',
+        equivalent: 'equivale a',
+        noCommitment: 'assinatura flexível sem fidelidade',
+        empty: 'Nenhum plano disponível no momento.',
+        fallbackName: 'Plano FitCertify',
+        fallbackDescription: 'Cobertura para manter sua certificação em dia.',
+        /** Textos da API `/plano` por id estável (nome/descricao/beneficios). */
+        api: {
+          planos: {
+            cmeufl7oo0000uwo8epjljy9u: {
+              nome: 'Saúde Certificada',
+              descricao: 'Saúde Certificada',
+            },
+            cmeuflkwb0001uwo8o0pdglrh: {
+              nome: 'Saúde Ativa',
+              descricao: 'Saúde Ativa',
+            },
+            cmeufwouekkkwi8832smgh9: {
+              nome: 'Plano Freemium',
+              descricao: 'Plano de entrada para novos usuários',
+            },
+          },
+          beneficios: {
+            cmeufvygo0000uwfgpzvsn70s: 'Conexão com provas parceiras',
+            cmeufw7va0001uwfg926j99zr: 'Emissão automática de modelo oficial',
+            cmeufwggn0002uwfg7p2q10hj:
+              'Aplicação ilimitada em diferentes provas durante a validade',
+            cmeufwp5p0003uwfg713pwzc6: 'Assinatura digital + QR Code',
+            cmeufwy600004uwfguq8r96y1: 'Descontos no Marketplace',
+            cmeufx6bw0005uwfgwi340qv9: 'Acesso ao painel de saúde completo',
+            cmeufxcmp0006uwfg1flvraso: 'Acesso ao painel de saúde',
+            cmeufxisj0007uwfg6les2ix0: 'Monitoramento contínuo',
+            cmeufxpcw0008uwfgxgg5vhxe: 'Alertas inteligentes e histórico',
+            cmeufxvf40009uwfgs0h8mls6: 'Integração com wearables',
+            cmeufy0nk000auwfgb8fgocy7: 'Integração com apps e dispositivos',
+          },
+        },
+      },
+      content: {
+        tag: 'Conteúdos e artigos',
+        titleLine1: 'Saúde e performance',
+        titleLine2: 'para atletas de verdade.',
+        viewAll: 'Ver todos →',
+      },
+      cta: {
+        badge: '3 meses grátis',
+        titleBefore: 'Sua próxima largada',
+        titleHighlight: 'começa aqui.',
+        subtitle: 'Crie sua conta, libere seu painel e tenha sua saúde esportiva validada em minutos. Sem cartão de crédito, sem amarras.',
+        login: 'Já tenho conta',
+        register: 'Criar conta grátis',
+        note: 'Ative em segundos • Cancele quando quiser',
+      },
+      support: {
+        tag: 'Apoio institucional',
+        titleLine1: 'Reconhecido pelas principais',
+        titleLine2: 'entidades esportivas do Brasil.',
+        subtitle: 'Parceiros que tornam a FitCertify365 possível.',
+        cta: 'Seja um parceiro →',
+        empty: 'Nenhum apoiador cadastrado no momento.',
+        altLogo: 'Apoiador',
+      },
+      sponsors: {
+        title: 'Conheça os patrocinadores da FitCertify365',
+        empty: 'Nenhum patrocinador cadastrado no momento.',
+        altLogo: 'Patrocinador',
+      },
+    },
   },
   events: {
     title: 'Eventos',
@@ -158,19 +336,52 @@ export default {
   },
   contact: {
     title: 'Contato',
+    heroEyebrow: 'FitCertify365 · Atendimento',
+    heroLead: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? A nossa equipa está aqui para te atender.',
+    partnershipPrefill: 'Olá! Gostaria de falar sobre parcerias com a FitCertify365.',
     text: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias? Estamos aqui para te atender.',
     name: 'Nome',
+    namePlaceholder: 'Como devemos te chamar?',
     email: 'E-mail',
+    emailPlaceholder: "voce{'@'}email.com",
     message: 'Mensagem',
-    send: 'Enviar',
+    messagePlaceholder: 'Conte-nos brevemente o que precisa.',
+    send: 'Enviar mensagem',
     phone: 'Telefone',
+    phonePlaceholder: '(11) 99999-9999',
     address: 'Endereço',
     subject: 'Assunto',
     sending: 'Enviando...',
     teamContact: 'Fale com a equipe FitCertify365',
+    formEyebrow: 'Envie uma mensagem',
+    formTitle: 'Conte-nos como podemos ajudar',
+    formLead: 'Preencha o formulário e a nossa equipa entra em contacto consigo o mais rápido possível.',
     description: 'Dúvidas sobre certificados, saúde esportiva, integração com eventos ou parcerias?',
     weAreHere: 'Estamos aqui para te atender.',
     directChannels: 'Canais diretos',
+    channels: {
+      eyebrow: 'Canais diretos',
+      title: 'Prefere algo mais rápido?',
+      lead: 'Escolha o canal que melhor combina com a sua urgência. Estamos online em todos eles.',
+      email: {
+        label: 'E-mail',
+        value: "atendimento{'@'}fitcertify365.com"
+      },
+      whatsapp: {
+        label: 'WhatsApp',
+        value: '+55 (41) 99185-8019'
+      }
+    },
+    toast: {
+      successTitle: 'Mensagem enviada',
+      successDetail: 'Recebemos a sua mensagem e respondemos em breve.',
+      errorTitle: 'Não foi possível enviar',
+      errorDetail: 'Tente novamente em instantes ou use um dos canais diretos.',
+      warnTitle: 'Atenção',
+      warnRequired: 'Preencha todos os campos para continuar.',
+      warnEmail: 'Insira um e-mail válido.',
+      warnPhone: 'Insira um telefone válido.'
+    },
     partnership: {
       title: 'Quer fazer parte do nosso ecossistema?',
       description: 'Se você é organizador de eventos, médico, clínica ou marca esportiva e quer se conectar à FitCertify365, entre em contato conosco.',
@@ -178,10 +389,19 @@ export default {
     },
     sectionContact: 'Canais diretos',
     lastSection: {
+      eyebrow: 'Parcerias institucionais',
       title: 'Quer fazer parte do nosso ecossistema?',
       text: 'Se você é organizador de eventos, médico, clínica ou marca esportiva e quer se conectar à FitCertify365, entre em contato conosco.',
       button: 'Falar sobre parcerias'
     }
+  },
+  header: {
+    login: 'Entrar',
+    ctaRegister: 'Comece agora',
+    menuOpen: 'Abrir menu',
+    menuClose: 'Fechar menu',
+    navSaude: 'Quem Somos',
+    more: 'Mais',
   },
   footer: {
     navegacao: {
@@ -190,13 +410,36 @@ export default {
       contato: 'Contato',
       sac: 'SAC',
       faq: 'FAQ',
-      paceiros: 'Parceiros'
+      paceiros: 'Parceiros',
+      todosDireitos: 'Todos os direitos reservados.',
+    },
+    columns: {
+      pages: 'Páginas',
+      help: 'Ajuda',
+    },
+    tagline:
+      'A plataforma que conecta atletas, médicos e eventos para uma prática esportiva mais segura e acessível.',
+    termsPrivacyLink: 'Termos e privacidade',
+    social: {
+      linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      youtube: 'YouTube',
+      instagram: 'Instagram',
     },
     privacy: 'Termos de Serviço / Política de Privacidade',
     terms: 'Termos de Uso'
   },
   quemSomos: {
     title: 'Quem somos',
+    heroEyebrow: 'Institucional',
+    heroCtaCert: 'Certificados',
+    heroCtaEvents: 'Eventos',
+    manifestoKicker: 'Na prática',
+    pillarsKicker: 'O que fazemos',
+    humanizationKicker: 'Cultura',
+    mvvKicker: 'Propósito',
+    teamKicker: 'Pessoas',
+    closerKicker: 'Para quem é',
     subtitle: 'Tecnologia a favor da saúde esportiva',
     section1: {
       text1: 'FitCertify365 nasceu para facilitar a vida de quem pratica esportes e precisa manter seus certificados médicos organizados e válidos. Conectamos médicos parceiros, atletas e eventos em uma única plataforma, oferecendo praticidade na gestão de documentos, sem abrir mão da responsabilidade médica e da segurança dos dados.',
@@ -209,7 +452,8 @@ export default {
       card2: 'Monitoramos marcadores de saúde ao longo do tempo',
       card3: 'Integramos dados de exanes e dispositivos inteligentes',
       card4: 'Facilitamos a jornada do atleta e do organizador de eventos',
-      card5: 'Criamos conexões com corridas e provas que valorizam a saúde'
+      card5: 'Criamos conexões com corridas e provas que valorizam a saúde',
+      card6: 'Protegemos dados de saúde com criptografia, assinatura digital e práticas alinhadas à LGPD'
     },
     section3: {
       title: 'Humanização, inovação e responsabilidade',
@@ -255,6 +499,7 @@ export default {
   },
   certificados: {
     title: 'Certificados',
+    heroEyebrow: 'Atestado de aptidão',
     subtitle: 'Certificados digitais para sua segurança e performance',
     section1: {
       text: 'Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.',
@@ -283,7 +528,8 @@ export default {
         description: 'Para funcionários que participam de ações esportivas',
         button: 'Iniciar'
       },
-      validityNote: 'O certificado é válido pelo período definido pelo médico (até 12 meses). Durante esse tempo, você pode usá-lo para quantas provas quiser.'
+      validityNote: 'O certificado é válido pelo período definido pelo médico (até 12 meses). Durante esse tempo, você pode usá-lo para quantas provas quiser.',
+      carouselLabel: 'Tipos de certificado — carrossel',
     },
     section3: {
       title: 'Como funciona?',
@@ -340,8 +586,12 @@ export default {
   eventos: {
     title: 'Provas Parceiras',
     subtitle: 'Corridas e provas que reconhecem sua saúde em dia',
+    heroEyebrow: 'Integração FitCertify365',
+    heroCtaEventos: 'Ver provas',
+    empty: 'Nenhum evento encontrado para os filtros selecionados.',
     card: {
-      title: 'item.titulo'
+      title: 'item.titulo',
+      distancesLabel: 'Percursos',
     },
     section1: {
       text: 'Nosso certificado de saúde é aceito em qualquer prova ou evento esportivo que exija atestado médico. Aqui você encontra eventos parceiros com integração direta, um calendário completo de provas aceitas e, nos eventos conectados, a equipe médica da organização pode, com sua autorização, acessar seus dados de saúde em caso de necessidade durante a prova.'
@@ -356,7 +606,10 @@ export default {
     section3: {
       title: 'Quer sua prova aqui?',
       text: 'Organizadores de eventos esportivos podem integrar sua corrida com a FitCertify365 e oferecer ainda mais praticidade aos atletas — com certificados digitais, gestão centralizada e segurança jurídica.',
-      button: 'Tornar minha prova parceira'
+      button: 'Tornar minha prova parceira',
+      point1: 'Certificados digitais e jornada simples para o atleta',
+      point2: 'Gestão centralizada e integração com o calendário de provas',
+      point3: 'Segurança jurídica e suporte à organização do evento',
     },
     listEventos: {
       subtitle: 'Prova conectada com a FitCertify365',
@@ -364,6 +617,8 @@ export default {
     }
   },
   eventosDetalhes: {
+    back: 'Voltar às provas',
+    heroEyebrow: 'Detalhe da prova',
     button1: 'Enviar certificado',
     button2: 'Site da prova',
     section1: {
@@ -390,27 +645,27 @@ export default {
       title: 'Marcadores de Saúde',
       subtitle: 'Monitore seus principais indicadores de saúde esportiva. Entenda seu corpo, treine com segurança e acompanhe sua evolução.',
       card1: {
-        title: '💓 Frequência Cardíaca de Repouso',
+        title: 'Frequência Cardíaca de Repouso',
         text: 'Identifique padrões de recuperação e esforço com base nos seus batimentos em repouso.'
       },
       card2: {
-        title: '⚖️ IMC e Composição Corporal',
+        title: 'IMC e Composição Corporal',
         text: 'Avaliação de massa, peso e proporção corporal para acompanhamento físico contínuo.'
       },
       card3: {
-        title: '🧪 Exames Laboratoriais',
+        title: 'Exames Laboratoriais',
         text: 'Visualize resultados como colesterol, glicemia, ferritina e outros indicadores clínicos.'
       },
       card4: {
-        title: '🫑 VO₂ Máx',
+        title: 'VO₂ Máx',
         text: 'Estimativa de consumo máximo de oxigênio — essencial para esportes de resistência.'
       },
       card5: {
-        title: '🩺 Pressão Arterial',
+        title: 'Pressão Arterial',
         text: 'Acompanhamento regular dos seus níveis de pressão, com registros manuais ou automáticos.'
       },
       card6: {
-        title: '📈 Histórico de Certificados',
+        title: 'Histórico de Certificados',
         text: 'Acompanhe sua linha do tempo de atestados, consultas e avaliações médicas.'
       }
     },
@@ -430,28 +685,111 @@ export default {
     section5: {
       title: 'Seu corpo fala.<br />A FitCertify365 ajuda a escutar.',
       buttonMobile: 'Veja nossos parceiros',
-      buttonDesktop: 'Me Cadastrar'
-    }
+      buttonDesktop: 'Me Cadastrar',
+      ctaKicker: 'Comece com o painel completo',
+      ctaBullet1: 'Gráficos, histórico e tendências no mesmo lugar',
+      ctaBullet2: 'Alertas quando algo sai da faixa ideal para você',
+      ctaBullet3: 'Integração com Apple Saúde, Google Fit, Strava e outros',
+      asideTitle: 'Na mesma conta',
+      asideLine1: 'Treinos personalizados',
+      asideLine2: 'Certificados digitais',
+      asideLine3: 'Marcadores ao vivo\nAlertas quando o seu corpo pede atenção.',
+      asideLine4: 'Eventos parceiros\nDatas, locais e inscrição — tudo na mesma conta, sem troca de app.',
+    },
+    steps: {
+      kicker: 'Como funciona',
+      title: 'Do check-up ao evento',
+      step1Eyebrow: 'Saúde esportiva',
+      step2Eyebrow: 'Performance',
+      step3Eyebrow: 'Integração'
+    },
+    heroEyebrow: 'FitCertify365'
   },
   artigos: {
     title: 'Artigos',
+    heroEyebrow: 'FitCertify365',
     subtitle: 'Conteúdo confiável para quem leva o esporte a sério',
     text: 'Dicas, estudos e atualizações sobre saúde, prevenção, performance e tudo o que move quem vive o esporte.',
+    intro: {
+      eyebrow: 'O que vai encontrar aqui',
+      title: 'Conteúdo prático para treinar com mais saúde, segurança e clareza.',
+      lead: 'Reunimos artigos, guias e entrevistas com profissionais parceiros sobre saúde esportiva, prevenção de lesões, performance e recuperação — sempre com base em evidências e na prática de quem vive o esporte todos os dias.',
+      meta1: 'Curadoria editorial',
+      meta2: 'Atualizado regularmente',
+      meta3: 'Linguagem direta, sem jargão',
+      topicsTitle: 'Tópicos em destaque',
+      topics: {
+        health: 'Saúde esportiva',
+        prevention: 'Prevenção de lesões',
+        performance: 'Performance',
+        recovery: 'Recuperação',
+        nutrition: 'Nutrição',
+        mindset: 'Mentalidade'
+      }
+    },
     categorias: 'Categorias',
     todasCategorias: 'Todas as categorias',
     categoriaItems: 'categoria.nome',
-    button: 'LEIA MAIS',
-      card: { 
+      button: 'LEIA MAIS',
+      card: {
         title: '{{ item.titulo }}',
         subtitulo: '{{ item.subTitulo }}',
         introducao: '{{ item.introducao }}',
         citacao: '{{ item.citacao }}',
         conteudo: '{{ item.conteudo }}',
         conclusao: '{{ item.conclusao }}'
+      },
+      cta: {
+        eyebrow: 'Fale com a FitCertify365',
+        title: 'Quer ver seu conteúdo aqui?',
+        text: 'Se você é organizador de eventos, médico, clínica ou marca esportiva e quer publicar conteúdo ou se conectar à nossa comunidade, fale connosco.',
+        button: 'Entrar em contato'
+      },
+      detalhe: {
+        backToList: 'Voltar para artigos',
+        sectionIntro: 'Introdução',
+        sectionContent: 'Leitura',
+        sectionQuote: 'Em destaque',
+        sectionConclusion: 'Conclusão',
+        readingTime: '{min} min de leitura',
+        author: {
+          eyebrow: 'Sobre o autor',
+          fallbackName: 'Equipa FitCertify365',
+          fallbackRole: 'Editorial',
+          contact: 'Falar no WhatsApp',
+          whatsappMessage: 'Olá! Gostei muito do seu artigo no FitCertify365 e queria conversar.'
+        },
+        related: {
+          eyebrow: 'Continue lendo',
+          title: 'Outros artigos da FitCertify365',
+          empty: 'Sem outros artigos disponíveis no momento.'
+        },
+        cta: {
+          eyebrow: 'Sua história também merece ser contada',
+          title: 'Tem um tema, evento ou caso clínico para partilhar?',
+          text: 'Estamos sempre abertos a parcerias editoriais com profissionais de saúde, atletas, organizadores e marcas que partilham os nossos valores.',
+          button: 'Entrar em contato'
+        }
       }
   },
   termos: {
     title: 'Política de Privacidade, Termos e Condições de Uso e Proteção de Dados',
+    heroEyebrow: 'Documentos legais · FitCertify365',
+    heroLead: 'Conheça as regras que orientam a sua relação connosco — desde a privacidade dos seus dados de saúde até o uso da plataforma.',
+    lastUpdated: 'Última atualização: 04/05/2026',
+    tocTitle: 'Sumário',
+    backToTop: 'Topo',
+    tags: {
+      lgpd: 'Conforme LGPD',
+      gdpr: 'Conforme GDPR',
+      hipaa: 'Conforme HIPAA'
+    },
+    cta: {
+      eyebrow: 'Ainda com dúvidas?',
+      title: 'Fale com a equipa FitCertify365',
+      text: 'Se algum ponto não ficou claro, entre em contacto connosco. Respondemos a todas as solicitações relacionadas a privacidade e termos de uso.',
+      button: 'Falar com a equipa'
+    },
     section1: {
       title: '1. Introdução',
       paragraph1: 'Bem-vindo(a) à <strong>FitCertify365</strong> ("Companhia", "nós", "nosso", "conosco")!',
@@ -626,8 +964,10 @@ export default {
     }
   },
   modalParabens: {
-    title: 'Nosso <span class="text-cyan-400">aplicativo</span> está pronto!',
-    description: 'Como você chegou primeiro por aqui, vamos te presentear com <strong class="text-cyan-400">3 meses</strong> de aplicativo grátis! <br />Basta preencher o formulário e entraremos em contato.',
+    kicker: 'Oferta exclusiva',
+    closeAria: 'Fechar janela',
+    title: 'Nosso <span class="text-[#00C6FE]">aplicativo</span> está pronto!',
+    description: 'Como você chegou primeiro por aqui, vamos te presentear com <strong class="text-[#88CE0D]">3 meses</strong> de aplicativo grátis! <br />Basta preencher o formulário e entraremos em contato.',
     form: {
       name: 'Nome:',
       namePlaceholder: 'Nome completo *',
