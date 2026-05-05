@@ -58,10 +58,19 @@ const pillars = [
   min-height: 220px;
   flex-direction: column;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 22px 20px 24px;
-  box-shadow: 0 22px 56px -40px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 22px 56px -40px rgba(15, 23, 42, 0.28);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qs-pm-card:hover .qs-pm-card__surface {
+  border-color: rgba(0, 198, 254, 0.45);
+  box-shadow: 0 28px 64px -36px rgba(0, 198, 254, 0.18);
+  transform: translateY(-4px);
 }
 .qs-pm-card__top {
   display: flex;
@@ -86,7 +95,7 @@ const pillars = [
   margin: 0;
   font-size: 15px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.74);
+  color: #475569;
   text-align: left;
 }
 
@@ -98,7 +107,7 @@ const pillars = [
   height: 8px;
   margin: 0 5px !important;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
   transition:
     transform 0.25s ease,
@@ -107,5 +116,11 @@ const pillars = [
 :deep(.swiper-pagination-bullet-active) {
   background: #00c6fe;
   transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qs-pm-card:hover .qs-pm-card__surface {
+    transform: none;
+  }
 }
 </style>

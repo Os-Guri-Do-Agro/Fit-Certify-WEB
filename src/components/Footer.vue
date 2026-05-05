@@ -30,14 +30,14 @@ const footerColumns = computed(() => [
 </script>
 
 <template>
-  <footer class="relative overflow-hidden border-t border-white/[0.06] bg-[#060606] px-4 pb-8 pt-16 md:px-12">
+  <footer class="relative overflow-hidden border-t border-[#dbe3ef] bg-[#f8fafc] px-4 pb-8 pt-16 md:px-12">
     <div class="relative mx-auto max-w-[1200px]">
       <div class="mb-14 grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <RouterLink to="/" class="mb-4 inline-flex no-underline">
             <img src="/Logo-Grande.png" alt="FitCertify365" class="h-10 w-auto md:h-12" />
           </RouterLink>
-          <p class="mb-6 mt-4 max-w-[280px] text-sm leading-[1.7] text-white/45">
+          <p class="mb-6 mt-4 max-w-[280px] text-sm leading-[1.7] text-[#475569]">
             {{ t('footer.tagline') }}
           </p>
           <div class="flex flex-wrap gap-3">
@@ -45,7 +45,7 @@ const footerColumns = computed(() => [
               href="https://www.linkedin.com/company/fitcertify365/"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] bg-white text-[#64748b] no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
               :aria-label="t('footer.social.linkedin')"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -54,7 +54,7 @@ const footerColumns = computed(() => [
               href="https://www.facebook.com/profile.php?id=61581850576820"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] bg-white text-[#64748b] no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
               :aria-label="t('footer.social.facebook')"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -63,7 +63,7 @@ const footerColumns = computed(() => [
               href="https://www.youtube.com/@FitCertify365"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] bg-white text-[#64748b] no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
               :aria-label="t('footer.social.youtube')"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 010-10 2 2 0 011.4-1.4 49.56 49.56 0 0116.2 0A2 2 0 0121.5 7a24.12 24.12 0 010 10 2 2 0 01-1.4 1.4 49.55 49.55 0 01-16.2 0A2 2 0 012.5 17"/><path d="M10 15l5-3-5-3z"/></svg>
@@ -72,14 +72,14 @@ const footerColumns = computed(() => [
               href="https://www.instagram.com/fitcertify365/"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] text-white/50 no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] bg-white text-[#64748b] no-underline transition-all duration-200 hover:border-[#00C6FE] hover:text-[#00C6FE]"
               :aria-label="t('footer.social.instagram')"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
           </div>
           <div class="mt-7">
-            <p class="mb-3 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-white/35">
+            <p class="mb-3 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-[#64748b]">
               {{ t('footer.apps.heading') }}
             </p>
             <div class="flex flex-wrap items-center gap-3">
@@ -115,24 +115,24 @@ const footerColumns = computed(() => [
           </div>
         </div>
         <div v-for="col in footerColumns" :key="col.id">
-          <p class="mb-5 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-white/35">{{ col.title }}</p>
+          <p class="mb-5 font-head text-[12px] font-bold uppercase tracking-[0.1em] text-[#64748b]">{{ col.title }}</p>
           <ul class="flex flex-col gap-[10px] list-none p-0">
             <li v-for="link in col.links" :key="link.to">
               <RouterLink
                 :to="link.to"
-                class="text-sm text-white/55 no-underline transition-colors hover:text-white"
+                class="text-sm text-[#475569] no-underline transition-colors hover:text-[#0f172a]"
               >{{ link.label }}</RouterLink>
             </li>
           </ul>
         </div>
       </div>
-      <div class="flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.06] pt-7">
-        <p class="text-[13px] text-white/25">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-t border-[#dbe3ef] pt-7">
+        <p class="text-[13px] text-[#64748b]">
           © 2026 FitCertify365. {{ t('footer.navegacao.todosDireitos') }}
         </p>
         <RouterLink
           to="/termosprivacidade"
-          class="text-[13px] text-white/25 no-underline transition-colors hover:text-white/55"
+          class="text-[13px] text-[#64748b] no-underline transition-colors hover:text-[#334155]"
         >{{ t('footer.termsPrivacyLink') }}</RouterLink>
       </div>
     </div>
@@ -144,9 +144,11 @@ const footerColumns = computed(() => [
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #1e293b;
+  background: #0f172a;
   border-radius: 8px;
   transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
-  opacity: 0.85;
+  opacity: 0.92;
 }
 .store-badge:hover {
   opacity: 1;

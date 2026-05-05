@@ -1,5 +1,5 @@
 <template>
-  <div class="tp-page bg-[#060606] text-white font-body">
+  <div class="tp-page bg-[#f8fafc] text-[#0f172a] font-body">
     <section
       class="tp-hero relative isolate flex min-h-[min(56vh,520px)] overflow-hidden pb-12 pt-24 md:min-h-[min(64vh,560px)] md:pb-16 md:pt-20"
     >
@@ -7,14 +7,14 @@
       <div class="tp-hero__grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
-        <div class="tp-hero__copy w-full max-w-[820px]">
+        <div class="tp-hero__copy w-full max-w-[820px] text-white">
           <p class="eyebrow">{{ t('termos.heroEyebrow') }}</p>
           <h1
             class="font-head text-[clamp(28px,5.4vw,52px)] font-bold leading-[1.05] tracking-[-0.03em]"
             v-html="t('termos.title')"
           />
           <p
-            class="mt-6 max-w-[640px] border-l-2 border-[#00C6FE] pl-5 text-[14px] leading-[1.7] text-white/65 sm:text-[15px]"
+            class="mt-6 max-w-[640px] border-l-2 border-[#00C6FE] pl-5 text-[14px] leading-[1.7] text-white/70 sm:text-[15px]"
           >
             {{ t('termos.heroLead') }}
           </p>
@@ -29,7 +29,7 @@
             <li>
               <span class="tp-tag">{{ t('termos.tags.hipaa') }}</span>
             </li>
-            <li class="ml-1 flex items-center gap-2 text-[12px] text-white/45">
+            <li class="ml-1 flex items-center gap-2 text-[12px] text-white/55">
               <span class="tp-meta-dot" aria-hidden="true" />
               <span class="font-head uppercase tracking-[0.08em]">{{ t('termos.lastUpdated') }}</span>
             </li>
@@ -43,7 +43,7 @@
       />
     </section>
 
-    <section class="border-t border-white/[0.06] bg-[#080808] py-14 md:py-20">
+    <section class="border-t border-[#dbe3ef] bg-white py-14 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <details class="tp-toc-mobile lg:hidden">
           <summary class="tp-toc-mobile__summary">
@@ -61,7 +61,7 @@
         </details>
 
         <div class="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
-          <aside class="tp-toc relative hidden lg:block">
+          <aside class="tp-toc hidden lg:block">
             <nav class="tp-toc__panel" :aria-label="t('termos.tocTitle')">
               <p class="tp-toc__title font-head">{{ t('termos.tocTitle') }}</p>
               <ol class="tp-toc__list">
@@ -272,7 +272,7 @@
       </div>
     </section>
 
-    <section class="tp-cta relative isolate overflow-hidden border-t border-white/[0.08] bg-[#060606] py-16 md:py-24">
+    <section class="tp-cta relative isolate overflow-hidden border-t border-[#dbe3ef] bg-[#f8fafc] py-16 md:py-24">
       <div class="tp-cta__grid pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <div class="tp-cta__veil pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
@@ -282,12 +282,12 @@
         <div class="tp-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="tp-cta__kicker font-head">{{ t('termos.cta.eyebrow') }}</p>
           <h2
-            class="mt-4 font-head text-[clamp(22px,4vw,38px)] font-bold leading-[1.08] tracking-[-0.03em] text-white"
+            class="mt-4 font-head text-[clamp(22px,4vw,38px)] font-bold leading-[1.08] tracking-[-0.03em] text-[#0f172a]"
           >
             {{ t('termos.cta.title') }}
           </h2>
           <p
-            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-white/80 sm:text-[15px]"
+            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-[#475569] sm:text-[15px]"
           >
             {{ t('termos.cta.text') }}
           </p>
@@ -469,19 +469,22 @@ onUnmounted(() => {
 
 .tp-hero {
   background:
-    radial-gradient(ellipse 60% 80% at 90% 0%, rgba(0, 198, 254, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 70% at 0% 100%, rgba(136, 206, 13, 0.06) 0%, transparent 55%),
-    #060606;
+    radial-gradient(ellipse 55% 70% at 90% 0%, rgba(0, 198, 254, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 45% 65% at 0% 100%, rgba(136, 206, 13, 0.1) 0%, transparent 52%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 42%, #111827 100%);
 }
+/* Topo mais fechado para o header fixo (links brancos) não “sumirem” no fundo claro */
 .tp-hero__overlay {
-  background: linear-gradient(to bottom, rgba(6, 6, 6, 0) 0%, rgba(6, 6, 6, 0.5) 80%, rgba(6, 6, 6, 0.85) 100%);
+  background:
+    linear-gradient(to bottom, rgba(6, 8, 12, 0.92) 0%, rgba(6, 8, 12, 0.55) 38%, rgba(15, 23, 42, 0.2) 72%, transparent 100%),
+    linear-gradient(to right, rgba(6, 8, 12, 0.55) 0%, transparent 52%);
 }
 .tp-hero__grid {
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 198, 254, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 198, 254, 0.04) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.12) 55%, transparent 100%);
 }
 
 .tp-tag {
@@ -489,30 +492,50 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 7px 13px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.78);
+  color: #334155;
 }
 .tp-tag--cyan {
-  border-color: rgba(0, 198, 254, 0.4);
+  border-color: rgba(0, 198, 254, 0.35);
   background: rgba(0, 198, 254, 0.08);
-  color: #d6f4ff;
+  color: #0369a1;
 }
 .tp-tag--lime {
-  border-color: rgba(136, 206, 13, 0.42);
-  background: rgba(136, 206, 13, 0.08);
-  color: #e6f7c7;
+  border-color: rgba(136, 206, 13, 0.45);
+  background: rgba(136, 206, 13, 0.12);
+  color: #3f6212;
 }
 .tp-meta-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
   border-radius: 999px;
+  background: #94a3b8;
+}
+
+/* Tags na hero escura (sobrescreve estilos claros de .tp-tag) */
+.tp-hero .tp-tag {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+}
+.tp-hero .tp-tag--cyan {
+  border-color: rgba(0, 198, 254, 0.42);
+  background: rgba(0, 198, 254, 0.1);
+  color: #d6f4ff;
+}
+.tp-hero .tp-tag--lime {
+  border-color: rgba(136, 206, 13, 0.42);
+  background: rgba(136, 206, 13, 0.1);
+  color: #e6f7c7;
+}
+.tp-hero .tp-meta-dot {
   background: rgba(255, 255, 255, 0.45);
 }
 
@@ -520,9 +543,11 @@ onUnmounted(() => {
   margin-bottom: 32px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(168deg, rgba(30, 32, 40, 0.98) 0%, rgba(12, 14, 20, 0.99) 100%);
   padding: 18px 18px;
-  backdrop-filter: blur(10px);
+  box-shadow:
+    0 24px 56px -32px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 198, 254, 0.06) inset;
 }
 .tp-toc-mobile__summary {
   display: flex;
@@ -541,26 +566,33 @@ onUnmounted(() => {
   display: none;
 }
 .tp-toc-mobile__chevron {
+  color: rgba(255, 255, 255, 0.45);
   transition: transform 0.22s ease;
 }
 .tp-toc-mobile[open] .tp-toc-mobile__chevron {
   transform: rotate(180deg);
 }
 
+/* Sticky no aside (não só no painel): com align-self:start o sumário acompanha o scroll da página */
 .tp-toc {
-  align-self: start;
-}
-.tp-toc__panel {
   position: sticky;
   top: 96px;
+  align-self: start;
+  z-index: 20;
+  width: 100%;
+  max-width: 260px;
+}
+.tp-toc__panel {
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(168deg, rgba(30, 32, 40, 0.98) 0%, rgba(12, 14, 20, 0.99) 100%);
   padding: 22px 18px 24px;
-  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
-  max-height: calc(100vh - 120px);
+  box-shadow:
+    0 28px 72px -36px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 198, 254, 0.06) inset;
+  max-height: min(560px, calc(100vh - 112px));
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .tp-toc__title {
   margin: 0 0 16px;
@@ -598,18 +630,18 @@ onUnmounted(() => {
 }
 .tp-toc__link:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 .tp-toc__link.is-active {
-  color: #00c6fe;
+  color: #7dd3fc;
   border-left-color: #00c6fe;
-  background: rgba(0, 198, 254, 0.06);
+  background: rgba(0, 198, 254, 0.12);
 }
 .tp-toc__num {
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.38);
 }
 .tp-toc__link.is-active .tp-toc__num {
   color: #00c6fe;
@@ -628,7 +660,7 @@ onUnmounted(() => {
   scroll-margin-top: 96px;
   padding-bottom: 36px;
   margin-bottom: 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid #e2e8f0;
 }
 .tp-section--last {
   border-bottom: 0;
@@ -662,7 +694,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.25;
-  color: #fff;
+  color: #0f172a;
 }
 
 .tp-prose {
@@ -672,7 +704,7 @@ onUnmounted(() => {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.78;
-  color: rgba(255, 255, 255, 0.72);
+  color: #475569;
   max-width: 760px;
 }
 @media (min-width: 768px) {
@@ -682,12 +714,15 @@ onUnmounted(() => {
 }
 .tp-prose :deep(strong) {
   font-weight: 700;
-  color: #00c6fe;
+  color: #0369a1;
 }
 .tp-prose :deep(a) {
-  color: #88ce0d;
+  color: #4d7c0f;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.tp-prose :deep(a):hover {
+  color: #00c6fe;
 }
 .tp-prose :deep(p) {
   margin: 0;
@@ -768,25 +803,25 @@ onUnmounted(() => {
 }
 
 .tp-cta {
-  background: #060606;
+  background: #f8fafc;
 }
 .tp-cta__grid {
-  opacity: 0.5;
+  opacity: 0.45;
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(
     ellipse 85% 70% at 50% 40%,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.2) 55%,
+    rgba(15, 23, 42, 0.08) 0%,
+    rgba(15, 23, 42, 0.03) 55%,
     transparent 100%
   );
 }
 .tp-cta__veil {
   background:
-    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.04) 0%, transparent 45%);
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.05) 0%, transparent 45%);
 }
 .tp-cta__kicker {
   margin: 0;
@@ -798,14 +833,12 @@ onUnmounted(() => {
 }
 .tp-cta__glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(168deg, rgba(24, 24, 30, 0.96) 0%, rgba(10, 10, 12, 0.96) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(0, 198, 254, 0.1) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter: blur(14px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(0, 198, 254, 0.08) inset;
 }
 @media (min-width: 768px) {
   .tp-cta__glass {
@@ -817,14 +850,13 @@ onUnmounted(() => {
   perspective: 800px;
 }
 .tp-cta__logo {
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 18px 36px rgba(15, 23, 42, 0.14));
   transition: filter 0.4s ease;
   will-change: transform;
   cursor: pointer;
 }
 .tp-cta__logo-wrap:hover .tp-cta__logo {
-  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
-          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
+  filter: drop-shadow(0 22px 44px rgba(0, 198, 254, 0.2)) drop-shadow(0 10px 24px rgba(136, 206, 13, 0.12));
 }
 .tp-cta__logo-glow {
   background: radial-gradient(
@@ -847,17 +879,16 @@ onUnmounted(() => {
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 198, 254, 0.45);
-  background: rgba(6, 6, 6, 0.85);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   color: #00c6fe;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   box-shadow:
-    0 16px 36px -16px rgba(0, 0, 0, 0.85),
-    0 0 0 4px rgba(0, 198, 254, 0.08);
-  backdrop-filter: blur(8px);
+    0 16px 36px -16px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(0, 198, 254, 0.1);
   transition:
     transform 0.22s ease,
     background-color 0.22s ease,
@@ -868,7 +899,8 @@ onUnmounted(() => {
   transform: translateY(-2px);
   background: #00c6fe;
   color: #060606;
-  box-shadow: 0 18px 40px -14px rgba(0, 198, 254, 0.55);
+  border-color: #00c6fe;
+  box-shadow: 0 18px 40px -14px rgba(0, 198, 254, 0.45);
 }
 @media (min-width: 768px) {
   .tp-back-to-top {

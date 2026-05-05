@@ -23,10 +23,10 @@
           {{ link.label }}
         </router-link>
 
-        <!-- Dropdown "A FitCertify365" -->
+        <!-- Dropdown marca / páginas institucionais -->
         <Menu as="div" class="relative">
           <MenuButton class="header-nav-link header-nav-link--brand flex items-center gap-1 font-body font-medium tracking-[0.01em] text-white/60 transition-colors duration-200 hover:text-white whitespace-nowrap cursor-pointer select-none outline-none">
-            A FitCertify365
+            {{ t('header.brandDropdown') }}
             <svg class="mt-px h-3.5 w-3.5 transition-transform duration-200 ui-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </MenuButton>
           <transition
@@ -244,7 +244,7 @@ const moreLinks = computed(() => [
 
 const allLinks = computed(() => [
   ...startLinks.value,
-  { label: 'A FitCertify365', to: '/quemsomos' },
+  { label: t('header.brandDropdown'), to: '/quemsomos' },
   ...moreLinks.value.filter((l) => l.to !== '/quemsomos'),
   ...endLinks.value,
 ])

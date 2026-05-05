@@ -1,5 +1,5 @@
 <template>
-  <div class="art-page bg-[#060606] text-white font-body">
+  <div class="art-page bg-[#f8fafc] text-[#0f172a] font-body">
     <section
       class="art-hero-shell relative isolate flex min-h-[min(68vh,560px)] overflow-hidden pb-14 pt-24 md:min-h-[min(74vh,640px)] md:pb-16 md:pt-20"
     >
@@ -14,7 +14,7 @@
       <div class="art-hero-grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
-        <div class="art-hero-copy w-full max-w-[min(560px,100%)]">
+        <div class="art-hero-copy w-full max-w-[min(560px,100%)] text-white">
           <p class="eyebrow">{{ t('artigos.heroEyebrow') }}</p>
           <h1
             class="art-hero-title font-head text-[clamp(30px,6vw,56px)] font-bold leading-[0.95] tracking-[-0.04em]"
@@ -36,7 +36,7 @@
       />
     </section>
 
-    <section class="art-intro relative overflow-hidden border-t border-white/[0.06] bg-[#080808] py-16 md:py-24">
+    <section class="art-intro relative overflow-hidden border-t border-[#dbe3ef] bg-white py-16 md:py-24">
       <div class="art-intro-gridlines pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
 
       <div class="relative z-[1] mx-auto max-w-[1200px] px-4 md:px-12">
@@ -44,12 +44,12 @@
           <div class="max-w-[560px]">
             <p class="art-intro-eyebrow font-head">{{ t('artigos.intro.eyebrow') }}</p>
             <h2
-              class="mt-4 font-head text-[clamp(24px,3.8vw,40px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
+              class="mt-4 font-head text-[clamp(24px,3.8vw,40px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]"
             >
               {{ t('artigos.intro.title') }}
             </h2>
           </div>
-          <p class="art-intro-lead mt-6 max-w-[480px] text-[15px] leading-[1.78] text-white/60 md:mt-0">
+          <p class="art-intro-lead mt-6 max-w-[480px] text-[15px] leading-[1.78] text-[#475569] md:mt-0">
             {{ t('artigos.intro.lead') }}
           </p>
         </header>
@@ -73,14 +73,14 @@
       </div>
     </section>
 
-    <section class="relative scroll-mt-[88px] bg-[#080808] py-12 md:py-14">
-      <div class="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true">
+    <section class="relative scroll-mt-[88px] bg-[#f8fafc] py-12 md:py-14">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true">
         <div
           class="h-full w-full"
           style="
             background-image:
-              linear-gradient(rgba(0, 198, 254, 0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 198, 254, 0.45) 1px, transparent 1px);
+              linear-gradient(rgba(0, 198, 254, 0.06) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
             background-size: 48px 48px;
           "
         />
@@ -91,12 +91,12 @@
           <div>
             <p class="art-filters-eyebrow font-head">{{ t('artigos.heroEyebrow') }}</p>
             <h2
-              class="mt-2 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
+              class="mt-2 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]"
             >
               {{ t('artigos.categorias') }}
             </h2>
           </div>
-          <p class="art-filters-note mt-4 max-w-[360px] text-[13px] leading-relaxed text-white/45 md:mt-0 md:text-right">
+          <p class="art-filters-note mt-4 max-w-[360px] text-[13px] leading-relaxed text-[#64748b] md:mt-0 md:text-right">
             {{ t('artigos.subtitle') }}
           </p>
         </header>
@@ -126,13 +126,13 @@
       </div>
     </section>
 
-    <section class="border-t border-white/[0.06] bg-[#060606] py-12 md:py-20">
+    <section class="border-t border-[#dbe3ef] bg-white py-12 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <Pages :categoria-id="categoriaIdSelecionada" />
       </div>
     </section>
 
-    <section class="art-cta-section relative isolate overflow-hidden border-t border-white/[0.08] bg-[#060606] py-16 md:py-24">
+    <section class="art-cta-section relative isolate overflow-hidden border-t border-[#dbe3ef] bg-[#f8fafc] py-16 md:py-24">
       <div class="art-cta-gridlines pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <div class="art-cta-vignette pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
@@ -142,12 +142,12 @@
         <div class="art-cta-glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="art-cta-kicker font-head">{{ t('artigos.cta.eyebrow') }}</p>
           <h2
-            class="mt-4 font-head text-[clamp(24px,4.4vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-white"
+            class="mt-4 font-head text-[clamp(24px,4.4vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-[#0f172a]"
           >
             {{ t('artigos.cta.title') }}
           </h2>
           <p
-            class="art-cta-lead mt-6 border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-white/80 sm:text-[15px]"
+            class="art-cta-lead mt-6 border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-[#475569] sm:text-[15px]"
           >
             {{ t('artigos.cta.text') }}
           </p>
@@ -326,10 +326,10 @@ onUnmounted(() => {
 
 .art-intro-gridlines {
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.45) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 80%);
+  mask-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.12) 0%, transparent 78%);
 }
 .art-intro-eyebrow {
   font-size: 11px;
@@ -362,10 +362,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 14px 16px;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 32px -24px rgba(15, 23, 42, 0.12);
 }
 .art-intro-meta__dot {
   --dot-rgb: 0, 198, 254;
@@ -433,12 +433,19 @@ onUnmounted(() => {
   font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.82);
+  color: #334155;
 }
 
 .art-intro-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.12) 30%, rgba(0, 198, 254, 0.35) 50%, rgba(255, 255, 255, 0.12) 70%, transparent 100%);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(203, 213, 225, 0.9) 30%,
+    rgba(0, 198, 254, 0.35) 50%,
+    rgba(203, 213, 225, 0.9) 70%,
+    transparent 100%
+  );
 }
 
 .art-intro-topics-title {
@@ -447,7 +454,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 
 .art-intro-chip {
@@ -455,44 +462,44 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 8px 14px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.82);
+  color: #334155;
   transition:
     border-color 0.22s ease,
     background-color 0.22s ease,
     color 0.22s ease;
 }
 .art-intro-chip:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.22);
+  color: #0f172a;
+  background: #f8fafc;
+  border-color: #cbd5e1;
 }
 .art-intro-chip--cyan {
-  border-color: rgba(0, 198, 254, 0.38);
-  color: #d6f4ff;
+  border-color: rgba(0, 198, 254, 0.35);
+  color: #0369a1;
   background: rgba(0, 198, 254, 0.08);
 }
 .art-intro-chip--cyan:hover {
-  border-color: rgba(0, 198, 254, 0.6);
-  background: rgba(0, 198, 254, 0.14);
+  border-color: rgba(0, 198, 254, 0.55);
+  background: rgba(0, 198, 254, 0.12);
 }
 .art-intro-chip--lime {
-  border-color: rgba(136, 206, 13, 0.4);
-  color: #e6f7c7;
-  background: rgba(136, 206, 13, 0.08);
+  border-color: rgba(136, 206, 13, 0.45);
+  color: #3f6212;
+  background: rgba(136, 206, 13, 0.12);
 }
 .art-intro-chip--lime:hover {
-  border-color: rgba(136, 206, 13, 0.62);
-  background: rgba(136, 206, 13, 0.14);
+  border-color: rgba(136, 206, 13, 0.65);
+  background: rgba(136, 206, 13, 0.18);
 }
 .art-intro-chip--neutral {
-  color: rgba(255, 255, 255, 0.78);
+  color: #475569;
 }
 
 .art-filters-eyebrow {
@@ -516,10 +523,10 @@ onUnmounted(() => {
 }
 .art-filters-panel {
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 22px 20px 24px;
-  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.22);
 }
 .art-filters-fields {
   display: grid;
@@ -538,7 +545,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: #64748b;
 }
 
 .art-filters-select {
@@ -547,16 +554,16 @@ onUnmounted(() => {
 .art-filters-select :deep(.el-select__wrapper) {
   min-height: 46px;
   border-radius: 10px;
-  background: rgba(6, 6, 6, 0.45);
+  background: #ffffff;
   box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #dbe3ef;
 }
 .art-filters-select :deep(.el-select__wrapper:hover) {
   border-color: rgba(0, 198, 254, 0.45);
 }
 .art-filters-select :deep(.el-select__placeholder),
 .art-filters-select :deep(.el-select__selected-item) {
-  color: rgba(255, 255, 255, 0.88);
+  color: #334155;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
 }
@@ -597,25 +604,25 @@ onUnmounted(() => {
 }
 
 .art-cta-section {
-  background: #060606;
+  background: #f8fafc;
 }
 .art-cta-gridlines {
-  opacity: 0.5;
+  opacity: 0.45;
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(
     ellipse 85% 70% at 50% 40%,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.2) 55%,
+    rgba(15, 23, 42, 0.08) 0%,
+    rgba(15, 23, 42, 0.03) 55%,
     transparent 100%
   );
 }
 .art-cta-vignette {
   background:
-    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.04) 0%, transparent 45%);
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.05) 0%, transparent 45%);
 }
 .art-cta-kicker {
   margin: 0;
@@ -627,14 +634,12 @@ onUnmounted(() => {
 }
 .art-cta-glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(168deg, rgba(24, 24, 30, 0.96) 0%, rgba(10, 10, 12, 0.96) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(0, 198, 254, 0.1) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter: blur(14px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(0, 198, 254, 0.08) inset;
 }
 @media (min-width: 768px) {
   .art-cta-glass {
@@ -647,14 +652,13 @@ onUnmounted(() => {
   perspective: 800px;
 }
 .art-cta-logo {
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 18px 36px rgba(15, 23, 42, 0.14));
   transition: filter 0.4s ease;
   will-change: transform;
   cursor: pointer;
 }
 .art-cta-logo-wrap:hover .art-cta-logo {
-  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
-          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
+  filter: drop-shadow(0 22px 44px rgba(0, 198, 254, 0.2)) drop-shadow(0 10px 24px rgba(136, 206, 13, 0.12));
 }
 .art-cta-logo-glow {
   background: radial-gradient(

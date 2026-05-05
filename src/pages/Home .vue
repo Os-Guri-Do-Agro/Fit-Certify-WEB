@@ -1,5 +1,5 @@
 <template>
-  <div class="home-landing bg-[#060606] text-white font-body">
+  <div class="home-landing bg-[#f8fafc] text-[#0f172a] font-body">
 
     <!-- ── HERO ───────────────────────────────────────── -->
     <section class="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-22 md:min-h-[95vh] md:pt-14">
@@ -15,13 +15,13 @@
 
       <div class="relative z-[3] mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <div class="flex items-center justify-between gap-10">
-          <div class="hero-copy max-w-[760px]">
+          <div class="hero-copy max-w-[760px] text-white">
             <p class="hero-item eyebrow">{{ t('home.landing.hero.eyebrow') }}</p>
             <h1 class="hero-item mb-7 max-w-[697px] font-head text-[clamp(26px,5.2vw,60px)] font-bold leading-[0.98] tracking-[-0.03em] md:text-[clamp(32px,4.76vw,60px)] lg:text-[clamp(41px,5.1vw,70px)] 2xl:text-[clamp(49px,4.6vw,83px)]">
               {{ t('home.landing.hero.titleLine1') }}<br>{{ t('home.landing.hero.titleLine2') }}
               <em class="not-italic text-[#00C6FE]">{{ t('home.landing.hero.titleEm') }}</em>
             </h1>
-            <p class="hero-item mb-11 text-[13px] leading-[1.65] max-w-[450px] text-white/60 sm:text-[14px] lg:text-[14px] 2xl:text-[15px]">
+            <p class="hero-item mb-11 text-[13px] leading-[1.65] max-w-[450px] text-white/70 sm:text-[14px] lg:text-[14px] 2xl:text-[15px]">
               {{ t('home.landing.hero.lead') }}
             </p>
             <div class="hero-item flex flex-wrap gap-4">
@@ -121,7 +121,7 @@
     </div>
 
     <!-- ── SAÚDE VALIDADA ──────────────────────────────── -->
-    <div class="bg-[#0e0e0e] overflow-x-clip">
+    <div class="bg-white overflow-x-clip">
       <div class="reveal-item relative mx-auto flex max-w-[1200px] flex-col md:min-h-[480px] lg:min-h-[560px]">
         <div
           class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-16 md:max-w-none md:px-12 md:py-16 lg:max-w-[600px] lg:pr-16"
@@ -130,11 +130,11 @@
           <h2 class="font-head text-[clamp(22px,5.5vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 break-words md:text-[clamp(28px,4vw,54px)]">
             {{ t('home.landing.health.titleLine1') }}<br><span class="text-[#88CE0D]">{{ t('home.landing.health.titleHighlight') }}</span>
           </h2>
-          <p class="text-[15px] leading-[1.7] text-white/60 max-w-[480px] mb-6 md:text-base md:leading-[1.75]">
+          <p class="text-[15px] leading-[1.7] text-[#334155]/80 max-w-[480px] mb-6 md:text-base md:leading-[1.75]">
             {{ t('home.landing.health.desc') }}
           </p>
           <ul class="mb-8 flex flex-col gap-3 list-none p-0">
-            <li v-for="(item, idx) in saudeChecks" :key="'hc-' + idx" class="flex items-center justify-start gap-3 text-[15px] text-white/75">
+            <li v-for="(item, idx) in saudeChecks" :key="'hc-' + idx" class="flex items-center justify-start gap-3 text-[15px] text-[#1e293b]/90">
               <span class="check-dot mt-1.5 shrink-0"></span><span class="min-w-0 break-words">{{ item }}</span>
             </li>
           </ul>
@@ -148,13 +148,13 @@
             :alt="t('home.landing.health.imageAlt')"
             class="absolute inset-0 h-full w-full object-cover"
           />
-          <div class="absolute inset-0" style="background: linear-gradient(to right,#0e0e0e 0%,transparent 30%)"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(to right,rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 8%,rgba(255,255,255,0.44) 24%,rgba(255,255,255,0.14) 33%,transparent 42%),linear-gradient(to top,rgba(255,255,255,0.2) 0%,transparent 34%);"></div>
         </div>
       </div>
     </div>
 
     <!-- ── EVENTOS PARCEIROS ───────────────────────────── -->
-    <div class="bg-[#060606] overflow-x-clip">
+    <div class="bg-[#f8fafc] overflow-x-clip">
       <div class="reveal-item relative mx-auto flex max-w-[1200px] flex-col md:min-h-[480px] lg:min-h-[520px] lg:flex-row lg:justify-end">
         <div
           class="relative order-1 min-h-[320px] w-full lg:absolute lg:inset-y-0 lg:left-auto lg:right-1/2 lg:top-0 lg:min-h-0 lg:w-[50vw]"
@@ -164,7 +164,7 @@
             :alt="t('home.landing.events.imageAlt')"
             class="absolute inset-0 h-full w-full object-cover"
           />
-          <div class="absolute inset-0" style="background: linear-gradient(to left,#060606 0%,transparent 30%)"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(to left,rgba(248,250,252,1) 0%,rgba(248,250,252,0.94) 8%,rgba(248,250,252,0.44) 24%,rgba(248,250,252,0.14) 33%,transparent 42%),linear-gradient(to top,rgba(248,250,252,0.2) 0%,transparent 34%);"></div>
         </div>
         <div
           class="relative z-10 order-2 flex w-full min-w-0 flex-col justify-center px-6 py-16 md:max-w-none md:px-12 md:py-16 lg:ml-auto lg:max-w-[min(600px,calc(50%-2rem))] lg:shrink-0 lg:px-16 lg:pl-20 lg:pr-12"
@@ -173,14 +173,14 @@
           <h2 class="font-head text-[clamp(32px,4vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 break-words">
             {{ t('home.landing.events.titleLine1') }}<br><span class="text-[#00C6FE]">{{ t('home.landing.events.titleHighlight') }}</span>
           </h2>
-          <p class="text-base leading-[1.75] text-white/60 max-w-[480px] mb-6">
+          <p class="text-base leading-[1.75] text-[#334155]/80 max-w-[480px] mb-6">
             {{ t('home.landing.events.desc') }}
           </p>
           <div class="mb-8 flex flex-col gap-3">
             <template v-if="isLoadingEventos">
               <div
                 v-for="n in 3" :key="'ev-sk-' + n"
-                class="flex animate-pulse items-center gap-4 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4"
+                class="flex animate-pulse items-center gap-4 rounded-lg border border-[#dbe3ef] bg-white px-5 py-4"
               >
                 <div class="min-h-[44px] min-w-[44px] rounded bg-white/10"></div>
                 <div class="min-w-0 flex-1 space-y-2">
@@ -193,14 +193,14 @@
               v-else
               v-for="evento in eventosPreview" :key="evento.id"
               :to="{ name: 'EventoDetalhe', params: { id: evento.id } }"
-              class="flex cursor-pointer items-center gap-4 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 no-underline transition-colors duration-200 hover:border-[#00C6FE]"
+              class="flex cursor-pointer items-center gap-4 rounded-lg border border-[#dbe3ef] bg-white px-5 py-4 no-underline transition-colors duration-200 hover:border-[#00C6FE]"
             >
               <div class="min-w-[44px] rounded bg-[#00C6FE] px-[10px] py-[6px] text-center font-head text-xs font-bold leading-[1.2] text-[#060606]">
                 {{ formatEventDateParts(evento.data).day }}<br>{{ formatEventDateParts(evento.data).month }}
               </div>
               <div class="min-w-0">
-                <div class="font-head text-sm font-semibold break-words text-white">{{ getLocalizedField(evento, 'titulo') }}</div>
-                <div class="mt-[2px] text-xs break-words text-white/45">{{ evento.local || t('home.landing.dash') }}</div>
+                <div class="font-head text-sm font-semibold break-words text-[#0f172a]">{{ getLocalizedField(evento, 'titulo') }}</div>
+                <div class="mt-[2px] text-xs break-words text-[#475569]">{{ evento.local || t('home.landing.dash') }}</div>
               </div>
             </router-link>
           </div>
@@ -356,7 +356,7 @@
     </section>
 
     <!-- ── FREEMIUM (3 MESES GRÁTIS) ───────────────────── -->
-    <section class="freemium-section relative overflow-hidden bg-[#060606] px-4 py-24 md:px-12 md:py-32">
+    <section class="freemium-section relative overflow-hidden bg-[#f8fafc] px-4 py-24 md:px-12 md:py-32">
       <div class="freemium-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div class="freemium-orb freemium-orb--lime pointer-events-none absolute -left-24 top-1/4 h-[420px] w-[420px] rounded-full bg-[#88CE0D]/[0.10] blur-[110px]" aria-hidden="true"></div>
       <div class="freemium-orb freemium-orb--cyan pointer-events-none absolute -right-32 bottom-0 h-[460px] w-[460px] rounded-full bg-[#00C6FE]/[0.08] blur-[120px]" aria-hidden="true"></div>
@@ -368,7 +368,7 @@
             <p class="freemium-kicker">{{ t('home.landing.freemium.kicker') }}</p>
 
 
-            <h2 class="freemium-title font-head text-[clamp(24px,6vw,58px)] font-bold leading-[1.02] tracking-[-0.025em] text-white md:text-[clamp(30px,5vw,58px)]">
+            <h2 class="freemium-title font-head text-[clamp(24px,6vw,58px)] font-bold leading-[1.02] tracking-[-0.025em] text-[#0f172a] md:text-[clamp(30px,5vw,58px)]">
               {{ t('home.landing.freemium.titleBefore') }}
               <span class="freemium-highlight relative inline-block text-[#88CE0D]">
                 {{ t('home.landing.freemium.titleHighlight') }}
@@ -377,7 +377,7 @@
               <br/>{{ t('home.landing.freemium.titleAfter') }}
             </h2>
 
-            <p class="mt-6 max-w-[540px] text-[14px] leading-[1.68] text-white/55 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
+            <p class="mt-6 max-w-[540px] text-[14px] leading-[1.68] text-[#334155]/80 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
               {{ t('home.landing.freemium.desc') }}
             </p>
 
@@ -389,7 +389,7 @@
                 <span class="relative">{{ t('home.landing.freemium.cta') }}</span>
                 <svg class="btn-chevron-end relative h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <p class="text-[12px] leading-[1.6] text-white/40 md:text-[13px]">
+              <p class="text-[12px] leading-[1.6] text-[#475569] md:text-[13px]">
                 {{ t('home.landing.freemium.note') }}
               </p>
             </div>
@@ -409,10 +409,10 @@
                 <p class="font-head text-[10px] font-bold uppercase tracking-[0.14em] text-[#88CE0D]/65">
                   {{ String(i + 1).padStart(2, '0') }}
                 </p>
-                <h3 class="mt-1 font-head text-[15px] font-bold leading-tight text-white md:text-[16px]">
+                <h3 class="mt-1 font-head text-[15px] font-bold leading-tight text-[#0f172a] md:text-[16px]">
                   {{ t(b.titleKey) }}
                 </h3>
-                <p class="mt-2 text-[13px] leading-[1.6] text-white/50">
+                <p class="mt-2 text-[13px] leading-[1.6] text-[#475569]">
                   {{ t(b.descKey) }}
                 </p>
               </div>
@@ -423,14 +423,14 @@
     </section>
 
     <!-- ── INDICADORES ─────────────────────────────────── -->
-    <div class="bg-[#1a1a1a]">
+    <div class="bg-white">
       <div class="reveal-item mx-auto grid min-w-0 max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
         <div class="min-w-0 px-6 py-16 md:px-12 md:pr-16">
           <p class="section-tag">{{ t('home.landing.metrics.tag') }}</p>
           <h2 class="font-head text-[clamp(22px,5.5vw,54px)] font-bold leading-[1.1] tracking-[-0.02em] mb-5 md:text-[clamp(28px,4vw,54px)]">
             {{ t('home.landing.metrics.titleLine1') }}<br><span class="text-[#00C6FE]">{{ t('home.landing.metrics.titleHighlight') }}</span>
           </h2>
-          <p class="text-[15px] leading-[1.7] text-white/60 max-w-[480px] mb-8 md:text-base md:leading-[1.75]">
+          <p class="text-[15px] leading-[1.7] text-[#334155]/80 max-w-[480px] mb-8 md:text-base md:leading-[1.75]">
             {{ t('home.landing.metrics.desc') }}
           </p>
           <router-link to="/marcadores" class="btn-ghost w-fit">{{ t('home.landing.metrics.viewPanel') }}</router-link>
@@ -515,7 +515,7 @@
     </div>
 
     <!-- ── CONTEÚDOS ───────────────────────────────────── -->
-    <div class="bg-[#060606] px-4 py-[120px] md:px-12">
+    <div class="bg-[#f8fafc] px-4 py-[120px] md:px-12">
       <div class="reveal-item mx-auto max-w-[1200px]">
         <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -530,13 +530,13 @@
           <template v-if="isLoadingArtigos">
             <div
               v-for="n in 3" :key="'art-sk-' + n"
-              class="block overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] animate-pulse"
+              class="block overflow-hidden rounded-xl border border-[#dbe3ef] bg-white animate-pulse"
             >
-              <div class="h-[180px] bg-white/10"></div>
+              <div class="h-[180px] bg-[#e2e8f0]"></div>
               <div class="space-y-3 p-6">
-                <div class="h-3 w-20 rounded bg-white/10"></div>
-                <div class="h-5 w-full rounded bg-white/10"></div>
-                <div class="h-4 w-full rounded bg-white/10"></div>
+                <div class="h-3 w-20 rounded bg-[#e2e8f0]"></div>
+                <div class="h-5 w-full rounded bg-[#e2e8f0]"></div>
+                <div class="h-4 w-full rounded bg-[#e2e8f0]"></div>
               </div>
             </div>
           </template>
@@ -544,10 +544,10 @@
             v-else
             v-for="post in artigosPreview" :key="post.id"
             :to="{ name: 'ArtigoDetalhe', params: { id: post.id } }"
-            class="home-article-card block cursor-pointer overflow-hidden rounded-xl border border-white/[0.06] bg-[#0e0e0e] no-underline hover:border-[#00C6FE]/30 hover:shadow-[0_18px_40px_-20px_rgba(0,198,254,0.45)]"
+            class="home-article-card block cursor-pointer overflow-hidden rounded-xl border border-[#dbe3ef] bg-white no-underline hover:border-[#00C6FE]/30 hover:shadow-[0_18px_40px_-20px_rgba(0,198,254,0.45)]"
           >
             <article class="h-full">
-              <div class="relative h-[180px] overflow-hidden bg-white/5">
+              <div class="relative h-[180px] overflow-hidden bg-[#f1f5f9]">
                 <img
                   v-if="post.imageUrl"
                   :src="post.imageUrl"
@@ -558,8 +558,8 @@
               </div>
               <div class="p-6">
                 <span class="mb-3 inline-block font-head text-[10px] font-bold uppercase tracking-[0.1em] text-[#88CE0D]">{{ post.tag }}</span>
-                <h3 class="mb-3 font-head text-[17px] font-semibold leading-[1.3] text-white line-clamp-2">{{ post.title }}</h3>
-                <p class="text-[13px] leading-[1.6] text-white/50 line-clamp-3">{{ post.excerpt }}</p>
+                <h3 class="mb-3 font-head text-[17px] font-semibold leading-[1.3] text-[#0f172a] line-clamp-2">{{ post.title }}</h3>
+                <p class="text-[13px] leading-[1.6] text-[#475569] line-clamp-3">{{ post.excerpt }}</p>
               </div>
             </article>
           </router-link>
@@ -568,19 +568,19 @@
     </div>
 
     <!-- ── APOIO INSTITUCIONAL ────────────────────────── -->
-    <div class="bg-[#0e0e0e] px-4 py-24 text-center md:px-12">
+    <div class="bg-white px-4 py-24 text-center md:px-12">
       <div class="reveal-item mx-auto max-w-[1100px]">
         <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.support.tag') }}</p>
         <h2 class="font-head text-[clamp(20px,4.8vw,44px)] font-bold leading-[1.2] tracking-[-0.02em] mb-4 md:text-[clamp(26px,3.5vw,44px)]">
           {{ t('home.landing.support.titleLine1') }}<br>{{ t('home.landing.support.titleLine2') }}
         </h2>
-        <p class="mb-10 text-[15px] leading-relaxed text-white/55 md:text-base">{{ t('home.landing.support.subtitle') }}</p>
+        <p class="mb-10 text-[15px] leading-relaxed text-[#334155]/80 md:text-base">{{ t('home.landing.support.subtitle') }}</p>
         <router-link to="/contato" class="btn-ghost mx-auto mb-12 inline-flex">{{ t('home.landing.support.cta') }}</router-link>
         <div class="flex flex-wrap justify-center gap-8 md:gap-10">
           <template v-if="isLoadingAfiliados">
             <div
               v-for="n in 4" :key="'ap-sk-' + n"
-              class="flex min-h-[8.5rem] w-[11rem] animate-pulse items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.06] sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem]"
+              class="flex min-h-[8.5rem] w-[11rem] animate-pulse items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem]"
             />
           </template>
           <template v-else-if="apoiadoresHome.length">
@@ -590,7 +590,7 @@
                 :href="a.linkRedirect"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex min-h-[8.5rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-5 transition-colors duration-200 hover:border-[#88CE0D]/40 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
+                class="flex min-h-[8.5rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 transition-colors duration-200 hover:border-[#88CE0D]/40 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
               >
                 <img
                   v-if="a.imagemUrl"
@@ -598,11 +598,11 @@
                   :alt="a.nome || t('home.landing.support.altLogo')"
                   class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-white/50">{{ a.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
               </a>
               <div
                 v-else
-                class="flex min-h-[8.5rem] w-[11rem] items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-5 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
+                class="flex min-h-[8.5rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
               >
                 <img
                   v-if="a.imagemUrl"
@@ -610,26 +610,26 @@
                   :alt="a.nome || t('home.landing.support.altLogo')"
                   class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-white/50">{{ a.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
               </div>
             </template>
           </template>
-          <p v-else class="w-full text-sm text-white/35">{{ t('home.landing.support.empty') }}</p>
+          <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.support.empty') }}</p>
         </div>
       </div>
     </div>
 
     <!-- ── PATROCINADORES ─────────────────────────────── -->
-    <div class="border-t border-white/[0.06] bg-[#060606] px-4 py-24 text-center md:px-12">
+    <div class="border-t border-[#dbe3ef] bg-[#f8fafc] px-4 py-24 text-center md:px-12">
       <div class="reveal-item mx-auto max-w-[1200px]">
-        <p class="mb-10 font-head text-[13px] font-semibold uppercase tracking-[0.14em] text-white/35">
+        <p class="mb-10 font-head text-[13px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
           {{ t('home.landing.sponsors.title') }}
         </p>
         <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-14">
           <template v-if="isLoadingAfiliados">
             <div
               v-for="n in 4" :key="'pt-sk-' + n"
-              class="flex min-h-[7rem] w-[11rem] animate-pulse items-center justify-center rounded-xl bg-white/[0.08] sm:w-[13rem] md:min-h-[8rem] md:w-[15rem]"
+              class="flex min-h-[7rem] w-[11rem] animate-pulse items-center justify-center rounded-xl bg-white sm:w-[13rem] md:min-h-[8rem] md:w-[15rem]"
             />
           </template>
           <template v-else-if="patrocinadoresHome.length">
@@ -639,7 +639,7 @@
                 :href="p.linkRedirect"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex min-h-[7rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl bg-white/[0.08] px-5 py-4 opacity-95 transition-opacity duration-200 hover:opacity-100 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="flex min-h-[7rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 transition-opacity duration-200 hover:opacity-100 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
               >
                 <img
                   v-if="p.imagemUrl"
@@ -647,11 +647,11 @@
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
                   class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-white/60 md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
               </a>
               <div
                 v-else
-                class="flex min-h-[7rem] w-[11rem] items-center justify-center rounded-xl bg-white/[0.08] px-5 py-4 opacity-95 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="flex min-h-[7rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
               >
                 <img
                   v-if="p.imagemUrl"
@@ -659,18 +659,18 @@
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
                   class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-white/60 md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
               </div>
             </template>
           </template>
-          <p v-else class="w-full text-sm text-white/35">{{ t('home.landing.sponsors.empty') }}</p>
+          <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.sponsors.empty') }}</p>
         </div>
       </div>
     </div>
 
     <!-- ── FINAL CTA ────────────────────────────────────── -->
     <section
-      class="final-cta relative overflow-hidden bg-[#060606] px-4 py-28 md:px-12 md:py-36"
+      class="final-cta relative overflow-hidden bg-[#f1f5f9] px-4 py-28 md:px-12 md:py-36"
       role="region"
       aria-labelledby="final-cta-heading"
     >
@@ -685,7 +685,7 @@
 
         <h2
           id="final-cta-heading"
-          class="final-cta-title mt-9 font-head text-[clamp(24px,6.5vw,68px)] font-bold leading-[0.98] tracking-[-0.025em] text-white md:text-[clamp(32px,5.5vw,68px)]"
+          class="final-cta-title mt-9 font-head text-[clamp(24px,6.5vw,68px)] font-bold leading-[0.98] tracking-[-0.025em] text-[#0f172a] md:text-[clamp(32px,5.5vw,68px)]"
         >
           {{ t('home.landing.cta.titleBefore') }}<br/>
           <span class="final-cta-highlight relative inline-block">
@@ -694,7 +694,7 @@
           </span>
         </h2>
 
-        <p class="mx-auto mt-7 max-w-[560px] text-[14px] leading-[1.68] text-white/55 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
+        <p class="mx-auto mt-7 max-w-[560px] text-[14px] leading-[1.68] text-[#334155]/80 sm:text-[15px] md:text-[16px] md:leading-[1.75]">
           {{ t('home.landing.cta.subtitle') }}
         </p>
 
@@ -719,7 +719,7 @@
           </a>
         </div>
 
-        <p class="mt-7 font-head text-[11px] font-bold uppercase tracking-[0.16em] text-white/35">
+        <p class="mt-7 font-head text-[11px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
           {{ t('home.landing.cta.note') }}
         </p>
       </div>
@@ -1490,14 +1490,14 @@ watch(currentLocale, () => {
 
 /* Secundário em fundo escuro (ex.: CTA final) */
 .btn-outline-inverted {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: #cbd5e1;
   background: transparent;
-  color: #fff;
+  color: #0f172a;
 }
 .btn-outline-inverted:hover {
   border-color: #00c6fe;
   color: #00c6fe;
-  background: rgba(0, 198, 254, 0.05);
+  background: rgba(0, 198, 254, 0.08);
   transform: var(--home-btn-lift);
   box-shadow: 0 12px 32px -20px rgba(0, 198, 254, 0.25);
 }
@@ -1921,8 +1921,8 @@ watch(currentLocale, () => {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 24px;
   transition:
     transform 0.3s ease,
@@ -1933,13 +1933,13 @@ watch(currentLocale, () => {
 .freemium-bullet:hover {
   transform: translateY(-4px);
   border-color: rgba(136, 206, 13, 0.32);
-  background: rgba(255, 255, 255, 0.04);
+  background: #f8fafc;
   box-shadow: 0 14px 36px -18px rgba(136, 206, 13, 0.35);
 }
 .freemium-bullet-shine {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 198, 254, 0.08), transparent);
   transform: translateX(-100%);
   transition: transform 0.7s ease;
   pointer-events: none;
@@ -2323,9 +2323,9 @@ watch(currentLocale, () => {
 
 .features-bar {
   background:
-    linear-gradient(180deg, #0a0d12 0%, #07090d 55%, #060606 100%);
-  border-top: 1px solid rgba(0, 198, 254, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 55%, #eef2f7 100%);
+  border-top: 1px solid rgba(0, 198, 254, 0.14);
+  border-bottom: 1px solid #dbe3ef;
 }
 .features-bar-grid {
   background-image:
@@ -2336,7 +2336,7 @@ watch(currentLocale, () => {
   -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 85%);
 }
 .features-bar-spotlight {
-  background: radial-gradient(ellipse 120% 80% at 50% -30%, rgba(0, 198, 254, 0.18), transparent 60%);
+  background: radial-gradient(ellipse 120% 80% at 50% -30%, rgba(0, 198, 254, 0.1), transparent 60%);
 }
 .features-bar-deco {
   border-radius: 999px;
@@ -2344,11 +2344,11 @@ watch(currentLocale, () => {
 }
 .features-bar-deco--1 {
   top: -140px; left: -120px; width: 380px; height: 380px;
-  background: rgba(0, 198, 254, 0.16);
+  background: rgba(0, 198, 254, 0.1);
 }
 .features-bar-deco--2 {
   bottom: -160px; right: -120px; width: 420px; height: 420px;
-  background: rgba(136, 206, 13, 0.14);
+  background: rgba(136, 206, 13, 0.1);
 }
 
 .feature-bar-card {
@@ -2358,15 +2358,15 @@ watch(currentLocale, () => {
   gap: 16px;
   padding: 28px 24px 26px;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid #dbe3ef;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%),
-    rgba(14, 14, 14, 0.55);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%),
+    #ffffff;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
-    0 14px 40px -20px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 14px 40px -24px rgba(15, 23, 42, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   overflow: hidden;
   isolation: isolate;
   transition:
@@ -2381,7 +2381,7 @@ watch(currentLocale, () => {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.16), transparent 70%);
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.1), transparent 70%);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 0;
@@ -2396,7 +2396,7 @@ watch(currentLocale, () => {
   box-shadow:
     0 24px 60px -22px rgba(0, 198, 254, 0.22),
     0 0 0 1px rgba(0, 198, 254, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 .feature-bar-card:hover::before {
   opacity: 1;
@@ -2425,7 +2425,7 @@ watch(currentLocale, () => {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(15, 23, 42, 0.25);
   transition: color 0.3s ease;
   z-index: 2;
 }
@@ -2479,7 +2479,7 @@ watch(currentLocale, () => {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #0f172a;
   transition: color 0.3s ease;
 }
 @media (min-width: 768px) {
@@ -2491,7 +2491,7 @@ watch(currentLocale, () => {
   margin-top: 2px;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(30, 41, 59, 0.78);
 }
 
 /* ── Final CTA ─────────────────────────────────────── */

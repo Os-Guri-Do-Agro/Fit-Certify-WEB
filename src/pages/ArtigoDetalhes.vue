@@ -1,5 +1,5 @@
 <template>
-  <div ref="adPageRef" class="art-det-page bg-[#060606] text-white font-body">
+  <div ref="adPageRef" class="art-det-page bg-[#f8fafc] text-[#0f172a] font-body">
     <section
       class="art-det-hero art-det-hero-shell relative isolate overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20"
     >
@@ -18,7 +18,7 @@
       <div class="art-det-hero__overlay pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
       <div class="art-det-hero__grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
-      <div class="relative z-[3] mx-auto w-full max-w-[1200px] px-4 md:px-12">
+      <div class="relative z-[3] mx-auto w-full max-w-[1200px] px-4 text-white md:px-12">
         <RouterLink :to="{ name: 'Artigos' }" class="ad-hero-item art-det-back inline-flex items-center gap-2">
           <span class="art-det-back__arrow" aria-hidden="true">←</span>
           <span>{{ t('artigos.detalhe.backToList') }}</span>
@@ -30,9 +30,9 @@
           </p>
 
           <template v-if="loading">
-            <div class="ad-hero-item art-det-skeleton h-12 w-4/5 max-w-[600px] rounded bg-white/10 md:h-16" />
-            <div class="ad-hero-item mt-6 art-det-skeleton h-5 w-full max-w-[520px] rounded bg-white/[0.08]" />
-            <div class="ad-hero-item mt-2 art-det-skeleton h-5 w-2/3 max-w-[420px] rounded bg-white/[0.08]" />
+            <div class="ad-hero-item art-det-skeleton h-12 w-4/5 max-w-[600px] rounded bg-white/15 md:h-16" />
+            <div class="ad-hero-item mt-6 art-det-skeleton h-5 w-full max-w-[520px] rounded bg-white/12" />
+            <div class="ad-hero-item mt-2 art-det-skeleton h-5 w-2/3 max-w-[420px] rounded bg-white/12" />
           </template>
 
           <template v-else>
@@ -56,12 +56,6 @@
                   {{ authorName }}
                 </span>
               </li>
-              <li v-if="readingMinutes > 0" class="flex items-center gap-2">
-                <span class="art-det-meta__dot" aria-hidden="true" />
-                <span class="font-head uppercase tracking-[0.08em]">
-                  {{ t('artigos.detalhe.readingTime', { min: readingMinutes }) }}
-                </span>
-              </li>
             </ul>
           </template>
         </div>
@@ -73,15 +67,15 @@
       />
     </section>
 
-    <section class="art-det-body relative border-t border-white/[0.06] bg-[#060606] py-14 md:py-20">
+    <section class="art-det-body relative border-t border-[#dbe3ef] bg-white py-14 md:py-20">
       <div class="mx-auto w-full max-w-[920px] px-4 md:px-8">
         <article class="art-prose">
           <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionIntro') }}</p>
             <template v-if="loading">
-              <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-11/12 rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-9/12 rounded bg-white/[0.08]" />
+              <div class="art-det-skeleton h-5 w-full rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-11/12 rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-9/12 rounded bg-[#e2e8f0]" />
             </template>
             <p v-else class="art-prose__lead">
               {{ getLocalizedField(item, 'introducao') }}
@@ -93,10 +87,10 @@
           <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionContent') }}</p>
             <template v-if="loading">
-              <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-11/12 rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-10/12 rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-9/12 rounded bg-white/[0.08]" />
+              <div class="art-det-skeleton h-5 w-full rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-11/12 rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-10/12 rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-9/12 rounded bg-[#e2e8f0]" />
             </template>
             <p v-else class="art-prose__body">
               {{ getLocalizedField(item, 'conteudo') }}
@@ -117,14 +111,14 @@
       </div>
     </section>
 
-    <section v-if="loading || bannerImage" class="bg-[#060606] py-12 md:py-14">
+    <section v-if="loading || bannerImage" class="border-t border-[#dbe3ef] bg-[#f8fafc] py-12 md:py-14">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
-        <div class="ad-reveal art-det-banner relative overflow-hidden rounded-[20px] border border-white/10 shadow-[0_36px_96px_-50px_rgba(0,0,0,0.95)]">
-          <div v-if="loading" class="art-det-skeleton aspect-[16/8] w-full bg-white/[0.06]" />
+        <div class="ad-reveal art-det-banner relative overflow-hidden rounded-[20px] border border-[#dbe3ef] shadow-[0_24px_56px_-36px_rgba(15,23,42,0.2)]">
+          <div v-if="loading" class="art-det-skeleton aspect-[16/8] w-full bg-[#e2e8f0]" />
           <img v-else :src="bannerImage" alt="" class="aspect-[16/8] w-full object-cover" />
           <div
             v-if="!loading"
-            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060606]/60 via-transparent to-transparent"
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f172a]/45 via-transparent to-transparent"
             aria-hidden="true"
           />
         </div>
@@ -133,15 +127,15 @@
 
     <section
       v-if="loading || getLocalizedField(item, 'conclusao')"
-      class="art-det-body relative bg-[#060606] py-14 md:py-20"
+      class="art-det-body relative border-t border-[#dbe3ef] bg-white py-14 md:py-20"
     >
       <div class="mx-auto w-full max-w-[920px] px-4 md:px-8">
         <article class="art-prose">
           <div class="ad-reveal art-prose__block">
             <p class="art-prose__kicker">{{ t('artigos.detalhe.sectionConclusion') }}</p>
             <template v-if="loading">
-              <div class="art-det-skeleton h-5 w-full rounded bg-white/[0.08]" />
-              <div class="mt-3 art-det-skeleton h-5 w-10/12 rounded bg-white/[0.08]" />
+              <div class="art-det-skeleton h-5 w-full rounded bg-[#e2e8f0]" />
+              <div class="mt-3 art-det-skeleton h-5 w-10/12 rounded bg-[#e2e8f0]" />
             </template>
             <p v-else class="art-prose__body">
               {{ getLocalizedField(item, 'conclusao') }}
@@ -225,13 +219,13 @@
     -->
 
 
-    <section class="border-t border-white/[0.06] bg-[#080808] py-14 md:py-20">
+    <section class="border-t border-[#dbe3ef] bg-[#f8fafc] py-14 md:py-20">
       <div class="mx-auto w-full max-w-[1200px] px-4 md:px-12">
         <header class="ad-reveal mb-10 md:mb-12 md:flex md:items-end md:justify-between md:gap-10">
           <div>
             <p class="art-related-eyebrow font-head">{{ t('artigos.detalhe.related.eyebrow') }}</p>
             <h2
-              class="mt-3 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
+              class="mt-3 font-head text-[clamp(22px,3.4vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]"
             >
               {{ t('artigos.detalhe.related.title') }}
             </h2>
@@ -242,7 +236,7 @@
       </div>
     </section>
 
-    <section class="art-det-cta relative isolate overflow-hidden border-t border-white/[0.08] bg-[#060606] py-16 md:py-24">
+    <section class="art-det-cta relative isolate overflow-hidden border-t border-[#dbe3ef] bg-[#f8fafc] py-16 md:py-24">
       <div class="art-det-cta__grid pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <div class="art-det-cta__veil pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
@@ -252,12 +246,12 @@
         <div class="ad-reveal art-det-cta__glass min-w-0 flex-1 lg:max-w-[640px]">
           <p class="art-det-cta__kicker font-head">{{ t('artigos.detalhe.cta.eyebrow') }}</p>
           <h2
-            class="mt-4 font-head text-[clamp(22px,4vw,36px)] font-bold leading-[1.1] tracking-[-0.03em] text-white"
+            class="mt-4 font-head text-[clamp(22px,4vw,36px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]"
           >
             {{ t('artigos.detalhe.cta.title') }}
           </h2>
           <p
-            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-white/80 sm:text-[15px]"
+            class="mt-6 max-w-[520px] border-l-2 border-[#88CE0D] pl-5 text-[14px] leading-[1.75] text-[#475569] sm:text-[15px]"
           >
             {{ t('artigos.detalhe.cta.text') }}
           </p>
@@ -333,16 +327,6 @@ const authorInitials = computed(() => {
     .slice(0, 2)
     .map((n) => n[0]?.toUpperCase() || '')
     .join('')
-})
-
-const readingMinutes = computed(() => {
-  if (!item.value) return 0
-  const intro = getLocalizedField(item.value, 'introducao') || ''
-  const conteudo = getLocalizedField(item.value, 'conteudo') || ''
-  const conclusao = getLocalizedField(item.value, 'conclusao') || ''
-  const totalWords = `${intro} ${conteudo} ${conclusao}`.trim().split(/\s+/).filter(Boolean).length
-  if (totalWords <= 0) return 0
-  return Math.max(1, Math.round(totalWords / 220))
 })
 
 const loadArtigo = async (id) => {
@@ -696,8 +680,51 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.45);
 }
 .art-det-meta__dot--cyan {
-  background: #00c6fe;
-  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.18);
+  position: relative;
+  flex-shrink: 0;
+  --ad-meta-dot-rgb: 0, 198, 254;
+  background: rgb(var(--ad-meta-dot-rgb));
+  box-shadow: 0 0 0 3px rgba(var(--ad-meta-dot-rgb), 0.2);
+  animation: art-det-meta-dot-glow 2.4s ease-in-out infinite;
+}
+.art-det-meta__dot--cyan::before,
+.art-det-meta__dot--cyan::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--ad-meta-dot-rgb), 0.55);
+  pointer-events: none;
+  animation: art-det-meta-dot-pulse 2.4s ease-out infinite;
+  transform-origin: center;
+}
+.art-det-meta__dot--cyan::after {
+  border-color: rgba(var(--ad-meta-dot-rgb), 0.4);
+  animation-delay: 1.2s;
+}
+
+@keyframes art-det-meta-dot-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+@keyframes art-det-meta-dot-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(var(--ad-meta-dot-rgb), 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(var(--ad-meta-dot-rgb), 0.34);
+  }
 }
 
 .art-det-skeleton {
@@ -739,7 +766,7 @@ onUnmounted(() => {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(17px, 2.2vw, 21px);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.88);
+  color: #334155;
   white-space: pre-line;
 }
 .art-prose__body {
@@ -747,7 +774,7 @@ onUnmounted(() => {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(255, 255, 255, 0.72);
+  color: #475569;
   white-space: pre-line;
 }
 @media (min-width: 768px) {
@@ -760,9 +787,9 @@ onUnmounted(() => {
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255, 255, 255, 0.1) 30%,
-    rgba(0, 198, 254, 0.3) 50%,
-    rgba(255, 255, 255, 0.1) 70%,
+    rgba(203, 213, 225, 0.9) 30%,
+    rgba(0, 198, 254, 0.35) 50%,
+    rgba(203, 213, 225, 0.9) 70%,
     transparent 100%
   );
 }
@@ -771,13 +798,12 @@ onUnmounted(() => {
   position: relative;
   margin: 16px 0 0;
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(168deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 32px 28px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.85),
-    0 0 0 1px rgba(0, 198, 254, 0.08) inset;
-  backdrop-filter: blur(12px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.14),
+    0 0 0 1px rgba(0, 198, 254, 0.06) inset;
   overflow: hidden;
 }
 @media (min-width: 768px) {
@@ -808,7 +834,7 @@ onUnmounted(() => {
   font-size: 110px;
   font-weight: 700;
   line-height: 1;
-  color: rgba(0, 198, 254, 0.18);
+  color: rgba(0, 198, 254, 0.12);
   pointer-events: none;
   user-select: none;
 }
@@ -818,7 +844,7 @@ onUnmounted(() => {
   font-size: clamp(18px, 2.6vw, 24px);
   line-height: 1.5;
   font-weight: 500;
-  color: #fff;
+  color: #0f172a;
   font-style: italic;
 }
 .art-quote__caption {
@@ -827,7 +853,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
 }
 
 .art-det-banner img {
@@ -840,16 +866,15 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 
 .art-author-card {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 24px;
-  box-shadow: 0 28px 72px -40px rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 56px -36px rgba(15, 23, 42, 0.16);
 }
 @media (min-width: 768px) {
   .art-author-card {
@@ -864,8 +889,8 @@ onUnmounted(() => {
   overflow: hidden;
   border: 1px solid rgba(0, 198, 254, 0.35);
   box-shadow:
-    0 16px 36px -18px rgba(0, 198, 254, 0.35),
-    inset 0 0 0 4px rgba(6, 6, 6, 0.85);
+    0 16px 36px -18px rgba(0, 198, 254, 0.25),
+    inset 0 0 0 4px rgba(248, 250, 252, 0.95);
 }
 @media (min-width: 768px) {
   .art-author-avatar {
@@ -915,25 +940,25 @@ onUnmounted(() => {
 }
 
 .art-det-cta {
-  background: #060606;
+  background: #f8fafc;
 }
 .art-det-cta__grid {
-  opacity: 0.5;
+  opacity: 0.45;
   background-image:
-    linear-gradient(rgba(0, 198, 254, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 198, 254, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 198, 254, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.06) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(
     ellipse 85% 70% at 50% 40%,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.2) 55%,
+    rgba(15, 23, 42, 0.08) 0%,
+    rgba(15, 23, 42, 0.03) 55%,
     transparent 100%
   );
 }
 .art-det-cta__veil {
   background:
-    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.04) 0%, transparent 45%);
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(0, 198, 254, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(136, 206, 13, 0.05) 0%, transparent 45%);
 }
 .art-det-cta__kicker {
   margin: 0;
@@ -945,14 +970,12 @@ onUnmounted(() => {
 }
 .art-det-cta__glass {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(168deg, rgba(24, 24, 30, 0.96) 0%, rgba(10, 10, 12, 0.96) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 28px 22px 32px;
   box-shadow:
-    0 28px 72px -36px rgba(0, 0, 0, 0.92),
-    0 0 0 1px rgba(0, 198, 254, 0.1) inset,
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter: blur(14px);
+    0 24px 56px -36px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(0, 198, 254, 0.08) inset;
 }
 @media (min-width: 768px) {
   .art-det-cta__glass {
@@ -964,14 +987,13 @@ onUnmounted(() => {
   perspective: 800px;
 }
 .art-det-cta__logo {
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 18px 36px rgba(15, 23, 42, 0.14));
   transition: filter 0.4s ease;
   will-change: transform;
   cursor: pointer;
 }
 .art-det-cta__logo-wrap:hover .art-det-cta__logo {
-  filter: drop-shadow(0 28px 60px rgba(0, 198, 254, 0.28))
-          drop-shadow(0 12px 28px rgba(136, 206, 13, 0.18));
+  filter: drop-shadow(0 22px 44px rgba(0, 198, 254, 0.2)) drop-shadow(0 10px 24px rgba(136, 206, 13, 0.12));
 }
 .art-det-cta__logo-glow {
   background: radial-gradient(
@@ -985,6 +1007,11 @@ onUnmounted(() => {
 
 @media (prefers-reduced-motion: reduce) {
   .art-det-skeleton {
+    animation: none;
+  }
+  .art-det-meta__dot--cyan,
+  .art-det-meta__dot--cyan::before,
+  .art-det-meta__dot--cyan::after {
     animation: none;
   }
   .art-det-back:hover .art-det-back__arrow {

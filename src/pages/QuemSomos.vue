@@ -1,5 +1,5 @@
 <template>
-  <div ref="qsPageRef" class="qs-page bg-[#060606] text-white font-body">
+  <div ref="qsPageRef" class="qs-page bg-[#f8fafc] text-[#0f172a] font-body">
     <!-- Hero: mesmo padrão de Certificados (copy à esquerda + overlay + grelha) -->
     <section
       class="qs-hero-shell relative isolate flex min-h-[min(72vh,620px)] overflow-hidden pb-16 pt-24 md:min-h-[min(78vh,700px)] md:pb-20 md:pt-20"
@@ -7,7 +7,7 @@
       <!-- Contentor com clip: o parallax (yPercent) na imagem não pode vazar da hero -->
       <div class="qs-hero-media pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/src/assets/quems-imgs/quems-banner.jpg"
+          :src="qsHeroBanner"
           alt=""
           class="qs-hero-bg pointer-events-none"
         />
@@ -16,7 +16,7 @@
       <div class="qs-hero-grid pointer-events-none absolute inset-0 z-[2]" aria-hidden="true" />
 
       <div class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12">
-        <div class="qs-hero-copy w-full max-w-[min(560px,100%)]">
+        <div class="qs-hero-copy w-full max-w-[min(560px,100%)] text-white">
           <p class="qs-hero-item eyebrow">{{ t('quemSomos.heroEyebrow') }}</p>
           <h1
             class="qs-hero-item qs-hero-title font-head text-[clamp(30px,6vw,64px)] font-bold leading-[0.95] tracking-[-0.04em]"
@@ -43,14 +43,14 @@
     </section>
 
     <!-- História: grelha editorial (imagem + painel, alinhada ao resto da página) -->
-    <section class="qs-story-section relative overflow-x-clip bg-[#080808] py-12 md:py-20">
+    <section class="qs-story-section relative overflow-x-clip bg-white py-12 md:py-20">
       <div class="qs-story-section__gridlines pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
       <div
         class="qs-reveal relative z-[1] mx-auto grid max-w-[1180px] gap-10 px-4 md:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] md:items-stretch md:gap-12 lg:gap-16 md:px-10"
       >
         <div class="qs-story-arc">
           <img
-            src="/src/assets/quems-imgs/quems-img-01.jpg"
+            :src="qsStoryImg"
             alt=""
             class="qs-story__img-el absolute inset-0 h-full w-full object-cover object-[center_30%]"
           />
@@ -66,12 +66,12 @@
             <p class="qs-story-panel__headline font-head">
               {{ t('quemSomos.section2.title') }}
             </p>
-            <p class="qs-story-panel__body mt-6 hidden text-[15px] leading-[1.85] text-white/58 md:block">
+            <p class="qs-story-panel__body mt-6 hidden text-[15px] leading-[1.85] text-[#475569] md:block">
               {{ t('quemSomos.section1.text1') }}
             </p>
             <div class="mt-6 flex flex-col gap-4 md:hidden">
-              <p class="text-[15px] leading-[1.8] text-white/58">{{ t('quemSomos.section1.textSeparado1') }}</p>
-              <p class="text-[15px] leading-[1.8] text-white/58">{{ t('quemSomos.section1.textSeparado2') }}</p>
+              <p class="text-[15px] leading-[1.8] text-[#475569]">{{ t('quemSomos.section1.textSeparado1') }}</p>
+              <p class="text-[15px] leading-[1.8] text-[#475569]">{{ t('quemSomos.section1.textSeparado2') }}</p>
             </div>
           </div>
         </div>
@@ -79,12 +79,12 @@
     </section>
 
     <!-- Pilares (O que fazemos): grelha larga + cartões maiores -->
-    <section class="relative border-t border-white/[0.06] bg-[#060606] py-16 md:py-24">
+    <section class="relative border-t border-[#dbe3ef] bg-[#f8fafc] py-16 md:py-24">
       <div class="mx-auto max-w-[1180px] px-4 md:px-10">
         <header class="qs-reveal mb-12 md:mb-14 md:flex md:items-end md:justify-between md:gap-8">
           <div>
             <p class="qs-sec-kicker font-head">{{ t('quemSomos.pillarsKicker') }}</p>
-            <h2 class="mt-3 max-w-[820px] font-head text-[clamp(22px,3.5vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+            <h2 class="mt-3 max-w-[820px] font-head text-[clamp(22px,3.5vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
               {{ t('quemSomos.section2.title') }}
             </h2>
           </div>
@@ -109,21 +109,21 @@
     </section>
 
     <!-- Cultura: citação destacada + foto em “janela” -->
-    <section class="relative bg-[#0a0a0b] py-16 md:py-24">
+    <section class="relative bg-white py-16 md:py-24">
       <div class="qs-reveal mx-auto grid max-w-[1180px] gap-10 px-5 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-14 md:px-8">
         <div class="qs-quote relative min-w-0">
           <span class="qs-quote__mark font-head" aria-hidden="true">“</span>
           <p class="qs-sec-kicker font-head">{{ t('quemSomos.humanizationKicker') }}</p>
-          <h2 class="relative z-[1] mt-4 font-head text-[clamp(24px,3.4vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+          <h2 class="relative z-[1] mt-4 font-head text-[clamp(24px,3.4vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
             {{ t('quemSomos.section3.title') }}
           </h2>
-          <p class="relative z-[1] mt-6 text-[15px] leading-[1.82] text-white/58">
+          <p class="relative z-[1] mt-6 text-[15px] leading-[1.82] text-[#475569]">
             {{ t('quemSomos.section3.text') }}
           </p>
         </div>
-        <div class="qs-window relative aspect-[4/3] overflow-hidden rounded-[20px] border border-white/[0.1] md:aspect-[5/4]">
+        <div class="qs-window relative aspect-[4/3] overflow-hidden rounded-[20px] border border-[#dbe3ef] md:aspect-[5/4]">
           <img
-            src="/src/assets/quems-imgs/quems-img-02.jpg"
+            :src="qsCultureImg"
             alt=""
             class="qs-window__img absolute inset-0 h-full w-full object-cover object-center"
           />
@@ -133,7 +133,7 @@
     </section>
 
     <!-- Propósito (MVV): cartões com ícone + hover -->
-    <section class="relative overflow-x-clip bg-[#0a0a0b] py-16 md:py-24">
+    <section class="relative overflow-x-clip bg-white py-16 md:py-24">
       <div class="mx-auto max-w-[1180px] px-4 md:px-10">
         <div class="qs-reveal qs-mvv-head mb-12 text-center md:mb-14 md:text-left">
           <p class="qs-sec-kicker font-head">{{ t('quemSomos.mvvKicker') }}</p>
@@ -188,7 +188,7 @@
     <section class="qs-reveal relative hidden overflow-hidden md:block">
       <div class="qs-cinema">
         <img
-          src="/src/assets/quems-imgs/quems-banner-02.jpg"
+          :src="qsCinemaBanner"
           alt=""
           class="qs-cinema__img"
         />
@@ -197,17 +197,17 @@
     </section>
 
     <!-- Equipa: fileiras horizontais alternadas -->
-    <section class="relative bg-[#0c0c0e] py-16 md:py-24">
+    <section class="relative bg-[#f8fafc] py-16 md:py-24">
       <div class="mx-auto max-w-[960px] px-5 md:px-8">
         <div class="qs-reveal text-center md:text-left">
           <p class="qs-sec-kicker font-head">{{ t('quemSomos.teamKicker') }}</p>
-          <h2 class="mt-3 font-head text-[clamp(24px,3.2vw,36px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+          <h2 class="mt-3 font-head text-[clamp(24px,3.2vw,36px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
             {{ t('quemSomos.section5.title') }}
           </h2>
-          <p class="mx-auto mt-5 max-w-[720px] text-[15px] leading-[1.78] text-white/55 md:mx-0">
+          <p class="mx-auto mt-5 max-w-[720px] text-[15px] leading-[1.78] text-[#475569] md:mx-0">
             {{ t('quemSomos.section5.text1') }}
           </p>
-          <p class="mx-auto mt-4 max-w-[720px] text-[15px] leading-[1.78] text-white/55 md:mx-0">
+          <p class="mx-auto mt-4 max-w-[720px] text-[15px] leading-[1.78] text-[#475569] md:mx-0">
             {{ t('quemSomos.section5.text2') }}
           </p>
         </div>
@@ -239,7 +239,7 @@
     <!-- Para quem é: imagem full-bleed + painel editorial -->
     <section class="qs-closer-section qs-reveal relative min-h-[min(88vh,640px)] overflow-hidden md:min-h-[min(85vh,720px)]">
       <img
-        src="/src/assets/quems-imgs/quems-img-03.jpg"
+        :src="qsCloserImg"
         alt=""
         class="qs-closer-bg pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_40%]"
       />
@@ -297,6 +297,14 @@ import Carousel from '../components/QuemS-components/QuemS-Carousel-First.vue'
 import CarouselSecond from '../components/QuemS-components/QuemS-Carousel-second.vue'
 import CarouselThird from '../components/QuemS-components/QuemSomos-Carousel-third.vue'
 import { useI18n } from '../composables/useI18n'
+import qsHeroBanner from '../assets/quems-imgs/quems-banner.jpg'
+import qsStoryImg from '../assets/quems-imgs/quems-img-01.jpg'
+import qsCultureImg from '../assets/quems-imgs/quems-img-02.jpg'
+import qsCinemaBanner from '../assets/quems-imgs/quems-banner-02.jpg'
+import qsCloserImg from '../assets/quems-imgs/quems-img-03.jpg'
+import teamEmilioImg from '../assets/quems-imgs/emilio-perfil.jpg'
+import teamLucasImg from '../assets/quems-imgs/lucas-perfil.jpg'
+import teamMarceloImg from '../assets/quems-imgs/marcelo-perfil.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -316,19 +324,19 @@ const pillarDefs = [
 const teamMembers = [
   {
     name: 'Emilio Machado',
-    img: '/src/assets/quems-imgs/emilio-perfil.jpg',
+    img: teamEmilioImg,
     titleKey: 'quemSomos.section6.emilioTitle',
     descKey: 'quemSomos.section6.emilioDesc',
   },
   {
     name: 'Lucas Machado',
-    img: '/src/assets/quems-imgs/lucas-perfil.jpg',
+    img: teamLucasImg,
     titleKey: 'quemSomos.section6.lucasTitle',
     descKey: 'quemSomos.section6.lucasDesc',
   },
   {
     name: 'Dr. Marcelo Leitão',
-    img: '/src/assets/quems-imgs/marcelo-perfil.png',
+    img: teamMarceloImg,
     titleKey: 'quemSomos.section6.marceloTitle',
     descKey: 'quemSomos.section6.marceloDesc',
   },
@@ -703,14 +711,19 @@ onUnmounted(() => {
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
   color: #00c6fe;
   transform: var(--qs-btn-lift);
   box-shadow: 0 10px 28px -14px rgba(0, 198, 254, 0.35);
+}
+.qs-hero-shell .btn-outline,
+.qs-closer-section .btn-outline {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
 }
 .btn-lime {
   padding: 14px 28px;
@@ -737,7 +750,7 @@ onUnmounted(() => {
   overflow: hidden;
   min-height: 280px;
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #dbe3ef;
   background: #0a0a0a;
   box-shadow: 0 28px 72px -44px rgba(0, 0, 0, 0.85);
 }
@@ -779,8 +792,8 @@ onUnmounted(() => {
   margin: 0;
   max-width: none;
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(168deg, rgba(18, 18, 22, 0.97) 0%, rgba(8, 8, 10, 0.98) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 24px 20px 28px;
   text-align: left;
   box-shadow: 0 24px 70px -40px rgba(0, 198, 254, 0.12);
@@ -822,7 +835,7 @@ onUnmounted(() => {
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #0f172a;
 }
 .qs-story-panel .section-tag {
   justify-content: flex-start;
@@ -846,10 +859,10 @@ onUnmounted(() => {
   min-height: 200px;
   flex-direction: column;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 26px 22px 28px;
-  box-shadow: 0 22px 56px -40px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 22px 56px -40px rgba(15, 23, 42, 0.28);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -895,7 +908,7 @@ onUnmounted(() => {
   margin: 0;
   font-size: 15px;
   line-height: 1.58;
-  color: rgba(255, 255, 255, 0.74);
+  color: #475569;
 }
 @media (min-width: 1024px) {
   .qs-pillar-card__text {
@@ -918,7 +931,7 @@ onUnmounted(() => {
 .qs-window__frame {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #dbe3ef;
   border-radius: 20px;
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(0, 198, 254, 0.08);
@@ -938,10 +951,10 @@ onUnmounted(() => {
   flex-direction: column;
   overflow: hidden;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(168deg, rgba(255, 255, 255, 0.07) 0%, rgba(6, 6, 6, 0.55) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 26px 22px 28px;
-  box-shadow: 0 22px 52px -38px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 22px 52px -38px rgba(15, 23, 42, 0.26);
   transition:
     border-color 0.32s ease,
     box-shadow 0.32s ease,
@@ -1007,20 +1020,20 @@ onUnmounted(() => {
   font-size: 1.28rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #0f172a;
 }
 .qs-mvv-card__p {
   margin: 0;
   font-size: 15px;
   line-height: 1.68;
-  color: rgba(255, 255, 255, 0.62);
+  color: #475569;
 }
 .qs-mvv-card__ul {
   margin: 0;
   padding-left: 1.15rem;
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.62);
+  color: #475569;
 }
 .qs-mvv-card__ul li {
   margin-bottom: 6px;
@@ -1051,8 +1064,8 @@ onUnmounted(() => {
   gap: 20px;
   overflow: hidden;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 20px;
   transition:
     border-color 0.28s ease,
@@ -1113,7 +1126,7 @@ onUnmounted(() => {
   margin: 0 0 6px;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #fff;
+  color: #0f172a;
 }
 .qs-team-row__role {
   margin: 0 0 12px;
@@ -1127,7 +1140,7 @@ onUnmounted(() => {
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.55);
+  color: #475569;
 }
 
 .qs-closer-section {
@@ -1178,7 +1191,7 @@ onUnmounted(() => {
 .qs-swiper-pillars :deep(.swiper-pagination-bullet),
 .qs-swiper-mvv :deep(.swiper-pagination-bullet),
 .qs-swiper-team :deep(.swiper-pagination-bullet) {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
 }
 

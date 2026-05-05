@@ -74,22 +74,37 @@ const mvvSlides = [
   display: flex;
   min-height: 280px;
   flex-direction: column;
+  overflow: hidden;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(168deg, rgba(255, 255, 255, 0.07) 0%, rgba(8, 8, 10, 0.92) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
   padding: 22px 20px 26px;
   text-align: left;
-  box-shadow: 0 22px 56px -42px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 22px 52px -38px rgba(15, 23, 42, 0.26);
+  transition:
+    border-color 0.32s ease,
+    box-shadow 0.32s ease,
+    transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .qs-mvv-m-card__surface::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0, 198, 254, 0.65), rgba(136, 206, 13, 0.55), transparent);
+  opacity: 0.85;
   pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(120% 80% at 10% 0%, rgba(0, 198, 254, 0.14) 0%, transparent 55%);
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
+}
+.qs-mvv-m-card:hover .qs-mvv-m-card__surface {
+  border-color: rgba(0, 198, 254, 0.42);
+  box-shadow: 0 30px 70px -34px rgba(0, 198, 254, 0.2);
+  transform: translateY(-6px);
+}
+.qs-mvv-m-card:hover .qs-mvv-m-card__surface::before {
+  opacity: 1;
 }
 .qs-mvv-m-card__icon-wrap {
   display: flex;
@@ -102,11 +117,24 @@ const mvvSlides = [
   border: 1px solid rgba(0, 198, 254, 0.28);
   background: rgba(0, 198, 254, 0.08);
   margin-bottom: 14px;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qs-mvv-m-card:hover .qs-mvv-m-card__icon-wrap {
+  border-color: rgba(136, 206, 13, 0.45);
+  background: rgba(136, 206, 13, 0.1);
+  transform: scale(1.06);
 }
 .qs-mvv-m-card__icon {
   width: 26px;
   height: 26px;
   color: #00c6fe;
+  transition: color 0.3s ease;
+}
+.qs-mvv-m-card:hover .qs-mvv-m-card__icon {
+  color: #88ce0d;
 }
 .qs-mvv-m-card__idx {
   display: block;
@@ -123,20 +151,20 @@ const mvvSlides = [
   font-style: normal;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #0f172a;
 }
 .qs-mvv-m-card__p {
   margin: 0;
   font-size: 15px;
   line-height: 1.72;
-  color: rgba(255, 255, 255, 0.58);
+  color: #475569;
 }
 .qs-mvv-m-card__ul {
   margin: 0;
   padding-left: 1.15rem;
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.58);
+  color: #475569;
 }
 .qs-mvv-m-card__ul li {
   margin-bottom: 0.45rem;
@@ -153,7 +181,7 @@ const mvvSlides = [
   height: 8px;
   margin: 0 5px !important;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.14);
   opacity: 1;
   transition:
     transform 0.25s ease,
@@ -162,5 +190,12 @@ const mvvSlides = [
 :deep(.swiper-pagination-bullet-active) {
   background: #00c6fe;
   transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qs-mvv-m-card:hover .qs-mvv-m-card__surface,
+  .qs-mvv-m-card:hover .qs-mvv-m-card__icon-wrap {
+    transform: none;
+  }
 }
 </style>

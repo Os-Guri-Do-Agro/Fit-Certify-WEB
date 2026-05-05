@@ -7,14 +7,14 @@
         <div
           v-for="n in itemsPerPage"
           :key="'skeleton-' + n"
-          class="art-card art-card--skeleton flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10"
+          class="art-card art-card--skeleton flex w-full flex-col overflow-hidden rounded-[18px] border border-[#dbe3ef]"
         >
-          <div class="art-card__media bg-white/10" />
+          <div class="art-card__media bg-[#e2e8f0]" />
           <div class="art-card__body">
-            <div class="h-7 w-4/5 max-w-[420px] rounded bg-white/10" />
-            <div class="mt-2 h-4 w-full rounded bg-white/[0.08]" />
-            <div class="h-4 w-5/6 rounded bg-white/[0.08]" />
-            <div class="mt-auto h-10 w-[140px] rounded-lg bg-white/[0.08]" />
+            <div class="h-7 w-4/5 max-w-[420px] rounded bg-[#e2e8f0]" />
+            <div class="mt-2 h-4 w-full rounded bg-[#e2e8f0]" />
+            <div class="h-4 w-5/6 rounded bg-[#e2e8f0]" />
+            <div class="mt-auto h-10 w-[140px] rounded-lg bg-[#e2e8f0]" />
           </div>
         </div>
       </template>
@@ -23,7 +23,7 @@
         <article
           v-for="item in Artigos.data"
           :key="item.id"
-          class="art-card group flex w-full flex-col overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent shadow-[0_28px_72px_-40px_rgba(0,0,0,0.85)]"
+          class="art-card group flex w-full flex-col overflow-hidden rounded-[18px] border border-[#dbe3ef] bg-gradient-to-b from-white to-[#f8fafc] shadow-[0_24px_56px_-36px_rgba(15,23,42,0.22)]"
         >
           <div class="art-card__media relative overflow-hidden">
             <img
@@ -32,7 +32,7 @@
               alt=""
             />
             <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060606]/80 via-transparent to-transparent opacity-90"
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f172a]/55 via-transparent to-transparent opacity-90"
               aria-hidden="true"
             />
           </div>
@@ -165,6 +165,15 @@ watch(
 
 .art-card {
   max-height: 560px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.art-card:not(.art-card--skeleton):hover {
+  border-color: rgba(0, 198, 254, 0.45) !important;
+  box-shadow: 0 24px 56px -28px rgba(0, 198, 254, 0.12);
+  transform: translateY(-2px);
 }
 @media (min-width: 768px) {
   .art-card {
@@ -201,6 +210,8 @@ watch(
   padding: 22px 20px 24px;
   min-height: 0;
   flex: 1 1 auto;
+  border-top: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, rgba(0, 198, 254, 0.04) 0%, transparent 42%);
 }
 @media (min-width: 768px) {
   .art-card__body {
@@ -214,7 +225,7 @@ watch(
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #0f172a;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -224,7 +235,7 @@ watch(
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -283,19 +294,19 @@ watch(
 .art-pagination :deep(.el-pagination.is-background .btn-prev),
 .art-pagination :deep(.el-pagination.is-background .btn-next),
 .art-pagination :deep(.el-pagination.is-background .el-pager li) {
-  background-color: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.75) !important;
+  background-color: #ffffff !important;
+  border: 1px solid #dbe3ef;
+  color: #334155 !important;
 }
 .art-pagination :deep(.el-pagination.is-background .btn-prev:hover),
 .art-pagination :deep(.el-pagination.is-background .btn-next:hover),
 .art-pagination :deep(.el-pagination.is-background .el-pager li:hover) {
-  color: #fff !important;
+  color: #00c6fe !important;
   border-color: rgba(0, 198, 254, 0.45);
 }
 .art-pagination :deep(.el-pagination.is-background .el-pager li.is-active) {
-  background: linear-gradient(135deg, #00c6fe, #00a8d6) !important;
-  border-color: rgba(0, 198, 254, 0.5);
+  background-color: #88ce0d !important;
+  border-color: #88ce0d;
   color: #060606 !important;
   font-weight: 700;
 }
@@ -307,6 +318,9 @@ watch(
 @media (prefers-reduced-motion: reduce) {
   .art-card--skeleton {
     animation: none;
+  }
+  .art-card:not(.art-card--skeleton):hover {
+    transform: none;
   }
   .btn-ghost:hover {
     transform: none;

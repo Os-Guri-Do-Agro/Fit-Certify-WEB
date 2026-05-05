@@ -1,5 +1,5 @@
 <template>
-  <div ref="detPageRef" class="det-page bg-[#060606] text-white font-body">
+  <div ref="detPageRef" class="det-page bg-[#f8fafc] text-[#0f172a] font-body">
     <!-- Hero: mesmo vocabulário de Eventos (overlay + grid + copy à esquerda) -->
     <section
       class="det-hero-shell relative flex min-h-[min(64vh,520px)] overflow-hidden pb-16 pt-24 md:min-h-[min(70vh,600px)] md:pb-20 md:pt-20"
@@ -21,7 +21,7 @@
       <div
         class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 py-6 md:px-12 md:py-10"
       >
-        <div class="det-hero-copy w-full max-w-[min(580px,100%)]">
+        <div class="det-hero-copy w-full max-w-[min(580px,100%)] text-white">
           <div class="det-hero-stack">
             <RouterLink
               :to="{ name: 'Eventos' }"
@@ -82,7 +82,7 @@
     </section>
 
     <!-- Painel de dados: faixa horizontal com “cartões” (layout diferente da lista Eventos) -->
-    <section class="relative overflow-x-clip bg-[#080808] py-12 md:py-16">
+    <section class="relative overflow-x-clip bg-white py-12 md:py-16">
       <div class="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true">
         <div
           class="h-full w-full"
@@ -108,7 +108,7 @@
     </section>
 
     <!-- Descrição: coluna única editorial (contraste com grid de cima) -->
-    <section class="relative bg-[#0c0c0e] py-14 md:py-20">
+    <section class="relative bg-[#f8fafc] py-14 md:py-20">
       <div class="det-reveal mx-auto max-w-[min(820px,calc(100%-32px))] px-4 md:px-8">
         <p class="section-tag">{{ t('eventosDetalhes.section2.title') }}</p>
         <div v-if="carregando" class="det-skel det-skel--prose mt-6" aria-hidden="true" />
@@ -123,7 +123,7 @@
     <!-- Organização: faixa escura + vitrines circulares -->
     <section
       v-if="carregando || organizacao.length"
-      class="relative border-y border-white/[0.06] bg-[#060606] py-12 md:py-16"
+      class="relative border-y border-[#dbe3ef] bg-white py-12 md:py-16"
     >
       <div class="det-reveal mx-auto max-w-[900px] px-4 md:px-8">
         <p class="det-org-eyebrow font-head">{{ t('eventosDetalhes.section3.title') }}</p>
@@ -147,12 +147,12 @@
     </section>
 
     <!-- Próximos eventos: lista horizontal compacta (componente) -->
-    <section class="relative overflow-x-clip bg-[#050508] py-14 md:py-20">
+    <section class="relative overflow-x-clip bg-[#f8fafc] py-14 md:py-20">
       <div class="det-reveal mx-auto max-w-[1180px] px-4 md:px-10">
         <header class="mb-10 md:mb-12 md:flex md:items-end md:justify-between md:gap-8">
           <div>
             <p class="det-related-eyebrow font-head">{{ t('eventos.heroEyebrow') }}</p>
-            <h2 class="mt-2 font-head text-[clamp(22px,3.2vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+            <h2 class="mt-2 font-head text-[clamp(22px,3.2vw,34px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0f172a]">
               {{ t('eventosDetalhes.section4.title') }}
             </h2>
           </div>
@@ -486,7 +486,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -560,8 +560,8 @@ onUnmounted(() => {
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
@@ -580,6 +580,10 @@ onUnmounted(() => {
   transform: var(--det-btn-lift);
   background: #9dea0f;
   box-shadow: 0 18px 40px -12px rgba(136, 206, 13, 0.55);
+}
+.det-hero-shell .btn-outline {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
 }
 
 .det-hero-shell {
@@ -626,7 +630,7 @@ onUnmounted(() => {
 }
 .det-skel {
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #e2e8f0;
   animation: det-skel-fade 1.35s ease-in-out infinite;
 }
 .det-skel--title {
@@ -678,14 +682,14 @@ onUnmounted(() => {
   overflow: hidden;
   flex-direction: column;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid #dbe3ef;
   background:
     linear-gradient(125deg, rgba(0, 198, 254, 0.07) 0%, transparent 55%),
-    linear-gradient(168deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(6, 6, 6, 0.35) 100%);
+    linear-gradient(168deg, #ffffff 0%, #f8fafc 55%, #eef2f7 100%);
   padding: 20px 18px 22px;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.05) inset,
-    0 22px 48px -34px rgba(0, 0, 0, 0.75);
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 22px 48px -34px rgba(15, 23, 42, 0.24);
   transition:
     border-color 0.28s ease,
     box-shadow 0.32s ease;
@@ -693,7 +697,7 @@ onUnmounted(() => {
 .det-fact:hover {
   border-color: rgba(0, 198, 254, 0.38);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
     0 26px 52px -30px rgba(0, 198, 254, 0.14);
 }
 .det-fact__top {
@@ -713,7 +717,7 @@ onUnmounted(() => {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: #5ddbfe;
+  color: #0284c7;
 }
 .det-fact__label {
   margin: 0;
@@ -724,7 +728,7 @@ onUnmounted(() => {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-align: right;
-  color: rgba(255, 255, 255, 0.42);
+  color: #64748b;
 }
 @media (max-width: 899px) {
   .det-fact__label {
@@ -743,26 +747,26 @@ onUnmounted(() => {
   margin: 0;
   margin-top: auto;
   padding-top: 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #e2e8f0;
   font-size: clamp(0.95rem, 2vw, 1.22rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.35;
-  color: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
   word-break: break-word;
 }
 
 .det-prose {
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 22px 20px 24px;
 }
 .det-prose__text {
   margin: 0;
   font-size: 15px;
   line-height: 1.82;
-  color: rgba(255, 255, 255, 0.62);
+  color: #475569;
 }
 
 .det-org-eyebrow {
@@ -795,7 +799,7 @@ onUnmounted(() => {
   justify-content: center;
   border-radius: 50%;
   border: 2px solid rgba(136, 206, 13, 0.45);
-  background: rgba(6, 6, 6, 0.6);
+  background: #ffffff;
   box-shadow: 0 0 0 6px rgba(136, 206, 13, 0.08);
   transition:
     border-color 0.28s ease,
@@ -816,13 +820,13 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: #475569;
 }
 .det-org-skel {
   width: 112px;
   height: 112px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
+  background: #e2e8f0;
   animation: det-skel-fade 1.35s ease-in-out infinite;
 }
 

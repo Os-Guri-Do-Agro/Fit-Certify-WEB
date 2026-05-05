@@ -1,5 +1,5 @@
 <template>
-  <div class="cert-page bg-[#060606] text-white font-body">
+  <div class="cert-page bg-[#f8fafc] text-[#0f172a] font-body">
     <!-- HERO: conteúdo à esquerda + foto de fundo com overlay escuro -->
     <section
       class="cert-hero-shell relative flex min-h-[min(72vh,620px)] overflow-hidden pb-16 pt-24 md:min-h-[min(78vh,700px)] md:pb-20 md:pt-20"
@@ -15,7 +15,7 @@
       <div
         class="relative z-[3] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-4 md:px-12"
       >
-        <div class="cert-hero-copy w-full max-w-[min(560px,100%)]">
+        <div class="cert-hero-copy w-full max-w-[min(560px,100%)] text-white">
           <p class="cert-hero-item eyebrow">{{ t('certificados.heroEyebrow') }}</p>
           <h1
             class="cert-hero-item cert-hero-title font-head text-[clamp(30px,6vw,68px)] font-bold leading-[0.95] tracking-[-0.04em]"
@@ -51,7 +51,7 @@
     </section>
 
     <!-- Intro editorial + imagem flutuante -->
-    <section class="relative bg-[#0c0c0e] pb-20 pt-6 md:pb-28 md:pt-2">
+    <section class="relative bg-white pb-20 pt-6 md:pb-28 md:pt-2">
       <div class="cert-reveal cert-editorial relative mx-auto max-w-[1100px] px-4 md:px-10">
         <div class="cert-editorial__grid">
           <div class="cert-editorial__rail font-head" aria-hidden="true">
@@ -59,15 +59,15 @@
           </div>
           <div class="cert-editorial__body">
             <p class="section-tag">{{ t('certificados.title') }}</p>
-            <h2 class="cert-editorial__head font-head text-[clamp(22px,3.6vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+            <h2 class="cert-editorial__head font-head text-[clamp(22px,3.6vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
               {{ t('certificados.subtitle') }}
             </h2>
-            <p class="cert-editorial__text mt-5 hidden text-[15px] leading-[1.8] text-white/58 lg:block">
+            <p class="cert-editorial__text mt-5 hidden text-[15px] leading-[1.8] text-[#475569] lg:block">
               {{ t('certificados.section1.text') }}
             </p>
             <div class="mt-5 flex flex-col gap-4 lg:hidden">
-              <p class="text-[15px] leading-[1.75] text-white/58">{{ t('certificados.section1.textSeparado1') }}</p>
-              <p class="text-[15px] leading-[1.75] text-white/58">{{ t('certificados.section1.textSeparado2') }}</p>
+              <p class="text-[15px] leading-[1.75] text-[#475569]">{{ t('certificados.section1.textSeparado1') }}</p>
+              <p class="text-[15px] leading-[1.75] text-[#475569]">{{ t('certificados.section1.textSeparado2') }}</p>
             </div>
             <a
               href="https://admin.fitcert365.com/register"
@@ -87,17 +87,17 @@
     </section>
 
     <!-- Bento: tipos (fundo escuro + células assimétricas) -->
-    <section class="cert-bento-wrap relative overflow-x-clip bg-[#080808] py-16 md:py-22">
+    <section class="cert-bento-wrap relative overflow-x-clip bg-[#f8fafc] py-16 md:py-22">
       <div class="cert-bento-gridlines pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true" />
       <div class="cert-bento-stage cert-reveal relative z-[1] mx-auto max-w-[1180px] px-4 md:px-8">
         <header class="cert-bento-head mb-10 md:mb-14 md:flex md:items-end md:justify-between md:gap-8">
           <div>
             <p class="cert-bento-eyebrow font-head">{{ t('certificados.section2.title') }}</p>
-            <h2 class="mt-2 font-head text-[clamp(26px,4vw,44px)] font-bold leading-[1.05] tracking-[-0.03em] text-white">
+            <h2 class="mt-2 font-head text-[clamp(26px,4vw,44px)] font-bold leading-[1.05] tracking-[-0.03em] text-[#0f172a]">
               {{ t('certificados.subtitle') }}
             </h2>
           </div>
-          <p class="cert-bento-note mt-4 max-w-[340px] text-[13px] leading-relaxed text-white/45 md:mt-0 md:text-right">
+          <p class="cert-bento-note mt-4 max-w-[340px] text-[13px] leading-relaxed text-[#64748b] md:mt-0 md:text-right">
             {{ t('certificados.section2.validityNote') }}
           </p>
         </header>
@@ -161,7 +161,7 @@
     </section>
 
     <!-- Timeline: como funciona -->
-    <section class="relative overflow-x-clip bg-[#060606] py-16 md:py-24">
+    <section class="relative overflow-x-clip bg-white py-16 md:py-24">
       <div class="cert-timeline-stage cert-reveal mx-auto max-w-[720px] px-4 md:max-w-[800px] md:px-8">
         <h2 class="mb-12 text-center font-head text-[clamp(24px,4vw,40px)] font-bold tracking-[-0.03em] md:mb-16">
           {{ t('certificados.section3.title') }}
@@ -553,8 +553,8 @@ onUnmounted(() => {
 }
 .btn-outline {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
 }
 .btn-outline:hover {
   border-color: #00c6fe;
@@ -612,6 +612,10 @@ onUnmounted(() => {
   color: #060606;
   transform: var(--cert-btn-lift);
   box-shadow: 0 12px 32px -18px rgba(0, 198, 254, 0.4);
+}
+.cert-hero-shell .btn-outline {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
 }
 .btn-ghost:focus-visible {
   outline: 2px solid #88ce0d;
@@ -685,7 +689,7 @@ onUnmounted(() => {
     display: block;
     position: relative;
     align-self: stretch;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid #dbe3ef;
   }
 }
 .cert-editorial__index {
@@ -715,8 +719,8 @@ onUnmounted(() => {
   display: block;
   width: 100%;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.75);
+  border: 1px solid #dbe3ef;
+  box-shadow: 0 20px 50px -28px rgba(15, 23, 42, 0.28);
 }
 .cert-editorial__float-cap {
   position: absolute;
@@ -797,8 +801,8 @@ onUnmounted(() => {
   gap: 10px;
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
   padding: 22px 20px 20px;
   transition:
     border-color 0.3s ease,
@@ -812,7 +816,7 @@ onUnmounted(() => {
 }
 .cert-bento-cell--a .cert-bento-cell__surface {
   min-height: 100%;
-  background: linear-gradient(155deg, rgba(0, 198, 254, 0.12) 0%, rgba(255, 255, 255, 0.03) 55%, rgba(136, 206, 13, 0.06) 100%);
+  background: linear-gradient(155deg, rgba(0, 198, 254, 0.1) 0%, #ffffff 55%, rgba(136, 206, 13, 0.08) 100%);
 }
 .cert-bento-cell--d .cert-bento-cell__surface {
   min-height: 160px;
@@ -840,7 +844,7 @@ onUnmounted(() => {
   font-size: clamp(17px, 2vw, 22px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: #0f172a;
 }
 .cert-bento-cell--a .cert-bento-cell__title {
   font-size: clamp(22px, 2.8vw, 30px);
@@ -849,7 +853,7 @@ onUnmounted(() => {
   flex: 1;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.62);
+  color: #475569;
 }
 .cert-bento-cell__cta {
   align-self: flex-start;
@@ -870,8 +874,8 @@ onUnmounted(() => {
     color 0.2s ease;
 }
 .cert-bento-cell__cta:hover {
-  background: #060606;
-  border-color: #060606;
+  background: #0f172a;
+  border-color: #0f172a;
   color: #fff;
 }
 
@@ -903,7 +907,7 @@ onUnmounted(() => {
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.24);
   transition:
     width 0.25s ease,
     background-color 0.2s ease;
@@ -957,20 +961,20 @@ onUnmounted(() => {
   0%,
   100% {
     box-shadow:
-      0 0 0 4px rgba(136, 206, 13, 0.18),
+      0 0 0 4px rgba(0, 198, 254, 0.16),
       0 0 0 0 rgba(0, 198, 254, 0),
       0 0 0 0 rgba(136, 206, 13, 0);
   }
   42% {
     box-shadow:
-      0 0 0 11px rgba(136, 206, 13, 0.07),
-      0 0 0 1px rgba(0, 198, 254, 0.2),
-      0 0 24px rgba(0, 198, 254, 0.45);
+      0 0 0 12px rgba(0, 198, 254, 0.08),
+      0 0 0 2px rgba(136, 206, 13, 0.24),
+      0 0 28px rgba(0, 198, 254, 0.26);
   }
   68% {
     box-shadow:
-      0 0 0 6px rgba(136, 206, 13, 0.1),
-      0 0 14px rgba(0, 198, 254, 0.2),
+      0 0 0 7px rgba(0, 198, 254, 0.1),
+      0 0 16px rgba(0, 198, 254, 0.16),
       0 0 0 0 rgba(136, 206, 13, 0);
   }
 }
@@ -982,12 +986,12 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  border: 2px solid #060606;
-  background: #88ce0d;
+  border: 2px solid #00c6fe;
+  background: #ffffff;
   font-size: 14px;
   font-weight: 700;
-  color: #060606;
-  box-shadow: 0 0 0 4px rgba(136, 206, 13, 0.15);
+  color: #0f172a;
+  box-shadow: 0 0 0 4px rgba(0, 198, 254, 0.16);
   animation: cert-tl-node-pulse 2.6s ease-in-out infinite;
   will-change: box-shadow;
 }
@@ -1005,8 +1009,8 @@ onUnmounted(() => {
 }
 .cert-tl-item__panel {
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
   padding: 18px 20px;
   transition:
     border-color 0.28s ease,
@@ -1015,8 +1019,8 @@ onUnmounted(() => {
 }
 .cert-tl-item:hover .cert-tl-item__panel {
   border-color: rgba(0, 198, 254, 0.35);
-  background: rgba(0, 198, 254, 0.05);
-  box-shadow: 0 16px 40px -24px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 198, 254, 0.04);
+  box-shadow: 0 16px 40px -28px rgba(15, 23, 42, 0.25);
 }
 .cert-tl-item__icon {
   margin-bottom: 12px;
@@ -1042,7 +1046,7 @@ onUnmounted(() => {
   margin: 0;
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+  color: #334155;
 }
 
 /* —— CTA band —— */
