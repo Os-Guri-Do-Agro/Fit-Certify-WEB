@@ -28,6 +28,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 import { useI18n } from '../../composables/useI18n'
+import teamEmilioImg from '../../assets/quems-imgs/emilio-perfil.jpg'
+import teamLucasImg from '../../assets/quems-imgs/lucas-perfil.jpg'
+import teamMarceloImg from '../../assets/quems-imgs/marcelo-perfil.png'
 
 const modules = [Pagination]
 const { t } = useI18n()
@@ -35,19 +38,19 @@ const { t } = useI18n()
 const teamMembers = [
   {
     name: 'Emilio Machado',
-    img: '/src/assets/quems-imgs/emilio-perfil.jpg',
+    img: teamEmilioImg,
     titleKey: 'quemSomos.section6.emilioTitle',
     descKey: 'quemSomos.section6.emilioDesc',
   },
   {
     name: 'Lucas Machado',
-    img: '/src/assets/quems-imgs/lucas-perfil.jpg',
+    img: teamLucasImg,
     titleKey: 'quemSomos.section6.lucasTitle',
     descKey: 'quemSomos.section6.lucasDesc',
   },
   {
     name: 'Dr. Marcelo Leitão',
-    img: '/src/assets/quems-imgs/marcelo-perfil.png',
+    img: teamMarceloImg,
     titleKey: 'quemSomos.section6.marceloTitle',
     descKey: 'quemSomos.section6.marceloDesc',
   },

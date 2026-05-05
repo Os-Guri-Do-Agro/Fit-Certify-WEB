@@ -7,7 +7,7 @@
       <!-- Contentor com clip: o parallax (yPercent) na imagem não pode vazar da hero -->
       <div class="qs-hero-media pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/src/assets/quems-imgs/quems-banner.jpg"
+          :src="qsHeroBanner"
           alt=""
           class="qs-hero-bg pointer-events-none"
         />
@@ -50,7 +50,7 @@
       >
         <div class="qs-story-arc">
           <img
-            src="/src/assets/quems-imgs/quems-img-01.jpg"
+            :src="qsStoryImg"
             alt=""
             class="qs-story__img-el absolute inset-0 h-full w-full object-cover object-[center_30%]"
           />
@@ -123,7 +123,7 @@
         </div>
         <div class="qs-window relative aspect-[4/3] overflow-hidden rounded-[20px] border border-[#dbe3ef] md:aspect-[5/4]">
           <img
-            src="/src/assets/quems-imgs/quems-img-02.jpg"
+            :src="qsCultureImg"
             alt=""
             class="qs-window__img absolute inset-0 h-full w-full object-cover object-center"
           />
@@ -188,7 +188,7 @@
     <section class="qs-reveal relative hidden overflow-hidden md:block">
       <div class="qs-cinema">
         <img
-          src="/src/assets/quems-imgs/quems-banner-02.jpg"
+          :src="qsCinemaBanner"
           alt=""
           class="qs-cinema__img"
         />
@@ -239,7 +239,7 @@
     <!-- Para quem é: imagem full-bleed + painel editorial -->
     <section class="qs-closer-section qs-reveal relative min-h-[min(88vh,640px)] overflow-hidden md:min-h-[min(85vh,720px)]">
       <img
-        src="/src/assets/quems-imgs/quems-img-03.jpg"
+        :src="qsCloserImg"
         alt=""
         class="qs-closer-bg pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_40%]"
       />
@@ -297,6 +297,14 @@ import Carousel from '../components/QuemS-components/QuemS-Carousel-First.vue'
 import CarouselSecond from '../components/QuemS-components/QuemS-Carousel-second.vue'
 import CarouselThird from '../components/QuemS-components/QuemSomos-Carousel-third.vue'
 import { useI18n } from '../composables/useI18n'
+import qsHeroBanner from '../assets/quems-imgs/quems-banner.jpg'
+import qsStoryImg from '../assets/quems-imgs/quems-img-01.jpg'
+import qsCultureImg from '../assets/quems-imgs/quems-img-02.jpg'
+import qsCinemaBanner from '../assets/quems-imgs/quems-banner-02.jpg'
+import qsCloserImg from '../assets/quems-imgs/quems-img-03.jpg'
+import teamEmilioImg from '../assets/quems-imgs/emilio-perfil.jpg'
+import teamLucasImg from '../assets/quems-imgs/lucas-perfil.jpg'
+import teamMarceloImg from '../assets/quems-imgs/marcelo-perfil.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -316,19 +324,19 @@ const pillarDefs = [
 const teamMembers = [
   {
     name: 'Emilio Machado',
-    img: '/src/assets/quems-imgs/emilio-perfil.jpg',
+    img: teamEmilioImg,
     titleKey: 'quemSomos.section6.emilioTitle',
     descKey: 'quemSomos.section6.emilioDesc',
   },
   {
     name: 'Lucas Machado',
-    img: '/src/assets/quems-imgs/lucas-perfil.jpg',
+    img: teamLucasImg,
     titleKey: 'quemSomos.section6.lucasTitle',
     descKey: 'quemSomos.section6.lucasDesc',
   },
   {
     name: 'Dr. Marcelo Leitão',
-    img: '/src/assets/quems-imgs/marcelo-perfil.png',
+    img: teamMarceloImg,
     titleKey: 'quemSomos.section6.marceloTitle',
     descKey: 'quemSomos.section6.marceloDesc',
   },
