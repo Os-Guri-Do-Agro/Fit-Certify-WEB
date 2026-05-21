@@ -191,7 +191,7 @@
       <div class="m-cta-vignette pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
       <div
-        class="relative z-[2] mx-auto flex w-full max-w-[1200px] flex-col justify-start gap-10 px-4 md:px-12 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
+        class="relative z-[2] mx-auto flex w-full max-w-[1200px] flex-col justify-start gap-10 px-4 md:px-12 lg:flex-row lg:items-stretch lg:justify-between lg:gap-12"
       >
         <div class="m-reveal m-cta-panel-wrap w-full min-w-0 lg:max-w-[min(580px,calc(100%-380px))]">
           <div class="m-cta-glass text-left">
@@ -225,22 +225,32 @@
           </div>
         </div>
 
-        <aside class="m-reveal m-cta-aside flex w-full shrink-0 flex-col gap-3 lg:w-[340px] lg:max-w-[340px]">
-          <p class="m-cta-aside-title font-head">{{ t('marcadores.section5.asideTitle') }}</p>
-          <div class="m-cta-chip m-cta-chip--cyan">
-            <p class="m-cta-chip__text">{{ t('marcadores.section5.asideLine1') }}</p>
+        <aside class="m-reveal m-cta-aside w-full shrink-0 lg:w-[360px] lg:max-w-[360px]">
+          <div class="m-cta-aside-panel">
+            <p class="m-cta-aside-title font-head">{{ t('marcadores.section5.asideTitle') }}</p>
+            <ul class="m-cta-aside-list">
+              <li v-for="item in asideItemsDisplay" :key="item.id">
+                <component
+                  :is="item.to ? RouterLink : 'div'"
+                  :to="item.to"
+                  class="m-cta-aside-item"
+                  :class="[
+                    `m-cta-aside-item--${item.variant}`,
+                    item.to ? 'm-cta-aside-item--link' : '',
+                  ]"
+                >
+                  <span class="m-cta-aside-item__icon" aria-hidden="true">
+                    <component :is="item.icon" class="m-cta-aside-item__ico" />
+                  </span>
+                  <span class="m-cta-aside-item__body">
+                    <span class="m-cta-aside-item__title font-head">{{ item.title }}</span>
+                    <span v-if="item.subtitle" class="m-cta-aside-item__desc">{{ item.subtitle }}</span>
+                  </span>
+                  <ChevronRightIcon v-if="item.to" class="m-cta-aside-item__arrow" aria-hidden="true" />
+                </component>
+              </li>
+            </ul>
           </div>
-          <div class="m-cta-chip m-cta-chip--lime">
-            <p class="m-cta-chip__text">{{ t('marcadores.section5.asideLine2') }}</p>
-          </div>
-          <div class="m-cta-chip m-cta-chip--neutral">
-            <p class="m-cta-chip__text m-cta-chip__text--pre">{{ t('marcadores.section5.asideLine3') }}</p>
-          </div>
-          <RouterLink :to="{ name: 'Eventos' }" class="m-cta-chip-link">
-            <div class="m-cta-chip m-cta-chip--cyan m-cta-chip--link">
-              <p class="m-cta-chip__text m-cta-chip__text--pre">{{ t('marcadores.section5.asideLine4') }}</p>
-            </div>
-          </RouterLink>
         </aside>
       </div>
 
@@ -253,7 +263,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -264,6 +274,10 @@ import {
   BoltIcon,
   SignalIcon,
   ClipboardDocumentListIcon,
+  FireIcon,
+  ShieldCheckIcon,
+  CalendarDaysIcon,
+  ChevronRightIcon,
 } from '@heroicons/vue/24/outline'
 import Carousel from '../components/Marcad-components/Marcad-Carousel.vue'
 import { useI18n } from '../composables/useI18n'
@@ -318,6 +332,54 @@ const ctaBulletKeys = [
   'marcadores.section5.ctaBullet2',
   'marcadores.section5.ctaBullet3',
 ]
+
+const asideItems = [
+  {
+    id: 'train',
+    lineKey: 'marcadores.section5.asideLine1',
+    variant: 'cyan',
+    icon: FireIcon,
+    to: null,
+  },
+  {
+    id: 'cert',
+    lineKey: 'marcadores.section5.asideLine2',
+    variant: 'lime',
+    icon: ShieldCheckIcon,
+    to: null,
+  },
+  {
+    id: 'live',
+    lineKey: 'marcadores.section5.asideLine3',
+    variant: 'neutral',
+    icon: SignalIcon,
+    to: null,
+  },
+  {
+    id: 'events',
+    lineKey: 'marcadores.section5.asideLine4',
+    variant: 'cyan',
+    icon: CalendarDaysIcon,
+    to: { name: 'Eventos' },
+  },
+]
+
+function parseAsideLine(key) {
+  const text = t(key)
+  const breakAt = text.indexOf('\n')
+  if (breakAt === -1) return { title: text, subtitle: null }
+  return {
+    title: text.slice(0, breakAt),
+    subtitle: text.slice(breakAt + 1),
+  }
+}
+
+const asideItemsDisplay = computed(() =>
+  asideItems.map((item) => ({
+    ...item,
+    ...parseAsideLine(item.lineKey),
+  }))
+)
 
 let ctx = null
 let mGsapAlive = true
@@ -907,67 +969,150 @@ onUnmounted(() => {
     padding: 36px 40px 40px;
   }
 }
+.m-cta-aside-panel {
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  border-radius: 22px;
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
+  padding: 22px 18px 20px;
+  box-shadow:
+    0 28px 72px -40px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(0, 198, 254, 0.06) inset;
+}
+@media (min-width: 768px) {
+  .m-cta-aside-panel {
+    padding: 28px 22px 24px;
+  }
+}
 .m-cta-aside-title {
-  margin: 0 0 6px;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e8f0;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #64748b;
 }
-.m-cta-chip {
-  border-radius: 16px;
-  border: 1px solid #dbe3ef;
-  padding: 16px 18px;
-  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
-  backdrop-filter: blur(10px);
-}
-.m-cta-chip--cyan {
-  border-color: rgba(0, 198, 254, 0.35);
-  box-shadow:
-    0 16px 44px -26px rgba(0, 198, 254, 0.25),
-    inset 0 1px 0 rgba(0, 198, 254, 0.12);
-}
-.m-cta-chip--lime {
-  border-color: rgba(136, 206, 13, 0.38);
-  box-shadow:
-    0 16px 44px -26px rgba(136, 206, 13, 0.2),
-    inset 0 1px 0 rgba(136, 206, 13, 0.1);
-}
-.m-cta-chip--neutral {
-  border-color: #cbd5e1;
-  box-shadow: 0 12px 36px -26px rgba(15, 23, 42, 0.22);
-}
-.m-cta-chip__text {
+.m-cta-aside-list {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.55;
-  color: #334155;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.m-cta-chip__text--pre {
-  white-space: pre-line;
-  font-size: 13px;
-  line-height: 1.5;
-}
-.m-cta-chip-link {
+.m-cta-aside-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  min-height: 64px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  padding: 14px 14px 14px 12px;
+  background: #fff;
   text-decoration: none;
   color: inherit;
-  outline: none;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease,
+    background-color 0.22s ease;
 }
-.m-cta-chip-link:focus-visible .m-cta-chip--link {
+.m-cta-aside-item--cyan {
+  border-color: rgba(0, 198, 254, 0.28);
+  background: linear-gradient(165deg, rgba(0, 198, 254, 0.06) 0%, #ffffff 72%);
+}
+.m-cta-aside-item--lime {
+  border-color: rgba(136, 206, 13, 0.32);
+  background: linear-gradient(165deg, rgba(136, 206, 13, 0.07) 0%, #ffffff 72%);
+}
+.m-cta-aside-item--neutral {
+  border-color: #dbe3ef;
+  background: linear-gradient(165deg, #f8fafc 0%, #ffffff 100%);
+}
+.m-cta-aside-item--link:hover,
+.m-cta-aside-item--link:focus-visible {
+  border-color: rgba(0, 198, 254, 0.45);
+  box-shadow: 0 18px 44px -28px rgba(0, 198, 254, 0.22);
+  transform: translateY(-2px);
+}
+.m-cta-aside-item--link:focus-visible {
   outline: 2px solid #00c6fe;
   outline-offset: 3px;
 }
-.m-cta-chip--link {
-  transition:
-    transform 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease;
+.m-cta-aside-item__icon {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid #dbe3ef;
+  background: #fff;
+  box-shadow: 0 10px 24px -16px rgba(15, 23, 42, 0.2);
 }
-.m-cta-chip-link:hover .m-cta-chip--link {
-  transform: translateY(-2px);
-  border-color: rgba(0, 198, 254, 0.45);
-  box-shadow: 0 22px 52px -28px rgba(0, 198, 254, 0.28);
+.m-cta-aside-item--cyan .m-cta-aside-item__icon {
+  border-color: rgba(0, 198, 254, 0.35);
+  background: linear-gradient(145deg, rgba(0, 198, 254, 0.16) 0%, rgba(0, 198, 254, 0.04) 100%);
+}
+.m-cta-aside-item--lime .m-cta-aside-item__icon {
+  border-color: rgba(136, 206, 13, 0.35);
+  background: linear-gradient(145deg, rgba(136, 206, 13, 0.14) 0%, rgba(136, 206, 13, 0.04) 100%);
+}
+.m-cta-aside-item--neutral .m-cta-aside-item__icon {
+  border-color: #cbd5e1;
+  background: linear-gradient(145deg, #f1f5f9 0%, #ffffff 100%);
+}
+.m-cta-aside-item__ico {
+  width: 22px;
+  height: 22px;
+}
+.m-cta-aside-item--cyan .m-cta-aside-item__ico {
+  color: #00a8d4;
+}
+.m-cta-aside-item--lime .m-cta-aside-item__ico {
+  color: #7baf12;
+}
+.m-cta-aside-item--neutral .m-cta-aside-item__ico {
+  color: #475569;
+}
+.m-cta-aside-item__body {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+.m-cta-aside-item__title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0f172a;
+}
+.m-cta-aside-item__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+.m-cta-aside-item__arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 10px;
+  color: #94a3b8;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+.m-cta-aside-item--link:hover .m-cta-aside-item__arrow,
+.m-cta-aside-item--link:focus-visible .m-cta-aside-item__arrow {
+  color: #00c6fe;
+  transform: translateX(2px);
 }
 @media (max-width: 1023px) {
   .m-cta-aside {
@@ -995,7 +1140,8 @@ onUnmounted(() => {
   .m-feature-card:hover .m-feature-card__icon-wrap {
     transform: none;
   }
-  .m-cta-chip-link:hover .m-cta-chip--link {
+  .m-cta-aside-item--link:hover,
+  .m-cta-aside-item--link:focus-visible {
     transform: none;
   }
 }
