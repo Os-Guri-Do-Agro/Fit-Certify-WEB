@@ -1,6 +1,6 @@
 <template>
   <!-- Raiz precisa ocupar viewport: filhos só `fixed` colapsam o container e o Headless UI fecha o Dialog via ResizeObserver -->
-  <Dialog :open="dialogFormVisible" class="fixed inset-0 z-[200]" @close="fecharModal">
+  <Dialog :open="dialogFormVisible" class="fixed inset-0 z-[200]" @close="() => fecharModal(true)">
     <DialogOverlay
       class="fixed inset-0 bg-[#060606]/85 backdrop-blur-[6px] transition-opacity"
     />
@@ -19,7 +19,7 @@
             type="button"
             class="absolute right-3 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg text-white/55 transition-colors hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE]/60"
             :aria-label="t('modalParabens.closeAria')"
-            @click="fecharModal"
+            @click="() => fecharModal(true)"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 6 6 18" />
@@ -106,6 +106,7 @@
 
               <button
                 type="submit"
+                data-track="modal_parabens:submit"
                 :disabled="loading"
                 class="group relative mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#88CE0D] font-head text-[12px] font-bold uppercase tracking-[0.06em] text-[#060606] transition hover:bg-[#9dea0f] hover:shadow-[0_8px_28px_-8px_rgba(136,206,13,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0e] disabled:pointer-events-none disabled:opacity-55 sm:h-12 sm:text-[13px]"
               >
@@ -127,6 +128,7 @@ import { Dialog, DialogPanel, DialogOverlay, DialogTitle } from '@headlessui/vue
 import { useToast } from 'primevue/usetoast'
 import { reactive, ref, onMounted, onUnmounted } from 'vue'
 import ctaService from '../services/cta/cta-service'
+import { siteAnalytics } from '../services/analytics/site-analytics'
 import { useI18n } from '../composables/useI18n'
 
 /** Cadastro concluído com sucesso (API retorna id) */
@@ -137,37 +139,57 @@ const STORAGE_CADASTRO_ID = 'cadastroId'
  */
 const STORAGE_DISMISS_HOME = 'modalParabensHomeDismissed_v2'
 const OPEN_DELAY_MS = 5000
+const WEBHOOK_CADASTRO_URL = 'https://webhook.allmaticbrasil.com/webhook/cadastro'
 
 const toast = useToast()
 const { t } = useI18n()
 const dialogFormVisible = ref(false)
 const loading = ref(false)
+/** Evita gravar dismiss em @close espúrio do Headless UI antes do modal abrir de fato. */
+const modalJaFoiExibido = ref(false)
 
 let openTimer: ReturnType<typeof setTimeout> | null = null
 
-function shouldSkipModal() {
+function shouldSkipModalParabens(): boolean {
   if (typeof window === 'undefined') return true
   try {
-    return !!(window.localStorage.getItem(STORAGE_CADASTRO_ID) || window.localStorage.getItem(STORAGE_DISMISS_HOME))
+    return !!(
+      window.localStorage.getItem(STORAGE_CADASTRO_ID) ||
+      window.localStorage.getItem(STORAGE_DISMISS_HOME)
+    )
   } catch {
     return true
   }
 }
 
-function fecharModal() {
+function persistirNaoMostrarNovamente() {
   try {
     window.localStorage.setItem(STORAGE_DISMISS_HOME, '1')
   } catch {
     /* ignore quota / private mode */
   }
+}
+
+function fecharModal(persistir = true) {
+  if (!dialogFormVisible.value) return
+
+  if (persistir && modalJaFoiExibido.value) {
+    siteAnalytics.trackEvento({ tipo: 'modal_fechado', dataTrack: 'modal_parabens:close' })
+    persistirNaoMostrarNovamente()
+  }
+
   dialogFormVisible.value = false
 }
 
 onMounted(() => {
-  if (shouldSkipModal()) return
+  if (shouldSkipModalParabens()) return
+
   openTimer = window.setTimeout(() => {
     openTimer = null
+    if (shouldSkipModalParabens()) return
     dialogFormVisible.value = true
+    modalJaFoiExibido.value = true
+    siteAnalytics.trackEvento({ tipo: 'modal_aberto', dataTrack: 'modal_parabens:open' })
   }, OPEN_DELAY_MS)
 })
 
@@ -188,6 +210,24 @@ const form = reactive({
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
+}
+
+type CadastroCore = {
+  nomeCompleto: string
+  email: string
+  numberWhatsapp: string
+  promocaoRef: string
+}
+
+async function enviarWebhookCadastro(payload: Record<string, unknown>) {
+  const res = await fetch(WEBHOOK_CADASTRO_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  if (!res.ok) {
+    throw new Error(`Webhook cadastro falhou: ${res.status}`)
+  }
 }
 
 const cadastrar = async () => {
@@ -224,18 +264,30 @@ const cadastrar = async () => {
   loading.value = true
 
   try {
-    const formData = {
+    const core: CadastroCore = {
       ...form,
       numberWhatsapp: form.numberWhatsapp.replace(/\D/g, ''),
     }
-    const response = await ctaService.createCta(formData)
 
-    if (response && response.data && response.data.id) {
-      try {
-        window.localStorage.setItem(STORAGE_CADASTRO_ID, String(response.data.id))
-      } catch {
-        /* ignore */
+    siteAnalytics.trackEvento({
+      tipo: 'form_submit',
+      dataTrack: 'modal_parabens:submit',
+      detalhe: core.promocaoRef,
+    })
+
+    const [response] = await Promise.all([
+      ctaService.createCta(siteAnalytics.buildApiPayload(core)),
+      enviarWebhookCadastro(siteAnalytics.buildWebhookPayload(core)),
+    ])
+
+    const cadastroId = response?.id ?? response?.data?.id
+    try {
+      if (cadastroId) {
+        window.localStorage.setItem(STORAGE_CADASTRO_ID, String(cadastroId))
       }
+      persistirNaoMostrarNovamente()
+    } catch {
+      /* ignore */
     }
 
     toast.add({
@@ -247,6 +299,11 @@ const cadastrar = async () => {
 
     dialogFormVisible.value = false
   } catch (error) {
+    siteAnalytics.trackEvento({
+      tipo: 'form_error',
+      dataTrack: 'modal_parabens:submit',
+      detalhe: error instanceof Error ? error.message : 'erro',
+    })
     console.error('Erro ao enviar o cadastro:', error)
     toast.add({
       severity: 'error',

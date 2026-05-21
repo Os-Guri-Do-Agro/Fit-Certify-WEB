@@ -725,6 +725,7 @@
       </div>
     </section>
 
+    <!-- Modal de cadastro: abre após 5s na Home; não reaparece se fechar (X) ou concluir cadastro (localStorage) -->
     <ModalParabens />
   </div>
 </template>

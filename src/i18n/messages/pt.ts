@@ -444,6 +444,7 @@ export default {
     pillarsKicker: 'O que fazemos',
     humanizationKicker: 'Cultura',
     mvvKicker: 'Propósito',
+    mvvTitle: 'Missão, visão e valores',
     teamKicker: 'Pessoas',
     closerKicker: 'Para quem é',
     subtitle: 'Tecnologia a favor da saúde esportiva',
@@ -505,7 +506,7 @@ export default {
   },
   certificados: {
     title: 'Certificados',
-    heroEyebrow: 'Atestado de aptidão',
+    heroEyebrow: 'ATESTADO DE APTIDÃO FÍSICA',
     subtitle: 'Certificados digitais para sua segurança e performance',
     section1: {
       text: 'Após a consulta médica, seu certificado pode ser incluído na plataforma de duas formas: diretamente por um dos médicos parceiros da FitCertify365 ou por upload, caso tenha sido emitido pelo seu próprio médico. Após validado, ele fica disponível na sua conta para ser baixado, adaptado aos templates das provas e utilizado enquanto estiver dentro do prazo de validade.',
@@ -549,17 +550,17 @@ export default {
       },
       step3: {
         number: '3.',
-        description: 'Após a consulta, o certificado pode ser emitido por um médico parceiro ou enviado por você, se for de um médico particular.'
+        description: 'Depois da sua avaliação médica presencial, o certificado pode ser disponibilizado automaticamente por um médico parceiro ou enviado pelo seu médico de confiança para validação e armazenamento seguro na plataforma.'
       },
       step4: {
         number: '4.',
-        description: 'Enquanto seu certificado estiver válido, você pode usá-lo em diferentes provas do mesmo perfil, com poucos cliques.'
+        description: 'Enquanto seu certificado estiver válido, você pode utilizá-lo em diferentes provas, com poucos cliques e sem precisar repetir exames.'
       }
     },
     section4: {
-      title: 'Garanta sua aptidão com segurança e agilidade.',
+      title: 'Garanta sua saúde esportiva com segurança e praticidade.',
       description: 'Utilizamos criptografia, assinatura digital e integração com dados clínicos reais. Além disso, criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.',
-      button: 'Iniciar emissão de certificado'
+      button: 'INICIE SEU REGISTRO NA FITCERTIFY365'
     },
     faq: {
       title: 'Perguntas Frequentes',
@@ -608,6 +609,26 @@ export default {
       tipoEvento: 'Tipo de Evento',
       localidade: 'Localidade',
       mes: 'Mês'
+    },
+    healthFlow: {
+      eyebrow: 'Inscrição inteligente',
+      title: 'Termos da prova e formulário de saúde em um só fluxo',
+      lead: 'Nos eventos integrados, o atleta pode aceitar os termos definidos pela organização e responder um questionário de saúde pré-treino antes da prova — com mais segurança, menos filas e informações organizadas para a equipe médica.',
+      point1: 'Termos e regras da organização do evento cadastrados na plataforma',
+      point2: 'Formulário de saúde pré-treino com respostas rápidas e objetivas',
+      point3: 'Mais praticidade no dia da prova para atleta e equipe',
+      formBadge: 'Pré-prova',
+      formTitle: 'Questionário de saúde',
+      formSubtitle: 'Poucas perguntas — respostas rápidas antes do dia da prova',
+      yes: 'Sim',
+      no: 'Não',
+      termsCheckbox: 'Li e aceito os termos e condições da organização do evento',
+      questions: {
+        q1: 'Estou apto(a) para participar da prova nesta data',
+        q2: 'Tive sintomas cardíacos ou desmaio nos últimos 6 meses',
+        q3: 'Uso medicação contínua que impacta o esforço físico',
+        q4: 'Declaro que as informações prestadas são verdadeiras',
+      },
     },
     section3: {
       title: 'Quer sua prova aqui?',

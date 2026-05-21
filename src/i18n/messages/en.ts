@@ -444,6 +444,7 @@ export default {
     pillarsKicker: 'What we do',
     humanizationKicker: 'Culture',
     mvvKicker: 'Purpose',
+    mvvTitle: 'Mission, vision and values',
     teamKicker: 'People',
     closerKicker: 'Who it is for',
     subtitle: 'Technology for sports health',

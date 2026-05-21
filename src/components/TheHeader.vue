@@ -8,7 +8,7 @@
     <span class="hidden" aria-hidden="true">{{ syncMenuOpen(open) }}</span>
     <div ref="headerBarRef" class="header-bar mx-auto flex w-full items-center justify-between px-4 md:px-8 xl:px-12">
 
-      <router-link to="/" class="header-brand no-underline shrink-0">
+      <router-link to="/" data-track="header:logo" class="header-brand no-underline shrink-0">
         <img src="/Logo-Grande.png" alt="FitCertify365" class="header-brand__logo w-auto" />
       </router-link>
 
@@ -68,6 +68,7 @@
           href="https://admin.fitcert365.com/login"
           target="_blank"
           rel="noopener noreferrer"
+          data-track="header:login"
           class="header-cta-btn header-cta-btn--ghost inline-flex items-center font-head font-semibold uppercase tracking-[0.05em] rounded cursor-pointer no-underline bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE] whitespace-nowrap"
         >
           {{ t('header.login') }}
@@ -76,6 +77,7 @@
           href="https://admin.fitcert365.com/register"
           target="_blank"
           rel="noopener noreferrer"
+          data-track="header:register"
           class="header-cta-btn header-cta-btn--solid inline-flex items-center font-head font-semibold uppercase tracking-[0.05em] rounded cursor-pointer no-underline bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff] whitespace-nowrap"
         >
           {{ t('header.ctaRegister') }}
@@ -124,6 +126,7 @@
             href="https://admin.fitcert365.com/login"
             target="_blank"
             rel="noopener noreferrer"
+            data-track="header:login_mobile"
             class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-colors duration-200 px-4 py-[10px] bg-transparent border border-white/20 text-white hover:border-[#00C6FE] hover:text-[#00C6FE]"
           >
             {{ t('header.login') }}
@@ -132,6 +135,7 @@
             href="https://admin.fitcert365.com/register"
             target="_blank"
             rel="noopener noreferrer"
+            data-track="header:register_mobile"
             class="inline-flex justify-center items-center font-head font-semibold text-[13px] uppercase tracking-[0.05em] rounded cursor-pointer no-underline transition-colors duration-200 px-4 py-[10px] bg-[#00C6FE] text-[#060606] border-none hover:bg-[#22d4ff]"
           >
             {{ t('header.ctaRegister') }}
