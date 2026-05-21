@@ -267,6 +267,10 @@ export default {
         altLogo: 'Apoiador',
       },
       sponsors: {
+        tag: 'Patrocinadores',
+        titleLine1: 'Marcas que impulsionam',
+        titleHighlight: 'a saúde esportiva.',
+        subtitle: 'Empresas que acreditam na FitCertify365 e apoiam atletas em todo o Brasil.',
         title: 'Conheça os patrocinadores da FitCertify365',
         empty: 'Nenhum patrocinador cadastrado no momento.',
         altLogo: 'Patrocinador',

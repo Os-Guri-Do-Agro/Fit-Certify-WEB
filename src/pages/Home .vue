@@ -567,69 +567,22 @@
       </div>
     </div>
 
-    <!-- ── APOIO INSTITUCIONAL ────────────────────────── -->
-    <div class="bg-white px-4 py-24 text-center md:px-12">
-      <div class="reveal-item mx-auto max-w-[1100px]">
-        <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.support.tag') }}</p>
-        <h2 class="font-head text-[clamp(20px,4.8vw,44px)] font-bold leading-[1.2] tracking-[-0.02em] mb-4 md:text-[clamp(26px,3.5vw,44px)]">
-          {{ t('home.landing.support.titleLine1') }}<br>{{ t('home.landing.support.titleLine2') }}
-        </h2>
-        <p class="mb-10 text-[15px] leading-relaxed text-[#334155]/80 md:text-base">{{ t('home.landing.support.subtitle') }}</p>
-        <router-link to="/contato" class="btn-ghost mx-auto mb-12 inline-flex">{{ t('home.landing.support.cta') }}</router-link>
-        <div class="flex flex-wrap justify-center gap-8 md:gap-10">
-          <template v-if="isLoadingAfiliados">
-            <div
-              v-for="n in 4" :key="'ap-sk-' + n"
-              class="flex min-h-[8.5rem] w-[11rem] animate-pulse items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem]"
-            />
-          </template>
-          <template v-else-if="apoiadoresHome.length">
-            <template v-for="a in apoiadoresHome" :key="a.id">
-              <a
-                v-if="a.linkRedirect"
-                :href="a.linkRedirect"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex min-h-[8.5rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 transition-colors duration-200 hover:border-[#88CE0D]/40 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
-              >
-                <img
-                  v-if="a.imagemUrl"
-                  :src="a.imagemUrl"
-                  :alt="a.nome || t('home.landing.support.altLogo')"
-                  class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
-                />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
-              </a>
-              <div
-                v-else
-                class="flex min-h-[8.5rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
-              >
-                <img
-                  v-if="a.imagemUrl"
-                  :src="a.imagemUrl"
-                  :alt="a.nome || t('home.landing.support.altLogo')"
-                  class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
-                />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
-              </div>
-            </template>
-          </template>
-          <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.support.empty') }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PATROCINADORES ─────────────────────────────── -->
-    <div class="border-t border-[#dbe3ef] bg-[#f8fafc] px-4 py-24 text-center md:px-12">
+    <!-- ── PATROCINADORES (destaque) ──────────────────── -->
+    <div class="sponsors-section bg-white px-4 py-28 text-center md:px-12 md:py-32">
       <div class="reveal-item mx-auto max-w-[1200px]">
-        <p class="mb-10 font-head text-[13px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
-          {{ t('home.landing.sponsors.title') }}
+        <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.sponsors.tag') }}</p>
+        <h2 class="font-head text-[clamp(22px,5vw,52px)] font-bold leading-[1.1] tracking-[-0.02em] mb-4 md:text-[clamp(28px,4vw,52px)]">
+          {{ t('home.landing.sponsors.titleLine1') }}<br>
+          <span class="text-[#00C6FE]">{{ t('home.landing.sponsors.titleHighlight') }}</span>
+        </h2>
+        <p class="mx-auto mb-14 max-w-[640px] text-[15px] leading-relaxed text-[#334155]/80 md:mb-16 md:text-base">
+          {{ t('home.landing.sponsors.subtitle') }}
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-14">
+        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 lg:gap-12">
           <template v-if="isLoadingAfiliados">
             <div
               v-for="n in 4" :key="'pt-sk-' + n"
-              class="flex min-h-[7rem] w-[11rem] animate-pulse items-center justify-center rounded-xl bg-white sm:w-[13rem] md:min-h-[8rem] md:w-[15rem]"
+              class="sponsor-logo-card sponsor-logo-card--skeleton flex min-h-[10rem] w-[12rem] animate-pulse items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
             />
           </template>
           <template v-else-if="patrocinadoresHome.length">
@@ -639,32 +592,83 @@
                 :href="p.linkRedirect"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex min-h-[7rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 transition-opacity duration-200 hover:opacity-100 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="sponsor-logo-card flex min-h-[10rem] w-[12rem] cursor-pointer items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
               >
                 <img
                   v-if="p.imagemUrl"
                   :src="p.imagemUrl"
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
-                  class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
+                  class="max-h-[6rem] w-full max-w-[14rem] object-contain sm:max-h-28 md:max-h-32 md:max-w-[15rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-bold tracking-[0.06em] text-[#475569] md:text-base">{{ p.nome }}</span>
               </a>
               <div
                 v-else
-                class="flex min-h-[7rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="sponsor-logo-card flex min-h-[10rem] w-[12rem] items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
               >
                 <img
                   v-if="p.imagemUrl"
                   :src="p.imagemUrl"
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
-                  class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
+                  class="max-h-[6rem] w-full max-w-[14rem] object-contain sm:max-h-28 md:max-h-32 md:max-w-[15rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-bold tracking-[0.06em] text-[#475569] md:text-base">{{ p.nome }}</span>
               </div>
             </template>
           </template>
           <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.sponsors.empty') }}</p>
         </div>
+      </div>
+    </div>
+
+    <!-- ── APOIO INSTITUCIONAL (secundário) ───────────── -->
+    <div class="border-t border-[#dbe3ef] bg-[#f8fafc] px-4 py-14 text-center md:px-12 md:py-16">
+      <div class="reveal-item mx-auto max-w-[1000px]">
+        <p class="mb-2 font-head text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
+          {{ t('home.landing.support.tag') }}
+        </p>
+        <p class="mb-8 text-[13px] leading-relaxed text-[#64748b]/90 md:text-sm">{{ t('home.landing.support.subtitle') }}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <template v-if="isLoadingAfiliados">
+            <div
+              v-for="n in 4" :key="'ap-sk-' + n"
+              class="flex min-h-[4.5rem] w-[7.5rem] animate-pulse items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+            />
+          </template>
+          <template v-else-if="apoiadoresHome.length">
+            <template v-for="a in apoiadoresHome" :key="a.id">
+              <a
+                v-if="a.linkRedirect"
+                :href="a.linkRedirect"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex min-h-[4.5rem] w-[7.5rem] cursor-pointer items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 px-3 py-3 opacity-90 transition-opacity duration-200 hover:opacity-100 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+              >
+                <img
+                  v-if="a.imagemUrl"
+                  :src="a.imagemUrl"
+                  :alt="a.nome || t('home.landing.support.altLogo')"
+                  class="max-h-[2.75rem] w-full max-w-[8rem] object-contain md:max-h-12"
+                />
+                <span v-else class="font-head px-1 text-center text-[10px] font-semibold tracking-[0.05em] text-[#94a3b8] md:text-[11px]">{{ a.nome }}</span>
+              </a>
+              <div
+                v-else
+                class="flex min-h-[4.5rem] w-[7.5rem] items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 px-3 py-3 opacity-90 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+              >
+                <img
+                  v-if="a.imagemUrl"
+                  :src="a.imagemUrl"
+                  :alt="a.nome || t('home.landing.support.altLogo')"
+                  class="max-h-[2.75rem] w-full max-w-[8rem] object-contain md:max-h-12"
+                />
+                <span v-else class="font-head px-1 text-center text-[10px] font-semibold tracking-[0.05em] text-[#94a3b8] md:text-[11px]">{{ a.nome }}</span>
+              </div>
+            </template>
+          </template>
+          <p v-else class="w-full text-xs text-[#94a3b8]">{{ t('home.landing.support.empty') }}</p>
+        </div>
+        <router-link to="/contato" class="btn-ghost mx-auto mt-8 inline-flex text-[11px] md:text-[12px]">{{ t('home.landing.support.cta') }}</router-link>
       </div>
     </div>
 
@@ -2604,6 +2608,56 @@ watch(currentLocale, () => {
   .final-cta-secondary:hover .final-cta-secondary-icon {
     transform: none;
   }
+}
+
+/* ── Patrocinadores (destaque) ── */
+.sponsors-section {
+  position: relative;
+  overflow: hidden;
+}
+.sponsors-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90vw);
+  height: 360px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 198, 254, 0.08), transparent 70%);
+  pointer-events: none;
+}
+.sponsor-logo-card {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 28px 24px;
+  box-shadow:
+    0 18px 48px -28px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.35s ease;
+}
+.sponsor-logo-card--skeleton {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  box-shadow: none;
+}
+.sponsor-logo-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 198, 254, 0.45);
+  box-shadow:
+    0 28px 56px -24px rgba(0, 198, 254, 0.28),
+    0 0 0 1px rgba(0, 198, 254, 0.08);
+}
+.sponsor-logo-card img {
+  transition: transform 0.4s ease;
+}
+.sponsor-logo-card:hover img {
+  transform: scale(1.04);
 }
 
 /* ── Cards de artigo: transi\u00e7\u00e3o por CSS puro ── */

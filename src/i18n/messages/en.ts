@@ -267,6 +267,10 @@ export default {
         altLogo: 'Supporter',
       },
       sponsors: {
+        tag: 'Sponsors',
+        titleLine1: 'Brands powering',
+        titleHighlight: 'sports health.',
+        subtitle: 'Companies that believe in FitCertify365 and support athletes across Brazil.',
         title: 'Meet FitCertify365 sponsors',
         empty: 'No sponsors listed at the moment.',
         altLogo: 'Sponsor',
