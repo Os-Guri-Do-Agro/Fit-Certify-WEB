@@ -244,7 +244,7 @@
                   </span>
                   <span class="m-cta-aside-item__body">
                     <span class="m-cta-aside-item__title font-head">{{ item.title }}</span>
-                    <span v-if="item.subtitle" class="m-cta-aside-item__desc">{{ item.subtitle }}</span>
+                    <span class="m-cta-aside-item__desc">{{ item.subtitle }}</span>
                   </span>
                   <ChevronRightIcon v-if="item.to" class="m-cta-aside-item__arrow" aria-hidden="true" />
                 </component>
@@ -336,48 +336,40 @@ const ctaBulletKeys = [
 const asideItems = [
   {
     id: 'train',
-    lineKey: 'marcadores.section5.asideLine1',
+    titleKey: 'marcadores.section5.asideLine1',
+    subtitleKey: 'marcadores.section5.asideLine1Desc',
     variant: 'cyan',
     icon: FireIcon,
-    to: null,
   },
   {
     id: 'cert',
-    lineKey: 'marcadores.section5.asideLine2',
+    titleKey: 'marcadores.section5.asideLine2',
+    subtitleKey: 'marcadores.section5.asideLine2Desc',
     variant: 'lime',
     icon: ShieldCheckIcon,
-    to: null,
   },
   {
     id: 'live',
-    lineKey: 'marcadores.section5.asideLine3',
+    titleKey: 'marcadores.section5.asideLine3Title',
+    subtitleKey: 'marcadores.section5.asideLine3Desc',
     variant: 'neutral',
     icon: SignalIcon,
-    to: null,
   },
   {
     id: 'events',
-    lineKey: 'marcadores.section5.asideLine4',
+    titleKey: 'marcadores.section5.asideLine4Title',
+    subtitleKey: 'marcadores.section5.asideLine4Desc',
     variant: 'cyan',
     icon: CalendarDaysIcon,
     to: { name: 'Eventos' },
   },
 ]
 
-function parseAsideLine(key) {
-  const text = t(key)
-  const breakAt = text.indexOf('\n')
-  if (breakAt === -1) return { title: text, subtitle: null }
-  return {
-    title: text.slice(0, breakAt),
-    subtitle: text.slice(breakAt + 1),
-  }
-}
-
 const asideItemsDisplay = computed(() =>
   asideItems.map((item) => ({
     ...item,
-    ...parseAsideLine(item.lineKey),
+    title: t(item.titleKey),
+    subtitle: t(item.subtitleKey),
   }))
 )
 
