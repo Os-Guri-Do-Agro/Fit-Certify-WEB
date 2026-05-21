@@ -27,6 +27,7 @@ import Cadastro from "../pages/cadastro/cadastro.vue";
 import CadastroF from "../pages/cadastro/f/cadastroF.vue";
 import Obrigado from "../pages/Obrigado.vue";
 import Linktree from "../pages/Linktree.vue";
+import { siteAnalytics } from "../services/analytics/site-analytics";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
@@ -75,6 +76,21 @@ const router = createRouter({
 
 
 router.afterEach((to) => {
+  if (typeof window !== "undefined") {
+    const queryString = new URLSearchParams(
+      Object.entries(to.query).flatMap(([key, value]) => {
+        if (value == null) return [];
+        if (Array.isArray(value)) return value.map((v) => [key, String(v)]);
+        return [[key, String(value)]];
+      }),
+    ).toString();
+
+    siteAnalytics.onRouteChange(
+      to.fullPath,
+      queryString ? `?${queryString}` : window.location.search,
+    );
+  }
+
   if (typeof window.gtag !== 'undefined') {
     window.gtag('config', 'G-XTN2MCVPCG', {
       page_path: to.fullPath

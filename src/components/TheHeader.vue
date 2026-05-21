@@ -3,7 +3,7 @@
     <div class="container h-auto flex items-center justify-between lg:flex-wrap xl:flex-nowrap xl:justify-between px-5 lg:px-10">
       
       <div class="lg:w-1/4">
-        <router-link to="/">
+        <router-link to="/" data-track="nav:home">
           <img class="w-[176px] md:w-[247px] lg:w-[283px]" src="/public/fit-logo.jpg" alt="logo" />
         </router-link>
       </div>
@@ -35,8 +35,8 @@
           
           <div class="hidden md:flex lg:flex gap-[10px] lg:gap-[16px] md:flex-col lg:flex-row items-center">
             <div class="hidden lg:flex"><LanguageSelector /></div>
-            <a class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
-            <a class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/register">{{ t('auth.register') }}</a>
+            <a data-track="header:login" class="flex items-center justify-center w-[130px] h-[40px] rounded-[6px] border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white duration-300 text-[0.9em] font-[500]" href="https://admin.fitcert365.com/login">{{ t('auth.login') }}</a>
+            <a data-track="header:register" class="flex justify-center items-center w-[130px] h-[40px] rounded-[6px] bg-cyan-400 hover:bg-cyan-500 duration-300 text-white text-[0.9em] font-[500]" target="_blank" href="https://admin.fitcert365.com/register">{{ t('auth.register') }}</a>
           </div>
 
           <!-- Menu Mobile/Tablet Dropdown -->
