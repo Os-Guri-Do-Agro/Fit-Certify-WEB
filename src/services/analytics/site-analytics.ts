@@ -124,7 +124,7 @@ class SiteAnalytics {
         totalPageViews: s.pageViews.length,
         totalEventos: s.eventos.length,
         totalClicks: clicks.length,
-        ultimaPagina: s.pageViews.at(-1)?.path ?? null,
+        ultimaPagina: s.pageViews[s.pageViews.length - 1]?.path ?? null,
       },
       enviadoEm: new Date().toISOString(),
     }
