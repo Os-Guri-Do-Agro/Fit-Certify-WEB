@@ -161,17 +161,13 @@ export default {
         imageAlt: 'Corredores em evento esportivo',
       },
       metrics: {
-        tag: 'Dashboard pessoal',
-        brandLogoAlt: 'FitCertify365 — logotipo',
-        titleLine1: 'Acompanhe seus indicadores em',
-        titleHighlight: 'tempo real.',
+        tag: 'App oficial',
+        screenAlt:
+          'App FitCertify365: certificado de aptidão ativo, QR Code e menu de acesso rápido na tela inicial',
+        titleLine1: 'Leve seu atestado digital',
+        titleHighlight: 'para qualquer prova.',
         desc:
-          'Visualize frequência cardíaca, VO₂ máximo, histórico de treinos e exames em um único painel — integrado aos seus dispositivos favoritos.',
-        viewPanel: 'Ver meu painel →',
-        hr: { label: 'Freq. cardíaca', unit: 'bpm' },
-        vo2: { label: 'VO₂ máx.', unit: 'ml/kg' },
-        today: { label: 'Hoje', unit: 'km' },
-        spo2: { label: 'SpO₂', unit: '%' },
+          'No app, você confere se seu certificado está ativo, a validade e o QR Code para apresentar na inscrição. Também encontra médicos credenciados e eventos parceiros — sem papel e sem surpresa no dia da corrida.',
       },
       freemium: {
         kicker: 'Plano Freemium',

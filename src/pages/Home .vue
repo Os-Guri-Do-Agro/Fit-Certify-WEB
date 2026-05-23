@@ -422,7 +422,7 @@
       </div>
     </section>
 
-    <!-- ── INDICADORES ─────────────────────────────────── -->
+    <!-- ── APP / DASHBOARD ─────────────────────────────── -->
     <div class="bg-white">
       <div class="reveal-item mx-auto grid min-w-0 max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
         <div class="min-w-0 px-6 py-16 md:px-12 md:pr-16">
@@ -433,9 +433,43 @@
           <p class="text-[15px] leading-[1.7] text-[#334155]/80 max-w-[480px] mb-8 md:text-base md:leading-[1.75]">
             {{ t('home.landing.metrics.desc') }}
           </p>
-          <router-link to="/marcadores" class="btn-ghost w-fit">{{ t('home.landing.metrics.viewPanel') }}</router-link>
+          <div class="app-store-links">
+            <p class="mb-3 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-[#64748b]">
+              {{ t('footer.apps.heading') }}
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="https://apps.apple.com/br/app/fitcertify365/id6752969790"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-store-badge"
+                :aria-label="t('footer.apps.appStore')"
+              >
+                <img
+                  src="/app-store-white.png"
+                  :alt="t('footer.apps.appStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nicolascastela.fitcertify&hl=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-store-badge"
+                :aria-label="t('footer.apps.playStore')"
+              >
+                <img
+                  src="/play-store-white.png"
+                  :alt="t('footer.apps.playStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
         </div>
-        <div ref="metricsRef" class="relative flex min-w-0 w-full max-w-full justify-center overflow-x-clip px-4 py-16 sm:px-6 md:px-12">
+        <div class="relative flex min-w-0 w-full max-w-full justify-center overflow-x-clip px-4 py-16 sm:px-6 md:px-12">
           <!-- decor floating dots -->
           <span class="metrics-decor metrics-decor--1 pointer-events-none absolute h-2 w-2 rounded-full bg-[#88CE0D]" aria-hidden="true"></span>
           <span class="metrics-decor metrics-decor--2 pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-[#00C6FE]" aria-hidden="true"></span>
@@ -447,66 +481,15 @@
             <div class="phone-frame">
               <span class="phone-island" aria-hidden="true"></span>
               <div class="phone-screen">
-                <!-- Status -->
-                <div class="phone-status">
-                  <span class="font-head text-[10px] font-bold tracking-wider text-white">9:41</span>
-                  <div class="flex items-center gap-1 text-white/70">
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="currentColor"><rect x="0" y="6" width="2" height="2" rx="0.5"/><rect x="3" y="4" width="2" height="4" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg>
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5"/><rect x="2" y="2" width="8" height="4" rx="0.5" fill="currentColor"/><rect x="12" y="2.5" width="1" height="3" fill="currentColor"/></svg>
-                  </div>
-                </div>
-
-                <!-- App header -->
-                <div class="phone-app-header">
-                  <div class="min-w-0 flex-1 pr-2">
-                    <img
-                      src="/Logo-Grande.png"
-                      :alt="t('home.landing.metrics.brandLogoAlt')"
-                      width="180"
-                      height="24"
-                      class="phone-brand-logo md:hidden"
-                    />
-                    <p class="mt-0.5 min-w-0 font-head text-[clamp(11px,3.4vw,15px)] font-bold leading-tight text-white">Olá, atleta 👋</p>
-                  </div>
-                  <div class="phone-avatar shrink-0"></div>
-                </div>
-
-                <!-- Hero metric: heart rate -->
-                <div class="phone-hero-metric">
-                  <div class="phone-hero-pulse" aria-hidden="true"></div>
-                  <div class="phone-hero-pulse phone-hero-pulse--delay" aria-hidden="true"></div>
-                  <p class="font-head text-[9px] font-bold uppercase tracking-[0.14em] text-white/50">{{ metricsRows[0].label }}</p>
-                  <div class="mt-1 flex min-w-0 flex-wrap items-baseline gap-1">
-                    <span :ref="el => { if (el) counterRefs[metricsRows[0].key] = el }" class="font-head text-[clamp(26px,9vw,44px)] font-bold leading-none tabular-nums text-[#00C6FE]">{{ metricsRows[0].display }}</span>
-                    <span class="font-head text-[clamp(10px,2.8vw,12px)] font-bold text-white/55">{{ metricsRows[0].unit }}</span>
-                  </div>
-                  <!-- mini chart -->
-                  <div class="phone-chart">
-                    <span v-for="(h, i) in chartBars" :key="i" :style="{ height: h + '%', animationDelay: (i * 0.08) + 's' }" class="phone-chart-bar"></span>
-                  </div>
-                </div>
-
-                <!-- 2x mini metrics -->
-                <div class="phone-metrics-grid">
-                  <div v-for="m in metricsRows.slice(1)" :key="m.key"
-                    class="phone-metric-tile"
-                    :class="m.accent === 'lime' ? 'phone-metric-tile--lime' : 'phone-metric-tile--cyan'"
-                  >
-                    <p class="phone-metric-label">{{ m.label }}</p>
-                    <div class="mt-1.5 flex min-w-0 items-baseline gap-0.5">
-                      <span :ref="el => { if (el) counterRefs[m.key] = el }"
-                        class="font-head text-[clamp(14px,4.2vw,20px)] font-bold leading-none tabular-nums"
-                        :class="m.accent === 'lime' ? 'text-[#88CE0D]' : 'text-[#00C6FE]'"
-                      >{{ m.display }}</span>
-                      <span class="shrink-0 font-head text-[clamp(8px,2.2vw,9px)] font-bold text-white/45">{{ m.unit }}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- bottom nav -->
-                <div class="phone-nav">
-                  <span v-for="(d, i) in 4" :key="i" class="phone-nav-dot" :class="i === 1 ? 'phone-nav-dot--active' : ''"></span>
-                </div>
+                <img
+                  :src="homeScreenImg"
+                  :alt="t('home.landing.metrics.screenAlt')"
+                  class="phone-screen-img"
+                  width="390"
+                  height="844"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
@@ -745,6 +728,7 @@ import PlanosService from '../services/planos/planos-service'
 import { useI18n } from '../composables/useI18n'
 import AfiliadoService from '../services/Afiliados/afiliado-service'
 import ModalParabens from '../components/modalParabens.vue'
+import homeScreenImg from '../assets/home-imgs/homeScreen.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -1134,27 +1118,6 @@ watch(
   { flush: 'post' }
 )
 
-// ── Indicadores / métricas ───────────────────────────────
-const metricsRef = ref(null)
-const counterRefs = ref({})
-
-const METRIC_DEFS = [
-  { key: 'hr', target: 72, decimals: 0, accent: 'cyan', display: '0' },
-  { key: 'vo2', target: 48, decimals: 0, accent: 'lime', display: '0' },
-  { key: 'today', target: 5.4, decimals: 1, accent: 'lime', display: '0' },
-  { key: 'spo2', target: 98, decimals: 0, accent: 'cyan', display: '0' },
-]
-
-const chartBars = [40, 65, 50, 78, 62, 88, 72, 95, 80, 68, 90, 75]
-
-const metricsRows = computed(() =>
-  METRIC_DEFS.map((m) => ({
-    ...m,
-    label: t(`home.landing.metrics.${m.key}.label`),
-    unit: t(`home.landing.metrics.${m.key}.unit`),
-  }))
-)
-
 // ── Artigos (API, mesmo padrão de Artigos-pages.vue) ─────
 const artigosPreview = ref([])
 const isLoadingArtigos = ref(false)
@@ -1257,26 +1220,6 @@ onMounted(() => {
     gsap.to('.metrics-decor--3', { y: -14, x: -16, duration: 5.2, ease: 'sine.inOut', yoyo: true, repeat: -1 })
 
   }
-
-  // Metric counters
-  ScrollTrigger.create({
-    trigger: metricsRef.value,
-    start: 'top 85%',
-    once: true,
-    onEnter() {
-      METRIC_DEFS.forEach((m) => {
-        const el = counterRefs.value[m.key]
-        if (!el) return
-        const obj = { val: 0 }
-        gsap.to(obj, {
-          val: m.target, duration: 1.4, ease: 'power2.out',
-          onUpdate() {
-            el.textContent = m.decimals ? obj.val.toFixed(m.decimals) : Math.round(obj.val)
-          },
-        })
-      })
-    },
-  })
 
   runMarqueeAfterLayout()
   document.fonts?.ready?.then(() => runMarqueeAfterLayout())
@@ -2025,6 +1968,30 @@ watch(currentLocale, () => {
   }
 }
 
+/* ── App store badges (seção app) ──────────────── */
+.home-store-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1e293b;
+  background: #0f172a;
+  border-radius: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  opacity: 0.92;
+}
+.home-store-badge:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 14px rgba(0, 198, 254, 0.18));
+}
+.home-store-badge:focus-visible {
+  outline: 2px solid #00c6fe;
+  outline-offset: 3px;
+}
+.home-store-badge img {
+  display: block;
+}
+
 /* ── Phone Mockup ────────────────────────────────── */
 .phone-mockup {
   position: relative;
@@ -2085,140 +2052,18 @@ watch(currentLocale, () => {
 .phone-screen {
   position: relative;
   border-radius: clamp(24px, 7vw, 36px);
-  background:
-    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.18), transparent 60%),
-    linear-gradient(180deg, #0e0f14 0%, #0a0b0e 100%);
-  padding: clamp(38px, 11vw, 48px) clamp(10px, 3.2vw, 16px) clamp(12px, 3.5vw, 16px);
+  background: #0a0b0e;
   min-height: clamp(420px, 120vw, 540px);
   overflow: hidden;
 }
 
-.phone-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4px 14px;
-}
-
-.phone-app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 4px 4px 18px;
-}
-/* Logo no mockup (viewport < md): escala com a largura do ecrã do telefone */
-.phone-brand-logo {
+.phone-screen-img {
   display: block;
-  width: auto;
-  height: auto;
-  max-height: clamp(10px, 3.2vw, 14px);
-  max-width: 100%;
-  object-fit: contain;
-  object-position: left center;
-}
-.phone-avatar {
-  width: clamp(26px, 8vw, 32px);
-  height: clamp(26px, 8vw, 32px);
-  border-radius: 999px;
-  background: linear-gradient(135deg, #00C6FE 0%, #88CE0D 100%);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
-}
-
-.phone-hero-metric {
-  position: relative;
-  border-radius: 18px;
-  border: 1px solid rgba(0, 198, 254, 0.2);
-  background: linear-gradient(150deg, rgba(0, 198, 254, 0.12) 0%, rgba(0, 198, 254, 0.02) 100%);
-  padding: 14px 14px 12px;
-  overflow: hidden;
-}
-.phone-hero-pulse {
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  border: 2px solid rgba(0, 198, 254, 0.4);
-  animation: phone-ring 2.4s ease-out infinite;
-  pointer-events: none;
-}
-.phone-hero-pulse--delay {
-  animation-delay: 1.2s;
-}
-@keyframes phone-ring {
-  0%   { transform: scale(0.6); opacity: 0.7; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-.phone-chart {
-  margin-top: 12px;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 38px;
-}
-.phone-chart-bar {
-  flex: 1;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #00C6FE 0%, rgba(0, 198, 254, 0.3) 100%);
-  animation: phone-chart-pulse 2.6s ease-in-out infinite;
-  transform-origin: bottom;
-}
-@keyframes phone-chart-pulse {
-  0%, 100% { transform: scaleY(0.85); opacity: 0.7; }
-  50%      { transform: scaleY(1);    opacity: 1;   }
-}
-
-.phone-metrics-grid {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(5px, 1.8vw, 8px);
-}
-.phone-metric-tile {
-  border-radius: 14px;
-  border: 1px solid;
-  padding: clamp(7px, 2.2vw, 10px) clamp(8px, 2.6vw, 12px);
-  min-width: 0;
-}
-.phone-metric-tile--lime {
-  border-color: rgba(136, 206, 13, 0.22);
-  background: rgba(136, 206, 13, 0.06);
-}
-.phone-metric-tile--cyan {
-  border-color: rgba(0, 198, 254, 0.22);
-  background: rgba(0, 198, 254, 0.06);
-}
-.phone-metric-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.phone-nav {
-  position: absolute;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-}
-.phone-nav-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-}
-.phone-nav-dot--active {
-  background: #00C6FE;
-  box-shadow: 0 0 10px rgba(0, 198, 254, 0.7);
-  width: 18px;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* Decor positioning */
@@ -2581,9 +2426,7 @@ watch(currentLocale, () => {
   .freemium-underline,
   .btn-lime::before,
   .btn-white::before,
-  .phone-glow,
-  .phone-hero-pulse,
-  .phone-chart-bar {
+  .phone-glow {
     animation: none;
   }
   .final-cta-highlight {

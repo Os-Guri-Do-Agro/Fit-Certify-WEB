@@ -161,17 +161,13 @@ export default {
         imageAlt: 'Runners at a sports event',
       },
       metrics: {
-        tag: 'Personal dashboard',
-        brandLogoAlt: 'FitCertify365 — logo',
-        titleLine1: 'Track your metrics in',
-        titleHighlight: 'real time.',
+        tag: 'Official app',
+        screenAlt:
+          'FitCertify365 app: active fitness certificate, QR code, and quick-access menu on the home screen',
+        titleLine1: 'Take your digital certificate',
+        titleHighlight: 'to any race.',
         desc:
-          'See heart rate, VO₂ max, training history, and exams in one panel — integrated with your favorite devices.',
-        viewPanel: 'View my dashboard →',
-        hr: { label: 'Heart rate', unit: 'bpm' },
-        vo2: { label: 'VO₂ max', unit: 'ml/kg' },
-        today: { label: 'Today', unit: 'km' },
-        spo2: { label: 'SpO₂', unit: '%' },
+          'Check whether your certificate is active, see its expiry date, and show your QR code at registration. Find credentialed doctors and partner events — no paperwork, no last-minute surprises on race day.',
       },
       freemium: {
         kicker: 'Freemium plan',
