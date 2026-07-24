@@ -42,36 +42,37 @@
       />
     </section>
 
-    <!-- História: grelha editorial (imagem + painel, alinhada ao resto da página) -->
+    <!-- História: painel editorial único (imagem + texto na mesma composição) -->
     <section class="qs-story-section relative overflow-x-clip bg-white py-12 md:py-20">
       <div class="qs-story-section__gridlines pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
-      <div
-        class="qs-reveal relative z-[1] mx-auto grid max-w-[1180px] gap-10 px-4 md:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] md:items-stretch md:gap-12 lg:gap-16 md:px-10"
-      >
-        <div class="qs-story-arc">
-          <img
-            :src="qsStoryImg"
-            alt=""
-            class="qs-story__img-el absolute inset-0 h-full w-full object-cover object-[center_30%]"
-          />
-          <div class="qs-story-arc__cap font-head">{{ t('quemSomos.manifestoKicker') }}</div>
-        </div>
-        <div class="qs-story-panel">
-          <div class="qs-story-panel__rail font-head" aria-hidden="true">
-            <span class="qs-story-panel__rail-n">01</span>
-            <span class="qs-story-panel__rail-line" />
+      <div class="qs-reveal relative z-[1] mx-auto max-w-[1180px] px-4 md:px-10">
+        <div class="qs-story-board">
+          <div class="qs-story-media">
+            <img
+              :src="qsStoryImg"
+              alt=""
+              class="qs-story__img-el absolute inset-0 h-full w-full object-cover object-[center_30%]"
+            />
+            <div class="qs-story-media__veil" aria-hidden="true" />
+            <div class="qs-story-media__cap font-head">{{ t('quemSomos.manifestoKicker') }}</div>
           </div>
-          <div class="qs-story-panel__main">
-            <p class="section-tag qs-story-panel__tag">{{ t('quemSomos.subtitle') }}</p>
-            <p class="qs-story-panel__headline font-head">
-              {{ t('quemSomos.section2.title') }}
-            </p>
-            <p class="qs-story-panel__body mt-6 hidden text-[15px] leading-[1.85] text-[#475569] md:block">
-              {{ t('quemSomos.section1.text1') }}
-            </p>
-            <div class="mt-6 flex flex-col gap-4 md:hidden">
-              <p class="text-[15px] leading-[1.8] text-[#475569]">{{ t('quemSomos.section1.textSeparado1') }}</p>
-              <p class="text-[15px] leading-[1.8] text-[#475569]">{{ t('quemSomos.section1.textSeparado2') }}</p>
+          <div class="qs-story-copy">
+            <div class="qs-story-copy__rail font-head" aria-hidden="true">
+              <span class="qs-story-copy__rail-n">01</span>
+              <span class="qs-story-copy__rail-line" />
+            </div>
+            <div class="qs-story-copy__main">
+              <p class="qs-sec-kicker font-head">{{ t('quemSomos.subtitle') }}</p>
+              <h2 class="qs-story-copy__title font-head">
+                {{ t('quemSomos.section2.title') }}
+              </h2>
+              <p class="qs-story-copy__text hidden md:block">
+                {{ t('quemSomos.section1.text1') }}
+              </p>
+              <div class="qs-story-copy__mobile">
+                <p>{{ t('quemSomos.section1.textSeparado1') }}</p>
+                <p>{{ t('quemSomos.section1.textSeparado2') }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -108,26 +109,35 @@
       </div>
     </section>
 
-    <!-- Cultura: citação destacada + foto em “janela” -->
-    <section class="relative bg-white py-16 md:py-24">
-      <div class="qs-reveal mx-auto grid max-w-[1180px] gap-10 px-5 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-14 md:px-8">
-        <div class="qs-quote relative min-w-0">
-          <span class="qs-quote__mark font-head" aria-hidden="true">“</span>
-          <p class="qs-sec-kicker font-head">{{ t('quemSomos.humanizationKicker') }}</p>
-          <h2 class="relative z-[1] mt-4 font-head text-[clamp(24px,3.4vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
-            {{ t('quemSomos.section3.title') }}
-          </h2>
-          <p class="relative z-[1] mt-6 text-[15px] leading-[1.82] text-[#475569]">
-            {{ t('quemSomos.section3.text') }}
-          </p>
-        </div>
-        <div class="qs-window relative aspect-[4/3] overflow-hidden rounded-[20px] border border-[#dbe3ef] md:aspect-[5/4]">
-          <img
-            :src="qsCultureImg"
-            alt=""
-            class="qs-window__img absolute inset-0 h-full w-full object-cover object-center"
-          />
-          <div class="qs-window__frame" aria-hidden="true" />
+    <!-- Cultura: painel editorial único (texto + imagem na mesma composição) -->
+    <section class="qs-culture-section relative overflow-x-clip bg-white py-16 md:py-24">
+      <div class="qs-culture-section__gridlines pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true" />
+      <div class="qs-reveal relative z-[1] mx-auto max-w-[1180px] px-4 md:px-10">
+        <div class="qs-culture-board">
+          <div class="qs-culture-copy">
+            <div class="qs-culture-copy__rail font-head" aria-hidden="true">
+              <span class="qs-culture-copy__rail-n">02</span>
+              <span class="qs-culture-copy__rail-line" />
+            </div>
+            <div class="qs-culture-copy__main">
+              <p class="qs-sec-kicker font-head">{{ t('quemSomos.humanizationKicker') }}</p>
+              <h2 class="qs-culture-copy__title font-head">
+                {{ t('quemSomos.section3.title') }}
+              </h2>
+              <p class="qs-culture-copy__text">
+                {{ t('quemSomos.section3.text') }}
+              </p>
+            </div>
+          </div>
+          <div class="qs-culture-media">
+            <img
+              :src="qsCultureImg"
+              alt=""
+              class="qs-culture-media__img absolute inset-0 h-full w-full object-cover object-center"
+            />
+            <div class="qs-culture-media__veil" aria-hidden="true" />
+            <div class="qs-culture-media__cap font-head">{{ t('quemSomos.cultureCap') }}</div>
+          </div>
         </div>
       </div>
     </section>
@@ -525,13 +535,28 @@ function runQsGsap(attempt = 0) {
           }
 
           const storyImg = root.querySelector('.qs-story__img-el')
-          const storyArc = root.querySelector('.qs-story-arc')
-          if (storyImg && storyArc) {
+          const storyMedia = root.querySelector('.qs-story-media')
+          if (storyImg && storyMedia) {
             gsap.to(storyImg, {
               scale: 1.06,
               ease: 'none',
               scrollTrigger: {
-                trigger: storyArc,
+                trigger: storyMedia,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            })
+          }
+
+          const cultureImg = root.querySelector('.qs-culture-media__img')
+          const cultureMedia = root.querySelector('.qs-culture-media')
+          if (cultureImg && cultureMedia) {
+            gsap.to(cultureImg, {
+              scale: 1.06,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: cultureMedia,
                 start: 'top bottom',
                 end: 'bottom top',
                 scrub: true,
@@ -745,66 +770,79 @@ onUnmounted(() => {
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, transparent 75%);
 }
-.qs-story-arc {
-  position: relative;
+.qs-story-board {
+  display: grid;
   overflow: hidden;
-  min-height: 280px;
   border-radius: 22px;
   border: 1px solid #dbe3ef;
-  background: #0a0a0a;
-  box-shadow: 0 28px 72px -44px rgba(0, 0, 0, 0.85);
+  background: #ffffff;
+  box-shadow:
+    0 28px 72px -48px rgba(15, 23, 42, 0.28),
+    0 0 0 1px rgba(0, 198, 254, 0.04);
 }
 @media (min-width: 768px) {
-  .qs-story-arc {
-    min-height: 100%;
+  .qs-story-board {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
     border-radius: 24px;
+    min-height: 420px;
   }
 }
+.qs-story-media {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: #0a0a0a;
+  order: 1;
+}
 @media (min-width: 768px) {
-  .qs-reveal:has(.qs-story-arc) .qs-story-arc {
-    min-height: 420px;
+  .qs-story-media {
+    min-height: 100%;
+    order: 0;
   }
 }
 .qs-story__img-el {
   will-change: transform;
   transform-origin: center center;
 }
-.qs-story-arc__cap {
+.qs-story-media__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(6, 6, 6, 0.78) 0%, transparent 48%),
+    linear-gradient(to left, rgba(248, 250, 252, 0.16) 0%, transparent 30%);
+}
+.qs-story-media__cap {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
-  padding: 14px 20px;
+  padding: 16px 22px 18px;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  background: linear-gradient(to top, rgba(6, 6, 6, 0.92) 0%, transparent 100%);
+  color: rgba(255, 255, 255, 0.9);
 }
-.qs-story-panel {
-  position: relative;
-  z-index: 3;
+.qs-story-copy {
   display: flex;
   gap: 18px;
   align-items: stretch;
-  margin: 0;
-  max-width: none;
-  border-radius: 22px;
-  border: 1px solid #dbe3ef;
+  order: 0;
+  padding: 28px 22px 32px;
   background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
-  padding: 24px 20px 28px;
-  text-align: left;
-  box-shadow: 0 24px 70px -40px rgba(0, 198, 254, 0.12);
 }
 @media (min-width: 768px) {
-  .qs-story-panel {
-    padding: 36px 32px 40px;
+  .qs-story-copy {
     gap: 22px;
+    order: 0;
+    padding: 40px 32px 44px 28px;
+    border-left: 1px solid #e8eef6;
   }
 }
-.qs-story-panel__rail {
+.qs-story-copy__rail {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
@@ -812,33 +850,61 @@ onUnmounted(() => {
   gap: 10px;
   padding-top: 2px;
 }
-.qs-story-panel__rail-n {
+.qs-story-copy__rail-n {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: rgba(136, 206, 13, 0.95);
 }
-.qs-story-panel__rail-line {
+.qs-story-copy__rail-line {
   flex: 1;
   width: 1px;
-  min-height: 40px;
+  min-height: 48px;
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(0, 198, 254, 0.85) 0%, rgba(0, 198, 254, 0.08) 100%);
 }
-.qs-story-panel__main {
+.qs-story-copy__main {
   min-width: 0;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.qs-story-panel__headline {
+.qs-story-copy__title {
   margin: 10px 0 0;
-  font-size: clamp(21px, 4.5vw, 32px);
+  font-size: clamp(21px, 3.2vw, 32px);
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: -0.03em;
   color: #0f172a;
 }
-.qs-story-panel .section-tag {
-  justify-content: flex-start;
+.qs-story-copy__text {
+  margin: 20px 0 0;
+  max-width: 48ch;
+  border-left: 2px solid #00c6fe;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.82;
+  color: #475569;
+}
+.qs-story-copy__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  border-left: 2px solid #00c6fe;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #475569;
+}
+@media (min-width: 768px) {
+  .qs-story-copy__mobile {
+    display: none;
+  }
+}
+.qs-story-copy__mobile p {
+  margin: 0;
 }
 
 .qs-sec-kicker {
@@ -917,27 +983,125 @@ onUnmounted(() => {
   }
 }
 
-.qs-quote__mark {
-  position: absolute;
-  top: -0.2em;
-  left: -0.08em;
-  z-index: 0;
-  font-size: clamp(5rem, 18vw, 8rem);
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(0, 198, 254, 0.12);
-  pointer-events: none;
+.qs-culture-section__gridlines {
+  background-image:
+    linear-gradient(rgba(0, 198, 254, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.28) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
 }
-.qs-window__frame {
+.qs-culture-board {
+  display: grid;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
+  box-shadow:
+    0 28px 72px -48px rgba(15, 23, 42, 0.28),
+    0 0 0 1px rgba(0, 198, 254, 0.04);
+}
+@media (min-width: 768px) {
+  .qs-culture-board {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    border-radius: 24px;
+    min-height: 420px;
+  }
+}
+.qs-culture-copy {
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  padding: 28px 22px 32px;
+  background: linear-gradient(168deg, #ffffff 0%, #f8fafc 100%);
+}
+@media (min-width: 768px) {
+  .qs-culture-copy {
+    gap: 22px;
+    padding: 40px 28px 44px 32px;
+    border-right: 1px solid #e8eef6;
+  }
+}
+.qs-culture-copy__rail {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 2px;
+}
+.qs-culture-copy__rail-n {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(136, 206, 13, 0.95);
+}
+.qs-culture-copy__rail-line {
+  flex: 1;
+  width: 1px;
+  min-height: 48px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(0, 198, 254, 0.85) 0%, rgba(0, 198, 254, 0.08) 100%);
+}
+.qs-culture-copy__main {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.qs-culture-copy__title {
+  margin: 10px 0 0;
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+.qs-culture-copy__text {
+  margin: 20px 0 0;
+  max-width: 42ch;
+  border-left: 2px solid #00c6fe;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.82;
+  color: #475569;
+}
+.qs-culture-media {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: #0a1628;
+}
+@media (min-width: 768px) {
+  .qs-culture-media {
+    min-height: 100%;
+  }
+}
+.qs-culture-media__img {
+  will-change: transform;
+  transform-origin: center center;
+}
+.qs-culture-media__veil {
   position: absolute;
   inset: 0;
-  border: 1px solid #dbe3ef;
-  border-radius: 20px;
+  z-index: 1;
   pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(0, 198, 254, 0.08);
+  background:
+    linear-gradient(to top, rgba(6, 16, 32, 0.72) 0%, transparent 46%),
+    linear-gradient(to right, rgba(248, 250, 252, 0.18) 0%, transparent 28%);
 }
-.qs-window__img {
-  will-change: transform;
+.qs-culture-media__cap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 16px 22px 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .qs-mvv-card {
@@ -1030,13 +1194,30 @@ onUnmounted(() => {
 }
 .qs-mvv-card__ul {
   margin: 0;
-  padding-left: 1.15rem;
+  padding: 0;
+  list-style: none;
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.55;
   color: #475569;
 }
 .qs-mvv-card__ul li {
-  margin-bottom: 6px;
+  position: relative;
+  margin: 0 0 10px;
+  padding-left: 1.05rem;
+}
+.qs-mvv-card__ul li:last-child {
+  margin-bottom: 0;
+}
+.qs-mvv-card__ul li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #00c6fe;
+  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.14);
 }
 
 .qs-cinema {
@@ -1183,16 +1364,33 @@ onUnmounted(() => {
   color: #88ce0d;
 }
 
-.qs-swiper-pillars :deep(.swiper-pagination-bullet-active),
-.qs-swiper-mvv :deep(.swiper-pagination-bullet-active),
-.qs-swiper-team :deep(.swiper-pagination-bullet-active) {
-  background: #00c6fe;
+.qs-swiper-pillars :deep(.swiper-pagination),
+.qs-swiper-mvv :deep(.swiper-pagination),
+.qs-swiper-team :deep(.swiper-pagination) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 .qs-swiper-pillars :deep(.swiper-pagination-bullet),
 .qs-swiper-mvv :deep(.swiper-pagination-bullet),
 .qs-swiper-team :deep(.swiper-pagination-bullet) {
-  background: rgba(15, 23, 42, 0.14);
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.2);
   opacity: 1;
+  transition:
+    width 0.28s ease,
+    background-color 0.22s ease;
+}
+.qs-swiper-pillars :deep(.swiper-pagination-bullet-active),
+.qs-swiper-mvv :deep(.swiper-pagination-bullet-active),
+.qs-swiper-team :deep(.swiper-pagination-bullet-active) {
+  width: 28px;
+  background: #00c6fe;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

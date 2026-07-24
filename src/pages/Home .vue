@@ -238,12 +238,12 @@
             :numScroll="1"
             circular
             :autoplayInterval="homeCarouselAutoplayMs"
-            :showNavigators="true"
+            :showNavigators="false"
             :showIndicators="true"
           >
             <template #item="{ data: plano }">
               <article
-                class="plan-card h-full mx-1"
+                class="plan-card h-full"
                 :class="{ 'plan-card--featured': plano.maisPopular }"
               >
                 <span v-if="plano.maisPopular" class="plan-popular-badge">{{ t('home.landing.plans.popular') }}</span>
@@ -1509,7 +1509,15 @@ watch(currentLocale, () => {
   padding: 14px 16px;
 }
 
-/* Hero grid */
+/* Hero: ancora um pouco à direita (mobile um pouco mais) */
+.hero-bg {
+  object-position: 80% center;
+}
+@media (max-width: 1023px) {
+  .hero-bg {
+    object-position: 88% center;
+  }
+}
 .hero-grid {
   background-image: linear-gradient(rgba(0,198,254,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,254,0.04) 1px, transparent 1px);
   background-size: 80px 80px;
@@ -2124,11 +2132,6 @@ watch(currentLocale, () => {
 .home-features-carousel :deep(.p-carousel-indicator-active .p-carousel-indicator-button) {
   width: 28px;
   background: #060606;
-}
-
-.home-plans-carousel :deep(.p-carousel-prev-button),
-.home-plans-carousel :deep(.p-carousel-next-button) {
-  color: #111827;
 }
 
 .home-plans-carousel :deep(.p-carousel-indicator-button) {

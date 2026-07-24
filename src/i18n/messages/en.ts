@@ -443,6 +443,7 @@ export default {
     manifestoKicker: 'In practice',
     pillarsKicker: 'What we do',
     humanizationKicker: 'Culture',
+    cultureCap: 'Security and care in every detail',
     mvvKicker: 'Purpose',
     mvvTitle: 'Mission, vision and values',
     teamKicker: 'People',
@@ -595,7 +596,8 @@ export default {
       subtitle: 'Races and events that recognize your health today',
       heroEyebrow: 'FitCertify365 integration',
       heroCtaEventos: 'View events',
-      empty: 'No events found for the selected filters.',
+      emptyTitle: 'No events on the calendar',
+      empty: 'There are no races published yet. New events will appear here soon.',
       card: {
         title: '{{ item.en_titulo }}',
         distancesLabel: 'Distances',

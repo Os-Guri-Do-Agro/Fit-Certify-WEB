@@ -443,6 +443,7 @@ export default {
     manifestoKicker: 'Na prática',
     pillarsKicker: 'O que fazemos',
     humanizationKicker: 'Cultura',
+    cultureCap: 'Segurança e cuidado em cada detalhe',
     mvvKicker: 'Propósito',
     mvvTitle: 'Missão, visão e valores',
     teamKicker: 'Pessoas',
@@ -464,7 +465,7 @@ export default {
     },
     section3: {
       title: 'Humanização, inovação e responsabilidade',
-      text: 'Utilizamos criptografia, assinatura digital e integração com dados clínicos reais.Além disso, criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.'
+      text: 'Utilizamos criptografia, assinatura digital e integração com dados clínicos reais. Além disso, criamos uma experiência fluida e confiável para quem precisa cuidar da saúde sem burocracia.'
     },
     section4: {
       card1: {
@@ -595,7 +596,8 @@ export default {
     subtitle: 'Corridas e provas que reconhecem sua saúde em dia',
     heroEyebrow: 'Integração FitCertify365',
     heroCtaEventos: 'Ver provas',
-    empty: 'Nenhum evento encontrado para os filtros selecionados.',
+    emptyTitle: 'Nenhum evento no calendário',
+    empty: 'Ainda não há provas publicadas. Em breve novas corridas estarão disponíveis aqui.',
     card: {
       title: 'item.titulo',
       distancesLabel: 'Percursos',

@@ -2,6 +2,8 @@
   <Swiper
     :modules="modules"
     :pagination="{ clickable: true }"
+    :autoplay="autoplayOpts"
+    :loop="!!autoplayOpts"
     :space-between="16"
     class="qs-team-swiper w-full pb-11"
   >
@@ -26,14 +28,26 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import { useI18n } from '../../composables/useI18n'
 import teamEmilioImg from '../../assets/quems-imgs/emilio-perfil.jpg'
 import teamLucasImg from '../../assets/quems-imgs/lucas-perfil.jpg'
 import teamMarceloImg from '../../assets/quems-imgs/marcelo-perfil.png'
 
-const modules = [Pagination]
+const modules = [Pagination, Autoplay]
 const { t } = useI18n()
+
+const reduceMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const autoplayOpts = reduceMotion
+  ? false
+  : {
+      delay: 5000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    }
 
 const teamMembers = [
   {
@@ -127,21 +141,26 @@ const teamMembers = [
 
 :deep(.swiper-pagination) {
   bottom: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 :deep(.swiper-pagination-bullet) {
   width: 8px;
   height: 8px;
-  margin: 0 5px !important;
-  border-radius: 9999px;
-  background: rgba(15, 23, 42, 0.14);
+  margin: 0 !important;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.2);
   opacity: 1;
   transition:
-    transform 0.25s ease,
-    background 0.25s ease;
+    width 0.28s ease,
+    background-color 0.22s ease;
 }
 :deep(.swiper-pagination-bullet-active) {
+  width: 28px;
   background: #00c6fe;
-  transform: scale(1.15);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

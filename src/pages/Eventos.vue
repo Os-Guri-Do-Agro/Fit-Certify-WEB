@@ -258,9 +258,13 @@
           </template>
 
           <template v-else-if="eventosData.length === 0">
-            <p class="evt-empty font-head col-span-full text-center text-[15px] text-[#64748b] md:text-[16px]">
-              {{ t('eventos.empty') }}
-            </p>
+            <div class="evt-empty col-span-full" role="status">
+              <span class="evt-empty__icon-wrap" aria-hidden="true">
+                <CalendarDaysIcon class="evt-empty__icon" />
+              </span>
+              <h3 class="evt-empty__title font-head">{{ t('eventos.emptyTitle') }}</h3>
+              <p class="evt-empty__text">{{ t('eventos.empty') }}</p>
+            </div>
           </template>
 
           <template v-else>
@@ -953,6 +957,48 @@ onUnmounted(() => {
 }
 
 /* Grade: 2 colunas no tablet, 3 no desktop — tamanho equilibrado */
+.evt-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 280px;
+  padding: 48px 24px;
+  text-align: center;
+}
+.evt-empty__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 4px;
+  border-radius: 18px;
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(160deg, #f8fafc 0%, #eef6ff 100%);
+  color: #00a8d6;
+  box-shadow: 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+}
+.evt-empty__icon {
+  width: 28px;
+  height: 28px;
+}
+.evt-empty__title {
+  margin: 0;
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+.evt-empty__text {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #64748b;
+}
+
 .evt-grid-stage {
   display: grid;
   gap: 20px;

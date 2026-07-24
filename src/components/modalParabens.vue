@@ -8,7 +8,7 @@
     <div class="fixed inset-0 z-[1] overflow-y-auto overscroll-y-contain">
       <div class="flex min-h-full items-start justify-center p-4 py-10 sm:items-center sm:p-6 sm:py-10">
         <DialogPanel
-          class="relative my-auto w-full max-w-[min(440px,calc(100vw-2rem))] shrink-0 overflow-hidden rounded-2xl border border-white/[0.1] bg-[#0e0e0e] shadow-[0_24px_80px_-20px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,198,254,0.08)]"
+          class="relative my-auto w-full max-w-[min(440px,calc(100vw-2rem))] shrink-0 overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-[0_24px_80px_-20px_rgba(15,23,42,0.28),0_0_0_1px_rgba(0,198,254,0.06)]"
         >
           <div
             class="h-1 w-full bg-gradient-to-r from-[#88CE0D] via-[#00C6FE] to-[#88CE0D]"
@@ -17,7 +17,7 @@
 
           <button
             type="button"
-            class="absolute right-3 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg text-white/55 transition-colors hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE]/60"
+            class="absolute right-3 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0f172a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE]/60"
             :aria-label="t('modalParabens.closeAria')"
             @click="() => fecharModal(true)"
           >
@@ -28,29 +28,29 @@
           </button>
 
           <div class="px-6 pb-1 pt-7 text-center sm:px-8 sm:pt-8">
-            <p class="modal-kicker font-head mb-3 inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#88CE0D]">
+            <p class="modal-kicker font-head mb-3 inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#65a30d]">
               <span class="modal-kicker-line" aria-hidden="true" />
               {{ t('modalParabens.kicker') }}
             </p>
             <DialogTitle
               as="h2"
-              class="font-head text-[clamp(1.25rem,4vw,1.625rem)] font-bold leading-tight tracking-[-0.02em] text-white [&_span]:font-bold"
+              class="font-head text-[clamp(1.25rem,4vw,1.625rem)] font-bold leading-tight tracking-[-0.02em] text-[#0f172a] [&_span]:font-bold"
             >
               <span v-html="t('modalParabens.title')" />
             </DialogTitle>
             <p
-              class="modal-desc mt-3 text-left text-sm leading-snug text-white/60 sm:text-center [&_strong]:font-semibold"
+              class="modal-desc mt-3 text-left text-sm leading-snug text-[#64748b] sm:text-center [&_strong]:font-semibold [&_strong]:text-[#334155]"
               v-html="t('modalParabens.description')"
             />
           </div>
 
-          <div class="h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" aria-hidden="true" />
+          <div class="h-px bg-gradient-to-r from-transparent via-[#cbd5e1] to-transparent" aria-hidden="true" />
 
           <div class="px-6 pb-7 pt-5 sm:px-8 sm:pb-8 sm:pt-6">
             <form class="modal-parabens-form flex flex-col gap-5 sm:gap-6" @submit.prevent="cadastrar">
               <div class="flex w-full flex-col gap-2">
                 <label
-                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-white/45"
+                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-[#64748b]"
                   for="modal-parabens-nome"
                 >
                   {{ t('modalParabens.form.name') }}
@@ -68,7 +68,7 @@
 
               <div class="flex w-full flex-col gap-2">
                 <label
-                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-white/45"
+                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-[#64748b]"
                   for="modal-parabens-email"
                 >
                   {{ t('modalParabens.form.email') }}
@@ -86,7 +86,7 @@
 
               <div class="flex w-full flex-col gap-2">
                 <label
-                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-white/45"
+                  class="block w-full font-head text-[10.5px] font-bold uppercase tracking-[0.13em] text-[#64748b]"
                   for="modal-parabens-wa"
                 >
                   {{ t('modalParabens.form.whatsapp') }}
@@ -108,7 +108,7 @@
                 type="submit"
                 data-track="modal_parabens:submit"
                 :disabled="loading"
-                class="group relative mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#88CE0D] font-head text-[12px] font-bold uppercase tracking-[0.06em] text-[#060606] transition hover:bg-[#9dea0f] hover:shadow-[0_8px_28px_-8px_rgba(136,206,13,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0e] disabled:pointer-events-none disabled:opacity-55 sm:h-12 sm:text-[13px]"
+                class="group relative mt-1 flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#88CE0D] font-head text-[12px] font-bold uppercase tracking-[0.06em] text-[#060606] transition hover:bg-[#9dea0f] hover:shadow-[0_8px_28px_-8px_rgba(136,206,13,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C6FE] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-55 sm:h-12 sm:text-[13px]"
               >
                 <i v-if="loading" class="fas fa-spinner fa-spin text-[0.95em]" aria-hidden="true" />
                 {{ loading ? t('modalParabens.form.submittingButton') : t('modalParabens.form.submitButton') }}
@@ -344,9 +344,9 @@ const cadastrar = async () => {
   font-size: 14px;
   line-height: 1.5;
   font-family: inherit;
-  color: #f0f2f5;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #0f172a;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   outline: none;
   transition:
@@ -356,19 +356,19 @@ const cadastrar = async () => {
 }
 
 .modal-parabens-form input.modal-parabens-input::placeholder {
-  color: rgba(255, 255, 255, 0.28);
+  color: #94a3b8;
 }
 
 .modal-parabens-form input.modal-parabens-input:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  background-color: rgba(255, 255, 255, 0.06);
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
 }
 
 .modal-parabens-form input.modal-parabens-input:focus {
-  border-color: rgba(0, 198, 254, 0.55);
-  background-color: rgba(0, 198, 254, 0.05);
+  border-color: rgba(0, 198, 254, 0.65);
+  background-color: #fff;
   box-shadow:
-    0 0 0 3px rgba(0, 198, 254, 0.1),
-    inset 0 0 0 1px rgba(0, 198, 254, 0.15);
+    0 0 0 3px rgba(0, 198, 254, 0.12),
+    inset 0 0 0 1px rgba(0, 198, 254, 0.2);
 }
 </style>
