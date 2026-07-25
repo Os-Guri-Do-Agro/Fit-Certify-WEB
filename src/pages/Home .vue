@@ -238,12 +238,12 @@
             :numScroll="1"
             circular
             :autoplayInterval="homeCarouselAutoplayMs"
-            :showNavigators="true"
+            :showNavigators="false"
             :showIndicators="true"
           >
             <template #item="{ data: plano }">
               <article
-                class="plan-card h-full mx-1"
+                class="plan-card h-full"
                 :class="{ 'plan-card--featured': plano.maisPopular }"
               >
                 <span v-if="plano.maisPopular" class="plan-popular-badge">{{ t('home.landing.plans.popular') }}</span>
@@ -422,7 +422,7 @@
       </div>
     </section>
 
-    <!-- ── INDICADORES ─────────────────────────────────── -->
+    <!-- ── APP / DASHBOARD ─────────────────────────────── -->
     <div class="bg-white">
       <div class="reveal-item mx-auto grid min-w-0 max-w-[1200px] items-center md:grid-cols-2 md:min-h-[560px]">
         <div class="min-w-0 px-6 py-16 md:px-12 md:pr-16">
@@ -433,9 +433,43 @@
           <p class="text-[15px] leading-[1.7] text-[#334155]/80 max-w-[480px] mb-8 md:text-base md:leading-[1.75]">
             {{ t('home.landing.metrics.desc') }}
           </p>
-          <router-link to="/marcadores" class="btn-ghost w-fit">{{ t('home.landing.metrics.viewPanel') }}</router-link>
+          <div class="app-store-links">
+            <p class="mb-3 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-[#64748b]">
+              {{ t('footer.apps.heading') }}
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="https://apps.apple.com/br/app/fitcertify365/id6752969790"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-store-badge"
+                :aria-label="t('footer.apps.appStore')"
+              >
+                <img
+                  src="/app-store-white.png"
+                  :alt="t('footer.apps.appStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nicolascastela.fitcertify&hl=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-store-badge"
+                :aria-label="t('footer.apps.playStore')"
+              >
+                <img
+                  src="/play-store-white.png"
+                  :alt="t('footer.apps.playStore')"
+                  class="h-10 w-auto md:h-11"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
         </div>
-        <div ref="metricsRef" class="relative flex min-w-0 w-full max-w-full justify-center overflow-x-clip px-4 py-16 sm:px-6 md:px-12">
+        <div class="relative flex min-w-0 w-full max-w-full justify-center overflow-x-clip px-4 py-16 sm:px-6 md:px-12">
           <!-- decor floating dots -->
           <span class="metrics-decor metrics-decor--1 pointer-events-none absolute h-2 w-2 rounded-full bg-[#88CE0D]" aria-hidden="true"></span>
           <span class="metrics-decor metrics-decor--2 pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-[#00C6FE]" aria-hidden="true"></span>
@@ -447,66 +481,15 @@
             <div class="phone-frame">
               <span class="phone-island" aria-hidden="true"></span>
               <div class="phone-screen">
-                <!-- Status -->
-                <div class="phone-status">
-                  <span class="font-head text-[10px] font-bold tracking-wider text-white">9:41</span>
-                  <div class="flex items-center gap-1 text-white/70">
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="currentColor"><rect x="0" y="6" width="2" height="2" rx="0.5"/><rect x="3" y="4" width="2" height="4" rx="0.5"/><rect x="6" y="2" width="2" height="6" rx="0.5"/><rect x="9" y="0" width="2" height="8" rx="0.5"/></svg>
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5"/><rect x="2" y="2" width="8" height="4" rx="0.5" fill="currentColor"/><rect x="12" y="2.5" width="1" height="3" fill="currentColor"/></svg>
-                  </div>
-                </div>
-
-                <!-- App header -->
-                <div class="phone-app-header">
-                  <div class="min-w-0 flex-1 pr-2">
-                    <img
-                      src="/Logo-Grande.png"
-                      :alt="t('home.landing.metrics.brandLogoAlt')"
-                      width="180"
-                      height="24"
-                      class="phone-brand-logo md:hidden"
-                    />
-                    <p class="mt-0.5 min-w-0 font-head text-[clamp(11px,3.4vw,15px)] font-bold leading-tight text-white">Olá, atleta 👋</p>
-                  </div>
-                  <div class="phone-avatar shrink-0"></div>
-                </div>
-
-                <!-- Hero metric: heart rate -->
-                <div class="phone-hero-metric">
-                  <div class="phone-hero-pulse" aria-hidden="true"></div>
-                  <div class="phone-hero-pulse phone-hero-pulse--delay" aria-hidden="true"></div>
-                  <p class="font-head text-[9px] font-bold uppercase tracking-[0.14em] text-white/50">{{ metricsRows[0].label }}</p>
-                  <div class="mt-1 flex min-w-0 flex-wrap items-baseline gap-1">
-                    <span :ref="el => { if (el) counterRefs[metricsRows[0].key] = el }" class="font-head text-[clamp(26px,9vw,44px)] font-bold leading-none tabular-nums text-[#00C6FE]">{{ metricsRows[0].display }}</span>
-                    <span class="font-head text-[clamp(10px,2.8vw,12px)] font-bold text-white/55">{{ metricsRows[0].unit }}</span>
-                  </div>
-                  <!-- mini chart -->
-                  <div class="phone-chart">
-                    <span v-for="(h, i) in chartBars" :key="i" :style="{ height: h + '%', animationDelay: (i * 0.08) + 's' }" class="phone-chart-bar"></span>
-                  </div>
-                </div>
-
-                <!-- 2x mini metrics -->
-                <div class="phone-metrics-grid">
-                  <div v-for="m in metricsRows.slice(1)" :key="m.key"
-                    class="phone-metric-tile"
-                    :class="m.accent === 'lime' ? 'phone-metric-tile--lime' : 'phone-metric-tile--cyan'"
-                  >
-                    <p class="phone-metric-label">{{ m.label }}</p>
-                    <div class="mt-1.5 flex min-w-0 items-baseline gap-0.5">
-                      <span :ref="el => { if (el) counterRefs[m.key] = el }"
-                        class="font-head text-[clamp(14px,4.2vw,20px)] font-bold leading-none tabular-nums"
-                        :class="m.accent === 'lime' ? 'text-[#88CE0D]' : 'text-[#00C6FE]'"
-                      >{{ m.display }}</span>
-                      <span class="shrink-0 font-head text-[clamp(8px,2.2vw,9px)] font-bold text-white/45">{{ m.unit }}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- bottom nav -->
-                <div class="phone-nav">
-                  <span v-for="(d, i) in 4" :key="i" class="phone-nav-dot" :class="i === 1 ? 'phone-nav-dot--active' : ''"></span>
-                </div>
+                <img
+                  :src="homeScreenImg"
+                  :alt="t('home.landing.metrics.screenAlt')"
+                  class="phone-screen-img"
+                  width="390"
+                  height="844"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
@@ -567,69 +550,22 @@
       </div>
     </div>
 
-    <!-- ── APOIO INSTITUCIONAL ────────────────────────── -->
-    <div class="bg-white px-4 py-24 text-center md:px-12">
-      <div class="reveal-item mx-auto max-w-[1100px]">
-        <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.support.tag') }}</p>
-        <h2 class="font-head text-[clamp(20px,4.8vw,44px)] font-bold leading-[1.2] tracking-[-0.02em] mb-4 md:text-[clamp(26px,3.5vw,44px)]">
-          {{ t('home.landing.support.titleLine1') }}<br>{{ t('home.landing.support.titleLine2') }}
-        </h2>
-        <p class="mb-10 text-[15px] leading-relaxed text-[#334155]/80 md:text-base">{{ t('home.landing.support.subtitle') }}</p>
-        <router-link to="/contato" class="btn-ghost mx-auto mb-12 inline-flex">{{ t('home.landing.support.cta') }}</router-link>
-        <div class="flex flex-wrap justify-center gap-8 md:gap-10">
-          <template v-if="isLoadingAfiliados">
-            <div
-              v-for="n in 4" :key="'ap-sk-' + n"
-              class="flex min-h-[8.5rem] w-[11rem] animate-pulse items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem]"
-            />
-          </template>
-          <template v-else-if="apoiadoresHome.length">
-            <template v-for="a in apoiadoresHome" :key="a.id">
-              <a
-                v-if="a.linkRedirect"
-                :href="a.linkRedirect"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex min-h-[8.5rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 transition-colors duration-200 hover:border-[#88CE0D]/40 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
-              >
-                <img
-                  v-if="a.imagemUrl"
-                  :src="a.imagemUrl"
-                  :alt="a.nome || t('home.landing.support.altLogo')"
-                  class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
-                />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
-              </a>
-              <div
-                v-else
-                class="flex min-h-[8.5rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-[#f8fafc] px-5 py-5 sm:w-[13rem] md:min-h-[9.5rem] md:w-[15rem] md:px-6 md:py-6"
-              >
-                <img
-                  v-if="a.imagemUrl"
-                  :src="a.imagemUrl"
-                  :alt="a.nome || t('home.landing.support.altLogo')"
-                  class="max-h-[5.25rem] w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
-                />
-                <span v-else class="font-head px-2 text-center text-sm font-semibold tracking-[0.06em] text-[#475569]">{{ a.nome }}</span>
-              </div>
-            </template>
-          </template>
-          <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.support.empty') }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PATROCINADORES ─────────────────────────────── -->
-    <div class="border-t border-[#dbe3ef] bg-[#f8fafc] px-4 py-24 text-center md:px-12">
+    <!-- ── PATROCINADORES (destaque) ──────────────────── -->
+    <div class="sponsors-section bg-white px-4 py-28 text-center md:px-12 md:py-32">
       <div class="reveal-item mx-auto max-w-[1200px]">
-        <p class="mb-10 font-head text-[13px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
-          {{ t('home.landing.sponsors.title') }}
+        <p class="section-tag mx-auto mb-5 w-fit justify-center">{{ t('home.landing.sponsors.tag') }}</p>
+        <h2 class="font-head text-[clamp(22px,5vw,52px)] font-bold leading-[1.1] tracking-[-0.02em] mb-4 md:text-[clamp(28px,4vw,52px)]">
+          {{ t('home.landing.sponsors.titleLine1') }}<br>
+          <span class="text-[#00C6FE]">{{ t('home.landing.sponsors.titleHighlight') }}</span>
+        </h2>
+        <p class="mx-auto mb-14 max-w-[640px] text-[15px] leading-relaxed text-[#334155]/80 md:mb-16 md:text-base">
+          {{ t('home.landing.sponsors.subtitle') }}
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-14">
+        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 lg:gap-12">
           <template v-if="isLoadingAfiliados">
             <div
               v-for="n in 4" :key="'pt-sk-' + n"
-              class="flex min-h-[7rem] w-[11rem] animate-pulse items-center justify-center rounded-xl bg-white sm:w-[13rem] md:min-h-[8rem] md:w-[15rem]"
+              class="sponsor-logo-card sponsor-logo-card--skeleton flex min-h-[10rem] w-[12rem] animate-pulse items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
             />
           </template>
           <template v-else-if="patrocinadoresHome.length">
@@ -639,32 +575,83 @@
                 :href="p.linkRedirect"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex min-h-[7rem] w-[11rem] cursor-pointer items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 transition-opacity duration-200 hover:opacity-100 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="sponsor-logo-card flex min-h-[10rem] w-[12rem] cursor-pointer items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
               >
                 <img
                   v-if="p.imagemUrl"
                   :src="p.imagemUrl"
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
-                  class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
+                  class="max-h-[6rem] w-full max-w-[14rem] object-contain sm:max-h-28 md:max-h-32 md:max-w-[15rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-bold tracking-[0.06em] text-[#475569] md:text-base">{{ p.nome }}</span>
               </a>
               <div
                 v-else
-                class="flex min-h-[7rem] w-[11rem] items-center justify-center rounded-xl border border-[#dbe3ef] bg-white px-5 py-4 opacity-95 sm:w-[13rem] md:min-h-[8rem] md:w-[15rem] md:px-6 md:py-5"
+                class="sponsor-logo-card flex min-h-[10rem] w-[12rem] items-center justify-center sm:w-[14rem] md:min-h-[11rem] md:w-[16rem]"
               >
                 <img
                   v-if="p.imagemUrl"
                   :src="p.imagemUrl"
                   :alt="p.nome || t('home.landing.sponsors.altLogo')"
-                  class="max-h-20 w-full max-w-[13rem] object-contain sm:max-h-24 md:max-h-28 md:max-w-[14rem]"
+                  class="max-h-[6rem] w-full max-w-[14rem] object-contain sm:max-h-28 md:max-h-32 md:max-w-[15rem]"
                 />
-                <span v-else class="font-head px-2 text-center text-xs font-bold tracking-[0.08em] text-[#475569] md:text-sm">{{ p.nome }}</span>
+                <span v-else class="font-head px-2 text-center text-sm font-bold tracking-[0.06em] text-[#475569] md:text-base">{{ p.nome }}</span>
               </div>
             </template>
           </template>
           <p v-else class="w-full text-sm text-[#64748b]">{{ t('home.landing.sponsors.empty') }}</p>
         </div>
+      </div>
+    </div>
+
+    <!-- ── APOIO INSTITUCIONAL (secundário) ───────────── -->
+    <div class="border-t border-[#dbe3ef] bg-[#f8fafc] px-4 py-14 text-center md:px-12 md:py-16">
+      <div class="reveal-item mx-auto max-w-[1000px]">
+        <p class="mb-2 font-head text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
+          {{ t('home.landing.support.tag') }}
+        </p>
+        <p class="mb-8 text-[13px] leading-relaxed text-[#64748b]/90 md:text-sm">{{ t('home.landing.support.subtitle') }}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <template v-if="isLoadingAfiliados">
+            <div
+              v-for="n in 4" :key="'ap-sk-' + n"
+              class="flex min-h-[4.5rem] w-[7.5rem] animate-pulse items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+            />
+          </template>
+          <template v-else-if="apoiadoresHome.length">
+            <template v-for="a in apoiadoresHome" :key="a.id">
+              <a
+                v-if="a.linkRedirect"
+                :href="a.linkRedirect"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex min-h-[4.5rem] w-[7.5rem] cursor-pointer items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 px-3 py-3 opacity-90 transition-opacity duration-200 hover:opacity-100 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+              >
+                <img
+                  v-if="a.imagemUrl"
+                  :src="a.imagemUrl"
+                  :alt="a.nome || t('home.landing.support.altLogo')"
+                  class="max-h-[2.75rem] w-full max-w-[8rem] object-contain md:max-h-12"
+                />
+                <span v-else class="font-head px-1 text-center text-[10px] font-semibold tracking-[0.05em] text-[#94a3b8] md:text-[11px]">{{ a.nome }}</span>
+              </a>
+              <div
+                v-else
+                class="flex min-h-[4.5rem] w-[7.5rem] items-center justify-center rounded-lg border border-[#e2e8f0] bg-white/80 px-3 py-3 opacity-90 sm:w-[8.5rem] md:min-h-[5rem] md:w-[9.5rem]"
+              >
+                <img
+                  v-if="a.imagemUrl"
+                  :src="a.imagemUrl"
+                  :alt="a.nome || t('home.landing.support.altLogo')"
+                  class="max-h-[2.75rem] w-full max-w-[8rem] object-contain md:max-h-12"
+                />
+                <span v-else class="font-head px-1 text-center text-[10px] font-semibold tracking-[0.05em] text-[#94a3b8] md:text-[11px]">{{ a.nome }}</span>
+              </div>
+            </template>
+          </template>
+          <p v-else class="w-full text-xs text-[#94a3b8]">{{ t('home.landing.support.empty') }}</p>
+        </div>
+        <router-link to="/contato" class="btn-ghost mx-auto mt-8 inline-flex text-[11px] md:text-[12px]">{{ t('home.landing.support.cta') }}</router-link>
       </div>
     </div>
 
@@ -725,6 +712,7 @@
       </div>
     </section>
 
+    <!-- Modal de cadastro: abre após 5s na Home; não reaparece se fechar (X) ou concluir cadastro (localStorage) -->
     <ModalParabens />
   </div>
 </template>
@@ -740,6 +728,7 @@ import PlanosService from '../services/planos/planos-service'
 import { useI18n } from '../composables/useI18n'
 import AfiliadoService from '../services/Afiliados/afiliado-service'
 import ModalParabens from '../components/modalParabens.vue'
+import homeScreenImg from '../assets/home-imgs/homeScreen.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -1129,27 +1118,6 @@ watch(
   { flush: 'post' }
 )
 
-// ── Indicadores / métricas ───────────────────────────────
-const metricsRef = ref(null)
-const counterRefs = ref({})
-
-const METRIC_DEFS = [
-  { key: 'hr', target: 72, decimals: 0, accent: 'cyan', display: '0' },
-  { key: 'vo2', target: 48, decimals: 0, accent: 'lime', display: '0' },
-  { key: 'today', target: 5.4, decimals: 1, accent: 'lime', display: '0' },
-  { key: 'spo2', target: 98, decimals: 0, accent: 'cyan', display: '0' },
-]
-
-const chartBars = [40, 65, 50, 78, 62, 88, 72, 95, 80, 68, 90, 75]
-
-const metricsRows = computed(() =>
-  METRIC_DEFS.map((m) => ({
-    ...m,
-    label: t(`home.landing.metrics.${m.key}.label`),
-    unit: t(`home.landing.metrics.${m.key}.unit`),
-  }))
-)
-
 // ── Artigos (API, mesmo padrão de Artigos-pages.vue) ─────
 const artigosPreview = ref([])
 const isLoadingArtigos = ref(false)
@@ -1252,26 +1220,6 @@ onMounted(() => {
     gsap.to('.metrics-decor--3', { y: -14, x: -16, duration: 5.2, ease: 'sine.inOut', yoyo: true, repeat: -1 })
 
   }
-
-  // Metric counters
-  ScrollTrigger.create({
-    trigger: metricsRef.value,
-    start: 'top 85%',
-    once: true,
-    onEnter() {
-      METRIC_DEFS.forEach((m) => {
-        const el = counterRefs.value[m.key]
-        if (!el) return
-        const obj = { val: 0 }
-        gsap.to(obj, {
-          val: m.target, duration: 1.4, ease: 'power2.out',
-          onUpdate() {
-            el.textContent = m.decimals ? obj.val.toFixed(m.decimals) : Math.round(obj.val)
-          },
-        })
-      })
-    },
-  })
 
   runMarqueeAfterLayout()
   document.fonts?.ready?.then(() => runMarqueeAfterLayout())
@@ -1561,7 +1509,15 @@ watch(currentLocale, () => {
   padding: 14px 16px;
 }
 
-/* Hero grid */
+/* Hero: ancora um pouco à direita (mobile um pouco mais) */
+.hero-bg {
+  object-position: 80% center;
+}
+@media (max-width: 1023px) {
+  .hero-bg {
+    object-position: 88% center;
+  }
+}
 .hero-grid {
   background-image: linear-gradient(rgba(0,198,254,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,254,0.04) 1px, transparent 1px);
   background-size: 80px 80px;
@@ -2020,6 +1976,30 @@ watch(currentLocale, () => {
   }
 }
 
+/* ── App store badges (seção app) ──────────────── */
+.home-store-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1e293b;
+  background: #0f172a;
+  border-radius: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  opacity: 0.92;
+}
+.home-store-badge:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 14px rgba(0, 198, 254, 0.18));
+}
+.home-store-badge:focus-visible {
+  outline: 2px solid #00c6fe;
+  outline-offset: 3px;
+}
+.home-store-badge img {
+  display: block;
+}
+
 /* ── Phone Mockup ────────────────────────────────── */
 .phone-mockup {
   position: relative;
@@ -2080,140 +2060,18 @@ watch(currentLocale, () => {
 .phone-screen {
   position: relative;
   border-radius: clamp(24px, 7vw, 36px);
-  background:
-    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 198, 254, 0.18), transparent 60%),
-    linear-gradient(180deg, #0e0f14 0%, #0a0b0e 100%);
-  padding: clamp(38px, 11vw, 48px) clamp(10px, 3.2vw, 16px) clamp(12px, 3.5vw, 16px);
+  background: #0a0b0e;
   min-height: clamp(420px, 120vw, 540px);
   overflow: hidden;
 }
 
-.phone-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4px 14px;
-}
-
-.phone-app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 4px 4px 18px;
-}
-/* Logo no mockup (viewport < md): escala com a largura do ecrã do telefone */
-.phone-brand-logo {
+.phone-screen-img {
   display: block;
-  width: auto;
-  height: auto;
-  max-height: clamp(10px, 3.2vw, 14px);
-  max-width: 100%;
-  object-fit: contain;
-  object-position: left center;
-}
-.phone-avatar {
-  width: clamp(26px, 8vw, 32px);
-  height: clamp(26px, 8vw, 32px);
-  border-radius: 999px;
-  background: linear-gradient(135deg, #00C6FE 0%, #88CE0D 100%);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
-}
-
-.phone-hero-metric {
-  position: relative;
-  border-radius: 18px;
-  border: 1px solid rgba(0, 198, 254, 0.2);
-  background: linear-gradient(150deg, rgba(0, 198, 254, 0.12) 0%, rgba(0, 198, 254, 0.02) 100%);
-  padding: 14px 14px 12px;
-  overflow: hidden;
-}
-.phone-hero-pulse {
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  border: 2px solid rgba(0, 198, 254, 0.4);
-  animation: phone-ring 2.4s ease-out infinite;
-  pointer-events: none;
-}
-.phone-hero-pulse--delay {
-  animation-delay: 1.2s;
-}
-@keyframes phone-ring {
-  0%   { transform: scale(0.6); opacity: 0.7; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-.phone-chart {
-  margin-top: 12px;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 38px;
-}
-.phone-chart-bar {
-  flex: 1;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #00C6FE 0%, rgba(0, 198, 254, 0.3) 100%);
-  animation: phone-chart-pulse 2.6s ease-in-out infinite;
-  transform-origin: bottom;
-}
-@keyframes phone-chart-pulse {
-  0%, 100% { transform: scaleY(0.85); opacity: 0.7; }
-  50%      { transform: scaleY(1);    opacity: 1;   }
-}
-
-.phone-metrics-grid {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(5px, 1.8vw, 8px);
-}
-.phone-metric-tile {
-  border-radius: 14px;
-  border: 1px solid;
-  padding: clamp(7px, 2.2vw, 10px) clamp(8px, 2.6vw, 12px);
-  min-width: 0;
-}
-.phone-metric-tile--lime {
-  border-color: rgba(136, 206, 13, 0.22);
-  background: rgba(136, 206, 13, 0.06);
-}
-.phone-metric-tile--cyan {
-  border-color: rgba(0, 198, 254, 0.22);
-  background: rgba(0, 198, 254, 0.06);
-}
-.phone-metric-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.phone-nav {
-  position: absolute;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-}
-.phone-nav-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-}
-.phone-nav-dot--active {
-  background: #00C6FE;
-  box-shadow: 0 0 10px rgba(0, 198, 254, 0.7);
-  width: 18px;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* Decor positioning */
@@ -2274,11 +2132,6 @@ watch(currentLocale, () => {
 .home-features-carousel :deep(.p-carousel-indicator-active .p-carousel-indicator-button) {
   width: 28px;
   background: #060606;
-}
-
-.home-plans-carousel :deep(.p-carousel-prev-button),
-.home-plans-carousel :deep(.p-carousel-next-button) {
-  color: #111827;
 }
 
 .home-plans-carousel :deep(.p-carousel-indicator-button) {
@@ -2576,9 +2429,7 @@ watch(currentLocale, () => {
   .freemium-underline,
   .btn-lime::before,
   .btn-white::before,
-  .phone-glow,
-  .phone-hero-pulse,
-  .phone-chart-bar {
+  .phone-glow {
     animation: none;
   }
   .final-cta-highlight {
@@ -2603,6 +2454,56 @@ watch(currentLocale, () => {
   .final-cta-secondary:hover .final-cta-secondary-icon {
     transform: none;
   }
+}
+
+/* ── Patrocinadores (destaque) ── */
+.sponsors-section {
+  position: relative;
+  overflow: hidden;
+}
+.sponsors-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90vw);
+  height: 360px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 198, 254, 0.08), transparent 70%);
+  pointer-events: none;
+}
+.sponsor-logo-card {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 28px 24px;
+  box-shadow:
+    0 18px 48px -28px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.35s ease;
+}
+.sponsor-logo-card--skeleton {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  box-shadow: none;
+}
+.sponsor-logo-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 198, 254, 0.45);
+  box-shadow:
+    0 28px 56px -24px rgba(0, 198, 254, 0.28),
+    0 0 0 1px rgba(0, 198, 254, 0.08);
+}
+.sponsor-logo-card img {
+  transition: transform 0.4s ease;
+}
+.sponsor-logo-card:hover img {
+  transform: scale(1.04);
 }
 
 /* ── Cards de artigo: transi\u00e7\u00e3o por CSS puro ── */

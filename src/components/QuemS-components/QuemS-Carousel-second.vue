@@ -2,6 +2,8 @@
   <Swiper
     :modules="modules"
     :pagination="{ clickable: true }"
+    :autoplay="autoplayOpts"
+    :loop="!!autoplayOpts"
     :space-between="14"
     class="qs-mvv-swiper w-full pb-11"
   >
@@ -29,12 +31,24 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import { FlagIcon, LightBulbIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
 import { useI18n } from '../../composables/useI18n'
 
-const modules = [Pagination]
+const modules = [Pagination, Autoplay]
 const { t } = useI18n()
+
+const reduceMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const autoplayOpts = reduceMotion
+  ? false
+  : {
+      delay: 4500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    }
 
 const mvvSlides = [
   {
@@ -161,35 +175,54 @@ const mvvSlides = [
 }
 .qs-mvv-m-card__ul {
   margin: 0;
-  padding-left: 1.15rem;
+  padding: 0;
+  list-style: none;
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.55;
   color: #475569;
 }
 .qs-mvv-m-card__ul li {
-  margin-bottom: 0.45rem;
+  position: relative;
+  margin: 0 0 10px;
+  padding-left: 1.05rem;
 }
 .qs-mvv-m-card__ul li:last-child {
   margin-bottom: 0;
 }
+.qs-mvv-m-card__ul li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #00c6fe;
+  box-shadow: 0 0 0 3px rgba(0, 198, 254, 0.14);
+}
 
 :deep(.swiper-pagination) {
   bottom: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 :deep(.swiper-pagination-bullet) {
   width: 8px;
   height: 8px;
-  margin: 0 5px !important;
-  border-radius: 9999px;
-  background: rgba(15, 23, 42, 0.14);
+  margin: 0 !important;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.2);
   opacity: 1;
   transition:
-    transform 0.25s ease,
-    background 0.25s ease;
+    width 0.28s ease,
+    background-color 0.22s ease;
 }
 :deep(.swiper-pagination-bullet-active) {
+  width: 28px;
   background: #00c6fe;
-  transform: scale(1.15);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

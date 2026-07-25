@@ -10,8 +10,10 @@ import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 import Toast from 'primevue/toast'
 import { vMaska } from 'maska/vue'
+import { siteAnalytics } from './services/analytics/site-analytics'
 
 register();
+siteAnalytics.init()
 
 const app = createApp(App);
 app.use(router)

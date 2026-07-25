@@ -50,29 +50,109 @@
       />
     </section>
 
-    <!-- Faixa editorial: marca d’água + texto (layout diferente de Certificados) -->
-    <section class="relative overflow-hidden bg-white py-16 md:py-24">
-      <div class="evt-reveal evt-kicker relative mx-auto max-w-[1100px] px-4 md:px-10">
-        <div class="evt-kicker__grid">
-          <div class="evt-kicker__aside font-head" aria-hidden="true">
-            <span class="evt-kicker__glyph">+</span>
-            <span class="evt-kicker__glyph evt-kicker__glyph--dim">+</span>
+    <!-- Calendário + inscrição inteligente (seção unificada) -->
+    <section class="evt-reveal evt-merged-intro relative overflow-x-clip border-b border-[#e2e8f0] bg-white py-14 md:py-20">
+      <div class="evt-merged-intro__bg-grid pointer-events-none absolute inset-0 opacity-[0.4]" aria-hidden="true" />
+
+      <div class="relative z-[1] mx-auto max-w-[1180px] px-4 md:px-8">
+        <div class="evt-merged-intro__grid">
+          <div class="evt-merged-intro__copy">
+            <div class="evt-merged-intro__cal">
+              <div class="evt-merged-intro__cal-head">
+                <div class="evt-merged-intro__glyphs font-head" aria-hidden="true">
+                  <span class="evt-merged-intro__glyph">+</span>
+                  <span class="evt-merged-intro__glyph evt-merged-intro__glyph--dim">+</span>
+                </div>
+                <p class="section-tag">{{ t('eventos.section2.title') }}</p>
+              </div>
+              <p class="evt-merged-intro__cal-text text-[15px] leading-[1.85] text-[#475569] md:text-[16px]">
+                {{ t('eventos.section1.text') }}
+              </p>
+            </div>
+
+            <div class="evt-merged-intro__divider" aria-hidden="true" />
+
+            <div class="evt-merged-intro__flow">
+              <div class="evt-health-flow__intro">
+                <p class="evt-health-flow__eyebrow font-head">{{ t('eventos.healthFlow.eyebrow') }}</p>
+                <h2 class="font-head text-[clamp(22px,3.2vw,34px)] font-bold leading-[1.12] tracking-[-0.03em] text-[#0f172a]">
+                  {{ t('eventos.healthFlow.title') }}
+                </h2>
+                <p class="evt-health-flow__lead max-w-[52ch] text-[15px] leading-[1.8] text-[#475569] md:text-[16px]">
+                  {{ t('eventos.healthFlow.lead') }}
+                </p>
+              </div>
+
+              <ul class="evt-health-flow__list">
+                <li v-for="(point, i) in healthFlowPoints" :key="'hf-' + i" class="evt-health-flow__li">
+                  <span class="evt-health-flow__li-num font-head">{{ i + 1 }}</span>
+                  <span>{{ point }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="evt-kicker__body">
-            <p class="section-tag">{{ t('eventos.section2.title') }}</p>
-            <p class="evt-kicker__text mt-4 text-[15px] leading-[1.85] text-[#475569] md:text-[16px]">
-              {{ t('eventos.section1.text') }}
-            </p>
+
+          <div class="evt-merged-intro__aside">
+            <div class="evt-merged-intro__form-wrap" aria-hidden="true">
+              <div class="evt-health-form">
+                <header class="evt-health-form__head">
+                  <div class="evt-health-form__head-row">
+                    <div class="evt-health-form__head-copy">
+                      <span class="evt-health-form__badge font-head">{{ t('eventos.healthFlow.formBadge') }}</span>
+                      <p class="evt-health-form__title font-head">{{ t('eventos.healthFlow.formTitle') }}</p>
+                      <p class="evt-health-form__sub">{{ t('eventos.healthFlow.formSubtitle') }}</p>
+                    </div>
+                    <img
+                      src="/logoFit-column.png"
+                      alt=""
+                      class="evt-health-form__logo"
+                      width="56"
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </header>
+
+                <div class="evt-health-form__body">
+                  <div class="evt-health-form__terms" role="presentation">
+                    <span class="evt-health-form__checkbox" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </span>
+                    <span class="evt-health-form__terms-label">{{ t('eventos.healthFlow.termsCheckbox') }}</span>
+                  </div>
+
+                  <div
+                    v-for="(item, index) in healthFormDemo"
+                    :key="item.id"
+                    class="evt-health-form__row"
+                    :style="{ '--row-delay': `${index * 0.08}s` }"
+                  >
+                    <p class="evt-health-form__q">{{ item.label }}</p>
+                    <div class="evt-health-form__toggle" role="presentation">
+                      <span
+                        class="evt-health-form__opt font-head"
+                        :class="{ 'evt-health-form__opt--on': item.answer === true }"
+                      >
+                        {{ t('eventos.healthFlow.yes') }}
+                      </span>
+                      <span
+                        class="evt-health-form__opt font-head"
+                        :class="{ 'evt-health-form__opt--on': item.answer === false, 'evt-health-form__opt--on-no': item.answer === false }"
+                      >
+                        {{ t('eventos.healthFlow.no') }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <footer class="evt-health-form__foot font-head">
+                  <ShieldCheckIcon class="evt-health-form__foot-ico" aria-hidden="true" />
+                  {{ t('eventos.listEventos.subtitle') }}
+                </footer>
+              </div>
+            </div>
           </div>
-          <img
-            src="/logoFit-column.png"
-            alt=""
-            class="evt-kicker__logo"
-            width="150"
-            loading="lazy"
-            decoding="async"
-            aria-hidden="true"
-          />
         </div>
       </div>
     </section>
@@ -178,9 +258,13 @@
           </template>
 
           <template v-else-if="eventosData.length === 0">
-            <p class="evt-empty font-head col-span-full text-center text-[15px] text-[#64748b] md:text-[16px]">
-              {{ t('eventos.empty') }}
-            </p>
+            <div class="evt-empty col-span-full" role="status">
+              <span class="evt-empty__icon-wrap" aria-hidden="true">
+                <CalendarDaysIcon class="evt-empty__icon" />
+              </span>
+              <h3 class="evt-empty__title font-head">{{ t('eventos.emptyTitle') }}</h3>
+              <p class="evt-empty__text">{{ t('eventos.empty') }}</p>
+            </div>
           </template>
 
           <template v-else>
@@ -339,6 +423,20 @@ const eventosData = ref([])
 const { t, currentLocale } = useI18n()
 const route = useRoute()
 const evtGridStageRef = ref(null)
+
+const healthFlowPoints = computed(() => [
+  t('eventos.healthFlow.point1'),
+  t('eventos.healthFlow.point2'),
+  t('eventos.healthFlow.point3'),
+])
+
+/** Mock visual do formulário (não coleta dados — só demonstração na página). */
+const healthFormDemo = computed(() => [
+  { id: 'q1', label: t('eventos.healthFlow.questions.q1'), answer: true },
+  { id: 'q2', label: t('eventos.healthFlow.questions.q2'), answer: false },
+  { id: 'q3', label: t('eventos.healthFlow.questions.q3'), answer: false },
+  { id: 'q4', label: t('eventos.healthFlow.questions.q4'), answer: true },
+])
 
 const cidadeSelecionada = ref('')
 const mesSelecionado = ref('')
@@ -859,6 +957,48 @@ onUnmounted(() => {
 }
 
 /* Grade: 2 colunas no tablet, 3 no desktop — tamanho equilibrado */
+.evt-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 280px;
+  padding: 48px 24px;
+  text-align: center;
+}
+.evt-empty__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 4px;
+  border-radius: 18px;
+  border: 1px solid #dbe3ef;
+  background: linear-gradient(160deg, #f8fafc 0%, #eef6ff 100%);
+  color: #00a8d6;
+  box-shadow: 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+}
+.evt-empty__icon {
+  width: 28px;
+  height: 28px;
+}
+.evt-empty__title {
+  margin: 0;
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+.evt-empty__text {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #64748b;
+}
+
 .evt-grid-stage {
   display: grid;
   gap: 20px;
@@ -1198,6 +1338,363 @@ onUnmounted(() => {
   border-radius: 999px;
   background: rgba(136, 206, 13, 0.35);
   border: 1px solid rgba(136, 206, 13, 0.45);
+}
+
+/* Seção unificada: calendário + inscrição + formulário */
+.evt-merged-intro__bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 198, 254, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 254, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 95%);
+}
+
+.evt-merged-intro__grid {
+  display: grid;
+  gap: 36px;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .evt-merged-intro__grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    gap: 40px 48px;
+    align-items: center;
+  }
+}
+
+.evt-merged-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 640px;
+}
+
+.evt-merged-intro__cal-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.evt-merged-intro__glyphs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 2px;
+}
+.evt-merged-intro__glyph {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: #00c6fe;
+}
+.evt-merged-intro__glyph--dim {
+  opacity: 0.35;
+}
+
+.evt-merged-intro__divider {
+  margin: 32px 0 36px;
+  height: 1px;
+  background: linear-gradient(90deg, #e2e8f0 0%, rgba(0, 198, 254, 0.35) 50%, #e2e8f0 100%);
+}
+@media (min-width: 768px) {
+  .evt-merged-intro__divider {
+    margin: 36px 0 40px;
+  }
+}
+
+.evt-merged-intro__flow {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.evt-merged-intro__aside {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 960px) {
+  .evt-merged-intro__aside {
+    justify-content: flex-end;
+  }
+}
+
+.evt-merged-intro__form-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 960px) {
+  .evt-merged-intro__form-wrap {
+    justify-content: flex-end;
+  }
+}
+.evt-health-flow__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.evt-health-flow__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00c6fe;
+}
+
+.evt-health-flow__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.evt-health-flow__li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #475569;
+}
+@media (min-width: 768px) {
+  .evt-health-flow__li {
+    font-size: 15px;
+  }
+}
+.evt-health-flow__li-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #060606;
+  background: linear-gradient(135deg, #88ce0d, #00c6fe);
+}
+
+.evt-health-form {
+  position: relative;
+  width: min(100%, 400px);
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 20px 44px -18px rgba(15, 23, 42, 0.2);
+  transform: rotate(-1.5deg);
+  animation: evt-health-float 5s ease-in-out infinite;
+  isolation: isolate;
+}
+.evt-health-form::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(0, 198, 254, 0.06);
+}
+@media (min-width: 900px) {
+  .evt-health-form {
+    transform: rotate(2deg) translateY(-6px);
+  }
+}
+
+@keyframes evt-health-float {
+  0%, 100% { transform: rotate(2deg) translateY(-6px); }
+  50% { transform: rotate(0.5deg) translateY(-12px); }
+}
+@media (max-width: 899px) {
+  @keyframes evt-health-float {
+    0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+    50% { transform: rotate(-0.5deg) translateY(-5px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evt-health-form {
+    animation: none;
+  }
+}
+
+.evt-health-form__head {
+  position: relative;
+  z-index: 1;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, rgba(0, 198, 254, 0.06) 0%, transparent 100%);
+}
+.evt-health-form__head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.evt-health-form__head-copy {
+  flex: 1;
+  min-width: 0;
+}
+.evt-health-form__logo {
+  flex-shrink: 0;
+  width: 52px;
+  height: auto;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+@media (min-width: 400px) {
+  .evt-health-form__logo {
+    width: 56px;
+  }
+}
+.evt-health-form__badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0f172a;
+  background: rgba(136, 206, 13, 0.2);
+  border: 1px solid rgba(136, 206, 13, 0.45);
+}
+.evt-health-form__title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+.evt-health-form__sub {
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.evt-health-form__body {
+  position: relative;
+  padding: 10px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.evt-health-form__terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+.evt-health-form__checkbox {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border-radius: 5px;
+  color: #060606;
+  background: linear-gradient(135deg, #88ce0d 0%, #9dea0f 100%);
+  box-shadow: 0 2px 8px -4px rgba(136, 206, 13, 0.5);
+}
+.evt-health-form__terms-label {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #475569;
+}
+
+.evt-health-form__row {
+  padding: 8px 10px 8px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e8eef4;
+  animation: evt-health-row-in 0.6s ease backwards;
+  animation-delay: var(--row-delay, 0s);
+}
+@keyframes evt-health-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.evt-health-form__q {
+  margin: 0 0 6px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #334155;
+}
+
+.evt-health-form__toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 3px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.evt-health-form__opt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.evt-health-form__opt--on {
+  color: #060606;
+  background: linear-gradient(135deg, #88ce0d 0%, #9dea0f 100%);
+  box-shadow: 0 4px 14px -6px rgba(136, 206, 13, 0.45);
+}
+.evt-health-form__opt--on-no {
+  color: #fff;
+  background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
+  box-shadow: 0 4px 12px -6px rgba(100, 116, 139, 0.35);
+}
+
+.evt-health-form__foot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00a8d4;
+  border-top: 1px solid #e2e8f0;
+  background: rgba(0, 198, 254, 0.04);
+}
+.evt-health-form__foot-ico {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #88ce0d;
 }
 
 /* CTA final */
