@@ -139,7 +139,6 @@ const STORAGE_CADASTRO_ID = 'cadastroId'
  */
 const STORAGE_DISMISS_HOME = 'modalParabensHomeDismissed_v2'
 const OPEN_DELAY_MS = 5000
-const WEBHOOK_CADASTRO_URL = 'https://webhook.allmaticbrasil.com/webhook/cadastro'
 
 const toast = useToast()
 const { t } = useI18n()
@@ -219,17 +218,6 @@ type CadastroCore = {
   promocaoRef: string
 }
 
-async function enviarWebhookCadastro(payload: Record<string, unknown>) {
-  const res = await fetch(WEBHOOK_CADASTRO_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-  if (!res.ok) {
-    throw new Error(`Webhook cadastro falhou: ${res.status}`)
-  }
-}
-
 const cadastrar = async () => {
   if (!form.nomeCompleto.trim() || !form.email.trim() || !form.numberWhatsapp.trim()) {
     toast.add({
@@ -275,10 +263,7 @@ const cadastrar = async () => {
       detalhe: core.promocaoRef,
     })
 
-    const [response] = await Promise.all([
-      ctaService.createCta(siteAnalytics.buildApiPayload(core)),
-      enviarWebhookCadastro(siteAnalytics.buildWebhookPayload(core)),
-    ])
+    const response = await ctaService.createCta(siteAnalytics.buildApiPayload(core))
 
     const cadastroId = response?.id ?? response?.data?.id
     try {
